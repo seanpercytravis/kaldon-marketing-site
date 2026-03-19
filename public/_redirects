@@ -1,2 +1,3 @@
-# Redirect www to non-www
-https://www.kaldon.io/* https://kaldon.io/:splat 301
+# Redirects
+# Note: www-to-apex redirect is handled by Cloudflare Redirect Rules
+/home / 301

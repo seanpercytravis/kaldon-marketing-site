@@ -1,0 +1,2 @@
+# Redirect www to non-www
+https://www.kaldon.io/* https://kaldon.io/:splat 301

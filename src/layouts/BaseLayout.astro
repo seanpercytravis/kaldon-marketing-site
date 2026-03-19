@@ -1,0 +1,418 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonicalUrl?: string;
+  ogImage?: string;
+  ogType?: string;
+  noIndex?: boolean;
+  structuredData?: object[];
+}
+
+const {
+  title,
+  description,
+  canonicalUrl = Astro.url.href,
+  ogImage = '/images/og-default.png',
+  ogType = 'website',
+  noIndex = false,
+  structuredData = [],
+} = Astro.props;
+
+const siteUrl = 'https://kaldon.io';
+const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  {noIndex && <meta name="robots" content="noindex, nofollow" />}
+  <link rel="canonical" href={canonicalUrl} />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/kaldon-favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/kaldon-favicon-180.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={fullOgImage} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:type" content={ogType} />
+  <meta property="og:site_name" content="Kaldon" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={fullOgImage} />
+
+  <!-- Fonts: DM Sans (headings + body) + Space Mono (labels, badges, eyebrow) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Analytics Placeholders -->
+  <script is:inline>
+    // GA4 placeholder — replace GA_MEASUREMENT_ID
+    // window.dataLayer = window.dataLayer || [];
+    // function gtag(){dataLayer.push(arguments);}
+    // gtag('js', new Date());
+    // gtag('config', 'GA_MEASUREMENT_ID');
+  </script>
+  <script is:inline>
+    // Meta Pixel placeholder — replace META_PIXEL_ID
+  </script>
+  <script is:inline>
+    // GTM placeholder — replace GTM_CONTAINER_ID
+  </script>
+
+  <!-- Structured Data -->
+  {structuredData.map((data) => (
+    <script type="application/ld+json" set:html={JSON.stringify(data)} />
+  ))}
+
+  <style is:global>
+    @import '../styles/global.css';
+  </style>
+</head>
+<body class="bg-kaldon-bg text-kaldon-text antialiased font-sans min-h-screen flex flex-col">
+  <!-- Skip to content -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-kaldon-cyan focus:text-kaldon-bg focus:px-4 focus:py-2 focus:rounded-lg focus:outline-none">
+    Skip to content
+  </a>
+
+  <!-- Announcement Bar: spec says #1a2236 bg, Space Mono 11px uppercase -->
+  <div id="announcement-bar" class="border-b border-kaldon-border text-center py-2.5 px-4" style="background:#1a2236;">
+    <span class="font-mono text-eyebrow uppercase tracking-[3px] text-kaldon-muted">Beta Access Now Open:</span>
+    <a href="https://kaldon.io/signup" class="font-mono text-eyebrow uppercase tracking-[3px] text-kaldon-cyan hover:text-kaldon-cyan-light ml-1.5 transition-colors">
+      2 Free Analyses, No Credit Card Required &rarr;
+    </a>
+    <button id="close-announcement" class="ml-3 text-kaldon-dim hover:text-kaldon-text transition-colors align-middle" aria-label="Close announcement">
+      <svg class="w-3.5 h-3.5 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+    </button>
+  </div>
+
+  <!-- Navigation: spec says transparent default, glassmorphism on scroll -->
+  <nav id="main-nav" class="sticky top-0 z-50 border-b border-transparent transition-all duration-300" aria-label="Main navigation">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo + Descriptor -->
+        <a href="/" class="flex items-center gap-3 shrink-0">
+          <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/kaldon-logo-dark_e9532aa6.svg" alt="Kaldon" class="h-8" width="120" height="32" />
+          <span class="hidden lg:inline text-xs text-kaldon-muted font-normal" style="margin-top:2px;">AI-Powered eCommerce Intelligence</span>
+        </a>
+
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex items-center gap-1">
+          <a href="/how-it-works" class="nav-link">How It Works</a>
+          <a href="/pricing" class="nav-link">Pricing</a>
+          <div class="relative group">
+            <button class="nav-link flex items-center gap-1">
+              Compare
+              <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </button>
+            <div class="absolute top-full left-0 mt-1 w-52 bg-kaldon-surface border border-kaldon-border rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2">
+              <a href="/vs/helium-10" class="block px-4 py-2.5 text-sm text-kaldon-muted hover:text-kaldon-text hover:bg-kaldon-surface-2 transition-colors">vs Helium 10</a>
+              <a href="/vs/jungle-scout" class="block px-4 py-2.5 text-sm text-kaldon-muted hover:text-kaldon-text hover:bg-kaldon-surface-2 transition-colors">vs Jungle Scout</a>
+              <a href="/vs/shopify" class="block px-4 py-2.5 text-sm text-kaldon-muted hover:text-kaldon-text hover:bg-kaldon-surface-2 transition-colors">vs Shopify</a>
+            </div>
+          </div>
+          <a href="/demo" class="nav-link">Demo</a>
+        </div>
+
+        <!-- CTA + Mobile Toggle -->
+        <div class="flex items-center gap-3">
+          <a href="https://kaldon.io/login" class="btn-ghost text-sm hidden sm:inline-flex">Log In</a>
+          <a href="https://kaldon.io/signup" class="btn-primary text-sm" data-event="signup_cta_click">Start Free</a>
+          <button id="mobile-menu-toggle" class="md:hidden p-2 text-kaldon-muted hover:text-kaldon-text transition-colors" aria-label="Open menu" aria-expanded="false">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu: full-height slide-in -->
+    <div id="mobile-menu" class="md:hidden hidden fixed inset-0 top-16 z-50" style="background:#0a0e17;">
+      <div class="px-6 py-8 space-y-1 overflow-y-auto h-full">
+        <a href="/how-it-works" class="block py-3 text-kaldon-muted hover:text-kaldon-text transition-colors font-medium text-lg">How It Works</a>
+        <a href="/pricing" class="block py-3 text-kaldon-muted hover:text-kaldon-text transition-colors font-medium text-lg">Pricing</a>
+        <a href="/demo" class="block py-3 text-kaldon-muted hover:text-kaldon-text transition-colors font-medium text-lg">Demo</a>
+        <a href="/who-its-for" class="block py-3 text-kaldon-muted hover:text-kaldon-text transition-colors font-medium text-lg">Who It's For</a>
+        <div class="py-3 border-t border-kaldon-border mt-3 pt-5">
+          <p class="font-mono text-eyebrow uppercase tracking-[3px] text-kaldon-dim mb-3">Compare</p>
+          <a href="/vs/helium-10" class="block py-2 pl-3 text-kaldon-muted hover:text-kaldon-text transition-colors">vs Helium 10</a>
+          <a href="/vs/jungle-scout" class="block py-2 pl-3 text-kaldon-muted hover:text-kaldon-text transition-colors">vs Jungle Scout</a>
+          <a href="/vs/shopify" class="block py-2 pl-3 text-kaldon-muted hover:text-kaldon-text transition-colors">vs Shopify</a>
+        </div>
+        <a href="/blog" class="block py-3 text-kaldon-muted hover:text-kaldon-text transition-colors font-medium text-lg">Blog</a>
+        <a href="/about" class="block py-3 text-kaldon-muted hover:text-kaldon-text transition-colors font-medium text-lg">About</a>
+        <a href="/contact" class="block py-3 text-kaldon-muted hover:text-kaldon-text transition-colors font-medium text-lg">Contact</a>
+        <div class="pt-6 border-t border-kaldon-border mt-4 space-y-3">
+          <a href="https://kaldon.io/login" class="block text-center py-3 text-kaldon-muted hover:text-kaldon-text transition-colors font-medium text-lg">Log In</a>
+          <a href="https://kaldon.io/signup" class="btn-primary w-full text-center block text-lg">Start Free</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main-content" class="flex-1">
+    <slot />
+  </main>
+
+  <!-- Footer: spec says 4 columns + email capture + bottom row -->
+  <footer style="background:#0a0e17;border-top:1px solid rgba(255,255,255,0.08);" class="mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <!-- Email Capture Row -->
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-12 pb-12 border-b border-kaldon-border">
+        <div>
+          <h3 class="text-lg font-bold text-kaldon-text mb-1">Get eCommerce intelligence in your inbox</h3>
+          <p class="text-sm text-kaldon-muted">Product research tips, platform updates, and launch strategies. No spam.</p>
+        </div>
+        <form id="footer-email-form" class="flex gap-2 w-full md:w-auto">
+          <input type="email" placeholder="you@example.com" required class="px-4 py-2.5 rounded-lg text-sm bg-kaldon-surface border border-kaldon-border text-kaldon-text placeholder-kaldon-dim focus:border-kaldon-cyan focus:outline-none w-full md:w-64" />
+          <button type="submit" class="btn-primary text-sm whitespace-nowrap" data-event="email_capture">Subscribe</button>
+        </form>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+        <!-- Product -->
+        <div>
+          <h3 class="font-mono text-badge uppercase tracking-[2px] text-kaldon-dim mb-5">Product</h3>
+          <ul class="space-y-3">
+            <li><a href="/how-it-works" class="text-sm text-kaldon-muted hover:text-kaldon-text transition-colors">How It Works</a></li>
+            <li><a href="/pricing" class="text-sm text-kaldon-muted hover:text-kaldon-text transition-colors">Pricing</a></li>
+            <li><a href="/demo" class="text-sm text-kaldon-muted hover:text-kaldon-text transition-colors">Demo</a></li>
+            <li><a href="/vs/helium-10" class="text-sm text-kaldon-muted hover:text-kaldon-text transition-colors">Compare</a></li>
+          </ul>
+        </div>
+
+        <!-- Company -->
+        <div>
+          <h3 class="font-mono text-badge uppercase tracking-[2px] text-kaldon-dim mb-5">Company</h3>
+          <ul class="space-y-3">
+            <li><a href="/about" class="text-sm text-kaldon-muted hover:text-kaldon-text transition-colors">About</a></li>
+            <li><a href="/blog" class="text-sm text-kaldon-muted hover:text-kaldon-text transition-colors">Blog</a></li>
+            <li><a href="/contact" class="text-sm text-kaldon-muted hover:text-kaldon-text transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal -->
+        <div>
+          <h3 class="font-mono text-badge uppercase tracking-[2px] text-kaldon-dim mb-5">Legal</h3>
+          <ul class="space-y-3">
+            <li><a href="/terms" class="text-sm text-kaldon-muted hover:text-kaldon-text transition-colors">Terms</a></li>
+            <li><a href="/privacy" class="text-sm text-kaldon-muted hover:text-kaldon-text transition-colors">Privacy</a></li>
+          </ul>
+        </div>
+
+        <!-- Connect -->
+        <div>
+          <h3 class="font-mono text-badge uppercase tracking-[2px] text-kaldon-dim mb-5">Connect</h3>
+          <ul class="space-y-3">
+            <li><a href="https://twitter.com/kaldonhq" class="text-sm text-kaldon-muted hover:text-kaldon-text transition-colors inline-flex items-center gap-2"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Twitter / X</a></li>
+            <li><a href="https://linkedin.com/company/kaldon" class="text-sm text-kaldon-muted hover:text-kaldon-text transition-colors inline-flex items-center gap-2"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a></li>
+            <li><a href="mailto:beta@kaldon.io" class="text-sm text-kaldon-muted hover:text-kaldon-text transition-colors">beta@kaldon.io</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="border-t border-kaldon-border mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <a href="/" class="shrink-0">
+            <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/kaldon-logo-dark_e9532aa6.svg" alt="Kaldon" class="h-6" width="90" height="24" />
+          </a>
+          <p class="text-xs text-kaldon-dim">&copy; {new Date().getFullYear()} Kaldon. Intelligence that commands action.</p>
+        </div>
+        <div class="flex items-center gap-6 opacity-40">
+          <span class="text-xs text-kaldon-dim">Amazon</span>
+          <span class="text-xs text-kaldon-dim">Stripe</span>
+          <span class="text-xs text-kaldon-dim">Cloudflare</span>
+          <span class="text-xs text-kaldon-dim">Meta</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cookie Consent -->
+  <div id="cookie-consent" class="hidden fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-md bg-kaldon-surface border border-kaldon-border rounded-2xl shadow-2xl p-5 z-50">
+    <p class="text-sm text-kaldon-muted mb-4">
+      We use cookies to improve your experience. <a href="/privacy" class="text-kaldon-cyan hover:underline">Privacy Policy</a>.
+    </p>
+    <div class="flex gap-3">
+      <button id="accept-cookies" class="btn-primary text-sm flex-1">Accept</button>
+      <button id="decline-cookies" class="btn-ghost text-sm flex-1 border border-kaldon-border rounded-lg">Decline</button>
+    </div>
+  </div>
+
+  <!-- Sticky Mobile CTA -->
+  <div id="sticky-mobile-cta" class="fixed bottom-0 left-0 right-0 backdrop-blur-lg border-t border-kaldon-border p-3 z-40 md:hidden hidden" style="background:rgba(10,14,23,0.95);">
+    <div class="flex items-center gap-3">
+      <a href="https://kaldon.io/signup" class="btn-primary flex-1 text-center text-sm">Start Free</a>
+      <button id="dismiss-sticky-cta" class="text-kaldon-dim hover:text-kaldon-text p-1" aria-label="Dismiss">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Exit Intent Popup -->
+  <div id="exit-intent-popup" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] flex items-center justify-center p-4">
+    <div class="bg-kaldon-surface border border-kaldon-border rounded-2xl shadow-2xl max-w-md w-full p-8 relative">
+      <button id="close-exit-intent" class="absolute top-4 right-4 text-kaldon-dim hover:text-kaldon-text transition-colors" aria-label="Close">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+      <div class="text-center">
+        <h3 class="text-xl font-bold text-kaldon-text mb-2">Before you go...</h3>
+        <p class="text-kaldon-muted mb-6">Your first 2 analyses are free. No credit card required.</p>
+        <a href="https://kaldon.io/signup" class="btn-primary w-full text-center block" data-event="exit_intent_submit">Get Started Free</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Client-side Scripts -->
+  <script is:inline>
+    // Nav glassmorphism on scroll
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 80) {
+        nav.style.background = 'rgba(10,14,23,0.85)';
+        nav.style.backdropFilter = 'blur(12px)';
+        nav.style.WebkitBackdropFilter = 'blur(12px)';
+        nav.style.borderColor = 'rgba(255,255,255,0.08)';
+      } else {
+        nav.style.background = 'transparent';
+        nav.style.backdropFilter = 'none';
+        nav.style.WebkitBackdropFilter = 'none';
+        nav.style.borderColor = 'transparent';
+      }
+    });
+
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-toggle')?.addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      const isOpen = !menu.classList.contains('hidden');
+      menu.classList.toggle('hidden');
+      this.setAttribute('aria-expanded', !isOpen);
+      // Toggle hamburger/X icon
+      if (!isOpen) {
+        this.innerHTML = '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>';
+      } else {
+        this.innerHTML = '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>';
+      }
+    });
+
+    // Announcement bar close
+    document.getElementById('close-announcement')?.addEventListener('click', function() {
+      document.getElementById('announcement-bar').style.display = 'none';
+      sessionStorage.setItem('announcement-closed', 'true');
+    });
+    if (sessionStorage.getItem('announcement-closed') === 'true') {
+      const bar = document.getElementById('announcement-bar');
+      if (bar) bar.style.display = 'none';
+    }
+
+    // Cookie consent
+    if (!localStorage.getItem('cookie-consent')) {
+      setTimeout(() => { document.getElementById('cookie-consent')?.classList.remove('hidden'); }, 2000);
+    }
+    document.getElementById('accept-cookies')?.addEventListener('click', function() {
+      localStorage.setItem('cookie-consent', 'accepted');
+      document.getElementById('cookie-consent').classList.add('hidden');
+    });
+    document.getElementById('decline-cookies')?.addEventListener('click', function() {
+      localStorage.setItem('cookie-consent', 'declined');
+      document.getElementById('cookie-consent').classList.add('hidden');
+    });
+
+    // Sticky mobile CTA
+    let stickyDismissed = false;
+    const stickyCta = document.getElementById('sticky-mobile-cta');
+    if (stickyCta) {
+      window.addEventListener('scroll', function() {
+        if (stickyDismissed) return;
+        stickyCta.classList.toggle('hidden', window.scrollY <= window.innerHeight);
+      });
+      document.getElementById('dismiss-sticky-cta')?.addEventListener('click', function() {
+        stickyDismissed = true;
+        stickyCta.classList.add('hidden');
+      });
+    }
+
+    // Exit intent (desktop only, homepage + pricing)
+    const isExitIntentPage = window.location.pathname === '/' || window.location.pathname === '/pricing' || window.location.pathname === '/pricing/';
+    if (isExitIntentPage && !sessionStorage.getItem('exit-intent-shown')) {
+      document.addEventListener('mouseout', function(e) {
+        if (e.clientY < 5 && !sessionStorage.getItem('exit-intent-shown')) {
+          sessionStorage.setItem('exit-intent-shown', 'true');
+          document.getElementById('exit-intent-popup')?.classList.remove('hidden');
+        }
+      });
+    }
+    document.getElementById('close-exit-intent')?.addEventListener('click', function() {
+      document.getElementById('exit-intent-popup').classList.add('hidden');
+    });
+    document.getElementById('exit-intent-popup')?.addEventListener('click', function(e) {
+      if (e.target === this) this.classList.add('hidden');
+    });
+
+    // Conversion event tracking helper
+    window.trackEvent = function(eventName, params) {
+      if (typeof gtag === 'function') gtag('event', eventName, params);
+      if (typeof fbq === 'function') fbq('trackCustom', eventName, params);
+    };
+    document.querySelectorAll('[data-event]').forEach(el => {
+      el.addEventListener('click', function() {
+        trackEvent(this.dataset.event, { source: window.location.pathname });
+      });
+    });
+
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+    // Count-up animation for stat numbers
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const target = parseInt(el.dataset.count);
+            const prefix = el.dataset.prefix || '';
+            const suffix = el.dataset.suffix || '';
+            let current = 0;
+            const step = Math.ceil(target / 40);
+            const timer = setInterval(() => {
+              current += step;
+              if (current >= target) { current = target; clearInterval(timer); }
+              el.textContent = prefix + current.toLocaleString() + suffix;
+            }, 30);
+            io.unobserve(el);
+          }
+        });
+      }, { threshold: 0.5 });
+      io.observe(el);
+    });
+
+    // Footer email form
+    document.getElementById('footer-email-form')?.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('button');
+      btn.textContent = 'Subscribed!';
+      btn.disabled = true;
+      trackEvent('email_capture', { source: 'footer' });
+    });
+  </script>
+</body>
+</html>

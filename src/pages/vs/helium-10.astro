@@ -1,0 +1,57 @@
+---
+import ComparisonLayout from '../../layouts/ComparisonLayout.astro';
+
+const features = [
+  { name: 'Product Research', competitor: 'yes', kaldon: 'yes' },
+  { name: 'Keyword Research', competitor: 'yes', kaldon: 'yes' },
+  { name: 'Competitor Analysis', competitor: 'yes', kaldon: 'yes' },
+  { name: 'AI-Powered Analysis', competitor: 'partial', kaldon: 'yes' },
+  { name: 'Product Viability Scoring', competitor: 'no', kaldon: 'yes' },
+  { name: 'AI Product Mockups', competitor: 'no', kaldon: 'yes' },
+  { name: 'Step-by-Step Action Plans', competitor: 'no', kaldon: 'yes' },
+  { name: 'AI Coaching', competitor: 'no', kaldon: 'yes' },
+  { name: 'Brand Identity Generation', competitor: 'no', kaldon: 'yes' },
+  { name: 'Logo Generation', competitor: 'no', kaldon: 'yes' },
+  { name: 'Brand Voice Settings', competitor: 'no', kaldon: 'yes' },
+  { name: 'Content Calendar', competitor: 'no', kaldon: 'yes' },
+  { name: 'Social Media Content', competitor: 'no', kaldon: 'yes' },
+  { name: 'Video Studio', competitor: 'no', kaldon: 'yes' },
+  { name: 'Landing Page Builder', competitor: 'no', kaldon: 'yes' },
+  { name: 'Store Deployment', competitor: 'no', kaldon: 'yes' },
+  { name: 'Blog Engine', competitor: 'no', kaldon: 'yes' },
+  { name: 'Marketplace Listings', competitor: 'partial', kaldon: 'yes' },
+  { name: 'Ad Campaign Management', competitor: 'no', kaldon: 'yes' },
+  { name: 'Walmart Support', competitor: 'partial', kaldon: 'yes' },
+  { name: 'DTC Support', competitor: 'no', kaldon: 'yes' },
+  { name: 'Connected Pipeline', competitor: 'no', kaldon: 'yes' },
+];
+
+const faqs = [
+  { q: 'Is Kaldon a Helium 10 replacement?', a: 'Kaldon replaces Helium 10 for product research and adds everything Helium 10 does not do: brand building, content creation, store deployment, and growth optimization. If you only need keyword research for existing Amazon listings, Helium 10 is fine. If you want to launch and grow a complete business, Kaldon does that in one platform.' },
+  { q: 'Can I use both Kaldon and Helium 10?', a: 'Yes. Many sellers use Helium 10 for Amazon-specific keyword tracking while using Kaldon for the full launch pipeline. However, most find that Kaldon covers their research needs and they no longer need the Helium 10 subscription.' },
+  { q: 'Does Kaldon have keyword tracking like Helium 10?', a: 'Kaldon focuses on product intelligence and viability scoring rather than individual keyword rank tracking. Our analysis engine evaluates keyword opportunity as part of the overall product assessment. For dedicated keyword rank tracking on existing listings, Helium 10 has more granular tools.' },
+  { q: 'How does Kaldon pricing compare to Helium 10?', a: 'Helium 10 Platinum costs $79/mo for research tools only. Kaldon Growth costs $149/mo but includes research, brand building, content creation, and more. When you factor in the 5+ additional tools Helium 10 users typically need, Kaldon saves $700+ per year.' },
+];
+---
+
+<ComparisonLayout
+  title="Helium 10 vs Kaldon — Why Sellers Are Switching to the Full Pipeline"
+  description="Helium 10 stops at research. Kaldon takes you from research to revenue. Compare features, pricing, and capabilities side by side."
+  competitor="Helium 10"
+  tagline="Helium 10 tells you what to sell. Kaldon helps you sell it."
+  kaldonTagline="Stop Researching. Start Launching."
+  verdict="Helium 10 is an excellent product research tool for Amazon sellers. But it stops at research. Once you know what to sell, you still need 5+ additional tools to actually build a brand, create content, launch a store, and run ads. Kaldon does all of that in one connected pipeline. Same price range, 10x more capability."
+  features={features}
+  competitorPrice="$79-229/mo"
+  kaldonPrice="$149/mo"
+  priceSummary="Research + Brand + Content + Store + Ads in one platform"
+  migrationTitle="Already Using Helium 10?"
+  migrationBody="You do not have to choose one or the other. Here is how Kaldon fits into your existing workflow."
+  migrationSteps={[
+    'Sign up for Kaldon free and run 2 analyses on products you have already researched with Helium 10. Compare the depth and actionability.',
+    'Use Kaldon\'s Build phase to generate a brand identity for your best product. This is something Helium 10 cannot do.',
+    'Generate a month of social content and a landing page with Kaldon\'s Create phase. See how the pipeline connects.',
+    'If you are launching a new product, try the full Kaldon pipeline from Discover to Launch. Most sellers find they no longer need Helium 10 after this.',
+  ]}
+  faqs={faqs}
+/>

@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const arcadeDemos = [
+  {
+    id: 'arcade-demo-1',
+    title: 'Discover a Winning Product',
+    desc: 'Click through a real product analysis. See the AI scoring, product mockups, action plan, and coaching flow.',
+    screenshot: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/01-analysis-hero_3f7ba299.webp',
+    alt: 'Interactive demo: Discover a Winning Product with Kaldon AI analysis',
+  },
+  {
+    id: 'arcade-demo-2',
+    title: 'Build Your Brand in Minutes',
+    desc: 'Watch how Kaldon generates a complete brand identity from analysis data. Logo, colors, voice, everything.',
+    screenshot: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/07-brand-detail_4f3a066d.webp',
+    alt: 'Interactive demo: Build Your Brand with Kaldon Brand Vault',
+  },
+  {
+    id: 'arcade-demo-3',
+    title: 'The Full Pipeline',
+    desc: 'Experience the complete journey from product idea to live store. Five phases, one platform, zero gaps.',
+    screenshot: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/15-journey-progress_07bbb337.webp',
+    alt: 'Interactive demo: Full pipeline walkthrough from Discover to Grow',
+  },
+];
+
+const loomVideos = [
+  {
+    id: 'loom-video-1',
+    title: 'The Full Pipeline in 90 Seconds',
+    screenshot: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/15-journey-progress_07bbb337.webp',
+    alt: 'Video walkthrough: The full Kaldon pipeline in 90 seconds',
+  },
+  {
+    id: 'loom-video-2',
+    title: 'Inside an AI Analysis Report',
+    screenshot: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/01-analysis-hero_3f7ba299.webp',
+    alt: 'Video walkthrough: Inside a Kaldon AI analysis report',
+  },
+  {
+    id: 'loom-video-3',
+    title: 'Building a Brand from Scratch',
+    screenshot: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/06-brand-vault_fa12d0ed.webp',
+    alt: 'Video walkthrough: Building a brand from scratch with Kaldon',
+  },
+  {
+    id: 'loom-video-4',
+    title: 'A Month of Content in Minutes',
+    screenshot: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/10-content-calendar_7c1d7fef.webp',
+    alt: 'Video walkthrough: Creating a month of content with Kaldon',
+  },
+  {
+    id: 'loom-video-5',
+    title: 'Deploying Your Store',
+    screenshot: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/14-store-deployment_0243c609.webp',
+    alt: 'Video walkthrough: Deploying your store with Kaldon',
+  },
+];
+---
+
+<BaseLayout
+  title="See Kaldon in Action — Interactive Demos and Video Walkthroughs"
+  description="Click through real product analyses, brand creation, and the full pipeline. Watch video walkthroughs of every feature. No signup required."
+>
+
+  <!-- Hero -->
+  <section class="pt-32 pb-16 relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#22d3ee]/5 via-[#0a0e17] to-[#0a0e17]"></div>
+    <div class="container-custom relative z-10 text-center">
+      <span class="eyebrow">DEMO</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-[#e2e8f0] mb-4">See Kaldon in Action</h1>
+      <p class="text-lg text-[#94a3b8] max-w-2xl mx-auto">Click through real product analyses, brand creation, and the full pipeline. Watch video walkthroughs of every feature. No signup required.</p>
+    </div>
+  </section>
+
+  <!-- Interactive Demos -->
+  <section class="section-spacing">
+    <div class="container-custom max-w-5xl">
+      <div class="text-center mb-12">
+        <span class="eyebrow">INTERACTIVE DEMOS</span>
+        <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0]">Click Through the Real Product</h2>
+        <p class="text-[#94a3b8] mt-2">Powered by Arcade. No signup needed.</p>
+      </div>
+
+      <!-- Demo Tabs -->
+      <div class="flex flex-wrap justify-center gap-2 mb-8">
+        {arcadeDemos.map((demo, i) => (
+          <button
+            class={`demo-tab px-4 py-2 rounded-lg text-sm font-medium transition-all cursor-pointer ${i === 0 ? 'bg-[#22d3ee] text-[#0a0e17]' : 'bg-[#1a2236] text-[#94a3b8] hover:text-[#e2e8f0]'}`}
+            data-tab={i}
+          >
+            {demo.title}
+          </button>
+        ))}
+      </div>
+
+      <!-- Demo Panels -->
+      {arcadeDemos.map((demo, i) => (
+        <div id={demo.id} class={`demo-panel ${i > 0 ? 'hidden' : ''}`} data-panel={i}>
+          <div class="arcade-placeholder relative rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.08)] bg-[#111827] aspect-[16/10] cursor-pointer group">
+            <img src={demo.screenshot} alt={demo.alt} class="absolute inset-0 w-full h-full object-cover object-top opacity-60 group-hover:opacity-70 transition-opacity" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0e17] via-transparent to-transparent"></div>
+            <div class="absolute inset-0 flex flex-col items-center justify-center z-10">
+              <span class="inline-block px-4 py-1.5 bg-[#22d3ee]/20 backdrop-blur-sm border border-[#22d3ee]/30 rounded-full text-[#22d3ee] text-xs font-bold uppercase tracking-wider mb-4">Interactive Demo</span>
+              <p class="text-[#e2e8f0] text-lg font-semibold mb-2">{demo.title}</p>
+              <p class="text-[#94a3b8] text-sm max-w-md text-center mb-4">{demo.desc}</p>
+              <div class="w-16 h-16 rounded-full bg-[#22d3ee]/20 backdrop-blur-sm flex items-center justify-center group-hover:bg-[#22d3ee]/30 transition-colors">
+                <svg class="w-7 h-7 text-[#22d3ee]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" /></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Video Walkthroughs -->
+  <section class="section-spacing bg-[#111827]/30">
+    <div class="container-custom max-w-5xl">
+      <div class="text-center mb-12">
+        <span class="eyebrow">VIDEO WALKTHROUGHS</span>
+        <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0]">Watch Every Feature in Detail</h2>
+        <p class="text-[#94a3b8] mt-2">5 focused walkthroughs. See exactly what Kaldon does.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {loomVideos.map((video) => (
+          <div id={video.id} class="video-placeholder group cursor-pointer">
+            <div class="relative rounded-xl overflow-hidden border border-[rgba(255,255,255,0.08)] bg-[#111827] aspect-video mb-3">
+              <img src={video.screenshot} alt={video.alt} class="absolute inset-0 w-full h-full object-cover object-top opacity-40 group-hover:opacity-50 transition-opacity" loading="lazy" />
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="w-14 h-14 rounded-full bg-[rgba(255,255,255,0.1)] backdrop-blur-sm flex items-center justify-center group-hover:bg-[rgba(255,255,255,0.2)] transition-colors">
+                  <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-[#e2e8f0] font-semibold text-sm group-hover:text-[#22d3ee] transition-colors">{video.title}</h3>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-spacing relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#22d3ee]/10 via-[#0a0e17] to-[#a78bfa]/10"></div>
+    <div class="container-custom relative z-10 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-[#e2e8f0] mb-4">Ready to Try It Yourself?</h2>
+      <p class="text-lg text-[#94a3b8] mb-8">Your first 2 analyses are free. No credit card required.</p>
+      <a href="https://kaldon.io/signup" class="btn-primary btn-large btn-glow inline-flex items-center gap-2">Start Free <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
+    </div>
+  </section>
+
+  <script is:inline>
+    // Demo tabs
+    document.querySelectorAll('.demo-tab').forEach(tab => {
+      tab.addEventListener('click', function() {
+        const idx = this.dataset.tab;
+        document.querySelectorAll('.demo-tab').forEach(t => {
+          t.classList.remove('bg-[#22d3ee]', 'text-[#0a0e17]');
+          t.classList.add('bg-[#1a2236]', 'text-[#94a3b8]');
+        });
+        this.classList.remove('bg-[#1a2236]', 'text-[#94a3b8]');
+        this.classList.add('bg-[#22d3ee]', 'text-[#0a0e17]');
+        document.querySelectorAll('.demo-panel').forEach(p => p.classList.add('hidden'));
+        document.querySelector(`[data-panel="${idx}"]`)?.classList.remove('hidden');
+      });
+    });
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+  </script>
+</BaseLayout>

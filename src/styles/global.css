@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    background-color: #0a0e17;
+    color: #e2e8f0;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    font-weight: 700;
+  }
+
+  code, pre {
+    font-family: 'Space Mono', monospace;
+  }
+
+  ::selection {
+    background: rgba(34, 211, 238, 0.3);
+    color: #fff;
+  }
+
+  *:focus-visible {
+    outline: 2px solid #22d3ee;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: #0a0e17; }
+  ::-webkit-scrollbar-thumb { background: #1a2236; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+}
+
+@layer components {
+  /* Buttons - exact spec: bg #22d3ee, text #0a0e17, radius 8px, padding 12px 24px, weight 600 */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold rounded-lg transition-all duration-200;
+    background-color: #22d3ee;
+    color: #0a0e17;
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.15);
+    min-height: 44px;
+  }
+  .btn-primary:hover {
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+    transform: scale(1.02);
+  }
+  .btn-primary:active { transform: scale(1); }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-medium rounded-lg transition-all duration-200;
+    border: 1px solid #22d3ee;
+    color: #22d3ee;
+    background: transparent;
+    min-height: 44px;
+  }
+  .btn-secondary:hover {
+    background: rgba(34, 211, 238, 0.1);
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 font-medium rounded-lg transition-colors duration-200;
+    color: #94a3b8;
+    background: transparent;
+    min-height: 44px;
+  }
+  .btn-ghost:hover { color: #e2e8f0; }
+
+  .btn-large { @apply px-8 py-3.5 text-lg; }
+  .btn-glow { animation: glow-pulse 3s ease-in-out infinite; }
+
+  /* Nav */
+  .nav-link {
+    @apply px-3 py-2 text-sm font-medium rounded-lg transition-colors;
+    color: #94a3b8;
+  }
+  .nav-link:hover {
+    color: #e2e8f0;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  /* Section */
+  .section-spacing { @apply py-20 md:py-28 lg:py-32; }
+
+  .eyebrow {
+    @apply uppercase mb-4 inline-block;
+    color: #22d3ee;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+  }
+
+  .section-headline {
+    @apply text-h2 md:text-[36px] lg:text-[42px] font-bold leading-tight;
+    color: #e2e8f0;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #22d3ee, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-premium {
+    background: linear-gradient(135deg, #22d3ee, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Cards - exact spec: bg #111827, border rgba(255,255,255,0.08), radius 16px, padding 32px */
+  .card {
+    @apply rounded-card transition-all duration-200;
+    background: #111827;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 32px;
+  }
+  .card:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+  }
+
+  /* Screenshot */
+  .screenshot-container {
+    @apply rounded-xl overflow-hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(34, 211, 238, 0.05);
+  }
+
+  /* Arcade */
+  .arcade-placeholder {
+    @apply relative rounded-xl overflow-hidden cursor-pointer;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .arcade-placeholder img { @apply w-full transition-transform duration-500; }
+  .arcade-placeholder:hover img { transform: scale(1.03); }
+  .arcade-overlay {
+    @apply absolute inset-0 flex flex-col items-center justify-center transition-all duration-300;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  .arcade-placeholder:hover .arcade-overlay { background: rgba(0, 0, 0, 0.35); }
+  .arcade-badge {
+    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium mb-3;
+    background: rgba(34, 211, 238, 0.2);
+    color: #22d3ee;
+    border: 1px solid rgba(34, 211, 238, 0.3);
+  }
+
+  /* Video */
+  .video-placeholder {
+    @apply relative rounded-xl overflow-hidden cursor-pointer;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .video-placeholder img { @apply w-full transition-transform duration-500; }
+  .video-placeholder:hover img { transform: scale(1.03); }
+  .play-overlay {
+    @apply absolute inset-0 flex items-center justify-center text-white font-medium text-lg transition-all duration-300;
+    background: rgba(0, 0, 0, 0.4);
+  }
+  .video-placeholder:hover .play-overlay { background: rgba(0, 0, 0, 0.25); }
+
+  /* Container */
+  .container-custom { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+}
+
+@layer utilities {
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animations */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(34, 211, 238, 0.15); }
+  50% { box-shadow: 0 0 40px rgba(34, 211, 238, 0.35); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-on-scroll { opacity: 1; transform: none; }
+}

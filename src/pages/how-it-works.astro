@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const phases = [
+  {
+    num: 1, name: 'Discover', color: '#22d3ee',
+    youDo: 'Enter a product category or idea.',
+    kaldonDoes: 'Kaldon runs 9 parallel AI engines across Amazon, Walmart, and DTC. It scores the opportunity, generates AI product mockups, builds a step-by-step action plan with timelines, and provides guided coaching for your go/no-go decision.',
+    youGet: 'A complete product intelligence report with a viability score, competitive analysis, AI-generated product images, a prioritized action plan, and an AI coach to walk you through every decision.',
+    screenshot: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/01-analysis-hero_3f7ba299.webp',
+    alt: 'Kaldon AI analysis report showing product viability score, market data, and AI-generated product images',
+    loomId: 'loom-how-phase-1',
+  },
+  {
+    num: 2, name: 'Build', color: '#3b82f6',
+    youDo: 'Click "Build Brand" from your analysis.',
+    kaldonDoes: 'Kaldon generates a complete brand identity from your analysis data: name suggestions, logo concepts, color palette, typography, brand voice, and visual identity. Everything is stored in your Brand Vault and flows automatically into every downstream step.',
+    youGet: 'A professional brand identity with logo, colors, voice guidelines, and a Brand Board you can share with partners, manufacturers, or your team.',
+    screenshot: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/07-brand-detail_4f3a066d.webp',
+    alt: 'Kaldon Brand Vault showing complete brand identity with logo, colors, and voice settings',
+    loomId: 'loom-how-phase-2',
+  },
+  {
+    num: 3, name: 'Create', color: '#a78bfa',
+    youDo: 'Click "Generate Content" from your brand.',
+    kaldonDoes: 'Kaldon generates a full month of social media content across 5 platforms, all matching your brand voice. It creates 9 types of AI videos, conversion-optimized landing pages, and product descriptions. Everything is on-brand automatically.',
+    youGet: 'A month of social content, AI videos, landing pages, and product copy, all ready to publish and all matching your brand identity.',
+    screenshot: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/10-content-calendar_7c1d7fef.webp',
+    alt: 'Kaldon Content Calendar showing multi-platform social posts with scheduling',
+    loomId: 'loom-how-phase-3',
+  },
+  {
+    num: 4, name: 'Launch', color: '#fb923c',
+    youDo: 'Click "Deploy Store."',
+    kaldonDoes: 'Kaldon deploys a complete store with checkout, automated emails, SMS sequences, chatbot, and ad templates. The Blog Engine publishes weekly SEO content automatically. Marketplace listing generators create optimized listings for Amazon and Walmart.',
+    youGet: 'A live, revenue-ready store that is already marketing itself from day one, with marketplace listings, automated blog content, and all customer touchpoints configured.',
+    screenshot: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/14-store-deployment_0243c609.webp',
+    alt: 'Kaldon Store Deployment page showing one-click store launch features',
+    loomId: 'loom-how-phase-4',
+  },
+  {
+    num: 5, name: 'Grow', color: '#34d399',
+    youDo: 'Review your dashboard.',
+    kaldonDoes: 'Kaldon manages your Meta ad campaigns with AI optimization, identifies churn risk in your customer base, tracks ROAS/CAC/LTV in real-time, and automatically generates new ad creatives from your best performers.',
+    youGet: 'Ads that optimize themselves, customers that keep coming back, and a performance dashboard that shows exactly where your money is going and what it is earning.',
+    screenshot: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/17-pricing_68278703.webp',
+    alt: 'Kaldon growth dashboard showing performance analytics and ad optimization',
+    loomId: 'loom-how-phase-5',
+  },
+];
+---
+
+<BaseLayout
+  title="How Kaldon Works — From Product Idea to Revenue in 5 Phases"
+  description="See how Kaldon's AI-powered pipeline takes you from product research to a live, revenue-generating store in 5 connected phases. No juggling tools. No gaps."
+>
+
+  <!-- Hero -->
+  <section class="pt-32 pb-16 relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#22d3ee]/5 via-[#0a0e17] to-[#0a0e17]"></div>
+    <div class="container-custom relative z-10 text-center">
+      <span class="eyebrow">HOW IT WORKS</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-[#e2e8f0] mb-4">Five Phases. One Platform.<br/>Zero Gaps.</h1>
+      <p class="text-lg text-[#94a3b8] max-w-2xl mx-auto">Every step feeds the next. Your analysis data becomes your brand. Your brand becomes your content. Your content populates your store. Your store data optimizes your ads. One continuous flow.</p>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="section-spacing">
+    <div class="container-custom max-w-5xl">
+      <div class="relative">
+        <!-- Vertical line -->
+        <div class="absolute left-6 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-[#22d3ee] via-[#a78bfa] to-[#34d399] opacity-30"></div>
+
+        {phases.map((phase, i) => (
+          <div class="relative pl-16 md:pl-20 pb-20 last:pb-0 animate-on-scroll" style={`animation-delay: ${i * 150}ms`}>
+            <!-- Phase dot -->
+            <div class="absolute left-3 md:left-5 w-7 h-7 rounded-full border-2 flex items-center justify-center text-xs font-bold" style={`border-color: ${phase.color}; background: ${phase.color}20; color: ${phase.color}`}>
+              {phase.num}
+            </div>
+
+            <!-- Phase label -->
+            <div class="mb-6">
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider" style={`background: ${phase.color}15; color: ${phase.color}; border: 1px solid ${phase.color}30`}>
+                Phase {phase.num}: {phase.name}
+              </span>
+            </div>
+
+            <!-- Content grid -->
+            <div class="grid md:grid-cols-2 gap-8 items-start">
+              <!-- Text side -->
+              <div class="space-y-5">
+                <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl p-5">
+                  <h3 class="text-xs font-bold uppercase tracking-wider text-[#94a3b8] mb-2">What You Do</h3>
+                  <p class="text-[#e2e8f0] font-medium">{phase.youDo}</p>
+                </div>
+                <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl p-5">
+                  <h3 class="text-xs font-bold uppercase tracking-wider mb-2" style={`color: ${phase.color}`}>What Kaldon Does</h3>
+                  <p class="text-[#94a3b8] text-sm leading-relaxed">{phase.kaldonDoes}</p>
+                </div>
+                <div class="bg-[#1a2236] border border-[rgba(255,255,255,0.08)] rounded-xl p-5" style={`border-left: 3px solid ${phase.color}`}>
+                  <h3 class="text-xs font-bold uppercase tracking-wider text-[#e2e8f0] mb-2">What You Get</h3>
+                  <p class="text-[#94a3b8] text-sm leading-relaxed">{phase.youGet}</p>
+                </div>
+              </div>
+
+              <!-- Visual side -->
+              <div class="space-y-4">
+                <div class="rounded-xl overflow-hidden border border-[rgba(255,255,255,0.08)]">
+                  <img src={phase.screenshot} alt={phase.alt} class="w-full h-auto" loading="lazy" />
+                </div>
+                <!-- Loom placeholder -->
+                <div id={phase.loomId} class="video-placeholder relative rounded-xl overflow-hidden border border-[rgba(255,255,255,0.08)] bg-[#111827] aspect-video flex items-center justify-center cursor-pointer group">
+                  <img src={phase.screenshot} alt={`${phase.name} walkthrough video`} class="absolute inset-0 w-full h-full object-cover opacity-30" loading="lazy" />
+                  <div class="relative z-10 text-center">
+                    <div class="w-14 h-14 rounded-full bg-[rgba(255,255,255,0.1)] backdrop-blur-sm flex items-center justify-center mx-auto mb-3 group-hover:bg-[rgba(255,255,255,0.2)] transition-colors">
+                      <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <p class="text-sm text-[#94a3b8]">Watch the Walkthrough</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing -->
+  <section class="section-spacing relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#22d3ee]/10 via-[#0a0e17] to-[#a78bfa]/10"></div>
+    <div class="container-custom relative z-10 text-center">
+      <p class="text-lg text-[#94a3b8] mb-4 italic">"The entire pipeline takes less time than reading this page."</p>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-[#e2e8f0] mb-4">Ready to Start?</h2>
+      <p class="text-[#94a3b8] mb-8">Your first 2 analyses are free. No credit card required.</p>
+      <a href="https://kaldon.io/signup" class="btn-primary btn-large btn-glow inline-flex items-center gap-2">Start Your First Analysis <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
+    </div>
+  </section>
+
+  <script is:inline>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+  </script>
+</BaseLayout>

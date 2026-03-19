@@ -1,0 +1,76 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  category: string;
+  date: string;
+  readTime: string;
+  heroImage: string;
+  heroAlt: string;
+}
+
+const { title, description, category, date, readTime, heroImage, heroAlt } = Astro.props;
+---
+
+<BaseLayout title={`${title} | Kaldon Blog`} description={description}>
+  <article class="pt-32 pb-20">
+    <div class="container-custom max-w-3xl">
+      <!-- Meta -->
+      <div class="flex items-center gap-3 mb-6">
+        <span class="px-3 py-1 bg-[#22d3ee]/10 text-[#22d3ee] text-xs font-bold uppercase tracking-wider rounded-full">{category}</span>
+        <span class="text-sm text-[#64748b]">{date}</span>
+        <span class="text-sm text-[#64748b]">{readTime}</span>
+      </div>
+
+      <!-- Title -->
+      <h1 class="text-3xl md:text-4xl font-extrabold text-[#e2e8f0] mb-6 leading-tight">{title}</h1>
+
+      <!-- Author -->
+      <div class="flex items-center gap-3 mb-8 pb-8 border-b border-[rgba(255,255,255,0.08)]">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#22d3ee] to-[#3b82f6] flex items-center justify-center text-[#0a0e17] font-bold text-sm">ST</div>
+        <div>
+          <p class="text-sm font-semibold text-[#e2e8f0]">Sean Travis</p>
+          <p class="text-xs text-[#64748b]">Founder, Kaldon</p>
+        </div>
+      </div>
+
+      <!-- Hero Image -->
+      <div class="rounded-xl overflow-hidden border border-[rgba(255,255,255,0.08)] mb-10">
+        <img src={heroImage} alt={heroAlt} class="w-full h-auto" loading="eager" />
+      </div>
+
+      <!-- Content -->
+      <div class="prose prose-invert prose-lg max-w-none
+        prose-headings:text-[#e2e8f0] prose-headings:font-bold
+        prose-p:text-[#94a3b8] prose-p:leading-relaxed
+        prose-a:text-[#22d3ee] prose-a:no-underline hover:prose-a:underline
+        prose-strong:text-[#e2e8f0]
+        prose-li:text-[#94a3b8]
+        prose-blockquote:border-[#22d3ee] prose-blockquote:text-[#94a3b8]
+        prose-code:text-[#22d3ee] prose-code:bg-[#1a2236] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
+        prose-hr:border-[rgba(255,255,255,0.08)]">
+        <slot />
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-12 bg-[#1a2236] border border-[rgba(255,255,255,0.08)] rounded-2xl p-8 text-center">
+        <h3 class="text-xl font-bold text-[#e2e8f0] mb-2">Ready to See It for Yourself?</h3>
+        <p class="text-[#94a3b8] mb-4">Start with 2 free analyses. No credit card required.</p>
+        <a href="https://kaldon.io/signup" class="btn-primary inline-flex items-center gap-2">Start Free <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
+      </div>
+    </div>
+  </article>
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "author": { "@type": "Person", "name": "Sean Travis" },
+    "publisher": { "@type": "Organization", "name": "Kaldon" },
+    "datePublished": "2026-03-18",
+    "image": heroImage,
+  })} />
+</BaseLayout>

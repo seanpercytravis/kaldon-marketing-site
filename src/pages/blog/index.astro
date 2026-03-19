@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = [
+  {
+    slug: 'true-cost-ecommerce-product-launch-2026',
+    title: 'The True Cost of Launching an eCommerce Product in 2026',
+    excerpt: 'Six subscriptions. $205+ per month. 200+ hours of manual work. We break down exactly what it costs to launch a product the old way, and show you the alternative.',
+    category: 'Product Research',
+    date: 'Mar 18, 2026',
+    readTime: '8 min read',
+    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/01-analysis-hero_3f7ba299.webp',
+  },
+  {
+    slug: 'how-to-find-winning-product-sell-online-2026',
+    title: 'How to Find a Winning Product to Sell Online (Complete 2026 Guide)',
+    excerpt: 'A step-by-step guide to finding profitable products in 2026. From niche selection to validation, with actionable frameworks you can use today.',
+    category: 'Product Research',
+    date: 'Mar 18, 2026',
+    readTime: '12 min read',
+    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/16-opportunity-feed_363e1510.webp',
+  },
+  {
+    slug: 'amazon-to-dtc-build-brand-beyond-marketplace',
+    title: 'Amazon to DTC: How to Build a Brand Beyond the Marketplace',
+    excerpt: 'You are making sales on Amazon. Now what? How to reduce marketplace dependency and build a brand that customers seek out directly.',
+    category: 'Brand Building',
+    date: 'Mar 18, 2026',
+    readTime: '10 min read',
+    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/07-brand-detail_4f3a066d.webp',
+  },
+  {
+    slug: 'helium-10-vs-jungle-scout-vs-kaldon',
+    title: 'Helium 10 vs Jungle Scout vs Kaldon: Which Should You Use?',
+    excerpt: 'A fair, detailed three-way comparison of the most popular product research platforms. We compare features, pricing, and what happens after research.',
+    category: 'Marketplace Tips',
+    date: 'Mar 18, 2026',
+    readTime: '10 min read',
+    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/17-pricing_68278703.webp',
+  },
+  {
+    slug: 'what-ai-product-research-actually-looks-like',
+    title: 'What AI Product Research Actually Looks Like (No Hype, Real Output)',
+    excerpt: 'Forget the marketing buzzwords. We show you a real AI-powered product analysis report with commentary on every section. See exactly what you get.',
+    category: 'Product Research',
+    date: 'Mar 18, 2026',
+    readTime: '9 min read',
+    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/03-analysis-action-plan_78cf672b.webp',
+  },
+];
+
+const categories = ['All', 'Product Research', 'Brand Building', 'Content Strategy', 'Marketplace Tips', 'Platform Updates'];
+---
+
+<BaseLayout
+  title="Kaldon Blog — eCommerce Intelligence, Product Research, and Brand Building"
+  description="Expert insights on product research, brand building, content strategy, and marketplace optimization. Real strategies from the Kaldon team."
+>
+
+  <!-- Hero -->
+  <section class="pt-32 pb-16 relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#22d3ee]/5 via-[#0a0e17] to-[#0a0e17]"></div>
+    <div class="container-custom relative z-10 text-center">
+      <span class="eyebrow">BLOG</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-[#e2e8f0] mb-4">eCommerce Intelligence</h1>
+      <p class="text-lg text-[#94a3b8] max-w-2xl mx-auto">Expert insights on product research, brand building, and growing your eCommerce business.</p>
+    </div>
+  </section>
+
+  <!-- Category Tabs -->
+  <section class="pb-8">
+    <div class="container-custom">
+      <div class="flex flex-wrap justify-center gap-2">
+        {categories.map((cat, i) => (
+          <button
+            class={`category-tab px-4 py-2 rounded-lg text-sm font-medium transition-all cursor-pointer ${i === 0 ? 'bg-[#22d3ee] text-[#0a0e17]' : 'bg-[#1a2236] text-[#94a3b8] hover:text-[#e2e8f0]'}`}
+            data-category={cat}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Posts Grid -->
+  <section class="section-spacing">
+    <div class="container-custom">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="posts-grid">
+        {posts.map((post) => (
+          <a href={`/blog/${post.slug}`} class="blog-card group" data-category={post.category}>
+            <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl overflow-hidden hover:border-[rgba(255,255,255,0.15)] hover:-translate-y-0.5 transition-all">
+              <div class="aspect-[16/9] overflow-hidden">
+                <img src={post.image} alt={post.title} class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+              </div>
+              <div class="p-5">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="px-2 py-0.5 bg-[#22d3ee]/10 text-[#22d3ee] text-[10px] font-bold uppercase tracking-wider rounded-full">{post.category}</span>
+                  <span class="text-xs text-[#64748b]">{post.readTime}</span>
+                </div>
+                <h3 class="text-[#e2e8f0] font-bold mb-2 group-hover:text-[#22d3ee] transition-colors leading-snug">{post.title}</h3>
+                <p class="text-sm text-[#94a3b8] line-clamp-2">{post.excerpt}</p>
+                <div class="mt-3 text-xs text-[#64748b]">{post.date}</div>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    document.querySelectorAll('.category-tab').forEach(tab => {
+      tab.addEventListener('click', function() {
+        const cat = this.dataset.category;
+        document.querySelectorAll('.category-tab').forEach(t => {
+          t.classList.remove('bg-[#22d3ee]', 'text-[#0a0e17]');
+          t.classList.add('bg-[#1a2236]', 'text-[#94a3b8]');
+        });
+        this.classList.remove('bg-[#1a2236]', 'text-[#94a3b8]');
+        this.classList.add('bg-[#22d3ee]', 'text-[#0a0e17]');
+        document.querySelectorAll('.blog-card').forEach(card => {
+          if (cat === 'All' || card.dataset.category === cat) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>

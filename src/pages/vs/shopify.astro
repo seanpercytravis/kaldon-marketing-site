@@ -1,0 +1,59 @@
+---
+import ComparisonLayout from '../../layouts/ComparisonLayout.astro';
+
+const features = [
+  { name: 'Product Research', competitor: 'no', kaldon: 'yes' },
+  { name: 'AI Product Analysis', competitor: 'no', kaldon: 'yes' },
+  { name: 'Market Intelligence', competitor: 'no', kaldon: 'yes' },
+  { name: 'Product Viability Scoring', competitor: 'no', kaldon: 'yes' },
+  { name: 'AI Product Mockups', competitor: 'no', kaldon: 'yes' },
+  { name: 'Brand Identity Generation', competitor: 'no', kaldon: 'yes' },
+  { name: 'AI Logo Generation', competitor: 'partial', kaldon: 'yes' },
+  { name: 'Content Calendar', competitor: 'no', kaldon: 'yes' },
+  { name: 'AI Social Content', competitor: 'no', kaldon: 'yes' },
+  { name: 'Video Studio', competitor: 'no', kaldon: 'yes' },
+  { name: 'Landing Pages', competitor: 'yes', kaldon: 'yes' },
+  { name: 'Online Store', competitor: 'yes', kaldon: 'yes' },
+  { name: 'Checkout', competitor: 'yes', kaldon: 'yes' },
+  { name: 'Blog', competitor: 'yes', kaldon: 'yes' },
+  { name: 'Email Marketing', competitor: 'partial', kaldon: 'yes' },
+  { name: 'SMS Marketing', competitor: 'partial', kaldon: 'yes' },
+  { name: 'Amazon Integration', competitor: 'partial', kaldon: 'yes' },
+  { name: 'Walmart Integration', competitor: 'no', kaldon: 'yes' },
+  { name: 'Ad Management', competitor: 'no', kaldon: 'yes' },
+  { name: 'AI Coaching', competitor: 'no', kaldon: 'yes' },
+  { name: 'Connected Pipeline', competitor: 'no', kaldon: 'yes' },
+  { name: 'App Store / Plugins', competitor: 'yes', kaldon: 'no' },
+  { name: 'Custom Themes', competitor: 'yes', kaldon: 'partial' },
+  { name: 'POS (Point of Sale)', competitor: 'yes', kaldon: 'no' },
+];
+
+const faqs = [
+  { q: 'Is Kaldon a Shopify replacement?', a: 'For most eCommerce sellers launching new products, yes. Kaldon provides a store with checkout, blog, and email marketing, plus everything Shopify does not: product research, brand generation, content creation, and ad management. If you need a highly customized store with thousands of SKUs and a point-of-sale system, Shopify is more flexible. For launching and growing a product-focused brand, Kaldon does more.' },
+  { q: 'Can I use Kaldon with my existing Shopify store?', a: 'Kaldon is a standalone platform. You can use Kaldon for research, brand building, and content creation, then apply those assets to your Shopify store manually. Many sellers find that Kaldon\'s built-in store eliminates the need for Shopify entirely.' },
+  { q: 'Does Kaldon have an app store like Shopify?', a: 'No. Kaldon is an all-in-one platform. The features that Shopify requires apps for (email marketing, SEO, content creation, analytics) are built into Kaldon natively. This means no additional subscriptions, no compatibility issues, and no app bloat.' },
+  { q: 'How does pricing compare?', a: 'Shopify Basic costs $39/mo for an empty store. Most sellers add $100-200/mo in apps for email, SEO, reviews, and analytics. Kaldon Growth at $149/mo includes research, brand, content, and a store. You save money and get more capability.' },
+];
+---
+
+<ComparisonLayout
+  title="Shopify vs Kaldon — An Empty Store vs a Complete Business"
+  description="Shopify gives you an empty store. Kaldon gives you a business. Compare features, pricing, and capabilities side by side."
+  competitor="Shopify"
+  tagline="Shopify gives you an empty store. Kaldon gives you a business."
+  kaldonTagline="Stop Building Empty Stores. Start Launching Businesses."
+  verdict="Shopify is the world's most popular eCommerce platform. But it is a store builder, not a business builder. When you sign up for Shopify, you get an empty store with no products, no brand, no content, and no traffic. You need 10+ apps ($200+/mo) to add the features that Kaldon includes natively. Kaldon starts with intelligence and ends with a live, marketing-ready store."
+  features={features}
+  competitorPrice="$39-399/mo + $100-200/mo in apps"
+  kaldonPrice="$149/mo"
+  priceSummary="Research + Brand + Content + Store + Ads, all included"
+  migrationTitle="Already on Shopify?"
+  migrationBody="Kaldon does not require you to leave Shopify. But you might want to after seeing what a connected pipeline looks like."
+  migrationSteps={[
+    'Sign up for Kaldon free and run an analysis on your existing product category. See what intelligence looks like.',
+    'Use Kaldon to generate a brand identity and a month of content. Apply these to your Shopify store or use Kaldon\'s built-in store.',
+    'Compare the experience: Kaldon\'s store comes pre-configured with your brand, content, email sequences, and SEO. Shopify requires you to set up each piece separately.',
+    'Calculate your total Shopify cost (base + apps + themes). Compare it to Kaldon\'s all-in-one pricing. Most sellers save $700+ per year.',
+  ]}
+  faqs={faqs}
+/>

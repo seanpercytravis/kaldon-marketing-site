@@ -1,0 +1,270 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const tools = [
+  { name: 'Helium 10', price: '$99-279/mo', focus: 'Amazon + Walmart + TikTok Shop', strength: 'Cerebro/Magnet keyword research', link: '/vs/helium-10' },
+  { name: 'Jungle Scout', price: '$29-129/mo', focus: 'Amazon', strength: 'Product Tracker, Supplier Database', link: '/vs/jungle-scout' },
+  { name: 'SmartScout', price: '$29-187/mo', focus: 'Amazon', strength: 'Brand and subcategory analytics', link: null },
+  { name: 'Viral Launch', price: '$69-199/mo', focus: 'Amazon', strength: 'Market Intelligence, launch tools', link: null },
+  { name: 'AMZScout', price: '$29-49/mo', focus: 'Amazon', strength: 'Chrome extension, beginner-friendly', link: null },
+];
+
+const features = [
+  { name: 'Product Research', tools: 'yes', kaldon: 'yes' },
+  { name: 'Keyword Research', tools: 'yes', kaldon: 'yes' },
+  { name: 'Competitor Analysis', tools: 'yes', kaldon: 'yes' },
+  { name: 'Sales Estimation', tools: 'yes', kaldon: 'yes' },
+  { name: 'Supplier Database', tools: 'Jungle Scout only', kaldon: 'no' },
+  { name: 'Chrome Extension', tools: 'Most tools', kaldon: 'no' },
+  { name: 'AI Product Viability Scoring', tools: 'no', kaldon: 'yes' },
+  { name: 'AI Product Mockups', tools: 'no', kaldon: 'yes' },
+  { name: 'Step-by-Step Action Plans', tools: 'no', kaldon: 'yes' },
+  { name: 'AI Coaching', tools: 'no', kaldon: 'yes' },
+  { name: 'Brand Identity Generation', tools: 'no', kaldon: 'yes' },
+  { name: 'Logo Generation', tools: 'no', kaldon: 'yes' },
+  { name: 'Content Calendar', tools: 'no', kaldon: 'yes' },
+  { name: 'Social Media Content', tools: 'no', kaldon: 'yes' },
+  { name: 'Video Studio', tools: 'no', kaldon: 'yes' },
+  { name: 'Landing Page Builder', tools: 'no', kaldon: 'yes' },
+  { name: 'Store Deployment', tools: 'no', kaldon: 'yes' },
+  { name: 'Blog Engine', tools: 'no', kaldon: 'yes' },
+  { name: 'Email Marketing', tools: 'no', kaldon: 'yes' },
+  { name: 'Ad Campaign Management', tools: 'no', kaldon: 'yes' },
+  { name: 'Multi-Channel (Amazon + Walmart + DTC)', tools: 'Limited', kaldon: 'yes' },
+  { name: 'Connected Research-to-Revenue Pipeline', tools: 'no', kaldon: 'yes' },
+];
+
+const faqs = [
+  { q: 'Can Kaldon replace my existing research tool?', a: 'For most sellers, yes. Kaldon includes product research, market intelligence, competitor analysis, and sales estimation. The main exceptions are granular daily keyword rank tracking (Helium 10) and supplier databases (Jungle Scout). If those are critical to your workflow, you may want to keep your existing tool alongside Kaldon.' },
+  { q: 'How is Kaldon different from traditional research tools?', a: 'Traditional research tools stop at data. They show you numbers, charts, and keyword volumes. Kaldon starts with research and continues through brand creation, content generation, store deployment, and ad management. It is a complete business launch platform, not just a research dashboard.' },
+  { q: 'Do I need to pay for a research tool AND Kaldon?', a: 'Most sellers find that Kaldon covers their research needs entirely. However, Kaldon is designed to work alongside existing tools if you prefer. Many sellers start using both, then consolidate into Kaldon once they see the full pipeline in action.' },
+  { q: 'What research capabilities does Kaldon include?', a: 'Kaldon includes product research, market intelligence, competitor analysis, sales estimation, AI-powered viability scoring, product mockup generation, and step-by-step action plans. The key difference is that these insights feed directly into brand building and content creation.' },
+  { q: 'Are research tools enough to launch a successful eCommerce business?', a: 'Research is the first step, not the last. After finding a product, you need a brand identity, content strategy, online store, marketing materials, and ad campaigns. Traditional research tools require you to purchase 5-8 additional tools and services to cover these steps. Kaldon includes them all.' },
+  { q: 'How much do sellers typically spend on the full tool stack?', a: 'A typical Amazon seller spends $50-150/mo on research tools, $39-105/mo on Shopify, $50-100/mo on email marketing, $30-100/mo on SEO and content tools, and $50-200/mo on design tools. That is $219-655/mo in subscriptions before any freelancer costs. Kaldon replaces most of this stack at $149/mo.' },
+];
+
+function renderFeatureStatus(val: string) {
+  if (val === 'yes') return '<svg class="w-5 h-5 text-[#34d399] mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>';
+  if (val === 'no') return '<svg class="w-5 h-5 text-[#f87171] mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>';
+  return `<span class="text-sm text-[#fbbf24] mx-auto block text-center">${val}</span>`;
+}
+---
+
+<BaseLayout
+  title="Kaldon vs Traditional Research Tools: From Research to Revenue (2026)"
+  description="Research tools stop at data. Kaldon takes you from research to revenue. Compare Kaldon against Helium 10, Jungle Scout, SmartScout, Viral Launch, and AMZScout."
+>
+
+  <!-- Hero -->
+  <section class="pt-32 pb-16 relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#22d3ee]/5 via-[#0a0e17] to-[#0a0e17]"></div>
+    <div class="container-custom relative z-10 text-center">
+      <span class="eyebrow">CATEGORY COMPARISON</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-[#e2e8f0] mb-4">Kaldon vs Traditional Research Tools</h1>
+      <p class="text-lg text-[#94a3b8] max-w-2xl mx-auto">They stop at research. Kaldon goes from research to revenue.</p>
+    </div>
+  </section>
+
+  <!-- The Problem -->
+  <section class="pb-16">
+    <div class="container-custom max-w-3xl">
+      <div class="bg-[#1a2236] border border-[rgba(255,255,255,0.08)] rounded-2xl p-8" style="border-left: 4px solid #22d3ee">
+        <h2 class="text-sm font-bold uppercase tracking-wider text-[#22d3ee] mb-3">The Research Tool Gap</h2>
+        <p class="text-[#e2e8f0] leading-relaxed">Every research tool on the market answers the same question: "What should I sell?" That is an important question. But it is only the first question. After you find a product, you still need to build a brand, create content, launch a store, and drive traffic. Traditional research tools leave you at step one of a twenty-step process. Kaldon takes you through all twenty.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tool Landscape -->
+  <section class="section-spacing">
+    <div class="container-custom max-w-5xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] text-center mb-8">The Research Tool Landscape</h2>
+      <div class="grid gap-4">
+        {tools.map((tool) => (
+          <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl p-5 flex flex-col md:flex-row md:items-center gap-4">
+            <div class="md:w-1/4">
+              <h3 class="text-[#e2e8f0] font-bold">{tool.name}</h3>
+              <p class="text-sm text-[#22d3ee]">{tool.price}</p>
+            </div>
+            <div class="md:w-1/4">
+              <p class="text-xs text-[#64748b] uppercase tracking-wider mb-1">Focus</p>
+              <p class="text-sm text-[#94a3b8]">{tool.focus}</p>
+            </div>
+            <div class="md:w-1/4">
+              <p class="text-xs text-[#64748b] uppercase tracking-wider mb-1">Key Strength</p>
+              <p class="text-sm text-[#94a3b8]">{tool.strength}</p>
+            </div>
+            <div class="md:w-1/4 md:text-right">
+              {tool.link ? (
+                <a href={tool.link} class="text-sm text-[#22d3ee] hover:underline">Detailed comparison &rarr;</a>
+              ) : (
+                <span class="text-sm text-[#64748b]">Research-only tool</span>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Comparison Table -->
+  <section class="section-spacing bg-[#111827]/30">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] text-center mb-4">Research Tools vs Kaldon: Feature Comparison</h2>
+      <p class="text-[#94a3b8] text-center mb-8 max-w-2xl mx-auto">Research tools cover the first column. Kaldon covers both.</p>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse min-w-[600px]">
+          <thead>
+            <tr class="border-b border-[rgba(255,255,255,0.08)]">
+              <th class="text-left py-3 px-4 text-sm font-semibold text-[#94a3b8] sticky left-0 bg-[#0a0e17] z-10 min-w-[220px]">Capability</th>
+              <th class="text-center py-3 px-4 text-sm font-semibold text-[#94a3b8] w-36">Research Tools</th>
+              <th class="text-center py-3 px-4 text-sm font-semibold text-[#22d3ee] w-32">Kaldon</th>
+            </tr>
+          </thead>
+          <tbody>
+            {features.map((f, i) => (
+              <tr class={`border-b border-[rgba(255,255,255,0.04)] ${i % 2 === 0 ? 'bg-[#111827]/30' : ''}`}>
+                <td class="py-3 px-4 text-sm text-[#e2e8f0] sticky left-0 bg-inherit z-10">{f.name}</td>
+                <td class="py-3 px-4 text-center" set:html={renderFeatureStatus(f.tools)} />
+                <td class="py-3 px-4 text-center" set:html={renderFeatureStatus(f.kaldon)} />
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Pipeline Difference -->
+  <section class="section-spacing">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] text-center mb-4">The Pipeline Difference</h2>
+      <p class="text-[#94a3b8] text-center mb-8 max-w-2xl mx-auto">Research tools give you data. Kaldon gives you a business.</p>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-2xl p-6">
+          <h3 class="text-lg font-bold text-[#94a3b8] mb-4">With Research Tools</h3>
+          <div class="space-y-3">
+            <div class="flex items-center gap-3 text-sm">
+              <span class="w-6 h-6 rounded-full bg-[#34d399]/10 text-[#34d399] flex items-center justify-center text-xs font-bold shrink-0">1</span>
+              <span class="text-[#e2e8f0]">Find a product</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <span class="w-6 h-6 rounded-full bg-[#f87171]/10 text-[#f87171] flex items-center justify-center text-xs font-bold shrink-0">2</span>
+              <span class="text-[#64748b]">Now what? Find a brand designer...</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <span class="w-6 h-6 rounded-full bg-[#f87171]/10 text-[#f87171] flex items-center justify-center text-xs font-bold shrink-0">3</span>
+              <span class="text-[#64748b]">Find a content writer...</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <span class="w-6 h-6 rounded-full bg-[#f87171]/10 text-[#f87171] flex items-center justify-center text-xs font-bold shrink-0">4</span>
+              <span class="text-[#64748b]">Sign up for Shopify...</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <span class="w-6 h-6 rounded-full bg-[#f87171]/10 text-[#f87171] flex items-center justify-center text-xs font-bold shrink-0">5</span>
+              <span class="text-[#64748b]">Find an email tool, SEO tool, ad tool...</span>
+            </div>
+            <p class="text-xs text-[#64748b] pt-2 border-t border-[rgba(255,255,255,0.04)]">5+ additional tools, $200-500/mo extra, weeks of setup</p>
+          </div>
+        </div>
+        <div class="bg-[#111827] border-2 border-[#22d3ee]/30 rounded-2xl p-6 shadow-[0_0_30px_rgba(34,211,238,0.08)]">
+          <h3 class="text-lg font-bold text-[#22d3ee] mb-4">With Kaldon</h3>
+          <div class="space-y-3">
+            <div class="flex items-center gap-3 text-sm">
+              <span class="w-6 h-6 rounded-full bg-[#34d399]/10 text-[#34d399] flex items-center justify-center text-xs font-bold shrink-0">1</span>
+              <span class="text-[#e2e8f0]">Discover: Find and validate your product</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <span class="w-6 h-6 rounded-full bg-[#34d399]/10 text-[#34d399] flex items-center justify-center text-xs font-bold shrink-0">2</span>
+              <span class="text-[#e2e8f0]">Build: Generate your brand identity</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <span class="w-6 h-6 rounded-full bg-[#34d399]/10 text-[#34d399] flex items-center justify-center text-xs font-bold shrink-0">3</span>
+              <span class="text-[#e2e8f0]">Create: Produce content and marketing</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <span class="w-6 h-6 rounded-full bg-[#34d399]/10 text-[#34d399] flex items-center justify-center text-xs font-bold shrink-0">4</span>
+              <span class="text-[#e2e8f0]">Launch: Deploy store and listings</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <span class="w-6 h-6 rounded-full bg-[#34d399]/10 text-[#34d399] flex items-center justify-center text-xs font-bold shrink-0">5</span>
+              <span class="text-[#e2e8f0]">Grow: Run ads and optimize</span>
+            </div>
+            <p class="text-xs text-[#22d3ee] pt-2 border-t border-[rgba(255,255,255,0.04)]">One platform, one subscription, connected data throughout</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Comparisons -->
+  <section class="section-spacing bg-[#111827]/30">
+    <div class="container-custom max-w-3xl text-center">
+      <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] mb-4">Detailed Head-to-Head Comparisons</h2>
+      <p class="text-[#94a3b8] mb-8">See how Kaldon compares to specific research tools feature by feature.</p>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/vs/helium-10" class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl p-5 hover:border-[#22d3ee]/30 transition-colors text-left">
+          <h3 class="text-[#e2e8f0] font-bold mb-1">Kaldon vs Helium 10</h3>
+          <p class="text-sm text-[#94a3b8]">Deep keyword tools vs full pipeline</p>
+        </a>
+        <a href="/vs/jungle-scout" class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl p-5 hover:border-[#22d3ee]/30 transition-colors text-left">
+          <h3 class="text-[#e2e8f0] font-bold mb-1">Kaldon vs Jungle Scout</h3>
+          <p class="text-sm text-[#94a3b8]">Product finder vs business builder</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-spacing">
+    <div class="container-custom max-w-3xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] text-center mb-8">Frequently Asked Questions</h2>
+      <div class="space-y-3">
+        {faqs.map((faq, i) => (
+          <div class="faq-item bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl overflow-hidden">
+            <button class="faq-toggle w-full flex items-center justify-between p-5 text-left cursor-pointer" data-faq={i}>
+              <span class="text-[#e2e8f0] font-medium pr-4">{faq.q}</span>
+              <svg class="faq-chevron w-5 h-5 text-[#94a3b8] shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </button>
+            <div class="faq-answer hidden px-5 pb-5">
+              <p class="text-sm text-[#94a3b8] leading-relaxed">{faq.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-spacing relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#22d3ee]/10 via-[#0a0e17] to-[#a78bfa]/10"></div>
+    <div class="container-custom relative z-10 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-[#e2e8f0] mb-4">Stop Researching. Start Launching.</h2>
+      <p class="text-lg text-[#94a3b8] mb-8">Start Free, 2 Analyses Included. No credit card required.</p>
+      <a href="https://kaldon.io/signup" class="btn-primary btn-large btn-glow inline-flex items-center gap-2">Start Free, 2 Analyses Included <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
+    </div>
+  </section>
+
+  <script is:inline>
+    document.querySelectorAll('.faq-toggle').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const answer = this.nextElementSibling;
+        const chevron = this.querySelector('.faq-chevron');
+        const isOpen = !answer.classList.contains('hidden');
+        document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+        document.querySelectorAll('.faq-chevron').forEach(c => c.style.transform = '');
+        if (!isOpen) { answer.classList.remove('hidden'); chevron.style.transform = 'rotate(180deg)'; }
+      });
+    });
+  </script>
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+</BaseLayout>

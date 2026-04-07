@@ -1,0 +1,29 @@
+# Kaldon — AI-Powered eCommerce Intelligence Platform
+
+> Kaldon is an all-in-one AI platform that takes eCommerce sellers from product research to revenue. One platform replaces 6+ tools across product research, brand building, content creation, store deployment, and growth optimization.
+
+## What Kaldon Does
+
+Kaldon provides a 5-phase pipeline for eCommerce sellers:
+
+1. **Discover** — AI-powered product research using 11 intelligence sources across Amazon, Walmart, and DTC marketplaces
+2. **Build** — AI-generated brand identity including name, voice, visual system, logos, and brand guidelines
+3. **Create** — Content calendar, social media posts, video studio, and landing pages — all on-brand
+4. **Launch** — One-click store deployment with Stripe payments, blog engine, and marketplace listing generators
+5. **Grow** — Ad campaign management, performance analytics, customer retention, and AI optimization
+
+## Pricing
+
+- **Free**: 2 analyses, no credit card required
+- **Growth**: $119/mo (annual) — 5 analyses/mo, Brand Vault, Content Calendar
+- **Pro**: $239/mo (annual) — 15 analyses/mo, Video Studio, Landing Pages
+- **Scale**: $399/mo (annual) — 50 analyses/mo, Store Deployment, full pipeline
+- **Enterprise**: Custom pricing
+- **Single Analysis**: $39.99 one-time purchase
+
+## Links
+
+- Website: https://kaldon.io
+- Pricing: https://kaldon.io/pricing
+- How It Works: https://kaldon.io/how-it-works
+- Contact: support@kaldon.io

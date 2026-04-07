@@ -7,7 +7,7 @@ const personas = [
     tagline: 'I have a product idea but no idea where to start.',
     gradient: 'from-[#22d3ee] to-[#3b82f6]',
     color: '#22d3ee',
-    icon: '🚀',
+    icon: 'rocket',
     challenge: 'You have been researching products for weeks. You have 47 browser tabs open. You have spreadsheets comparing niches, but you still do not know if your idea is actually viable. Every tool you try gives you data, but none of them tell you what to do with it. You are stuck in analysis paralysis, spending money on subscriptions and getting no closer to launching.',
     helps: [
       'AI Analysis Engine scores your product idea across 9 data sources and tells you if it is worth pursuing',
@@ -25,7 +25,7 @@ const personas = [
     tagline: 'I am selling on Amazon but want to go DTC and multi-channel.',
     gradient: 'from-[#fb923c] to-[#fbbf24]',
     color: '#fb923c',
-    icon: '📈',
+    icon: 'trending-up',
     challenge: 'You are making sales on Amazon, but you are dependent on one marketplace. Amazon changes a policy, and your revenue drops 30% overnight. You know you need your own store, your own brand, your own audience. But building a DTC presence from scratch while managing your Amazon business feels impossible. You do not have time to learn Shopify, Canva, Jasper, and Meta Ads Manager on top of everything else.',
     helps: [
       'Vet Product mode analyzes your existing Amazon listings and identifies DTC expansion opportunities',
@@ -43,7 +43,7 @@ const personas = [
     tagline: 'I have products but my brand feels amateur.',
     gradient: 'from-[#a78bfa] to-[#f472b6]',
     color: '#a78bfa',
-    icon: '🎨',
+    icon: 'palette',
     challenge: 'You are selling products, but your brand looks like it was made in Microsoft Paint. Your logo is clip art. Your social media is inconsistent. Your product photos are taken on your kitchen counter. You know that a professional brand would command higher prices and more trust, but hiring a branding agency costs $5,000 to $15,000 and takes months. You cannot justify that spend at your current stage.',
     helps: [
       'AI generates a complete brand identity: logo concepts, color palette, typography, voice guidelines',
@@ -61,7 +61,7 @@ const personas = [
     tagline: 'I help sellers launch products and need better tools.',
     gradient: 'from-[#34d399] to-[#22d3ee]',
     color: '#34d399',
-    icon: '🏢',
+    icon: 'building',
     challenge: 'You coach eCommerce sellers or run a small agency. Every client needs the same thing: product research, brand identity, content, and a store. But you are doing it manually for each client, using 6 different tools, and spending 40+ hours per launch. You cannot scale because your time is the bottleneck. You need a system that makes every client launch look professional without you doing all the work.',
     helps: [
       'Run analyses for clients in minutes instead of hours of manual research',
@@ -99,7 +99,12 @@ const personas = [
         <div class="animate-on-scroll">
           <!-- Header -->
           <div class="flex items-center gap-4 mb-8">
-            <span class="text-4xl">{p.icon}</span>
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style={`background:${p.color}15;`}>
+              {p.icon === 'rocket' && <svg class="w-6 h-6" style={`color:${p.color};`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>}
+              {p.icon === 'trending-up' && <svg class="w-6 h-6" style={`color:${p.color};`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>}
+              {p.icon === 'palette' && <svg class="w-6 h-6" style={`color:${p.color};`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>}
+              {p.icon === 'building' && <svg class="w-6 h-6" style={`color:${p.color};`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>}
+            </div>
             <div>
               <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0]">{p.name}</h2>
               <p class="text-lg italic" style={`color: ${p.color}`}>"{p.tagline}"</p>

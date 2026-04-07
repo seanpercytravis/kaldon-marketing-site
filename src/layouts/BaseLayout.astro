@@ -13,7 +13,7 @@ const {
   title,
   description,
   canonicalUrl = Astro.url.href,
-  ogImage = '/images/og-default.png',
+  ogImage = '/images/og-default.webp',
   ogType = 'website',
   noIndex = false,
   structuredData = [],
@@ -34,8 +34,9 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
   <link rel="canonical" href={canonicalUrl} />
 
   <!-- Favicons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/kaldon-favicon-32.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/kaldon-favicon-180.png" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
 
   <!-- Open Graph -->
   <meta property="og:title" content={title} />
@@ -56,20 +57,8 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
-  <!-- Analytics Placeholders -->
-  <script is:inline>
-    // GA4 placeholder — replace GA_MEASUREMENT_ID
-    // window.dataLayer = window.dataLayer || [];
-    // function gtag(){dataLayer.push(arguments);}
-    // gtag('js', new Date());
-    // gtag('config', 'GA_MEASUREMENT_ID');
-  </script>
-  <script is:inline>
-    // Meta Pixel placeholder — replace META_PIXEL_ID
-  </script>
-  <script is:inline>
-    // GTM placeholder — replace GTM_CONTAINER_ID
-  </script>
+  <!-- Plausible Analytics (C3) -->
+  <script defer data-domain="kaldon.io" src="https://plausible.io/js/script.js"></script>
 
   <!-- Structured Data -->
   {structuredData.map((data) => (
@@ -86,11 +75,12 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
     Skip to content
   </a>
 
-  <!-- Announcement Bar: spec says #1a2236 bg, Space Mono 11px uppercase -->
-  <div id="announcement-bar" class="border-b border-kaldon-border text-center py-2.5 px-4" style="background:#1a2236;">
-    <span class="font-mono text-eyebrow uppercase tracking-[3px] text-kaldon-muted">Beta Access Now Open:</span>
-    <a href="https://kaldon.io/signup" class="font-mono text-eyebrow uppercase tracking-[3px] text-kaldon-cyan hover:text-kaldon-cyan-light ml-1.5 transition-colors">
-      2 Free Analyses, No Credit Card Required &rarr;
+  <!-- Announcement Bar (C5): Urgency signal for beta launch -->
+  <div id="announcement-bar" class="border-b border-kaldon-border text-center py-2.5 px-4" style="background:rgba(34,211,238,0.08);">
+    <span class="font-mono text-eyebrow uppercase tracking-[3px] text-kaldon-text hidden sm:inline">Limited Beta: 50 founding member spots.</span>
+    <span class="font-mono text-eyebrow uppercase tracking-[3px] text-kaldon-text sm:hidden">Limited Beta: 50 spots.</span>
+    <a href="/pricing" class="font-mono text-eyebrow uppercase tracking-[3px] text-kaldon-cyan hover:text-kaldon-cyan-light ml-1.5 transition-colors">
+      Start Free &rarr;
     </a>
     <button id="close-announcement" class="ml-3 text-kaldon-dim hover:text-kaldon-text transition-colors align-middle" aria-label="Close announcement">
       <svg class="w-3.5 h-3.5 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
@@ -103,7 +93,7 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
       <div class="flex items-center justify-between h-16">
         <!-- Logo + Descriptor -->
         <a href="/" class="flex items-center gap-3 shrink-0">
-          <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/kaldon-logo-dark_e9532aa6.svg" alt="Kaldon" class="h-8" width="120" height="32" />
+          <img src="/images/logos/kaldon-logo-dark.svg" alt="Kaldon" class="h-8" width="120" height="32" />
           <span class="hidden lg:inline text-xs text-kaldon-muted font-normal" style="margin-top:2px;">AI-Powered eCommerce Intelligence</span>
         </a>
 
@@ -116,13 +106,13 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
               Compare
               <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
             </button>
-            <div class="absolute top-full left-0 mt-1 w-52 bg-kaldon-surface border border-kaldon-border rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2">
-              <a href="/vs/helium-10" class="block px-4 py-2.5 text-sm text-kaldon-muted hover:text-kaldon-text hover:bg-kaldon-surface-2 transition-colors">vs Helium 10</a>
-              <a href="/vs/jungle-scout" class="block px-4 py-2.5 text-sm text-kaldon-muted hover:text-kaldon-text hover:bg-kaldon-surface-2 transition-colors">vs Jungle Scout</a>
-              <a href="/vs/shopify" class="block px-4 py-2.5 text-sm text-kaldon-muted hover:text-kaldon-text hover:bg-kaldon-surface-2 transition-colors">vs Shopify</a>
+            <div class="absolute top-full left-0 mt-1 w-56 bg-kaldon-surface border border-kaldon-border rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2">
+              <a href="/compare/research-tools" class="block px-4 py-2.5 text-sm text-kaldon-muted hover:text-kaldon-text hover:bg-kaldon-surface-2 transition-colors">vs Research Tools</a>
+              <a href="/compare/ecommerce-platforms" class="block px-4 py-2.5 text-sm text-kaldon-muted hover:text-kaldon-text hover:bg-kaldon-surface-2 transition-colors">vs eCommerce Platforms</a>
+              <a href="/compare/doing-it-yourself" class="block px-4 py-2.5 text-sm text-kaldon-muted hover:text-kaldon-text hover:bg-kaldon-surface-2 transition-colors">vs Doing It Yourself</a>
             </div>
           </div>
-          <a href="/demo" class="nav-link">Demo</a>
+          <a href="/how-it-works" class="nav-link">Features</a>
         </div>
 
         <!-- CTA + Mobile Toggle -->
@@ -145,9 +135,9 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
         <a href="/who-its-for" class="block py-3 text-kaldon-muted hover:text-kaldon-text transition-colors font-medium text-lg">Who It's For</a>
         <div class="py-3 border-t border-kaldon-border mt-3 pt-5">
           <p class="font-mono text-eyebrow uppercase tracking-[3px] text-kaldon-dim mb-3">Compare</p>
-          <a href="/vs/helium-10" class="block py-2 pl-3 text-kaldon-muted hover:text-kaldon-text transition-colors">vs Helium 10</a>
-          <a href="/vs/jungle-scout" class="block py-2 pl-3 text-kaldon-muted hover:text-kaldon-text transition-colors">vs Jungle Scout</a>
-          <a href="/vs/shopify" class="block py-2 pl-3 text-kaldon-muted hover:text-kaldon-text transition-colors">vs Shopify</a>
+          <a href="/compare/research-tools" class="block py-2 pl-3 text-kaldon-muted hover:text-kaldon-text transition-colors">vs Research Tools</a>
+          <a href="/compare/ecommerce-platforms" class="block py-2 pl-3 text-kaldon-muted hover:text-kaldon-text transition-colors">vs eCommerce Platforms</a>
+          <a href="/compare/doing-it-yourself" class="block py-2 pl-3 text-kaldon-muted hover:text-kaldon-text transition-colors">vs Doing It Yourself</a>
         </div>
         <a href="/blog" class="block py-3 text-kaldon-muted hover:text-kaldon-text transition-colors font-medium text-lg">Blog</a>
         <a href="/about" class="block py-3 text-kaldon-muted hover:text-kaldon-text transition-colors font-medium text-lg">About</a>
@@ -185,10 +175,10 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
         <div>
           <h3 class="font-mono text-badge uppercase tracking-[2px] text-kaldon-dim mb-5">Product</h3>
           <ul class="space-y-3">
+            <li><a href="/features" class="text-sm text-kaldon-muted hover:text-kaldon-text transition-colors">Features</a></li>
             <li><a href="/how-it-works" class="text-sm text-kaldon-muted hover:text-kaldon-text transition-colors">How It Works</a></li>
             <li><a href="/pricing" class="text-sm text-kaldon-muted hover:text-kaldon-text transition-colors">Pricing</a></li>
-            <li><a href="/demo" class="text-sm text-kaldon-muted hover:text-kaldon-text transition-colors">Demo</a></li>
-            <li><a href="/vs/helium-10" class="text-sm text-kaldon-muted hover:text-kaldon-text transition-colors">Compare</a></li>
+            <li><a href="/compare/research-tools" class="text-sm text-kaldon-muted hover:text-kaldon-text transition-colors">Compare</a></li>
           </ul>
         </div>
 
@@ -226,7 +216,7 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
       <div class="border-t border-kaldon-border mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div class="flex items-center gap-4">
           <a href="/" class="shrink-0">
-            <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/kaldon-logo-dark_e9532aa6.svg" alt="Kaldon" class="h-6" width="90" height="24" />
+            <img src="/images/logos/kaldon-logo-dark.svg" alt="Kaldon" class="h-6" width="90" height="24" />
           </a>
           <p class="text-xs text-kaldon-dim">&copy; {new Date().getFullYear()} Kaldon. Intelligence that commands action.</p>
         </div>
@@ -254,23 +244,30 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
   <!-- Sticky Mobile CTA -->
   <div id="sticky-mobile-cta" class="fixed bottom-0 left-0 right-0 backdrop-blur-lg border-t border-kaldon-border p-3 z-40 md:hidden hidden" style="background:rgba(10,14,23,0.95);">
     <div class="flex items-center gap-3">
-      <a href="https://kaldon.io/signup" class="btn-primary flex-1 text-center text-sm">Start Free</a>
+      <a href="https://kaldon.io/signup" class="btn-primary flex-1 text-center text-sm" data-event="mobile_sticky_cta_click">Start Free, 2 Analyses Included</a>
       <button id="dismiss-sticky-cta" class="text-kaldon-dim hover:text-kaldon-text p-1" aria-label="Dismiss">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
       </button>
     </div>
   </div>
 
-  <!-- Exit Intent Popup -->
+  <!-- Exit Intent Popup (C6) -->
   <div id="exit-intent-popup" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] flex items-center justify-center p-4">
     <div class="bg-kaldon-surface border border-kaldon-border rounded-2xl shadow-2xl max-w-md w-full p-8 relative">
       <button id="close-exit-intent" class="absolute top-4 right-4 text-kaldon-dim hover:text-kaldon-text transition-colors" aria-label="Close">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
       </button>
       <div class="text-center">
+        <img src="/images/logos/kaldon-logo-dark.svg" alt="Kaldon" class="h-6 mx-auto mb-6" />
         <h3 class="text-xl font-bold text-kaldon-text mb-2">Before you go...</h3>
-        <p class="text-kaldon-muted mb-6">Your first 2 analyses are free. No credit card required.</p>
-        <a href="https://kaldon.io/signup" class="btn-primary w-full text-center block" data-event="exit_intent_submit">Get Started Free</a>
+        <p class="text-kaldon-muted text-sm mb-1">Get our free 2026 Omnichannel Product Opportunity Report.</p>
+        <p class="text-kaldon-dim text-xs mb-6">The top 10 product categories showing growth across Amazon, Walmart, and DTC right now.</p>
+        <form id="exit-intent-form" class="space-y-3 mb-4">
+          <input type="email" autocomplete="email" placeholder="you@example.com" required class="w-full px-4 py-3 rounded-lg text-sm bg-kaldon-surface-2 border border-kaldon-border text-kaldon-text placeholder-kaldon-dim focus:border-kaldon-cyan focus:outline-none" />
+          <button type="submit" class="btn-primary w-full text-center" data-event="exit_intent_submit">Get the Report</button>
+        </form>
+        <p class="text-xs text-kaldon-dim mb-3">We'll also send you early access to Kaldon's free plan. No spam, unsubscribe anytime.</p>
+        <button id="exit-intent-dismiss" class="text-xs text-kaldon-dim hover:text-kaldon-muted transition-colors">No thanks, I'll pass</button>
       </div>
     </div>
   </div>
@@ -307,12 +304,12 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
       }
     });
 
-    // Announcement bar close
+    // Announcement bar close (persists via localStorage per C5)
     document.getElementById('close-announcement')?.addEventListener('click', function() {
       document.getElementById('announcement-bar').style.display = 'none';
-      sessionStorage.setItem('announcement-closed', 'true');
+      localStorage.setItem('announcement-closed', 'true');
     });
-    if (sessionStorage.getItem('announcement-closed') === 'true') {
+    if (localStorage.getItem('announcement-closed') === 'true') {
       const bar = document.getElementById('announcement-bar');
       if (bar) bar.style.display = 'none';
     }
@@ -344,21 +341,46 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
       });
     }
 
-    // Exit intent (desktop only, homepage + pricing)
-    const isExitIntentPage = window.location.pathname === '/' || window.location.pathname === '/pricing' || window.location.pathname === '/pricing/';
-    if (isExitIntentPage && !sessionStorage.getItem('exit-intent-shown')) {
+    // Exit intent (C6): desktop mouseout, mobile 45s timeout
+    // Never show on pricing/signup pages (user is already converting)
+    const isConvertingPage = window.location.pathname.includes('/pricing') || window.location.pathname.includes('/signup');
+    if (!isConvertingPage && !sessionStorage.getItem('exit-intent-shown')) {
+      // Desktop: mouse leaves viewport
       document.addEventListener('mouseout', function(e) {
         if (e.clientY < 5 && !sessionStorage.getItem('exit-intent-shown')) {
           sessionStorage.setItem('exit-intent-shown', 'true');
           document.getElementById('exit-intent-popup')?.classList.remove('hidden');
         }
       });
+      // Mobile: 45 second timeout
+      if (window.innerWidth < 768) {
+        setTimeout(function() {
+          if (!sessionStorage.getItem('exit-intent-shown')) {
+            sessionStorage.setItem('exit-intent-shown', 'true');
+            document.getElementById('exit-intent-popup')?.classList.remove('hidden');
+          }
+        }, 45000);
+      }
     }
     document.getElementById('close-exit-intent')?.addEventListener('click', function() {
       document.getElementById('exit-intent-popup').classList.add('hidden');
     });
+    document.getElementById('exit-intent-dismiss')?.addEventListener('click', function() {
+      document.getElementById('exit-intent-popup').classList.add('hidden');
+    });
     document.getElementById('exit-intent-popup')?.addEventListener('click', function(e) {
       if (e.target === this) this.classList.add('hidden');
+    });
+    // Exit intent form submission
+    document.getElementById('exit-intent-form')?.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = this.querySelector('input[type="email"]').value;
+      localStorage.setItem('kaldon-lead-email', email);
+      const btn = this.querySelector('button');
+      btn.textContent = 'Sent! Check your inbox.';
+      btn.disabled = true;
+      trackEvent('exit_intent_submit', { source: window.location.pathname });
+      setTimeout(() => document.getElementById('exit-intent-popup').classList.add('hidden'), 2000);
     });
 
     // Conversion event tracking helper

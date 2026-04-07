@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.kaldon.io/sitemap-index.xml
+Sitemap: https://kaldon.io/sitemap-index.xml

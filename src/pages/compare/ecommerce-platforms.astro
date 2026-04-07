@@ -1,0 +1,278 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const platforms = [
+  { name: 'Shopify', price: '$39-399/mo + apps', focus: 'Online store + POS', strength: 'Massive app ecosystem, proven at scale', link: '/vs/shopify' },
+  { name: 'BigCommerce', price: '$39-399/mo', focus: 'Online store', strength: 'Built-in features, multi-channel', link: null },
+  { name: 'Wix', price: '$17-159/mo', focus: 'Website + store', strength: 'Drag-and-drop ease, templates', link: null },
+  { name: 'Squarespace', price: '$16-65/mo', focus: 'Website + store', strength: 'Beautiful design templates', link: null },
+  { name: 'ClickFunnels', price: '$97-297/mo', focus: 'Sales funnels', strength: 'Conversion-optimized funnels', link: null },
+];
+
+const features = [
+  { name: 'Online Store', platforms: 'yes', kaldon: 'yes' },
+  { name: 'Checkout / Payments', platforms: 'yes', kaldon: 'yes' },
+  { name: 'Landing Pages', platforms: 'yes', kaldon: 'yes' },
+  { name: 'Blog', platforms: 'yes', kaldon: 'yes' },
+  { name: 'Custom Themes (thousands)', platforms: 'yes', kaldon: 'partial' },
+  { name: 'App / Plugin Ecosystem', platforms: 'Most platforms', kaldon: 'no' },
+  { name: 'POS (Point of Sale)', platforms: 'Shopify, Square', kaldon: 'no' },
+  { name: 'Product Research', platforms: 'no', kaldon: 'yes' },
+  { name: 'Market Intelligence', platforms: 'no', kaldon: 'yes' },
+  { name: 'AI Product Viability Scoring', platforms: 'no', kaldon: 'yes' },
+  { name: 'AI Product Mockups', platforms: 'no', kaldon: 'yes' },
+  { name: 'Brand Identity Generation', platforms: 'no', kaldon: 'yes' },
+  { name: 'AI Logo Creation', platforms: 'no', kaldon: 'yes' },
+  { name: 'AI Content Generation', platforms: 'no', kaldon: 'yes' },
+  { name: 'Social Media Content', platforms: 'no', kaldon: 'yes' },
+  { name: 'Video Studio', platforms: 'no', kaldon: 'yes' },
+  { name: 'Email Marketing (native)', platforms: 'Limited', kaldon: 'yes' },
+  { name: 'Amazon Integration', platforms: 'Limited', kaldon: 'yes' },
+  { name: 'Walmart Integration', platforms: 'no', kaldon: 'yes' },
+  { name: 'Ad Campaign Management', platforms: 'no', kaldon: 'yes' },
+  { name: 'AI Coaching', platforms: 'no', kaldon: 'yes' },
+  { name: 'Connected Intelligence Pipeline', platforms: 'no', kaldon: 'yes' },
+];
+
+const faqs = [
+  { q: 'Is Kaldon a Shopify replacement?', a: 'For sellers launching new product brands, Kaldon replaces Shopify and the $200+/mo in apps most Shopify sellers need. If you need a highly customized enterprise storefront, POS for physical retail, or access to thousands of third-party apps, Shopify remains the better choice. See our detailed Shopify comparison for more.' },
+  { q: 'Can I use Kaldon if I already have a Shopify or BigCommerce store?', a: 'Yes. Many sellers use Kaldon for product research, brand building, and content creation, then apply those assets to their existing store. You can also use Kaldon\'s built-in store alongside or instead of your current platform.' },
+  { q: 'Do eCommerce platforms include product research?', a: 'No. eCommerce platforms provide the store, but they do not tell you what to sell, how to brand it, or what content to create. Sellers typically spend $100-300/mo on separate research, content, and marketing tools. Kaldon includes all of this natively.' },
+  { q: 'What about BigCommerce, Wix, or Squarespace?', a: 'These platforms share the same fundamental limitation as Shopify: they give you a store but no intelligence. You still need to figure out what to sell, build a brand, create content, and drive traffic on your own. Kaldon handles the full pipeline from research to live, marketed store.' },
+  { q: 'How does Kaldon compare to ClickFunnels?', a: 'ClickFunnels is focused on sales funnels and conversion optimization. It does not include product research, brand creation, or content generation. Kaldon includes landing page and funnel capabilities as part of a broader platform that starts with market intelligence.' },
+  { q: 'What is the true cost of running an eCommerce platform?', a: 'The platform subscription is just the start. Most sellers add $100-300/mo in apps and tools for email marketing, SEO, content, reviews, analytics, and design. Add freelancers for branding and content, and the true cost reaches $300-800/mo. Kaldon replaces most of this stack at $149/mo.' },
+];
+
+function renderFeatureStatus(val: string) {
+  if (val === 'yes') return '<svg class="w-5 h-5 text-[#34d399] mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>';
+  if (val === 'no') return '<svg class="w-5 h-5 text-[#f87171] mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>';
+  return `<span class="text-sm text-[#fbbf24] mx-auto block text-center">${val}</span>`;
+}
+---
+
+<BaseLayout
+  title="Kaldon vs eCommerce Platforms: Intelligence Meets Commerce (2026)"
+  description="eCommerce platforms give you a store but no intelligence. Kaldon gives you both. Compare Kaldon against Shopify, BigCommerce, Wix, Squarespace, and ClickFunnels."
+>
+
+  <!-- Hero -->
+  <section class="pt-32 pb-16 relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#22d3ee]/5 via-[#0a0e17] to-[#0a0e17]"></div>
+    <div class="container-custom relative z-10 text-center">
+      <span class="eyebrow">CATEGORY COMPARISON</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-[#e2e8f0] mb-4">Kaldon vs eCommerce Platforms</h1>
+      <p class="text-lg text-[#94a3b8] max-w-2xl mx-auto">They give you a store but no intelligence. Kaldon gives you both.</p>
+    </div>
+  </section>
+
+  <!-- The Problem -->
+  <section class="pb-16">
+    <div class="container-custom max-w-3xl">
+      <div class="bg-[#1a2236] border border-[rgba(255,255,255,0.08)] rounded-2xl p-8" style="border-left: 4px solid #22d3ee">
+        <h2 class="text-sm font-bold uppercase tracking-wider text-[#22d3ee] mb-3">The Platform Paradox</h2>
+        <p class="text-[#e2e8f0] leading-relaxed">eCommerce platforms are powerful store builders. But when you sign up, you get an empty store. No products, no brand, no content, no traffic. You need to figure out what to sell, how to brand it, what content to create, and how to drive customers, all using separate tools and services. Kaldon starts with intelligence and builds the store around it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Platform Landscape -->
+  <section class="section-spacing">
+    <div class="container-custom max-w-5xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] text-center mb-8">The eCommerce Platform Landscape</h2>
+      <div class="grid gap-4">
+        {platforms.map((platform) => (
+          <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl p-5 flex flex-col md:flex-row md:items-center gap-4">
+            <div class="md:w-1/4">
+              <h3 class="text-[#e2e8f0] font-bold">{platform.name}</h3>
+              <p class="text-sm text-[#22d3ee]">{platform.price}</p>
+            </div>
+            <div class="md:w-1/4">
+              <p class="text-xs text-[#64748b] uppercase tracking-wider mb-1">Focus</p>
+              <p class="text-sm text-[#94a3b8]">{platform.focus}</p>
+            </div>
+            <div class="md:w-1/4">
+              <p class="text-xs text-[#64748b] uppercase tracking-wider mb-1">Key Strength</p>
+              <p class="text-sm text-[#94a3b8]">{platform.strength}</p>
+            </div>
+            <div class="md:w-1/4 md:text-right">
+              {platform.link ? (
+                <a href={platform.link} class="text-sm text-[#22d3ee] hover:underline">Detailed comparison &rarr;</a>
+              ) : (
+                <span class="text-sm text-[#64748b]">Store platform only</span>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Comparison Table -->
+  <section class="section-spacing bg-[#111827]/30">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] text-center mb-4">eCommerce Platforms vs Kaldon: Feature Comparison</h2>
+      <p class="text-[#94a3b8] text-center mb-8 max-w-2xl mx-auto">Platforms give you a store. Kaldon gives you a store and everything that goes in it.</p>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse min-w-[600px]">
+          <thead>
+            <tr class="border-b border-[rgba(255,255,255,0.08)]">
+              <th class="text-left py-3 px-4 text-sm font-semibold text-[#94a3b8] sticky left-0 bg-[#0a0e17] z-10 min-w-[220px]">Capability</th>
+              <th class="text-center py-3 px-4 text-sm font-semibold text-[#94a3b8] w-36">Platforms</th>
+              <th class="text-center py-3 px-4 text-sm font-semibold text-[#22d3ee] w-32">Kaldon</th>
+            </tr>
+          </thead>
+          <tbody>
+            {features.map((f, i) => (
+              <tr class={`border-b border-[rgba(255,255,255,0.04)] ${i % 2 === 0 ? 'bg-[#111827]/30' : ''}`}>
+                <td class="py-3 px-4 text-sm text-[#e2e8f0] sticky left-0 bg-inherit z-10">{f.name}</td>
+                <td class="py-3 px-4 text-center" set:html={renderFeatureStatus(f.platforms)} />
+                <td class="py-3 px-4 text-center" set:html={renderFeatureStatus(f.kaldon)} />
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- True Cost Comparison -->
+  <section class="section-spacing">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] text-center mb-4">The True Cost of an eCommerce Platform</h2>
+      <p class="text-[#94a3b8] text-center mb-8 max-w-2xl mx-auto">The subscription price is just the beginning. Here is what most sellers actually pay.</p>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-2xl p-6">
+          <h3 class="text-lg font-bold text-[#94a3b8] mb-4">Typical Platform Stack</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between text-sm border-b border-[rgba(255,255,255,0.04)] pb-2">
+              <span class="text-[#94a3b8]">Platform subscription</span>
+              <span class="text-[#e2e8f0]">$39-105/mo</span>
+            </div>
+            <div class="flex justify-between text-sm border-b border-[rgba(255,255,255,0.04)] pb-2">
+              <span class="text-[#94a3b8]">Email marketing app</span>
+              <span class="text-[#e2e8f0]">$20-80/mo</span>
+            </div>
+            <div class="flex justify-between text-sm border-b border-[rgba(255,255,255,0.04)] pb-2">
+              <span class="text-[#94a3b8]">SEO / analytics apps</span>
+              <span class="text-[#e2e8f0]">$20-50/mo</span>
+            </div>
+            <div class="flex justify-between text-sm border-b border-[rgba(255,255,255,0.04)] pb-2">
+              <span class="text-[#94a3b8]">Review / social proof apps</span>
+              <span class="text-[#e2e8f0]">$15-50/mo</span>
+            </div>
+            <div class="flex justify-between text-sm border-b border-[rgba(255,255,255,0.04)] pb-2">
+              <span class="text-[#94a3b8]">Product research tool</span>
+              <span class="text-[#e2e8f0]">$49-129/mo</span>
+            </div>
+            <div class="flex justify-between text-sm border-b border-[rgba(255,255,255,0.04)] pb-2">
+              <span class="text-[#94a3b8]">Design / content tools</span>
+              <span class="text-[#e2e8f0]">$30-100/mo</span>
+            </div>
+            <div class="flex justify-between text-sm font-bold pt-2">
+              <span class="text-[#e2e8f0]">Total</span>
+              <span class="text-[#f87171]">$173-514/mo</span>
+            </div>
+          </div>
+        </div>
+        <div class="bg-[#111827] border-2 border-[#22d3ee]/30 rounded-2xl p-6 shadow-[0_0_30px_rgba(34,211,238,0.08)]">
+          <h3 class="text-lg font-bold text-[#22d3ee] mb-4">Kaldon</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between text-sm border-b border-[rgba(255,255,255,0.04)] pb-2">
+              <span class="text-[#94a3b8]">Product research</span>
+              <span class="text-[#34d399]">Included</span>
+            </div>
+            <div class="flex justify-between text-sm border-b border-[rgba(255,255,255,0.04)] pb-2">
+              <span class="text-[#94a3b8]">Brand identity creation</span>
+              <span class="text-[#34d399]">Included</span>
+            </div>
+            <div class="flex justify-between text-sm border-b border-[rgba(255,255,255,0.04)] pb-2">
+              <span class="text-[#94a3b8]">Content creation (social, blog, email, video)</span>
+              <span class="text-[#34d399]">Included</span>
+            </div>
+            <div class="flex justify-between text-sm border-b border-[rgba(255,255,255,0.04)] pb-2">
+              <span class="text-[#94a3b8]">Online store with checkout</span>
+              <span class="text-[#34d399]">Included</span>
+            </div>
+            <div class="flex justify-between text-sm border-b border-[rgba(255,255,255,0.04)] pb-2">
+              <span class="text-[#94a3b8]">Email marketing</span>
+              <span class="text-[#34d399]">Included</span>
+            </div>
+            <div class="flex justify-between text-sm border-b border-[rgba(255,255,255,0.04)] pb-2">
+              <span class="text-[#94a3b8]">Ad management</span>
+              <span class="text-[#34d399]">Included</span>
+            </div>
+            <div class="flex justify-between text-sm font-bold pt-2">
+              <span class="text-[#e2e8f0]">Total</span>
+              <span class="text-[#22d3ee]">$149/mo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Comparison Link -->
+  <section class="section-spacing bg-[#111827]/30">
+    <div class="container-custom max-w-3xl text-center">
+      <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] mb-4">Detailed Head-to-Head Comparison</h2>
+      <p class="text-[#94a3b8] mb-8">See how Kaldon compares to specific eCommerce platforms feature by feature.</p>
+      <a href="/vs/shopify" class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl p-5 hover:border-[#22d3ee]/30 transition-colors text-left block max-w-sm mx-auto">
+        <h3 class="text-[#e2e8f0] font-bold mb-1">Kaldon vs Shopify</h3>
+        <p class="text-sm text-[#94a3b8]">Empty store vs complete business platform</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-spacing">
+    <div class="container-custom max-w-3xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] text-center mb-8">Frequently Asked Questions</h2>
+      <div class="space-y-3">
+        {faqs.map((faq, i) => (
+          <div class="faq-item bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl overflow-hidden">
+            <button class="faq-toggle w-full flex items-center justify-between p-5 text-left cursor-pointer" data-faq={i}>
+              <span class="text-[#e2e8f0] font-medium pr-4">{faq.q}</span>
+              <svg class="faq-chevron w-5 h-5 text-[#94a3b8] shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </button>
+            <div class="faq-answer hidden px-5 pb-5">
+              <p class="text-sm text-[#94a3b8] leading-relaxed">{faq.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-spacing relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#22d3ee]/10 via-[#0a0e17] to-[#a78bfa]/10"></div>
+    <div class="container-custom relative z-10 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-[#e2e8f0] mb-4">Your Store Should Come With Intelligence Built In</h2>
+      <p class="text-lg text-[#94a3b8] mb-8">Start Free, 2 Analyses Included. No credit card required.</p>
+      <a href="https://kaldon.io/signup" class="btn-primary btn-large btn-glow inline-flex items-center gap-2">Start Free, 2 Analyses Included <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
+    </div>
+  </section>
+
+  <script is:inline>
+    document.querySelectorAll('.faq-toggle').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const answer = this.nextElementSibling;
+        const chevron = this.querySelector('.faq-chevron');
+        const isOpen = !answer.classList.contains('hidden');
+        document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+        document.querySelectorAll('.faq-chevron').forEach(c => c.style.transform = '');
+        if (!isOpen) { answer.classList.remove('hidden'); chevron.style.transform = 'rotate(180deg)'; }
+      });
+    });
+  </script>
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+</BaseLayout>

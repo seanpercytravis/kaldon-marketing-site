@@ -1,3 +1,9 @@
 # Redirects
 # Note: www-to-apex redirect is handled by Cloudflare Redirect Rules
 /home / 301
+
+# Legacy comparison page redirects (removed individual tool pages from nav)
+/vs/canva /compare/research-tools 301
+/vs/jasper /compare/research-tools 301
+/vs/later /compare/research-tools 301
+/vs/meta-ads /compare/research-tools 301

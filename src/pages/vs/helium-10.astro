@@ -3,8 +3,12 @@ import ComparisonLayout from '../../layouts/ComparisonLayout.astro';
 
 const features = [
   { name: 'Product Research', competitor: 'yes', kaldon: 'yes' },
-  { name: 'Keyword Research', competitor: 'yes', kaldon: 'yes' },
+  { name: 'Keyword Research (Cerebro/Magnet)', competitor: 'yes', kaldon: 'yes' },
   { name: 'Competitor Analysis', competitor: 'yes', kaldon: 'yes' },
+  { name: 'Chrome Extension (Xray)', competitor: 'yes', kaldon: 'no' },
+  { name: 'Amazon Listing Optimization', competitor: 'yes', kaldon: 'yes' },
+  { name: 'Walmart Support', competitor: 'yes', kaldon: 'yes' },
+  { name: 'TikTok Shop Support', competitor: 'yes', kaldon: 'partial' },
   { name: 'AI-Powered Analysis', competitor: 'partial', kaldon: 'yes' },
   { name: 'Product Viability Scoring', competitor: 'no', kaldon: 'yes' },
   { name: 'AI Product Mockups', competitor: 'no', kaldon: 'yes' },
@@ -21,30 +25,68 @@ const features = [
   { name: 'Blog Engine', competitor: 'no', kaldon: 'yes' },
   { name: 'Marketplace Listings', competitor: 'partial', kaldon: 'yes' },
   { name: 'Ad Campaign Management', competitor: 'no', kaldon: 'yes' },
-  { name: 'Walmart Support', competitor: 'partial', kaldon: 'yes' },
   { name: 'DTC Support', competitor: 'no', kaldon: 'yes' },
   { name: 'Connected Pipeline', competitor: 'no', kaldon: 'yes' },
 ];
 
+const kaldonAdvantages = [
+  { title: 'Full Research-to-Revenue Pipeline', description: 'Kaldon connects product research directly to brand building, content creation, store deployment, and ad management. No jumping between tools.' },
+  { title: 'AI Brand Identity Creation', description: 'Generate complete brand identities including logos, color palettes, voice guidelines, and brand stories from your product research data.' },
+  { title: 'Content Studio', description: 'Create social media posts, blog content, email sequences, and video assets all from one platform, informed by your product and brand data.' },
+  { title: 'Storefront Deployment', description: 'Build and deploy a complete online store with landing pages, blog, and checkout. No separate platform needed.' },
+  { title: 'Omnichannel from Day One', description: 'Kaldon supports Amazon, Walmart, and DTC simultaneously with connected data flowing across all channels.' },
+  { title: 'AI Coaching and Action Plans', description: 'Receive step-by-step guidance tailored to your specific product, market, and business stage. Not just data, but what to do with it.' },
+];
+
+const competitorAdvantages = [
+  { title: 'Cerebro and Magnet Keyword Tools', description: 'Helium 10\'s keyword research suite is among the most granular in the industry, offering reverse ASIN lookup and deep keyword analytics that power sellers have relied on for years.' },
+  { title: 'Chrome Extension (Xray)', description: 'The Helium 10 Chrome extension provides instant product data overlays while browsing Amazon, a convenience Kaldon does not currently offer.' },
+  { title: '4.5M+ User Community', description: 'Helium 10 has a massive user base and a well-established community with Freedom Ticket training, webinars, and seller forums.' },
+  { title: 'Individual Keyword Rank Tracking', description: 'Helium 10 offers granular, daily keyword rank tracking for existing listings. Kaldon focuses on product-level intelligence and viability scoring rather than individual keyword positions.' },
+];
+
+const chooseCompetitor = [
+  'Only sell on Amazon and need deep, granular keyword rank tracking for existing listings',
+  'Want a Chrome extension for instant product data while browsing Amazon',
+  'Already have a brand, store, and content workflow and only need research tools',
+  'Prefer a large community with established training programs like Freedom Ticket',
+  'Need TikTok Shop analytics as a primary feature',
+];
+
+const chooseKaldon = [
+  'Want to go from product idea to live, revenue-generating business in one platform',
+  'Need brand identity, content creation, and store deployment alongside research',
+  'Sell (or plan to sell) on Amazon, Walmart, and your own DTC store',
+  'Are tired of paying for 5+ separate tools to run your eCommerce business',
+  'Want AI-powered coaching and action plans, not just raw data',
+  'Are launching a new brand and need everything from research to revenue',
+];
+
 const faqs = [
-  { q: 'Is Kaldon a Helium 10 replacement?', a: 'Kaldon replaces Helium 10 for product research and adds everything Helium 10 does not do: brand building, content creation, store deployment, and growth optimization. If you only need keyword research for existing Amazon listings, Helium 10 is fine. If you want to launch and grow a complete business, Kaldon does that in one platform.' },
+  { q: 'Is Kaldon a Helium 10 replacement?', a: 'Kaldon replaces Helium 10 for product research and adds everything Helium 10 does not do: brand building, content creation, store deployment, and growth optimization. If you only need keyword rank tracking for existing Amazon listings, Helium 10 is fine. If you want to launch and grow a complete business, Kaldon does that in one platform.' },
   { q: 'Can I use both Kaldon and Helium 10?', a: 'Yes. Many sellers use Helium 10 for Amazon-specific keyword tracking while using Kaldon for the full launch pipeline. However, most find that Kaldon covers their research needs and they no longer need the Helium 10 subscription.' },
-  { q: 'Does Kaldon have keyword tracking like Helium 10?', a: 'Kaldon focuses on product intelligence and viability scoring rather than individual keyword rank tracking. Our analysis engine evaluates keyword opportunity as part of the overall product assessment. For dedicated keyword rank tracking on existing listings, Helium 10 has more granular tools.' },
-  { q: 'How does Kaldon pricing compare to Helium 10?', a: 'Helium 10 Platinum costs $79/mo for research tools only. Kaldon Growth costs $149/mo but includes research, brand building, content creation, and more. When you factor in the 5+ additional tools Helium 10 users typically need, Kaldon saves $700+ per year.' },
+  { q: 'Does Kaldon have keyword tracking like Cerebro?', a: 'Kaldon focuses on product intelligence and viability scoring rather than individual keyword rank tracking. Our analysis engine evaluates keyword opportunity as part of the overall product assessment. For dedicated keyword rank tracking on existing listings, Helium 10\'s Cerebro and Magnet tools have more granular tracking.' },
+  { q: 'How does Kaldon pricing compare to Helium 10?', a: 'Helium 10 ranges from $99/mo (Platinum) to $279/mo (Diamond). Kaldon Growth costs $149/mo but includes research, brand building, content creation, storefront, and ad management. When you factor in the additional tools Helium 10 users typically need for brand, content, and store, Kaldon saves $500+ per year.' },
+  { q: 'Does Helium 10 offer brand building or content creation?', a: 'Helium 10 offers listing copy optimization for Amazon, but does not include brand identity creation, logo generation, social media content, video production, or storefront deployment. These are capabilities unique to Kaldon.' },
+  { q: 'What if I already have a Helium 10 annual plan?', a: 'You can start using Kaldon alongside Helium 10 immediately. Run your first 2 free analyses to compare the depth of insights. When your Helium 10 plan renews, you will have a clear picture of whether you need both or can consolidate into Kaldon.' },
 ];
 ---
 
 <ComparisonLayout
-  title="Helium 10 vs Kaldon — Why Sellers Are Switching to the Full Pipeline"
+  title="Helium 10 vs Kaldon: Honest Comparison for eCommerce Sellers (2026)"
   description="Helium 10 stops at research. Kaldon takes you from research to revenue. Compare features, pricing, and capabilities side by side."
   competitor="Helium 10"
   tagline="Helium 10 tells you what to sell. Kaldon helps you sell it."
   kaldonTagline="Stop Researching. Start Launching."
-  verdict="Helium 10 is an excellent product research tool for Amazon sellers. But it stops at research. Once you know what to sell, you still need 5+ additional tools to actually build a brand, create content, launch a store, and run ads. Kaldon does all of that in one connected pipeline. Same price range, 10x more capability."
+  verdict="Helium 10 is an excellent Amazon research tool with best-in-class keyword tools like Cerebro and Magnet, plus support for Walmart and TikTok Shop. But it stops at research and listing optimization. Once you know what to sell, you still need separate tools to build a brand, create content, launch a store, and run ads. Kaldon does all of that in one connected pipeline. Helium 10 is a research toolkit. Kaldon is a business launch platform."
   features={features}
-  competitorPrice="$79-229/mo"
+  competitorPrice="$99-279/mo"
   kaldonPrice="$149/mo"
   priceSummary="Research + Brand + Content + Store + Ads in one platform"
+  kaldonAdvantages={kaldonAdvantages}
+  competitorAdvantages={competitorAdvantages}
+  chooseCompetitor={chooseCompetitor}
+  chooseKaldon={chooseKaldon}
   migrationTitle="Already Using Helium 10?"
   migrationBody="You do not have to choose one or the other. Here is how Kaldon fits into your existing workflow."
   migrationSteps={[

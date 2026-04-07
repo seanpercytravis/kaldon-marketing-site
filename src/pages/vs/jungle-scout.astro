@@ -3,8 +3,12 @@ import ComparisonLayout from '../../layouts/ComparisonLayout.astro';
 
 const features = [
   { name: 'Product Research', competitor: 'yes', kaldon: 'yes' },
+  { name: 'Product Tracker', competitor: 'yes', kaldon: 'yes' },
+  { name: 'Opportunity Finder', competitor: 'yes', kaldon: 'yes' },
   { name: 'Supplier Database', competitor: 'yes', kaldon: 'no' },
   { name: 'Sales Estimator', competitor: 'yes', kaldon: 'yes' },
+  { name: 'Amazon Listing Optimization', competitor: 'yes', kaldon: 'yes' },
+  { name: 'Beginner-Friendly UX', competitor: 'yes', kaldon: 'yes' },
   { name: 'AI-Powered Analysis', competitor: 'partial', kaldon: 'yes' },
   { name: 'Product Viability Scoring', competitor: 'partial', kaldon: 'yes' },
   { name: 'AI Product Mockups', competitor: 'no', kaldon: 'yes' },
@@ -18,7 +22,6 @@ const features = [
   { name: 'Landing Page Builder', competitor: 'no', kaldon: 'yes' },
   { name: 'Store Deployment', competitor: 'no', kaldon: 'yes' },
   { name: 'Blog Engine', competitor: 'no', kaldon: 'yes' },
-  { name: 'Amazon Listing Optimization', competitor: 'yes', kaldon: 'yes' },
   { name: 'Walmart Support', competitor: 'no', kaldon: 'yes' },
   { name: 'DTC Support', competitor: 'no', kaldon: 'yes' },
   { name: 'Ad Campaign Management', competitor: 'no', kaldon: 'yes' },
@@ -26,25 +29,64 @@ const features = [
   { name: 'Connected Data Flow', competitor: 'no', kaldon: 'yes' },
 ];
 
+const kaldonAdvantages = [
+  { title: 'Research-to-Revenue Pipeline', description: 'Jungle Scout finds you a product. Kaldon takes that product and builds the entire business: brand, content, store, and marketing. No gaps, no extra tools.' },
+  { title: 'AI Brand Identity Creation', description: 'Generate a complete brand identity from your product research data, including logos, color systems, voice guidelines, and brand stories.' },
+  { title: 'Content Creation Suite', description: 'Social media posts, blog articles, email sequences, and video content, all generated from your product and brand data in one connected workflow.' },
+  { title: 'Store Deployment', description: 'Build and launch a complete online store with landing pages, blog, and checkout without needing a separate platform like Shopify.' },
+  { title: 'Walmart and DTC Support', description: 'Kaldon supports selling on Amazon, Walmart, and DTC from day one. Jungle Scout is Amazon-only.' },
+  { title: 'AI Coaching', description: 'Step-by-step action plans and AI-powered coaching tailored to your product, market conditions, and business stage.' },
+];
+
+const competitorAdvantages = [
+  { title: 'Supplier Database', description: 'Jungle Scout includes a supplier database that helps sellers find verified manufacturers and connect with sourcing partners. Kaldon does not currently offer supplier sourcing.' },
+  { title: 'Product Tracker', description: 'Track specific ASINs over time with daily sales estimates, rank history, and inventory monitoring. A proven tool that Amazon sellers have used for years.' },
+  { title: 'Beginner-Friendly Onboarding', description: 'Jungle Scout is widely recognized for its clean, intuitive interface that makes product research accessible to complete beginners.' },
+  { title: 'Lower Entry Price', description: 'Jungle Scout Starter begins at $29/mo, making it one of the most affordable entry points for new Amazon sellers who only need basic research tools.' },
+];
+
+const chooseCompetitor = [
+  'Only sell on Amazon and need a basic, affordable research tool to get started',
+  'Need a supplier database to find manufacturers',
+  'Want the simplest possible interface for product research only',
+  'Have an established brand and content workflow and only need data',
+  'Are on a tight budget and only need product research at $29/mo',
+];
+
+const chooseKaldon = [
+  'Want to go from product research to a live, branded business in one platform',
+  'Need brand building, content creation, and store deployment, not just research',
+  'Plan to sell on Amazon, Walmart, and your own DTC store',
+  'Are launching a new brand and need the full pipeline from idea to revenue',
+  'Want AI coaching and step-by-step action plans, not just raw data exports',
+  'Are tired of outgrowing research tools and needing to add 5+ more subscriptions',
+];
+
 const faqs = [
-  { q: 'Is Kaldon a Jungle Scout alternative?', a: 'Kaldon replaces Jungle Scout for product research and goes far beyond it. Jungle Scout finds the product. Kaldon launches the business. If you need a supplier database, Jungle Scout has that edge. For everything else, Kaldon does more in one platform.' },
-  { q: 'Does Jungle Scout support Walmart?', a: 'Jungle Scout is primarily Amazon-focused. Kaldon supports Amazon, Walmart, and DTC from a single platform, making it the better choice for sellers who want to diversify across marketplaces.' },
+  { q: 'Is Kaldon a Jungle Scout alternative?', a: 'Kaldon replaces Jungle Scout for product research and goes far beyond it. Jungle Scout finds the product. Kaldon launches the business. If you only need a supplier database, Jungle Scout has that edge. For everything else, Kaldon does more in one platform.' },
+  { q: 'Does Jungle Scout support Walmart or DTC?', a: 'Jungle Scout is primarily Amazon-focused. Kaldon supports Amazon, Walmart, and DTC from a single platform, making it the better choice for sellers who want to diversify across marketplaces and channels.' },
   { q: 'Can I import my Jungle Scout data into Kaldon?', a: 'You do not need to import data. Simply run a new analysis in Kaldon on the same product categories you have been researching. Kaldon\'s AI analysis engine provides deeper insights and actionable next steps that Jungle Scout does not offer.' },
-  { q: 'How does pricing compare?', a: 'Jungle Scout Suite costs $49/mo for basic research. Kaldon Growth costs $149/mo but includes the full pipeline: research, brand, content, store, and ads. Jungle Scout users typically spend $200+/mo on additional tools to do what Kaldon does in one subscription.' },
+  { q: 'How does pricing compare between Jungle Scout and Kaldon?', a: 'Jungle Scout ranges from $29/mo (Starter) to $129/mo (Brand Owner + CI). Kaldon Growth costs $149/mo but includes the full pipeline: research, brand, content, store, and ads. Jungle Scout users typically spend $200+/mo on additional tools to do what Kaldon does in one subscription.' },
+  { q: 'Does Jungle Scout offer brand building or content creation?', a: 'No. Jungle Scout is a research and analytics platform. It does not create brand identities, generate social content, build stores, or manage ad campaigns. These capabilities are unique to Kaldon.' },
+  { q: 'I am a beginner. Should I start with Jungle Scout or Kaldon?', a: 'If you are only exploring whether to sell on Amazon and want the cheapest entry point, Jungle Scout Starter at $29/mo is a reasonable choice. If you are ready to actually launch a product and build a brand, Kaldon gives you everything you need in one platform. Your 2 free analyses let you try Kaldon before committing.' },
 ];
 ---
 
 <ComparisonLayout
-  title="Jungle Scout vs Kaldon — From Product Research to Full Business Launch"
+  title="Jungle Scout vs Kaldon: Honest Comparison for eCommerce Sellers (2026)"
   description="Jungle Scout finds the product. Kaldon launches the business. Compare features, pricing, and capabilities side by side."
   competitor="Jungle Scout"
   tagline="Jungle Scout finds the product. Kaldon launches the business."
   kaldonTagline="Find It. Brand It. Launch It. Grow It."
-  verdict="Jungle Scout is the most popular product research tool for Amazon sellers. It excels at finding products and estimating sales. But once you find your product, Jungle Scout cannot help you build a brand, create content, launch a store, or run ads. Kaldon does all of that. It is the difference between finding a product and launching a business."
+  verdict="Jungle Scout is a popular product research tool for Amazon sellers, known for its Opportunity Finder, Product Tracker, and Supplier Database. It excels at finding products and estimating sales. But once you find your product, Jungle Scout cannot help you build a brand, create content, launch a store, or run ads. Kaldon does all of that. It is the difference between finding a product and launching a business."
   features={features}
-  competitorPrice="$49-209/mo"
+  competitorPrice="$29-129/mo"
   kaldonPrice="$149/mo"
   priceSummary="Complete pipeline: research through revenue"
+  kaldonAdvantages={kaldonAdvantages}
+  competitorAdvantages={competitorAdvantages}
+  chooseCompetitor={chooseCompetitor}
+  chooseKaldon={chooseKaldon}
   migrationTitle="Already Using Jungle Scout?"
   migrationBody="Kaldon is not just a replacement. It is an upgrade. Here is how to see the difference."
   migrationSteps={[

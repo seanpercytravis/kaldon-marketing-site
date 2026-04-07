@@ -1,0 +1,255 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const costBreakdown = [
+  { category: 'Product Research', diy: '$50-150/mo (Helium 10, Jungle Scout)', kaldon: 'Included', diyCost: 100, kaldonCost: 0 },
+  { category: 'Brand Identity Design', diy: '$2,000-10,000 (agency or freelancer)', kaldon: 'Included', diyCost: 5000, kaldonCost: 0 },
+  { category: 'Logo Design', diy: '$500-3,000 (designer)', kaldon: 'Included', diyCost: 1500, kaldonCost: 0 },
+  { category: 'eCommerce Store', diy: '$39-105/mo (Shopify + theme)', kaldon: 'Included', diyCost: 72, kaldonCost: 0 },
+  { category: 'Store Apps and Plugins', diy: '$100-300/mo (email, SEO, reviews, etc.)', kaldon: 'Included', diyCost: 200, kaldonCost: 0 },
+  { category: 'Social Media Content', diy: '$500-2,000/mo (freelancer or agency)', kaldon: 'Included', diyCost: 1000, kaldonCost: 0 },
+  { category: 'Blog Content', diy: '$300-1,500/mo (writer)', kaldon: 'Included', diyCost: 800, kaldonCost: 0 },
+  { category: 'Email Marketing Setup', diy: '$50-200/mo (Klaviyo, Mailchimp)', kaldon: 'Included', diyCost: 100, kaldonCost: 0 },
+  { category: 'Product Photography', diy: '$200-1,000 (per product)', kaldon: 'AI Mockups Included', diyCost: 500, kaldonCost: 0 },
+  { category: 'Video Content', diy: '$500-5,000 (per video)', kaldon: 'Included', diyCost: 2000, kaldonCost: 0 },
+  { category: 'Ad Campaign Setup', diy: '$500-2,000 (agency) + ad spend', kaldon: 'Included (excl. ad spend)', diyCost: 1000, kaldonCost: 0 },
+  { category: 'Business Strategy / Coaching', diy: '$200-500/mo (consultant)', kaldon: 'AI Coaching Included', diyCost: 350, kaldonCost: 0 },
+];
+
+const timeComparison = [
+  { task: 'Product research and validation', diy: '2-4 weeks', kaldon: '30 minutes' },
+  { task: 'Brand identity creation', diy: '2-6 weeks', kaldon: '5 minutes' },
+  { task: 'Logo and visual assets', diy: '1-3 weeks', kaldon: '2 minutes' },
+  { task: 'Store setup and configuration', diy: '1-4 weeks', kaldon: '10 minutes' },
+  { task: 'First month of content', diy: '2-4 weeks', kaldon: '15 minutes' },
+  { task: 'Email sequences', diy: '1-2 weeks', kaldon: '5 minutes' },
+  { task: 'Marketplace listings', diy: '1-2 weeks', kaldon: '10 minutes' },
+  { task: 'Total time to launch', diy: '8-20 weeks', kaldon: '1-2 days' },
+];
+
+const faqs = [
+  { q: 'What is the "$10,000 Problem"?', a: 'Most eCommerce sellers spend $5,000-15,000 before making their first sale. This includes product research tools, brand design, store setup, content creation, and marketing. We call this the "$10,000 Problem" because that is approximately what it costs to assemble the services and tools needed to launch a product brand. Kaldon collapses this into a single subscription at $149/mo.' },
+  { q: 'Is DIY quality better than AI-generated content?', a: 'It depends on the provider. A top-tier agency will produce exceptional brand work. But most new sellers cannot afford top-tier agencies. They end up with mediocre freelancers on Fiverr or templates they customize themselves. Kaldon\'s AI generates professional-quality brand identities, content, and store designs that are better than what most sellers produce on their own and comparable to mid-range agency work.' },
+  { q: 'Can I hire freelancers for less than agency prices?', a: 'Yes, and many sellers do. A freelance designer might charge $500 for a logo, a writer $200 for blog posts. But you still need to find them, manage them, provide direction, wait for revisions, and coordinate across multiple freelancers. The total cost in money and time is significant. Kaldon eliminates the coordination overhead entirely.' },
+  { q: 'What if I want a custom brand identity, not AI-generated?', a: 'You can use Kaldon\'s AI-generated brand as a starting point and hire a designer to refine it. Many sellers find that the AI output is strong enough to launch with, then invest in custom design work once revenue is flowing. This eliminates the upfront risk.' },
+  { q: 'How much time does the DIY approach actually take?', a: 'Based on seller surveys, the average new eCommerce seller spends 8-20 weeks getting from "I want to sell online" to their first live listing. This includes learning tools, finding freelancers, waiting for deliverables, setting up the store, and creating content. Kaldon compresses this to 1-2 days because the pipeline is connected and automated.' },
+  { q: 'Is Kaldon right for experienced sellers who already have a team?', a: 'Yes. Even experienced sellers with existing teams use Kaldon to accelerate new product launches. Instead of deploying your team for weeks on brand development and content creation for a new line, Kaldon generates the foundation in hours, freeing your team to focus on optimization and growth.' },
+];
+---
+
+<BaseLayout
+  title="Kaldon vs Doing It Yourself: The $10,000 Problem Solved (2026)"
+  description="New eCommerce sellers spend $5,000-15,000 and 8-20 weeks before their first sale. Kaldon replaces consultants, designers, and agencies with one AI-powered platform."
+>
+
+  <!-- Hero -->
+  <section class="pt-32 pb-16 relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#22d3ee]/5 via-[#0a0e17] to-[#0a0e17]"></div>
+    <div class="container-custom relative z-10 text-center">
+      <span class="eyebrow">CATEGORY COMPARISON</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-[#e2e8f0] mb-4">Kaldon vs Doing It Yourself</h1>
+      <p class="text-lg text-[#94a3b8] max-w-2xl mx-auto">The tools, freelancers, and agencies you need to launch a product brand cost $5,000-15,000 and take months. Kaldon does it in days.</p>
+    </div>
+  </section>
+
+  <!-- The $10,000 Problem -->
+  <section class="pb-16">
+    <div class="container-custom max-w-3xl">
+      <div class="bg-[#1a2236] border border-[rgba(255,255,255,0.08)] rounded-2xl p-8" style="border-left: 4px solid #f87171">
+        <h2 class="text-sm font-bold uppercase tracking-wider text-[#f87171] mb-3">The $10,000 Problem</h2>
+        <p class="text-[#e2e8f0] leading-relaxed mb-4">Most eCommerce sellers spend $5,000-15,000 before making their first sale. Product research subscriptions. A freelance designer for branding. A Shopify store plus $200/mo in apps. A content writer. A social media manager. An email marketing tool. An ad agency or consultant.</p>
+        <p class="text-[#e2e8f0] leading-relaxed">Each piece is reasonable on its own. But together, they represent a massive upfront investment with zero guaranteed return. Kaldon was built to solve this: one platform that replaces the entire stack at a fraction of the cost and time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cost Breakdown Table -->
+  <section class="section-spacing">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] text-center mb-4">Cost Comparison: DIY Stack vs Kaldon</h2>
+      <p class="text-[#94a3b8] text-center mb-8 max-w-2xl mx-auto">What it actually costs to launch a product brand the traditional way versus using Kaldon.</p>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse min-w-[600px]">
+          <thead>
+            <tr class="border-b border-[rgba(255,255,255,0.08)]">
+              <th class="text-left py-3 px-4 text-sm font-semibold text-[#94a3b8] sticky left-0 bg-[#0a0e17] z-10 min-w-[200px]">What You Need</th>
+              <th class="text-left py-3 px-4 text-sm font-semibold text-[#94a3b8]">DIY Cost</th>
+              <th class="text-left py-3 px-4 text-sm font-semibold text-[#22d3ee]">Kaldon</th>
+            </tr>
+          </thead>
+          <tbody>
+            {costBreakdown.map((item, i) => (
+              <tr class={`border-b border-[rgba(255,255,255,0.04)] ${i % 2 === 0 ? 'bg-[#111827]/30' : ''}`}>
+                <td class="py-3 px-4 text-sm text-[#e2e8f0] sticky left-0 bg-inherit z-10 font-medium">{item.category}</td>
+                <td class="py-3 px-4 text-sm text-[#94a3b8]">{item.diy}</td>
+                <td class="py-3 px-4 text-sm text-[#34d399]">{item.kaldon}</td>
+              </tr>
+            ))}
+          </tbody>
+          <tfoot>
+            <tr class="border-t-2 border-[rgba(255,255,255,0.12)]">
+              <td class="py-4 px-4 text-sm font-bold text-[#e2e8f0] sticky left-0 bg-[#0a0e17] z-10">First-Year Total (estimated)</td>
+              <td class="py-4 px-4 text-sm font-bold text-[#f87171]">$10,000-25,000+</td>
+              <td class="py-4 px-4 text-sm font-bold text-[#22d3ee]">$1,788/year ($149/mo)</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Time Comparison -->
+  <section class="section-spacing bg-[#111827]/30">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] text-center mb-4">Time Comparison: DIY vs Kaldon</h2>
+      <p class="text-[#94a3b8] text-center mb-8 max-w-2xl mx-auto">Time is your most expensive resource. Here is how long each approach takes.</p>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse min-w-[500px]">
+          <thead>
+            <tr class="border-b border-[rgba(255,255,255,0.08)]">
+              <th class="text-left py-3 px-4 text-sm font-semibold text-[#94a3b8] sticky left-0 bg-[#0a0e17] z-10 min-w-[200px]">Task</th>
+              <th class="text-center py-3 px-4 text-sm font-semibold text-[#94a3b8] w-36">DIY Timeline</th>
+              <th class="text-center py-3 px-4 text-sm font-semibold text-[#22d3ee] w-36">Kaldon</th>
+            </tr>
+          </thead>
+          <tbody>
+            {timeComparison.map((item, i) => (
+              <tr class={`border-b border-[rgba(255,255,255,0.04)] ${i % 2 === 0 ? 'bg-[#111827]/30' : ''} ${i === timeComparison.length - 1 ? 'font-bold' : ''}`}>
+                <td class="py-3 px-4 text-sm text-[#e2e8f0] sticky left-0 bg-inherit z-10">{item.task}</td>
+                <td class="py-3 px-4 text-sm text-[#94a3b8] text-center">{item.diy}</td>
+                <td class="py-3 px-4 text-sm text-[#34d399] text-center">{item.kaldon}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Coordination Problem -->
+  <section class="section-spacing">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] text-center mb-4">The Hidden Cost: Coordination</h2>
+      <p class="text-[#94a3b8] text-center mb-8 max-w-2xl mx-auto">Even if you find affordable freelancers, managing the process is a full-time job.</p>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-2xl p-6">
+          <h3 class="text-lg font-bold text-[#94a3b8] mb-4">The DIY Workflow</h3>
+          <div class="space-y-3 text-sm text-[#94a3b8]">
+            <p>1. Research products using one tool</p>
+            <p>2. Brief a designer on brand identity (wait 1-3 weeks)</p>
+            <p>3. Review, give feedback, wait for revisions</p>
+            <p>4. Brief a different designer on the logo (wait 1-2 weeks)</p>
+            <p>5. Set up Shopify, find a theme, install apps</p>
+            <p>6. Brief a writer on product descriptions and blog posts</p>
+            <p>7. Brief a social media manager on content strategy</p>
+            <p>8. Set up email marketing in a different tool</p>
+            <p>9. Coordinate everyone to use the same brand voice</p>
+            <p>10. Hope it all works together</p>
+          </div>
+          <p class="text-xs text-[#64748b] mt-4 pt-3 border-t border-[rgba(255,255,255,0.04)]">5-10 different people and tools, none of them connected</p>
+        </div>
+        <div class="bg-[#111827] border-2 border-[#22d3ee]/30 rounded-2xl p-6 shadow-[0_0_30px_rgba(34,211,238,0.08)]">
+          <h3 class="text-lg font-bold text-[#22d3ee] mb-4">The Kaldon Workflow</h3>
+          <div class="space-y-3 text-sm text-[#e2e8f0]">
+            <p>1. Discover: Run a product analysis</p>
+            <p>2. Build: Generate brand identity from your analysis</p>
+            <p>3. Create: Generate content informed by your brand</p>
+            <p>4. Launch: Deploy store pre-populated with everything</p>
+            <p>5. Grow: Run ads using your existing assets</p>
+          </div>
+          <p class="text-xs text-[#22d3ee] mt-4 pt-3 border-t border-[rgba(255,255,255,0.04)]">One platform, connected data, consistent brand voice throughout</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- When DIY Makes Sense -->
+  <section class="section-spacing bg-[#111827]/30">
+    <div class="container-custom max-w-3xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] text-center mb-4">When the DIY Approach Makes Sense</h2>
+      <p class="text-[#94a3b8] text-center mb-8">We are not saying DIY is always wrong. Here is when it is the right choice.</p>
+      <div class="space-y-4">
+        <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl p-5">
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-[#fbbf24] shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" /></svg>
+            <div>
+              <h3 class="text-[#e2e8f0] font-semibold mb-1">You need a premium, luxury brand</h3>
+              <p class="text-sm text-[#94a3b8]">If you are building a high-end luxury brand where every visual detail must be bespoke, investing in a top-tier creative agency may be worth it. Kaldon creates professional brands, but not couture-level custom work.</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl p-5">
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-[#fbbf24] shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" /></svg>
+            <div>
+              <h3 class="text-[#e2e8f0] font-semibold mb-1">You have an in-house team already</h3>
+              <p class="text-sm text-[#94a3b8]">If you already employ designers, writers, and marketers, the coordination cost is lower. Though even teams use Kaldon to accelerate new product launches.</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl p-5">
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-[#fbbf24] shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" /></svg>
+            <div>
+              <h3 class="text-[#e2e8f0] font-semibold mb-1">You need a highly specialized store</h3>
+              <p class="text-sm text-[#94a3b8]">If your business requires custom integrations, POS systems, or enterprise-level infrastructure, a custom-built solution may be necessary.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-spacing">
+    <div class="container-custom max-w-3xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] text-center mb-8">Frequently Asked Questions</h2>
+      <div class="space-y-3">
+        {faqs.map((faq, i) => (
+          <div class="faq-item bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl overflow-hidden">
+            <button class="faq-toggle w-full flex items-center justify-between p-5 text-left cursor-pointer" data-faq={i}>
+              <span class="text-[#e2e8f0] font-medium pr-4">{faq.q}</span>
+              <svg class="faq-chevron w-5 h-5 text-[#94a3b8] shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </button>
+            <div class="faq-answer hidden px-5 pb-5">
+              <p class="text-sm text-[#94a3b8] leading-relaxed">{faq.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-spacing relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#22d3ee]/10 via-[#0a0e17] to-[#a78bfa]/10"></div>
+    <div class="container-custom relative z-10 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-[#e2e8f0] mb-4">Skip the $10,000 Problem</h2>
+      <p class="text-lg text-[#94a3b8] mb-8">Start Free, 2 Analyses Included. No credit card required. See what Kaldon builds in minutes, not months.</p>
+      <a href="https://kaldon.io/signup" class="btn-primary btn-large btn-glow inline-flex items-center gap-2">Start Free, 2 Analyses Included <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
+    </div>
+  </section>
+
+  <script is:inline>
+    document.querySelectorAll('.faq-toggle').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const answer = this.nextElementSibling;
+        const chevron = this.querySelector('.faq-chevron');
+        const isOpen = !answer.classList.contains('hidden');
+        document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+        document.querySelectorAll('.faq-chevron').forEach(c => c.style.transform = '');
+        if (!isOpen) { answer.classList.remove('hidden'); chevron.style.transform = 'rotate(180deg)'; }
+      });
+    });
+  </script>
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+</BaseLayout>

@@ -12,13 +12,17 @@ interface Props {
   competitorPrice: string;
   kaldonPrice: string;
   priceSummary: string;
+  kaldonAdvantages: Array<{ title: string; description: string; }>;
+  competitorAdvantages: Array<{ title: string; description: string; }>;
+  chooseCompetitor: Array<string>;
+  chooseKaldon: Array<string>;
   migrationTitle: string;
   migrationBody: string;
   migrationSteps: string[];
   faqs: Array<{ q: string; a: string; }>;
 }
 
-const { title, description, competitor, verdict, tagline, kaldonTagline, features, competitorPrice, kaldonPrice, priceSummary, migrationTitle, migrationBody, migrationSteps, faqs } = Astro.props;
+const { title, description, competitor, verdict, tagline, kaldonTagline, features, competitorPrice, kaldonPrice, priceSummary, kaldonAdvantages, competitorAdvantages, chooseCompetitor, chooseKaldon, migrationTitle, migrationBody, migrationSteps, faqs } = Astro.props;
 
 function renderStatus(val: string) {
   if (val === 'yes') return '<svg class="w-5 h-5 text-[#34d399] mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>';
@@ -96,8 +100,87 @@ function renderStatus(val: string) {
     </div>
   </section>
 
-  <!-- Migration Path -->
+  <!-- What Kaldon Does That They Don't -->
   <section class="section-spacing">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] text-center mb-4">What Kaldon Does That {competitor} Does Not</h2>
+      <p class="text-[#94a3b8] text-center mb-8 max-w-2xl mx-auto">Capabilities that are unique to Kaldon and not available in {competitor}.</p>
+      <div class="grid md:grid-cols-2 gap-4">
+        {kaldonAdvantages.map((adv) => (
+          <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl p-5">
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-[#22d3ee] shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+              <div>
+                <h3 class="text-[#e2e8f0] font-semibold mb-1">{adv.title}</h3>
+                <p class="text-sm text-[#94a3b8] leading-relaxed">{adv.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What They Do That Kaldon Doesn't -->
+  <section class="section-spacing bg-[#111827]/30">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] text-center mb-4">What {competitor} Does That Kaldon Does Not</h2>
+      <p class="text-[#94a3b8] text-center mb-8 max-w-2xl mx-auto">Areas where {competitor} has capabilities that Kaldon currently does not offer.</p>
+      <div class="grid md:grid-cols-2 gap-4">
+        {competitorAdvantages.map((adv) => (
+          <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl p-5">
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-[#fbbf24] shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" /></svg>
+              <div>
+                <h3 class="text-[#e2e8f0] font-semibold mb-1">{adv.title}</h3>
+                <p class="text-sm text-[#94a3b8] leading-relaxed">{adv.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Who Should Choose Whom -->
+  <section class="section-spacing">
+    <div class="container-custom max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] text-center mb-8">Who Should Choose What</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-2xl p-6">
+          <h3 class="text-lg font-bold text-[#94a3b8] mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+            Choose {competitor} If You...
+          </h3>
+          <ul class="space-y-3">
+            {chooseCompetitor.map((item) => (
+              <li class="flex items-start gap-2 text-sm text-[#94a3b8]">
+                <svg class="w-4 h-4 text-[#64748b] shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="bg-[#111827] border-2 border-[#22d3ee]/30 rounded-2xl p-6 shadow-[0_0_30px_rgba(34,211,238,0.08)]">
+          <h3 class="text-lg font-bold text-[#22d3ee] mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            Choose Kaldon If You...
+          </h3>
+          <ul class="space-y-3">
+            {chooseKaldon.map((item) => (
+              <li class="flex items-start gap-2 text-sm text-[#e2e8f0]">
+                <svg class="w-4 h-4 text-[#22d3ee] shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Migration Path -->
+  <section class="section-spacing bg-[#111827]/30">
     <div class="container-custom max-w-3xl">
       <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] text-center mb-4">{migrationTitle}</h2>
       <p class="text-[#94a3b8] text-center mb-8">{migrationBody}</p>
@@ -113,7 +196,7 @@ function renderStatus(val: string) {
   </section>
 
   <!-- FAQ -->
-  <section class="section-spacing bg-[#111827]/30">
+  <section class="section-spacing">
     <div class="container-custom max-w-3xl">
       <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] text-center mb-8">Frequently Asked Questions</h2>
       <div class="space-y-3">
@@ -137,8 +220,8 @@ function renderStatus(val: string) {
     <div class="absolute inset-0 bg-gradient-to-br from-[#22d3ee]/10 via-[#0a0e17] to-[#a78bfa]/10"></div>
     <div class="container-custom relative z-10 text-center">
       <h2 class="text-3xl md:text-4xl font-extrabold text-[#e2e8f0] mb-4">{kaldonTagline}</h2>
-      <p class="text-lg text-[#94a3b8] mb-8">2 free analyses. No credit card. See the difference for yourself.</p>
-      <a href="https://kaldon.io/signup" class="btn-primary btn-large btn-glow inline-flex items-center gap-2">Start Free <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
+      <p class="text-lg text-[#94a3b8] mb-8">Start Free, 2 Analyses Included. No credit card required.</p>
+      <a href="https://kaldon.io/signup" class="btn-primary btn-large btn-glow inline-flex items-center gap-2">Start Free, 2 Analyses Included <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
     </div>
   </section>
 

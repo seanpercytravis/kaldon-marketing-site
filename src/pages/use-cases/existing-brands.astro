@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const painPoints = [
+  { title: 'Stuck on One Marketplace', desc: 'All your revenue comes from Amazon. One algorithm change, one policy update, one suspended listing, and your income disappears overnight. You know diversification is critical, but you do not have time to figure out Walmart, DTC, and social commerce on your own.' },
+  { title: 'No DTC Presence', desc: 'You are building someone else\'s brand on someone else\'s platform. Your customers do not know your name. You have no email list, no direct relationship, and no way to market to them outside of Amazon. Your margins are shrinking and you have no leverage.' },
+  { title: 'Brand Feels Amateur', desc: 'Your listings convert, but your brand would not survive outside Amazon. Your logo was made in 10 minutes. Your social media is inconsistent or nonexistent. Wholesale buyers and retail partners take one look at your brand and pass.' },
+];
+
+const howItHelps = [
+  { title: 'Multi-Marketplace Intelligence', desc: 'Kaldon\'s Vet Product mode analyzes your existing ASINs and identifies expansion opportunities across Walmart, DTC, and emerging channels. Data-driven expansion, not guesswork.', color: '#fb923c' },
+  { title: 'Professional Brand Building', desc: 'Generate a complete brand identity from your existing product data: logo, colors, typography, voice. Your brand goes from amateur to premium in minutes.', color: '#a78bfa' },
+  { title: 'One-Click Store Deployment', desc: 'Deploy a full DTC store with checkout, automated emails, SMS, chatbot, and blog engine. Your Amazon customers start finding you directly. Your margins improve.', color: '#22d3ee' },
+  { title: 'Marketplace Listing Generator', desc: 'Optimized listings for Walmart and other channels generated from your brand data. Expand to new marketplaces without starting from scratch on each one.', color: '#3b82f6' },
+  { title: 'Unified Content Management', desc: 'Manage content across Amazon, Walmart, your DTC store, and 5 social platforms from one dashboard. Consistent brand voice everywhere.', color: '#34d399' },
+  { title: 'GEO Optimization', desc: 'Generative Engine Optimization ensures your brand surfaces in AI-powered search results and recommendation engines. Future-proof your discoverability.', color: '#fbbf24' },
+];
+
+const results = [
+  'Revenue diversified across 3+ channels instead of dependent on one',
+  'Direct customer relationships with email list and DTC store',
+  'Professional brand identity that commands premium pricing',
+  'Walmart listings live alongside your Amazon presence',
+  'Automated content and marketing across every channel',
+  'Higher margins on DTC sales without marketplace fees',
+];
+---
+
+<BaseLayout
+  title="Kaldon for Existing Brands — Expand Beyond Amazon"
+  description="You are selling on Amazon but stuck on one marketplace. Kaldon helps you expand to Walmart, DTC, and multi-channel with AI-powered brand building and store deployment."
+>
+
+  <!-- Hero -->
+  <section class="pt-32 pb-16 relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#fb923c]/5 via-[#0a0e17] to-[#0a0e17]"></div>
+    <div class="container-custom relative z-10 text-center">
+      <span class="eyebrow">FOR EXISTING BRANDS</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-[#e2e8f0] mb-4">Expand Beyond<br/><span class="gradient-text">Amazon</span></h1>
+      <p class="text-lg text-[#94a3b8] max-w-2xl mx-auto">You are already selling. Now it is time to own your brand, diversify your revenue, and stop being dependent on a single marketplace. Kaldon makes multi-channel expansion feel like flipping a switch.</p>
+      <div class="mt-8">
+        <a href="https://kaldon.io/signup" class="btn-primary btn-large btn-glow inline-flex items-center gap-2">Expand Your Business <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pain Points -->
+  <section class="py-20 bg-[#111827]/30">
+    <div class="container-custom max-w-5xl">
+      <div class="text-center mb-12 animate-on-scroll">
+        <h2 class="section-headline text-[#e2e8f0]">The Single-Channel Trap</h2>
+        <p class="text-[#94a3b8] max-w-xl mx-auto">You built a business on Amazon. That is an achievement. But single-channel dependence is a ticking time bomb.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        {painPoints.map((pain, i) => (
+          <div class="animate-on-scroll bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl p-6" style={`animation-delay: ${i * 100}ms`}>
+            <div class="w-10 h-10 rounded-full bg-[#f87171]/10 flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-[#f87171]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" /></svg>
+            </div>
+            <h3 class="text-lg font-bold text-[#e2e8f0] mb-2">{pain.title}</h3>
+            <p class="text-sm text-[#94a3b8] leading-relaxed">{pain.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How Kaldon Helps -->
+  <section class="py-20 bg-[#0a0e17]">
+    <div class="container-custom max-w-5xl">
+      <div class="text-center mb-12 animate-on-scroll">
+        <h2 class="section-headline text-[#e2e8f0]">How Kaldon Powers Your Expansion</h2>
+        <p class="text-[#94a3b8] max-w-xl mx-auto">Every tool you need to go from single-channel seller to multi-channel brand. One platform. One pipeline.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {howItHelps.map((item, i) => (
+          <div class="animate-on-scroll bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl p-6" style={`animation-delay: ${i * 100}ms; border-top: 3px solid ${item.color}`}>
+            <h3 class="text-lg font-bold text-[#e2e8f0] mb-2">{item.title}</h3>
+            <p class="text-sm text-[#94a3b8] leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section class="py-20 bg-[#111827]/30">
+    <div class="container-custom max-w-3xl">
+      <div class="text-center mb-12 animate-on-scroll">
+        <h2 class="section-headline text-[#e2e8f0]">What Expansion Looks Like</h2>
+      </div>
+      <div class="animate-on-scroll bg-[#1a2236] border border-[rgba(255,255,255,0.08)] rounded-xl p-8" style="border-left: 3px solid #fb923c">
+        <ul class="space-y-4">
+          {results.map(result => (
+            <li class="flex items-start gap-3 text-[#94a3b8]">
+              <svg class="w-5 h-5 shrink-0 mt-0.5 text-[#34d399]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+              <span>{result}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Day in Life -->
+  <section class="py-20 bg-[#0a0e17]">
+    <div class="container-custom max-w-3xl">
+      <div class="text-center mb-8 animate-on-scroll">
+        <h2 class="section-headline text-[#e2e8f0]">Your Expansion Week</h2>
+      </div>
+      <div class="animate-on-scroll bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl p-8">
+        <p class="text-[#94a3b8] leading-relaxed italic">You paste your top Amazon ASIN into Kaldon. The Vet Product analysis shows a DTC opportunity score of 87 and a Walmart viability score of 91. You click "Build Brand" and Kaldon generates a complete identity from your existing product data: professional logo, cohesive color palette, and voice guidelines. On Tuesday, you click "Deploy Store" and your DTC store is live with your brand, your products, and automated email marketing. On Wednesday, your Walmart listings are generated and optimized. By Friday, your content calendar is publishing across 5 social platforms. Your Amazon customers start finding you directly. Your margins improve. Your stress decreases. When Amazon changes a policy next month, you shrug.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section-spacing relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#fb923c]/10 via-[#0a0e17] to-[#22d3ee]/10"></div>
+    <div class="container-custom relative z-10 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-[#e2e8f0] mb-4">Your Business Deserves More Than One Channel</h2>
+      <p class="text-lg text-[#94a3b8] mb-8">Start with a free analysis of your existing product. See your expansion opportunities in minutes.</p>
+      <a href="https://kaldon.io/signup" class="btn-primary btn-large btn-glow inline-flex items-center gap-2">Expand Your Business <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
+    </div>
+  </section>
+
+  <script is:inline>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+  </script>
+</BaseLayout>

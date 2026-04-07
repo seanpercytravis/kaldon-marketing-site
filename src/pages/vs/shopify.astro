@@ -22,38 +22,81 @@ const features = [
   { name: 'Walmart Integration', competitor: 'no', kaldon: 'yes' },
   { name: 'Ad Management', competitor: 'no', kaldon: 'yes' },
   { name: 'AI Coaching', competitor: 'no', kaldon: 'yes' },
-  { name: 'Connected Pipeline', competitor: 'no', kaldon: 'yes' },
+  { name: 'Connected Intelligence Pipeline', competitor: 'no', kaldon: 'yes' },
   { name: 'App Store / Plugins', competitor: 'yes', kaldon: 'no' },
-  { name: 'Custom Themes', competitor: 'yes', kaldon: 'partial' },
+  { name: 'Custom Themes (thousands)', competitor: 'yes', kaldon: 'partial' },
   { name: 'POS (Point of Sale)', competitor: 'yes', kaldon: 'no' },
+  { name: 'Proven at Enterprise Scale', competitor: 'yes', kaldon: 'no' },
+  { name: 'Global Payments Infrastructure', competitor: 'yes', kaldon: 'yes' },
+];
+
+const kaldonAdvantages = [
+  { title: 'Built-In Product Intelligence', description: 'Kaldon includes product research, market analysis, and viability scoring. Shopify sellers need separate paid tools like Helium 10 or Jungle Scout for this.' },
+  { title: 'AI Content Generation', description: 'Create social media posts, blog content, email sequences, and videos from one platform. Shopify requires apps like Canva, Mailchimp, and others at additional cost.' },
+  { title: 'Brand Identity Creation', description: 'Generate complete brand identities including logos, color palettes, and brand voice from your product data. Shopify requires hiring a designer or using third-party tools.' },
+  { title: 'Connected Data Pipeline', description: 'In Kaldon, your research data informs your brand, which shapes your content, which populates your store. Everything is connected. In Shopify, each piece is isolated.' },
+  { title: 'No App Bloat', description: 'Shopify sellers typically install 10-20 apps at $10-50/mo each. Kaldon includes research, content, email, SEO, and analytics natively. No compatibility issues, no extra bills.' },
+  { title: 'AI Coaching', description: 'Step-by-step action plans and AI-powered guidance tailored to your business. Shopify does not tell you what to sell, how to brand, or what content to create.' },
+];
+
+const competitorAdvantages = [
+  { title: 'Massive App Ecosystem', description: 'Shopify has 8,000+ apps that extend the platform in virtually any direction. If you need a niche feature, there is likely a Shopify app for it. Kaldon is all-in-one by design and does not support third-party plugins.' },
+  { title: 'Proven at Scale', description: 'Shopify powers millions of stores and has handled enterprise-level traffic for major brands. It is battle-tested at a scale Kaldon has not yet reached.' },
+  { title: 'Point of Sale (POS)', description: 'Shopify offers integrated POS hardware and software for brick-and-mortar retail. Kaldon is an online-only platform.' },
+  { title: 'Custom Themes and Full Storefront Control', description: 'Shopify offers thousands of themes and full Liquid template customization. Kaldon provides professional store templates but with less design flexibility for highly custom storefronts.' },
+  { title: 'Shopify Plus for Enterprise', description: 'Shopify Plus ($2,300+/mo) serves high-volume merchants with dedicated support, custom checkout, and advanced automation. Kaldon does not currently serve the enterprise tier.' },
+];
+
+const chooseCompetitor = [
+  'Already have a product, brand, and content strategy and only need a store platform',
+  'Need a highly customized storefront with full theme control',
+  'Require point-of-sale for physical retail locations',
+  'Run an enterprise business doing millions in annual revenue',
+  'Need specific niche apps that only the Shopify ecosystem offers',
+  'Have thousands of SKUs and need advanced inventory management',
+];
+
+const chooseKaldon = [
+  'Are launching a new product and need to figure out what to sell, how to brand it, and how to market it',
+  'Want product intelligence, content creation, and a store in one subscription',
+  'Are tired of paying $200+/mo in Shopify apps to get email, SEO, content, and analytics',
+  'Want an AI-powered platform that connects research to content to storefront',
+  'Sell on Amazon and Walmart in addition to DTC and need omnichannel support',
+  'Want to launch faster without hiring designers, copywriters, and marketers separately',
 ];
 
 const faqs = [
   { q: 'Is Kaldon a Shopify replacement?', a: 'For most eCommerce sellers launching new products, yes. Kaldon provides a store with checkout, blog, and email marketing, plus everything Shopify does not: product research, brand generation, content creation, and ad management. If you need a highly customized store with thousands of SKUs and a point-of-sale system, Shopify is more flexible. For launching and growing a product-focused brand, Kaldon does more.' },
   { q: 'Can I use Kaldon with my existing Shopify store?', a: 'Kaldon is a standalone platform. You can use Kaldon for research, brand building, and content creation, then apply those assets to your Shopify store manually. Many sellers find that Kaldon\'s built-in store eliminates the need for Shopify entirely.' },
   { q: 'Does Kaldon have an app store like Shopify?', a: 'No. Kaldon is an all-in-one platform. The features that Shopify requires apps for (email marketing, SEO, content creation, analytics) are built into Kaldon natively. This means no additional subscriptions, no compatibility issues, and no app bloat.' },
-  { q: 'How does pricing compare?', a: 'Shopify Basic costs $39/mo for an empty store. Most sellers add $100-200/mo in apps for email, SEO, reviews, and analytics. Kaldon Growth at $149/mo includes research, brand, content, and a store. You save money and get more capability.' },
+  { q: 'How does total cost compare between Shopify and Kaldon?', a: 'Shopify Basic costs $39/mo for an empty store. Most sellers add $100-300/mo in apps for email, SEO, reviews, content, and analytics. That is $140-340/mo for a fraction of what Kaldon offers. Kaldon Growth at $149/mo includes research, brand, content, and a store. Most sellers save $500+/year by consolidating into Kaldon.' },
+  { q: 'What about Shopify Plus? Is Kaldon an alternative?', a: 'Not currently. Shopify Plus serves high-volume enterprise merchants at $2,300+/mo with dedicated support, custom checkout, and advanced automation. Kaldon is built for individual sellers and small teams launching and growing product brands. They serve different segments.' },
+  { q: 'Can Shopify do product research or AI content creation?', a: 'Shopify is a store platform, not a research or content tool. It does not include product research, market intelligence, AI brand creation, social media content generation, or video production. Shopify sellers typically pay $500+/mo in additional tools and services to get these capabilities. Kaldon includes them natively.' },
 ];
 ---
 
 <ComparisonLayout
-  title="Shopify vs Kaldon — An Empty Store vs a Complete Business"
+  title="Shopify vs Kaldon: Honest Comparison for eCommerce Sellers (2026)"
   description="Shopify gives you an empty store. Kaldon gives you a business. Compare features, pricing, and capabilities side by side."
   competitor="Shopify"
-  tagline="Shopify gives you an empty store. Kaldon gives you a business."
+  tagline="Shopify gives you a store. Kaldon gives you a business."
   kaldonTagline="Stop Building Empty Stores. Start Launching Businesses."
-  verdict="Shopify is the world's most popular eCommerce platform. But it is a store builder, not a business builder. When you sign up for Shopify, you get an empty store with no products, no brand, no content, and no traffic. You need 10+ apps ($200+/mo) to add the features that Kaldon includes natively. Kaldon starts with intelligence and ends with a live, marketing-ready store."
+  verdict="Shopify is the world's most popular eCommerce platform with a massive app ecosystem, proven scale, and global payments infrastructure. But it is a store builder, not a business builder. When you sign up for Shopify, you get an empty store with no products, no brand, no content, and no traffic. You need 10+ apps ($200+/mo) to add the features that Kaldon includes natively. Kaldon starts with intelligence and ends with a live, marketing-ready store."
   features={features}
-  competitorPrice="$39-399/mo + $100-200/mo in apps"
+  competitorPrice="$39-399/mo + $100-300/mo in apps"
   kaldonPrice="$149/mo"
   priceSummary="Research + Brand + Content + Store + Ads, all included"
+  kaldonAdvantages={kaldonAdvantages}
+  competitorAdvantages={competitorAdvantages}
+  chooseCompetitor={chooseCompetitor}
+  chooseKaldon={chooseKaldon}
   migrationTitle="Already on Shopify?"
   migrationBody="Kaldon does not require you to leave Shopify. But you might want to after seeing what a connected pipeline looks like."
   migrationSteps={[
     'Sign up for Kaldon free and run an analysis on your existing product category. See what intelligence looks like.',
     'Use Kaldon to generate a brand identity and a month of content. Apply these to your Shopify store or use Kaldon\'s built-in store.',
-    'Compare the experience: Kaldon\'s store comes pre-configured with your brand, content, email sequences, and SEO. Shopify requires you to set up each piece separately.',
-    'Calculate your total Shopify cost (base + apps + themes). Compare it to Kaldon\'s all-in-one pricing. Most sellers save $700+ per year.',
+    'Compare the experience: Kaldon\'s store comes pre-configured with your brand, content, email sequences, and SEO. Shopify requires you to set up each piece separately with different apps.',
+    'Calculate your total Shopify cost (base + apps + themes). Compare it to Kaldon\'s all-in-one pricing. Most sellers save $500+ per year.',
   ]}
   faqs={faqs}
 />

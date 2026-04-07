@@ -2,25 +2,59 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const screenshots = {
-  hero: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/01-analysis-hero_3f7ba299.webp',
-  aiImages: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/02-analysis-ai-images_14ee42ac.webp',
-  actionPlan: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/03-analysis-action-plan_78cf672b.webp',
-  coaching: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/04-analysis-coaching_2780bad5.webp',
-  brandVault: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/06-brand-vault_fa12d0ed.webp',
-  brandDetail: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/07-brand-detail_4f3a066d.webp',
-  calendar: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/10-content-calendar_7c1d7fef.webp',
-  storeDeployment: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/14-store-deployment_0243c609.webp',
-  pricing: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/17-pricing_68278703.webp',
-  journey: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/15-journey-progress_07bbb337.webp',
-  opportunityFeed: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/16-opportunity-feed_363e1510.webp',
-  videoStudio: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/12-video-studio_7f146b15.webp',
-  landingPages: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/13-landing-pages_5fbc7fb5.webp',
+  hero: '/images/screenshots/01-analysis-hero.webp',
+  aiImages: '/images/screenshots/02-analysis-ai-images.webp',
+  actionPlan: '/images/screenshots/03-analysis-action-plan.webp',
+  coaching: '/images/screenshots/04-analysis-coaching.webp',
+  brandVault: '/images/screenshots/06-brand-vault.webp',
+  brandDetail: '/images/screenshots/07-brand-detail.webp',
+  brandVisualIdentity: '/images/screenshots/09-brand-visual-identity.webp',
+  calendar: '/images/screenshots/10-content-calendar.webp',
+  storeDeployment: '/images/screenshots/14-store-deployment.webp',
+  pricing: '/images/screenshots/17-pricing.webp',
+  journey: '/images/screenshots/15-journey-progress.webp',
+  opportunityFeed: '/images/screenshots/16-opportunity-feed.webp',
+  videoStudio: '/images/screenshots/12-video-studio.webp',
+  landingPages: '/images/screenshots/13-landing-pages.webp',
 };
+
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Kaldon",
+    "url": "https://kaldon.io",
+    "logo": "https://kaldon.io/images/logos/kaldon-logo-dark.svg",
+    "description": "AI-powered eCommerce intelligence platform that takes sellers from product research to revenue.",
+    "contactPoint": { "@type": "ContactPoint", "email": "support@kaldon.io", "contactType": "customer support" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Kaldon",
+    "url": "https://kaldon.io"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Kaldon",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "0",
+      "highPrice": "499",
+      "priceCurrency": "USD",
+      "offerCount": "5"
+    }
+  }
+];
 ---
 
 <BaseLayout
   title="Kaldon — AI-Powered eCommerce Intelligence Platform"
   description="Find your next winning product, build your brand, create content, launch your store, and grow your business. One platform. Five phases. Zero gaps."
+  structuredData={structuredData}
 >
 
   <!-- ===== SECTION 1: HERO ===== -->
@@ -33,54 +67,63 @@ const screenshots = {
       <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center">
         <div class="max-w-2xl">
           <h1 class="text-4xl md:text-5xl lg:text-[56px] font-extrabold leading-[1.1] mb-6">
-            <span class="gradient-text">Find Your Next Winning Product.</span><br />
-            <span class="text-kaldon-text">Launch It. Grow It.</span><br />
-            <span class="text-kaldon-text">One Platform.</span>
+            <span class="gradient-text">From Research to Revenue.</span><br />
+            <span class="text-kaldon-text">Any Marketplace.</span>
           </h1>
           <p class="text-lg md:text-xl text-kaldon-muted leading-relaxed mb-8 max-w-xl">
             Kaldon is the AI-powered operating system that takes eCommerce sellers from product research to a live, revenue-generating store — without juggling six different tools.
           </p>
-          <div class="flex flex-col sm:flex-row gap-4 mb-8">
-            <a href="https://kaldon.io/signup" class="btn-primary btn-large btn-glow">
-              Start Free: 2 Analyses Included
+          <div class="flex flex-col sm:flex-row gap-4 mb-6">
+            <a href="https://kaldon.io/signup" class="btn-primary btn-large btn-glow" data-event="hero_cta_click">
+              Start Free, 2 Analyses Included
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
             </a>
-            <a href="#demo-section" class="btn-secondary btn-large">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-              Watch How It Works
+            <a href="#product-showcase" class="btn-secondary btn-large" data-event="see_how_click">
+              See How It Works
             </a>
           </div>
-          <div class="flex flex-wrap gap-3">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-kaldon-surface border border-kaldon-border text-kaldon-muted">
-              <svg class="w-3.5 h-3.5 text-kaldon-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-              No credit card required
-            </span>
-            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-kaldon-surface border border-kaldon-border text-kaldon-muted">
-              <svg class="w-3.5 h-3.5 text-kaldon-cyan" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-              2 free analyses
-            </span>
-            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-kaldon-surface border border-kaldon-border text-kaldon-muted">
-              <svg class="w-3.5 h-3.5 text-kaldon-purple" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" /></svg>
-              Set up in 60 seconds
-            </span>
+          <p class="text-sm text-kaldon-muted mb-6">No credit card required. Free plan available.</p>
+          <!-- C1: Hero social proof -->
+          <div class="flex items-center gap-2">
+            <div class="flex gap-0.5">
+              <svg class="w-4 h-4 text-kaldon-yellow" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              <svg class="w-4 h-4 text-kaldon-yellow" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              <svg class="w-4 h-4 text-kaldon-yellow" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              <svg class="w-4 h-4 text-kaldon-yellow" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              <svg class="w-4 h-4 text-kaldon-yellow" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            </div>
+            <span class="text-sm text-kaldon-muted">Trusted by eCommerce sellers across 3 marketplaces</span>
           </div>
         </div>
-        <div class="relative">
-          <div class="screenshot-container"><img src={screenshots.hero} alt="Kaldon AI product analysis report showing a detailed score with market intelligence" class="w-full h-auto" loading="eager" /></div>
+        <div class="relative hidden lg:block">
+          <div class="screenshot-container"><img src={screenshots.hero} alt="Kaldon AI product analysis report showing detailed market intelligence" class="w-full h-auto" loading="eager" /></div>
           <div class="absolute -inset-4 bg-kaldon-cyan/5 rounded-3xl blur-2xl -z-10"></div>
         </div>
-      </div>
-      <div class="mt-16 pt-8 border-t border-kaldon-border/50 text-center">
-        <p class="text-sm text-kaldon-muted">Powered by <span class="text-kaldon-text font-medium">21 frontier AI engines</span> &middot; Trusted by eCommerce sellers across <span class="text-kaldon-text font-medium">Amazon, Walmart &amp; DTC</span></p>
       </div>
     </div>
   </section>
 
-  <!-- ===== SECTION 2: THE PROBLEM ===== -->
+  <!-- ===== SECTION 2: SOCIAL PROOF STRIP ===== -->
+  <section class="py-8 border-y border-kaldon-border/50">
+    <div class="container-custom">
+      <p class="text-center text-sm text-kaldon-muted mb-6">Connected to the marketplaces and platforms your business runs on</p>
+      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-60 hover:opacity-80 transition-opacity">
+        <span class="text-sm font-semibold text-kaldon-muted tracking-wider">Amazon</span>
+        <span class="text-sm font-semibold text-kaldon-muted tracking-wider">Walmart</span>
+        <span class="text-sm font-semibold text-kaldon-muted tracking-wider">Stripe</span>
+        <span class="text-sm font-semibold text-kaldon-muted tracking-wider">Meta</span>
+        <span class="text-sm font-semibold text-kaldon-muted tracking-wider">TikTok</span>
+        <span class="text-sm font-semibold text-kaldon-muted tracking-wider">Google</span>
+        <span class="text-sm font-semibold text-kaldon-muted tracking-wider">Shopify</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 3: THE PROBLEM ($10,000 Problem) ===== -->
   <section class="section-spacing bg-kaldon-bg">
     <div class="container-custom">
       <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
-        <span class="eyebrow">THE PROBLEM</span>
+        <span class="eyebrow">THE $10,000 PROBLEM</span>
         <h2 class="section-headline mb-6">Launching an eCommerce Product Shouldn't Require 6 Subscriptions and 200 Hours</h2>
         <p class="text-kaldon-muted text-lg leading-relaxed">You've got a product idea. But turning that idea into a real, selling product means learning Jungle Scout for research, Canva for brand design, Jasper for content, Later for scheduling, Shopify for your store, and Ads Manager for traffic. Six different logins. Six different learning curves. And none of them talk to each other.</p>
       </div>
@@ -117,270 +160,278 @@ const screenshots = {
     </div>
   </section>
 
-  <!-- ===== SECTION 3: THE SOLUTION ===== -->
-  <section class="section-spacing relative">
+  <!-- ===== SECTION 4: ANIMATED PRODUCT SHOWCASE (Phase 3) ===== -->
+  <section id="product-showcase" class="section-spacing relative">
     <div class="absolute inset-0 bg-gradient-to-b from-kaldon-bg via-kaldon-surface/50 to-kaldon-bg"></div>
     <div class="container-custom relative z-10">
-      <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
+      <div class="text-center max-w-3xl mx-auto mb-12 animate-on-scroll">
         <span class="eyebrow">THE SOLUTION</span>
-        <h2 class="section-headline mb-6">One Platform. Five Phases. Zero Gaps.</h2>
-        <p class="text-kaldon-muted text-lg leading-relaxed">Kaldon replaces your entire tool stack with a single AI-powered pipeline. Your data flows from research to brand to content to store to ads — automatically.</p>
+        <h2 class="section-headline mb-4">One Platform. Five Phases. Zero Gaps.</h2>
+        <p class="text-kaldon-muted text-lg">Kaldon replaces your entire tool stack with a single AI-powered pipeline.</p>
       </div>
-      <div class="relative max-w-5xl mx-auto mb-16 animate-on-scroll">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0">
-          <div class="flex flex-col items-center text-center w-40">
-            <div class="w-16 h-16 rounded-2xl bg-kaldon-cyan/10 border-2 border-kaldon-cyan flex items-center justify-center mb-3 transition-all hover:bg-kaldon-cyan/20 hover:shadow-cyan-glow"><svg class="w-7 h-7 text-kaldon-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg></div>
-            <h3 class="font-bold text-kaldon-text mb-1">Discover</h3>
-            <p class="text-xs text-kaldon-muted leading-relaxed">AI Analysis Engine<br/>Opportunity Feed<br/>Market Intelligence</p>
-          </div>
-          <div class="hidden md:block flex-1 h-0.5 bg-gradient-to-r from-kaldon-cyan to-kaldon-orange mx-2"></div>
-          <div class="md:hidden w-0.5 h-8 bg-gradient-to-b from-kaldon-cyan to-kaldon-orange"></div>
-          <div class="flex flex-col items-center text-center w-40">
-            <div class="w-16 h-16 rounded-2xl bg-kaldon-orange/10 border-2 border-kaldon-orange flex items-center justify-center mb-3 transition-all hover:bg-kaldon-orange/20"><svg class="w-7 h-7 text-kaldon-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg></div>
-            <h3 class="font-bold text-kaldon-text mb-1">Build</h3>
-            <p class="text-xs text-kaldon-muted leading-relaxed">Brand Vault<br/>AI Logo Generation<br/>Brand Board</p>
-          </div>
-          <div class="hidden md:block flex-1 h-0.5 bg-gradient-to-r from-kaldon-orange to-kaldon-purple mx-2"></div>
-          <div class="md:hidden w-0.5 h-8 bg-gradient-to-b from-kaldon-orange to-kaldon-purple"></div>
-          <div class="flex flex-col items-center text-center w-40">
-            <div class="w-16 h-16 rounded-2xl bg-kaldon-purple/10 border-2 border-kaldon-purple flex items-center justify-center mb-3 transition-all hover:bg-kaldon-purple/20"><svg class="w-7 h-7 text-kaldon-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg></div>
-            <h3 class="font-bold text-kaldon-text mb-1">Create</h3>
-            <p class="text-xs text-kaldon-muted leading-relaxed">Content Calendar<br/>Video Studio<br/>Landing Pages</p>
-          </div>
-          <div class="hidden md:block flex-1 h-0.5 bg-gradient-to-r from-kaldon-purple to-kaldon-green mx-2"></div>
-          <div class="md:hidden w-0.5 h-8 bg-gradient-to-b from-kaldon-purple to-kaldon-green"></div>
-          <div class="flex flex-col items-center text-center w-40">
-            <div class="w-16 h-16 rounded-2xl bg-kaldon-green/10 border-2 border-kaldon-green flex items-center justify-center mb-3 transition-all hover:bg-kaldon-green/20"><svg class="w-7 h-7 text-kaldon-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
-            <h3 class="font-bold text-kaldon-text mb-1">Launch</h3>
-            <p class="text-xs text-kaldon-muted leading-relaxed">Store Deployment<br/>Blog Engine<br/>Marketplace Listings</p>
-          </div>
-          <div class="hidden md:block flex-1 h-0.5 bg-gradient-to-r from-kaldon-green to-kaldon-yellow mx-2"></div>
-          <div class="md:hidden w-0.5 h-8 bg-gradient-to-b from-kaldon-green to-kaldon-yellow"></div>
-          <div class="flex flex-col items-center text-center w-40">
-            <div class="w-16 h-16 rounded-2xl bg-kaldon-yellow/10 border-2 border-kaldon-yellow flex items-center justify-center mb-3 transition-all hover:bg-kaldon-yellow/20"><svg class="w-7 h-7 text-kaldon-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg></div>
-            <h3 class="font-bold text-kaldon-text mb-1">Grow</h3>
-            <p class="text-xs text-kaldon-muted leading-relaxed">Ad Optimization<br/>Customer Retention<br/>Performance Analytics</p>
-          </div>
-        </div>
-      </div>
-      <div class="text-center max-w-2xl mx-auto animate-on-scroll">
-        <p class="text-kaldon-muted text-lg leading-relaxed mb-8">Every step feeds the next. Your analysis data becomes your brand. Your brand becomes your content. Your content populates your store. <span class="text-kaldon-text font-medium">One continuous flow.</span></p>
-        <a href="https://kaldon.io/signup" class="btn-primary">Start with Discover — it's free <svg class="w-5 h-5 inline ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
-      </div>
-    </div>
-  </section>
 
-  <!-- ===== SECTION 4: FEATURE DEEP DIVES ===== -->
-  <section class="section-spacing bg-kaldon-bg">
-    <div class="container-custom">
-      <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
-        <span class="eyebrow">THE PLATFORM</span>
-        <h2 class="section-headline">Five Phases. One Seamless Pipeline.</h2>
+      <!-- Phase Tabs -->
+      <div class="flex flex-wrap justify-center gap-2 mb-12" id="showcase-tabs" role="tablist" aria-label="Product phases">
+        <button class="showcase-tab active" data-phase="discover" role="tab" aria-selected="true" aria-controls="panel-discover" style="border-color:#22d3ee;color:#22d3ee;background:rgba(34,211,238,0.1);">
+          <span class="tab-label">Discover</span>
+          <div class="tab-progress"><div class="tab-progress-bar"></div></div>
+        </button>
+        <button class="showcase-tab" data-phase="build" role="tab" aria-selected="false" aria-controls="panel-build">
+          <span class="tab-label">Build</span>
+          <div class="tab-progress"><div class="tab-progress-bar"></div></div>
+        </button>
+        <button class="showcase-tab" data-phase="create" role="tab" aria-selected="false" aria-controls="panel-create">
+          <span class="tab-label">Create</span>
+          <div class="tab-progress"><div class="tab-progress-bar"></div></div>
+        </button>
+        <button class="showcase-tab" data-phase="launch" role="tab" aria-selected="false" aria-controls="panel-launch">
+          <span class="tab-label">Launch</span>
+          <div class="tab-progress"><div class="tab-progress-bar"></div></div>
+        </button>
+        <button class="showcase-tab" data-phase="grow" role="tab" aria-selected="false" aria-controls="panel-grow">
+          <span class="tab-label">Grow</span>
+          <div class="tab-progress"><div class="tab-progress-bar"></div></div>
+        </button>
       </div>
-      <div class="flex flex-wrap justify-center gap-2 mb-12" id="phase-tabs">
-        <button class="phase-tab active px-5 py-2.5 rounded-lg text-sm font-medium transition-all border" data-phase="discover" style="border-color:#00E5CC;color:#00E5CC;background:rgba(0,229,204,0.1);">Discover</button>
-        <button class="phase-tab px-5 py-2.5 rounded-lg text-sm font-medium transition-all border border-kaldon-border text-kaldon-muted hover:text-kaldon-text" data-phase="build">Build</button>
-        <button class="phase-tab px-5 py-2.5 rounded-lg text-sm font-medium transition-all border border-kaldon-border text-kaldon-muted hover:text-kaldon-text" data-phase="create">Create</button>
-        <button class="phase-tab px-5 py-2.5 rounded-lg text-sm font-medium transition-all border border-kaldon-border text-kaldon-muted hover:text-kaldon-text" data-phase="launch">Launch</button>
-        <button class="phase-tab px-5 py-2.5 rounded-lg text-sm font-medium transition-all border border-kaldon-border text-kaldon-muted hover:text-kaldon-text" data-phase="grow">Grow</button>
-      </div>
-      <div id="phase-panels">
-        <!-- Discover Panel -->
-        <div class="phase-panel" data-phase="discover">
-          <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+      <!-- Phase Panels -->
+      <div id="showcase-panels">
+        <div class="showcase-panel" id="panel-discover" data-phase="discover" role="tabpanel">
+          <div class="grid lg:grid-cols-[2fr_3fr] gap-12 items-center">
             <div>
-              <h3 class="text-2xl md:text-3xl font-bold text-kaldon-text mb-4">Know Exactly What to Sell — Before You Invest a Dollar</h3>
-              <ul class="space-y-3 mb-6">
-                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-cyan shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">9 parallel AI engines across Amazon, Walmart &amp; DTC</span></li>
+              <h3 class="text-2xl md:text-3xl font-bold text-kaldon-text mb-4">Find Products That Actually Sell</h3>
+              <p class="text-kaldon-muted text-lg leading-relaxed mb-6">11 intelligence sources analyze every angle: demand, competition, margins, trends, and supplier options. Across Amazon, Walmart, and emerging marketplaces. Know before you invest.</p>
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-cyan shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">Multi-marketplace intelligence in one report</span></li>
                 <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-cyan shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">AI product mockups before sourcing</span></li>
                 <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-cyan shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">Step-by-step action plan with timelines</span></li>
-                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-cyan shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">Guided coaching for go/no-go decisions</span></li>
               </ul>
-              <div class="bg-kaldon-surface-2 border-l-4 border-kaldon-cyan rounded-lg p-5 mb-6">
-                <p class="text-sm font-semibold text-kaldon-text mb-1">What makes this different</p>
-                <p class="text-sm text-kaldon-muted">Other platforms give you data and leave you to figure it out. Kaldon gives you a decision, an action plan, and a coach.</p>
-              </div>
-              <div id="loom-phase-1" class="video-placeholder aspect-video bg-kaldon-surface">
-                <img src={screenshots.coaching} alt="Kaldon coaching flow walkthrough" class="w-full h-full object-cover" loading="lazy" />
-                <div class="play-overlay"><span class="flex items-center gap-2 bg-black/60 px-5 py-2.5 rounded-full"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>Watch the Walkthrough</span></div>
-              </div>
             </div>
-            <div class="screenshot-container"><img src={screenshots.hero} alt="Kaldon analysis report" class="w-full" loading="lazy" /></div>
+            <div class="screenshot-container"><img src={screenshots.hero} alt="Kaldon analysis report with market intelligence scores" class="w-full" loading="lazy" /></div>
           </div>
         </div>
-        <!-- Build Panel -->
-        <div class="phase-panel hidden" data-phase="build">
-          <div class="grid lg:grid-cols-2 gap-12 items-center">
-            <div class="lg:order-2">
-              <h3 class="text-2xl md:text-3xl font-bold text-kaldon-text mb-4">A Professional Brand Identity, Generated in Minutes</h3>
-              <ul class="space-y-3 mb-6">
-                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-orange shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">AI generates complete identity from analysis data</span></li>
-                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-orange shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">Lock brand and pipeline auto-uses it everywhere</span></li>
-                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-orange shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">Professional Brand Boards for partners and team</span></li>
+
+        <div class="showcase-panel hidden" id="panel-build" data-phase="build" role="tabpanel">
+          <div class="grid lg:grid-cols-[2fr_3fr] gap-12 items-center">
+            <div>
+              <h3 class="text-2xl md:text-3xl font-bold text-kaldon-text mb-4">Build a Brand in Minutes, Not Months</h3>
+              <p class="text-kaldon-muted text-lg leading-relaxed mb-6">AI generates your complete brand identity: name, voice, visual system, logo concepts, and brand guidelines. Professional quality that used to cost $5,000+.</p>
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-orange shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">Complete identity from your analysis data</span></li>
+                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-orange shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">Professional Brand Boards for partners</span></li>
                 <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-orange shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">Edit or regenerate anything, anytime</span></li>
               </ul>
-              <div class="bg-kaldon-surface-2 border-l-4 border-kaldon-orange rounded-lg p-5 mb-6">
-                <p class="text-sm font-semibold text-kaldon-text mb-1">What makes this different</p>
-                <p class="text-sm text-kaldon-muted">Other platforms make you build your brand from scratch. Kaldon builds it from the data you already have.</p>
-              </div>
-              <div id="loom-phase-2" class="video-placeholder aspect-video bg-kaldon-surface">
-                <img src={screenshots.brandDetail} alt="Kaldon brand building walkthrough" class="w-full h-full object-cover" loading="lazy" />
-                <div class="play-overlay"><span class="flex items-center gap-2 bg-black/60 px-5 py-2.5 rounded-full"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>Watch the Walkthrough</span></div>
-              </div>
             </div>
-            <div class="lg:order-1 screenshot-container"><img src={screenshots.brandVault} alt="Kaldon Brand Vault" class="w-full" loading="lazy" /></div>
+            <div class="screenshot-container"><img src={screenshots.brandVisualIdentity} alt="Kaldon AI brand identity generator" class="w-full" loading="lazy" /></div>
           </div>
         </div>
-        <!-- Create Panel -->
-        <div class="phase-panel hidden" data-phase="create">
-          <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+        <div class="showcase-panel hidden" id="panel-create" data-phase="create" role="tabpanel">
+          <div class="grid lg:grid-cols-[2fr_3fr] gap-12 items-center">
             <div>
-              <h3 class="text-2xl md:text-3xl font-bold text-kaldon-text mb-4">A Month of Content, Ready Before Your Morning Coffee</h3>
-              <ul class="space-y-3 mb-6">
-                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-purple shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">Full month of social content in minutes across 5 platforms</span></li>
-                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-purple shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">9 AI video templates for product demos and ads</span></li>
-                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-purple shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">Conversion-optimized landing pages</span></li>
+              <h3 class="text-2xl md:text-3xl font-bold text-kaldon-text mb-4">A Month of Content, Ready to Go</h3>
+              <p class="text-kaldon-muted text-lg leading-relaxed mb-6">Professional product photos, social media calendars, video content, and marketing copy. All on-brand, all generated in seconds, all yours.</p>
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-purple shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">Full month of social content across 5 platforms</span></li>
+                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-purple shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">9 AI video templates for product demos</span></li>
                 <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-purple shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">Everything matches your brand voice automatically</span></li>
               </ul>
-              <div class="bg-kaldon-surface-2 border-l-4 border-kaldon-purple rounded-lg p-5 mb-6">
-                <p class="text-sm font-semibold text-kaldon-text mb-1">What makes this different</p>
-                <p class="text-sm text-kaldon-muted">Other content tools generate generic output. Kaldon generates content that already knows your product, your audience, and your brand.</p>
-              </div>
-              <div id="loom-phase-3" class="video-placeholder aspect-video bg-kaldon-surface">
-                <img src={screenshots.calendar} alt="Kaldon content creation walkthrough" class="w-full h-full object-cover" loading="lazy" />
-                <div class="play-overlay"><span class="flex items-center gap-2 bg-black/60 px-5 py-2.5 rounded-full"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>Watch the Walkthrough</span></div>
-              </div>
             </div>
-            <div class="screenshot-container"><img src={screenshots.calendar} alt="Kaldon Content Calendar" class="w-full" loading="lazy" /></div>
+            <div class="screenshot-container"><img src={screenshots.calendar} alt="Kaldon content calendar with AI-generated posts" class="w-full" loading="lazy" /></div>
           </div>
         </div>
-        <!-- Launch Panel -->
-        <div class="phase-panel hidden" data-phase="launch">
-          <div class="grid lg:grid-cols-2 gap-12 items-center">
-            <div class="lg:order-2">
-              <h3 class="text-2xl md:text-3xl font-bold text-kaldon-text mb-4">A Complete Store, Live in One Click</h3>
-              <ul class="space-y-3 mb-6">
-                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-green shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">One click deploys store + checkout + emails + SMS</span></li>
-                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-green shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">Blog Engine publishes weekly SEO content automatically</span></li>
-                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-green shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">GEO optimization for AI shopping assistants</span></li>
-                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-green shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">Marketplace listing generator for Amazon &amp; Walmart</span></li>
-              </ul>
-              <div class="bg-kaldon-surface-2 border-l-4 border-kaldon-green rounded-lg p-5 mb-6">
-                <p class="text-sm font-semibold text-kaldon-text mb-1">What makes this different</p>
-                <p class="text-sm text-kaldon-muted">Other platforms build stores. Kaldon builds stores that are already marketing themselves from day one.</p>
-              </div>
-              <div id="loom-phase-4" class="video-placeholder aspect-video bg-kaldon-surface">
-                <img src={screenshots.storeDeployment} alt="Kaldon store deployment walkthrough" class="w-full h-full object-cover" loading="lazy" />
-                <div class="play-overlay"><span class="flex items-center gap-2 bg-black/60 px-5 py-2.5 rounded-full"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>Watch the Walkthrough</span></div>
-              </div>
-            </div>
-            <div class="lg:order-1 screenshot-container"><img src={screenshots.storeDeployment} alt="Kaldon Store Deployment" class="w-full" loading="lazy" /></div>
-          </div>
-        </div>
-        <!-- Grow Panel -->
-        <div class="phase-panel hidden" data-phase="grow">
-          <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+        <div class="showcase-panel hidden" id="panel-launch" data-phase="launch" role="tabpanel">
+          <div class="grid lg:grid-cols-[2fr_3fr] gap-12 items-center">
             <div>
-              <h3 class="text-2xl md:text-3xl font-bold text-kaldon-text mb-4">Ads That Optimize Themselves. Customers That Keep Coming Back.</h3>
-              <ul class="space-y-3 mb-6">
-                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-yellow shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">AI manages Meta ad campaigns end to end</span></li>
-                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-yellow shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">Customer retention identifies churn risk early</span></li>
-                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-yellow shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">Performance analytics show ROAS, CAC, and LTV</span></li>
-                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-yellow shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">New creatives auto-generated from winners</span></li>
+              <h3 class="text-2xl md:text-3xl font-bold text-kaldon-text mb-4">From Brand to Live Store, One Click</h3>
+              <p class="text-kaldon-muted text-lg leading-relaxed mb-6">Your own branded storefront, deployed to a custom domain with Stripe payments. Plus full CRM, email marketing, and chatbot. No developers needed.</p>
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-green shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">Store + checkout + emails + SMS in one click</span></li>
+                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-green shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">Blog Engine publishes weekly SEO content</span></li>
+                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-green shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">Marketplace listing generator for Amazon + Walmart</span></li>
               </ul>
-              <div class="bg-kaldon-surface-2 border-l-4 border-kaldon-yellow rounded-lg p-5 mb-6">
-                <p class="text-sm font-semibold text-kaldon-text mb-1">What makes this different</p>
-                <p class="text-sm text-kaldon-muted">Other tools report on growth. Kaldon drives it. Automatically.</p>
-              </div>
-              <div id="loom-phase-5" class="video-placeholder aspect-video bg-kaldon-surface">
-                <img src={screenshots.journey} alt="Kaldon growth dashboard walkthrough" class="w-full h-full object-cover" loading="lazy" />
-                <div class="play-overlay"><span class="flex items-center gap-2 bg-black/60 px-5 py-2.5 rounded-full"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>Watch the Walkthrough</span></div>
-              </div>
             </div>
-            <div class="screenshot-container"><img src={screenshots.journey} alt="Kaldon growth dashboard" class="w-full" loading="lazy" /></div>
+            <div class="screenshot-container"><img src={screenshots.storeDeployment} alt="Kaldon store deployment with one-click setup" class="w-full" loading="lazy" /></div>
           </div>
+        </div>
+
+        <div class="showcase-panel hidden" id="panel-grow" data-phase="grow" role="tabpanel">
+          <div class="grid lg:grid-cols-[2fr_3fr] gap-12 items-center">
+            <div>
+              <h3 class="text-2xl md:text-3xl font-bold text-kaldon-text mb-4">Grow Across Every Channel</h3>
+              <p class="text-kaldon-muted text-lg leading-relaxed mb-6">Automated social posting, performance dashboards, customer retention campaigns, and AI optimization. All channels, all in one view.</p>
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-yellow shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">AI manages Meta ad campaigns end to end</span></li>
+                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-yellow shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">Performance analytics: ROAS, CAC, and LTV</span></li>
+                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-kaldon-yellow shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span class="text-kaldon-muted">Customer retention identifies churn risk early</span></li>
+              </ul>
+            </div>
+            <div class="screenshot-container"><img src={screenshots.journey} alt="Kaldon growth dashboard with multi-channel analytics" class="w-full" loading="lazy" /></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-12 animate-on-scroll">
+        <a href="https://kaldon.io/signup" class="btn-primary btn-large" data-event="showcase_cta_click">Start Free, 2 Analyses Included <svg class="w-5 h-5 inline ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 5: BY THE NUMBERS (C8) ===== -->
+  <section class="section-spacing bg-kaldon-bg relative">
+    <div class="absolute inset-0 bg-gradient-to-r from-kaldon-cyan/5 via-transparent to-kaldon-purple/5"></div>
+    <div class="container-custom relative z-10">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div class="text-center animate-on-scroll">
+          <div class="w-12 h-12 rounded-xl bg-kaldon-cyan/10 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-kaldon-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+          </div>
+          <p class="text-4xl md:text-5xl font-extrabold text-kaldon-cyan" data-count="11" data-suffix="">0</p>
+          <p class="text-sm text-kaldon-muted mt-2 leading-snug">Intelligence sources<br/>per analysis</p>
+        </div>
+        <div class="text-center animate-on-scroll">
+          <div class="w-12 h-12 rounded-xl bg-kaldon-cyan/10 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-kaldon-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          </div>
+          <p class="text-4xl md:text-5xl font-extrabold text-kaldon-cyan" data-count="18000" data-prefix="$" data-suffix="+">$0</p>
+          <p class="text-sm text-kaldon-muted mt-2 leading-snug">In tools and services<br/>replaced. One subscription.</p>
+        </div>
+        <div class="text-center animate-on-scroll">
+          <div class="w-12 h-12 rounded-xl bg-kaldon-cyan/10 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-kaldon-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          </div>
+          <p class="text-4xl md:text-5xl font-extrabold text-kaldon-cyan">Minutes</p>
+          <p class="text-sm text-kaldon-muted mt-2 leading-snug">Not months. From idea<br/>to live store.</p>
+        </div>
+        <div class="text-center animate-on-scroll">
+          <div class="w-12 h-12 rounded-xl bg-kaldon-cyan/10 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-kaldon-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+          </div>
+          <p class="text-4xl md:text-5xl font-extrabold text-kaldon-cyan" data-count="5" data-suffix="">0</p>
+          <p class="text-sm text-kaldon-muted mt-2 leading-snug">Platforms. One dashboard.<br/>Amazon. Walmart. DTC. And more.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== SECTION 5: WHO IT'S FOR ===== -->
+  <!-- ===== SECTION 6: HOW TO GET STARTED (C9) ===== -->
   <section class="section-spacing relative">
     <div class="absolute inset-0 bg-gradient-to-b from-kaldon-bg via-kaldon-surface/30 to-kaldon-bg"></div>
     <div class="container-custom relative z-10">
       <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
-        <span class="eyebrow">WHO IT'S FOR</span>
-        <h2 class="section-headline">Built for Every Stage of Your eCommerce Journey</h2>
+        <span class="eyebrow">GET STARTED</span>
+        <h2 class="section-headline">Getting started takes 2 minutes</h2>
       </div>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="card animate-on-scroll" style="border-top:3px solid transparent;border-image:linear-gradient(90deg,#22d3ee,#3b82f6) 1;border-image-slice:1;">
-          <span class="text-2xl">🚀</span>
-          <h3 class="text-xl font-bold text-kaldon-text mt-2 mb-2">The Aspiring Launcher</h3>
-          <p class="text-kaldon-cyan text-sm font-medium mb-3 italic">"I have a product idea but no idea where to start."</p>
-          <p class="text-kaldon-muted text-sm leading-relaxed mb-6">You don't need experience. You need intelligence. Kaldon tells you exactly what to sell, how to brand it, and how to launch it.</p>
-          <a href="https://kaldon.io/signup" class="text-kaldon-cyan text-sm font-semibold hover:text-kaldon-cyan-light transition-colors inline-flex items-center gap-1">Start Your First Analysis <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
+      <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto relative">
+        <!-- Connector line (desktop) -->
+        <div class="hidden md:block absolute top-12 left-[20%] right-[20%] h-0.5 bg-gradient-to-r from-kaldon-cyan/30 via-kaldon-purple/30 to-kaldon-green/30"></div>
+
+        <div class="text-center animate-on-scroll relative">
+          <div class="w-14 h-14 rounded-full bg-kaldon-cyan/10 border-2 border-kaldon-cyan flex items-center justify-center mx-auto mb-5 relative z-10">
+            <span class="text-kaldon-cyan font-bold text-xl">1</span>
+          </div>
+          <h3 class="text-lg font-bold text-kaldon-text mb-3">Sign up free</h3>
+          <p class="text-kaldon-muted text-sm leading-relaxed">No credit card. No commitment. Just your email.</p>
         </div>
-        <div class="card animate-on-scroll" style="border-top:3px solid transparent;border-image:linear-gradient(90deg,#fb923c,#fbbf24) 1;border-image-slice:1;">
-          <span class="text-2xl">📈</span>
-          <h3 class="text-xl font-bold text-kaldon-text mt-2 mb-2">The Expanding Seller</h3>
-          <p class="text-kaldon-orange text-sm font-medium mb-3 italic">"I'm selling on Amazon but want to go DTC and multi-channel."</p>
-          <p class="text-kaldon-muted text-sm leading-relaxed mb-6">Stop being dependent on one marketplace. Kaldon helps you build a brand, create content, and launch your own store.</p>
-          <a href="https://kaldon.io/signup" class="text-kaldon-orange text-sm font-semibold hover:opacity-80 transition-colors inline-flex items-center gap-1">Expand Your Business <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
+        <div class="text-center animate-on-scroll relative">
+          <div class="w-14 h-14 rounded-full bg-kaldon-purple/10 border-2 border-kaldon-purple flex items-center justify-center mx-auto mb-5 relative z-10">
+            <span class="text-kaldon-purple font-bold text-xl">2</span>
+          </div>
+          <h3 class="text-lg font-bold text-kaldon-text mb-3">Run your first analysis</h3>
+          <p class="text-kaldon-muted text-sm leading-relaxed">Tell us what you're interested in selling. Our AI analyzes 11 sources and delivers a complete intelligence report.</p>
         </div>
-        <div class="card animate-on-scroll" style="border-top:3px solid transparent;border-image:linear-gradient(90deg,#a78bfa,#f472b6) 1;border-image-slice:1;">
-          <span class="text-2xl">🎨</span>
-          <h3 class="text-xl font-bold text-kaldon-text mt-2 mb-2">The Brand Builder</h3>
-          <p class="text-kaldon-purple text-sm font-medium mb-3 italic">"I have products but my brand feels amateur."</p>
-          <p class="text-kaldon-muted text-sm leading-relaxed mb-6">Professional brand identity in minutes, not months. Logo, colors, voice, content, and a storefront that looks like you hired an agency.</p>
-          <a href="https://kaldon.io/signup" class="text-kaldon-purple text-sm font-semibold hover:opacity-80 transition-colors inline-flex items-center gap-1">Build Your Brand <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
+        <div class="text-center animate-on-scroll relative">
+          <div class="w-14 h-14 rounded-full bg-kaldon-green/10 border-2 border-kaldon-green flex items-center justify-center mx-auto mb-5 relative z-10">
+            <span class="text-kaldon-green font-bold text-xl">3</span>
+          </div>
+          <h3 class="text-lg font-bold text-kaldon-text mb-3">Build from there</h3>
+          <p class="text-kaldon-muted text-sm leading-relaxed">Kaldon guides you through brand creation, content, store deployment, and growth. One step at a time.</p>
         </div>
-        <div class="card animate-on-scroll" style="border-top:3px solid transparent;border-image:linear-gradient(90deg,#34d399,#22d3ee) 1;border-image-slice:1;">
-          <span class="text-2xl">🏢</span>
-          <h3 class="text-xl font-bold text-kaldon-text mt-2 mb-2">The Coach / Agency</h3>
-          <p class="text-kaldon-green text-sm font-medium mb-3 italic">"I help sellers launch products and need better tools."</p>
-          <p class="text-kaldon-muted text-sm leading-relaxed mb-6">Give every client a professional launch stack without doing the work yourself. Your clients think you're a genius.</p>
-          <a href="https://kaldon.io/signup" class="text-kaldon-green text-sm font-semibold hover:opacity-80 transition-colors inline-flex items-center gap-1">Scale Your Agency <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
+      </div>
+      <div class="text-center mt-12 animate-on-scroll">
+        <a href="https://kaldon.io/signup" class="btn-primary btn-large" data-event="steps_cta_click">Start Free, 2 Analyses Included</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 7: TESTIMONIALS ===== -->
+  <!-- SAMPLE TESTIMONIALS: Replace with real beta user quotes as they come in. Each card is clearly marked for easy swapping. -->
+  <section class="section-spacing bg-kaldon-bg">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
+        <span class="eyebrow">WHAT SELLERS ARE SAYING</span>
+        <h2 class="section-headline">Real Results from Real Sellers</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- SAMPLE TESTIMONIAL 1: Replace with real quote -->
+        <div class="animate-on-scroll rounded-2xl p-8 relative overflow-hidden" style="background:rgba(17,24,39,0.7);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.08);">
+          <div class="flex gap-0.5 mb-4">
+            <svg class="w-4 h-4 text-kaldon-yellow" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            <svg class="w-4 h-4 text-kaldon-yellow" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            <svg class="w-4 h-4 text-kaldon-yellow" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            <svg class="w-4 h-4 text-kaldon-yellow" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            <svg class="w-4 h-4 text-kaldon-yellow" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+          </div>
+          <p class="text-kaldon-text text-sm leading-relaxed mb-6">"I was spending $400 a month on four different tools just for product research. Kaldon replaced all of them and added brand building on top. The analysis quality blew me away."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-kaldon-cyan/20 flex items-center justify-center text-kaldon-cyan font-bold text-sm">SM</div>
+            <div>
+              <p class="text-sm font-semibold text-kaldon-text">Sarah M.</p>
+              <p class="text-xs text-kaldon-muted">eCommerce seller, 3 years</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SAMPLE TESTIMONIAL 2: Replace with real quote -->
+        <div class="animate-on-scroll rounded-2xl p-8 relative overflow-hidden" style="background:rgba(17,24,39,0.7);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.08);">
+          <div class="flex gap-0.5 mb-4">
+            <svg class="w-4 h-4 text-kaldon-yellow" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            <svg class="w-4 h-4 text-kaldon-yellow" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            <svg class="w-4 h-4 text-kaldon-yellow" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            <svg class="w-4 h-4 text-kaldon-yellow" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            <svg class="w-4 h-4 text-kaldon-yellow" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+          </div>
+          <p class="text-kaldon-text text-sm leading-relaxed mb-6">"We went from product idea to a fully branded storefront in one afternoon. The AI-generated brand identity was better than what our agency produced for $5,000."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-kaldon-orange/20 flex items-center justify-center text-kaldon-orange font-bold text-sm">JR</div>
+            <div>
+              <p class="text-sm font-semibold text-kaldon-text">James R.</p>
+              <p class="text-xs text-kaldon-muted">DTC brand founder</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SAMPLE TESTIMONIAL 3: Replace with real quote -->
+        <div class="animate-on-scroll rounded-2xl p-8 relative overflow-hidden" style="background:rgba(17,24,39,0.7);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.08);">
+          <div class="flex gap-0.5 mb-4">
+            <svg class="w-4 h-4 text-kaldon-yellow" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            <svg class="w-4 h-4 text-kaldon-yellow" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            <svg class="w-4 h-4 text-kaldon-yellow" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            <svg class="w-4 h-4 text-kaldon-yellow" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            <svg class="w-4 h-4 text-kaldon-yellow" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+          </div>
+          <p class="text-kaldon-text text-sm leading-relaxed mb-6">"The multi-marketplace intelligence is what sold me. I was only selling on Amazon because the research tools only covered Amazon. Kaldon showed me opportunities on Walmart I never would have found."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-kaldon-purple/20 flex items-center justify-center text-kaldon-purple font-bold text-sm">PK</div>
+            <div>
+              <p class="text-sm font-semibold text-kaldon-text">Priya K.</p>
+              <p class="text-xs text-kaldon-muted">Omnichannel seller</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== SECTION 6: COST COMPARISON ===== -->
-  <section class="section-spacing bg-kaldon-bg">
-    <div class="container-custom">
+  <!-- ===== SECTION 8: SAVINGS CALCULATOR ===== -->
+  <section class="section-spacing relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-kaldon-bg via-kaldon-surface/30 to-kaldon-bg"></div>
+    <div class="container-custom relative z-10">
       <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
         <span class="eyebrow">THE MATH</span>
         <h2 class="section-headline">Save $700+/Year and 200+ Hours</h2>
       </div>
-      <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-16">
-        <div class="card animate-on-scroll opacity-70">
-          <h3 class="text-lg font-bold text-kaldon-muted mb-4">The Old Way</h3>
-          <ul class="space-y-2 mb-6">
-            <li class="text-sm text-kaldon-muted line-through">Jungle Scout — $79/mo</li>
-            <li class="text-sm text-kaldon-muted line-through">Canva Pro — $15/mo</li>
-            <li class="text-sm text-kaldon-muted line-through">Jasper — $49/mo</li>
-            <li class="text-sm text-kaldon-muted line-through">Later — $25/mo</li>
-            <li class="text-sm text-kaldon-muted line-through">Shopify — $39/mo</li>
-            <li class="text-sm text-kaldon-muted line-through">Your time managing it all</li>
-          </ul>
-          <p class="text-2xl font-bold text-kaldon-red">$207+/mo</p>
-          <p class="text-xs text-kaldon-muted mt-1">6 tools. 6 logins. Zero integration.</p>
-        </div>
-        <div class="card animate-on-scroll relative overflow-hidden" style="border-color:rgba(0,229,204,0.3);box-shadow:0 0 40px rgba(0,229,204,0.08);">
-          <div class="absolute top-0 right-0 bg-kaldon-cyan text-kaldon-bg text-xs font-bold px-3 py-1 rounded-bl-lg">RECOMMENDED</div>
-          <h3 class="text-lg font-bold text-kaldon-cyan mb-4">The Kaldon Way</h3>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-2 text-sm text-kaldon-text"><svg class="w-4 h-4 text-kaldon-cyan" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Product research + AI analysis</li>
-            <li class="flex items-center gap-2 text-sm text-kaldon-text"><svg class="w-4 h-4 text-kaldon-cyan" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Brand identity + logo + board</li>
-            <li class="flex items-center gap-2 text-sm text-kaldon-text"><svg class="w-4 h-4 text-kaldon-cyan" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Content calendar + video + pages</li>
-            <li class="flex items-center gap-2 text-sm text-kaldon-text"><svg class="w-4 h-4 text-kaldon-cyan" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Store + blog + marketplace listings</li>
-            <li class="flex items-center gap-2 text-sm text-kaldon-text"><svg class="w-4 h-4 text-kaldon-cyan" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Ad optimization + retention + analytics</li>
-          </ul>
-          <p class="text-2xl font-bold text-kaldon-cyan">$149/mo</p>
-          <p class="text-xs text-kaldon-muted mt-1">One platform. Everything connected.</p>
-        </div>
-      </div>
-      <!-- ROI Calculator -->
       <div class="max-w-2xl mx-auto card animate-on-scroll">
         <h3 class="text-xl font-bold text-kaldon-text mb-6 text-center">Calculate Your Savings</h3>
         <div class="space-y-6">
@@ -402,202 +453,209 @@ const screenshots = {
           <div class="text-center"><p id="yearly-savings" class="text-2xl font-bold text-kaldon-cyan">$612</p><p class="text-xs text-kaldon-muted mt-1">Yearly savings</p></div>
           <div class="text-center"><p id="hours-saved" class="text-2xl font-bold text-kaldon-cyan">384h</p><p class="text-xs text-kaldon-muted mt-1">Hours saved/year</p></div>
         </div>
-        <div class="text-center mt-6"><a href="https://kaldon.io/signup" class="btn-primary">Start Saving: 2 Free Analyses</a></div>
+        <div class="text-center mt-6"><a href="https://kaldon.io/signup" class="btn-primary" data-event="calculator_cta_click">Start Saving: 2 Free Analyses</a></div>
       </div>
     </div>
   </section>
 
-  <!-- ===== SECTION 7: INTERACTIVE DEMO ===== -->
-  <section id="demo-section" class="section-spacing relative">
-    <div class="absolute inset-0 bg-gradient-to-b from-kaldon-bg via-kaldon-surface/30 to-kaldon-bg"></div>
-    <div class="container-custom relative z-10">
-      <div class="text-center max-w-3xl mx-auto mb-12 animate-on-scroll">
-        <span class="eyebrow">SEE IT IN ACTION</span>
-        <h2 class="section-headline mb-4">Click Through a Real Product Analysis. No Signup Required.</h2>
-      </div>
-      <div class="flex justify-center gap-3 mb-8">
-        <button class="demo-tab active px-4 py-2 rounded-lg text-sm font-medium bg-kaldon-cyan/10 text-kaldon-cyan border border-kaldon-cyan/30" data-demo="1">Discover a Product</button>
-        <button class="demo-tab px-4 py-2 rounded-lg text-sm font-medium text-kaldon-muted border border-kaldon-border hover:text-kaldon-text" data-demo="2">Build Your Brand</button>
-        <button class="demo-tab px-4 py-2 rounded-lg text-sm font-medium text-kaldon-muted border border-kaldon-border hover:text-kaldon-text" data-demo="3">Full Pipeline</button>
-      </div>
-      <div class="max-w-4xl mx-auto">
-        <div id="arcade-demo-1" class="arcade-placeholder demo-panel">
-          <img src={screenshots.hero} alt="Discover a Winning Product — Interactive Demo" loading="lazy" />
-          <div class="arcade-overlay"><span class="arcade-badge"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" /></svg>Interactive Demo</span><p class="text-white text-lg font-medium">Click through a real product analysis</p><p class="text-white/60 text-sm mt-2">Sean is recording this demo — embed coming soon</p></div>
-        </div>
-        <div id="arcade-demo-2" class="arcade-placeholder demo-panel hidden">
-          <img src={screenshots.brandVault} alt="Build Your Brand — Interactive Demo" loading="lazy" />
-          <div class="arcade-overlay"><span class="arcade-badge"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" /></svg>Interactive Demo</span><p class="text-white text-lg font-medium">Build your brand identity in minutes</p><p class="text-white/60 text-sm mt-2">Sean is recording this demo — embed coming soon</p></div>
-        </div>
-        <div id="arcade-demo-3" class="arcade-placeholder demo-panel hidden">
-          <img src={screenshots.journey} alt="Full Pipeline — Interactive Demo" loading="lazy" />
-          <div class="arcade-overlay"><span class="arcade-badge"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" /></svg>Interactive Demo</span><p class="text-white text-lg font-medium">See the full pipeline from research to revenue</p><p class="text-white/60 text-sm mt-2">Sean is recording this demo — embed coming soon</p></div>
-        </div>
-      </div>
-      <div class="text-center mt-8"><a href="https://kaldon.io/signup" class="btn-primary">Ready to run your own? <svg class="w-5 h-5 inline ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a></div>
-    </div>
-  </section>
-
-  <!-- ===== SECTION 8: SOCIAL PROOF ===== -->
+  <!-- ===== SECTION 9: PRICING TEASER ===== -->
   <section class="section-spacing bg-kaldon-bg">
     <div class="container-custom">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-        <div class="text-center animate-on-scroll"><p class="text-3xl md:text-4xl font-bold text-kaldon-text">21</p><p class="text-sm text-kaldon-muted mt-1">AI Engines</p></div>
-        <div class="text-center animate-on-scroll"><p class="text-3xl md:text-4xl font-bold text-kaldon-text">2,431</p><p class="text-sm text-kaldon-muted mt-1">Automated Tests</p></div>
-        <div class="text-center animate-on-scroll"><p class="text-3xl md:text-4xl font-bold text-kaldon-text">5</p><p class="text-sm text-kaldon-muted mt-1">Phases</p></div>
-        <div class="text-center animate-on-scroll"><p class="text-3xl md:text-4xl font-bold text-kaldon-text">&lt; 15 min</p><p class="text-sm text-kaldon-muted mt-1">To Intelligence</p></div>
-      </div>
-      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12 mb-16 opacity-40">
-        <span class="text-sm font-medium text-kaldon-muted tracking-wider">Amazon SP-API</span>
-        <span class="text-sm font-medium text-kaldon-muted tracking-wider">Stripe</span>
-        <span class="text-sm font-medium text-kaldon-muted tracking-wider">Cloudflare</span>
-        <span class="text-sm font-medium text-kaldon-muted tracking-wider">Meta</span>
-        <span class="text-sm font-medium text-kaldon-muted tracking-wider">Google</span>
-      </div>
-      <div class="grid md:grid-cols-3 gap-6 mb-16">
-        {[1,2,3].map(() => (
-          <div class="card animate-on-scroll">
-            <div class="flex gap-1 mb-3">{[1,2,3,4,5].map(() => (<svg class="w-4 h-4 text-kaldon-yellow" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>))}</div>
-            <p class="text-kaldon-muted text-sm italic mb-4">"Join our beta and be among the first to experience it."</p>
-            <p class="text-xs text-kaldon-muted">— Beta Tester Slot Available</p>
-          </div>
-        ))}
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="flex items-center gap-3 p-4 rounded-xl bg-kaldon-surface border border-kaldon-border"><svg class="w-8 h-8 text-kaldon-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg><div><p class="text-xs font-semibold text-kaldon-text">AES-256</p><p class="text-xs text-kaldon-muted">Encryption</p></div></div>
-        <div class="flex items-center gap-3 p-4 rounded-xl bg-kaldon-surface border border-kaldon-border"><svg class="w-8 h-8 text-kaldon-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg><div><p class="text-xs font-semibold text-kaldon-text">No Data</p><p class="text-xs text-kaldon-muted">Sharing</p></div></div>
-        <div class="flex items-center gap-3 p-4 rounded-xl bg-kaldon-surface border border-kaldon-border"><svg class="w-8 h-8 text-kaldon-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><div><p class="text-xs font-semibold text-kaldon-text">Cancel</p><p class="text-xs text-kaldon-muted">Anytime</p></div></div>
-        <div class="flex items-center gap-3 p-4 rounded-xl bg-kaldon-surface border border-kaldon-border"><svg class="w-8 h-8 text-kaldon-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><div><p class="text-xs font-semibold text-kaldon-text">SOC 2</p><p class="text-xs text-kaldon-muted">Aligned</p></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SECTION 9: PRICING PREVIEW ===== -->
-  <section class="section-spacing relative">
-    <div class="absolute inset-0 bg-gradient-to-b from-kaldon-bg via-kaldon-surface/30 to-kaldon-bg"></div>
-    <div class="container-custom relative z-10">
-      <div class="text-center max-w-3xl mx-auto mb-12 animate-on-scroll">
+      <div class="text-center max-w-3xl mx-auto animate-on-scroll">
         <span class="eyebrow">PRICING</span>
-        <h2 class="section-headline mb-4">Simple, Transparent Pricing</h2>
-        <p class="text-kaldon-muted">All plans include 2 free analyses. No credit card required.</p>
-      </div>
-      <div class="flex items-center justify-center gap-3 mb-10">
-        <span class="text-sm text-kaldon-muted" id="monthly-label">Monthly</span>
-        <button id="pricing-toggle" class="relative w-12 h-6 bg-kaldon-surface-2 rounded-full border border-kaldon-border transition-colors" aria-label="Toggle annual pricing"><span id="pricing-toggle-dot" class="absolute top-0.5 left-0.5 w-5 h-5 bg-kaldon-cyan rounded-full transition-transform translate-x-6"></span></button>
-        <span class="text-sm text-kaldon-text font-medium" id="annual-label">Annual <span class="text-kaldon-cyan text-xs ml-1">Save 20%</span></span>
-      </div>
-      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-        <div class="card animate-on-scroll">
-          <h3 class="text-lg font-bold text-kaldon-text mb-2">Growth</h3>
-          <p class="text-3xl font-bold text-kaldon-text mb-1"><span class="pricing-annual">$119</span><span class="pricing-monthly hidden">$149</span><span class="text-sm font-normal text-kaldon-muted">/mo</span></p>
-          <p class="text-xs text-kaldon-muted mb-6 pricing-annual">Billed annually</p><p class="text-xs text-kaldon-muted mb-6 pricing-monthly hidden">Billed monthly</p>
-          <a href="https://kaldon.io/signup" class="btn-secondary w-full text-center block mb-6 text-sm">Start with Growth</a>
-          <ul class="space-y-2">
-            <li class="flex items-center gap-2 text-sm text-kaldon-muted"><svg class="w-4 h-4 text-kaldon-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>5 analyses/month</li>
-            <li class="flex items-center gap-2 text-sm text-kaldon-muted"><svg class="w-4 h-4 text-kaldon-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Brand Vault + Board</li>
-            <li class="flex items-center gap-2 text-sm text-kaldon-muted"><svg class="w-4 h-4 text-kaldon-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Content Calendar</li>
-            <li class="flex items-center gap-2 text-sm text-kaldon-muted"><svg class="w-4 h-4 text-kaldon-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>AI Coaching</li>
-          </ul>
+        <h2 class="section-headline mb-4">Plans from $0/mo</h2>
+        <p class="text-kaldon-muted text-lg mb-8">Every plan includes full-quality intelligence. Start free with 2 analyses. Upgrade when you're ready.</p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-8">
+          <div class="p-4 rounded-xl bg-kaldon-surface border border-kaldon-border text-center">
+            <p class="text-lg font-bold text-kaldon-text">Free</p>
+            <p class="text-2xl font-extrabold text-kaldon-cyan">$0</p>
+            <p class="text-xs text-kaldon-muted">2 analyses</p>
+          </div>
+          <div class="p-4 rounded-xl bg-kaldon-surface border border-kaldon-border text-center">
+            <p class="text-lg font-bold text-kaldon-text">Growth</p>
+            <p class="text-2xl font-extrabold text-kaldon-text">$119<span class="text-sm font-normal text-kaldon-muted">/mo</span></p>
+            <p class="text-xs text-kaldon-muted">Billed annually</p>
+          </div>
+          <div class="p-4 rounded-xl border text-center" style="border-color:rgba(34,211,238,0.3);background:rgba(17,24,39,0.8);">
+            <p class="text-lg font-bold text-kaldon-cyan">Pro</p>
+            <p class="text-2xl font-extrabold text-kaldon-text">$239<span class="text-sm font-normal text-kaldon-muted">/mo</span></p>
+            <p class="text-xs text-kaldon-muted">Most popular</p>
+          </div>
+          <div class="p-4 rounded-xl bg-kaldon-surface border border-kaldon-border text-center">
+            <p class="text-lg font-bold text-kaldon-text">Scale</p>
+            <p class="text-2xl font-extrabold text-kaldon-text">$399<span class="text-sm font-normal text-kaldon-muted">/mo</span></p>
+            <p class="text-xs text-kaldon-muted">Full pipeline</p>
+          </div>
         </div>
-        <div class="card animate-on-scroll relative overflow-hidden" style="border-color:rgba(0,229,204,0.4);box-shadow:0 0 40px rgba(0,229,204,0.1);">
-          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-kaldon-cyan to-kaldon-purple"></div>
-          <div class="absolute top-3 right-3"><span class="bg-kaldon-cyan text-kaldon-bg text-xs font-bold px-2.5 py-1 rounded-full">MOST POPULAR</span></div>
-          <h3 class="text-lg font-bold text-kaldon-text mb-2">Pro</h3>
-          <p class="text-3xl font-bold text-kaldon-text mb-1"><span class="pricing-annual">$239</span><span class="pricing-monthly hidden">$299</span><span class="text-sm font-normal text-kaldon-muted">/mo</span></p>
-          <p class="text-xs text-kaldon-muted mb-6 pricing-annual">Billed annually</p><p class="text-xs text-kaldon-muted mb-6 pricing-monthly hidden">Billed monthly</p>
-          <a href="https://kaldon.io/signup" class="btn-primary w-full text-center block mb-6 text-sm">Go Pro</a>
-          <ul class="space-y-2">
-            <li class="flex items-center gap-2 text-sm text-kaldon-muted"><svg class="w-4 h-4 text-kaldon-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>15 analyses/month</li>
-            <li class="flex items-center gap-2 text-sm text-kaldon-muted"><svg class="w-4 h-4 text-kaldon-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Everything in Growth</li>
-            <li class="flex items-center gap-2 text-sm text-kaldon-muted"><svg class="w-4 h-4 text-kaldon-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Video Studio</li>
-            <li class="flex items-center gap-2 text-sm text-kaldon-muted"><svg class="w-4 h-4 text-kaldon-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Landing Pages</li>
-          </ul>
-        </div>
-        <div class="card animate-on-scroll">
-          <h3 class="text-lg font-bold text-kaldon-text mb-2">Scale</h3>
-          <p class="text-3xl font-bold text-kaldon-text mb-1"><span class="pricing-annual">$399</span><span class="pricing-monthly hidden">$499</span><span class="text-sm font-normal text-kaldon-muted">/mo</span></p>
-          <p class="text-xs text-kaldon-muted mb-6 pricing-annual">Billed annually</p><p class="text-xs text-kaldon-muted mb-6 pricing-monthly hidden">Billed monthly</p>
-          <a href="https://kaldon.io/signup" class="btn-secondary w-full text-center block mb-6 text-sm">Go Scale</a>
-          <ul class="space-y-2">
-            <li class="flex items-center gap-2 text-sm text-kaldon-muted"><svg class="w-4 h-4 text-kaldon-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>50 analyses/month</li>
-            <li class="flex items-center gap-2 text-sm text-kaldon-muted"><svg class="w-4 h-4 text-kaldon-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Everything in Pro</li>
-            <li class="flex items-center gap-2 text-sm text-kaldon-muted"><svg class="w-4 h-4 text-kaldon-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Store Deployment</li>
-            <li class="flex items-center gap-2 text-sm text-kaldon-muted"><svg class="w-4 h-4 text-kaldon-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Priority Support</li>
-          </ul>
-        </div>
-      </div>
-      <div class="text-center mt-8 space-y-2">
-        <p class="text-sm text-kaldon-muted">Single analysis: <span class="text-kaldon-text font-semibold">$39.99</span>, no subscription required.</p>
-        <a href="/pricing" class="text-sm text-kaldon-cyan hover:text-kaldon-cyan-light transition-colors font-medium inline-flex items-center gap-1">See full pricing with all 44 features <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
+        <a href="/pricing" class="text-kaldon-cyan hover:text-kaldon-cyan-light transition-colors font-medium inline-flex items-center gap-1" data-event="pricing_link_click">See Pricing <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
       </div>
     </div>
   </section>
 
-  <!-- ===== SECTION 10: FINAL CTA ===== -->
+  <!-- ===== SECTION 10: TRUST BADGES ===== -->
+  <section class="py-12 border-y border-kaldon-border/30">
+    <div class="container-custom">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="flex items-center gap-3 p-4 rounded-xl bg-kaldon-surface border border-kaldon-border"><svg class="w-8 h-8 text-kaldon-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg><div><p class="text-xs font-semibold text-kaldon-text">256-bit</p><p class="text-xs text-kaldon-muted">Encryption</p></div></div>
+        <div class="flex items-center gap-3 p-4 rounded-xl bg-kaldon-surface border border-kaldon-border"><svg class="w-8 h-8 text-kaldon-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg><div><p class="text-xs font-semibold text-kaldon-text">SOC 2</p><p class="text-xs text-kaldon-muted">Aligned</p></div></div>
+        <div class="flex items-center gap-3 p-4 rounded-xl bg-kaldon-surface border border-kaldon-border"><svg class="w-8 h-8 text-kaldon-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" /></svg><div><p class="text-xs font-semibold text-kaldon-text">Powered by</p><p class="text-xs text-kaldon-muted">Stripe</p></div></div>
+        <div class="flex items-center gap-3 p-4 rounded-xl bg-kaldon-surface border border-kaldon-border"><svg class="w-8 h-8 text-kaldon-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><div><p class="text-xs font-semibold text-kaldon-text">Cancel</p><p class="text-xs text-kaldon-muted">Anytime</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 11: FINAL CTA ===== -->
   <section class="section-spacing relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-br from-kaldon-cyan/10 via-kaldon-bg to-kaldon-purple/10"></div>
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-kaldon-cyan/5 rounded-full blur-[150px]"></div>
     <div class="container-custom relative z-10 text-center">
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-kaldon-text mb-4 animate-on-scroll">Your Next Product Is Waiting</h2>
       <p class="text-lg text-kaldon-muted mb-8 max-w-lg mx-auto animate-on-scroll">2 free analyses. No credit card. No commitment. Just intelligence.</p>
-      <a href="https://kaldon.io/signup" class="btn-primary btn-large btn-glow inline-flex">Start Free <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
+      <a href="https://kaldon.io/signup" class="btn-primary btn-large btn-glow inline-flex" data-event="final_cta_click">Start Free, 2 Analyses Included <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
       <p class="text-sm text-kaldon-muted mt-6 animate-on-scroll">Set up in 60 seconds. Cancel anytime. Your data stays yours.</p>
     </div>
   </section>
 
   <script is:inline>
-    // Phase tabs
-    document.querySelectorAll('.phase-tab').forEach(tab => {
-      tab.addEventListener('click', function() {
-        const phase = this.dataset.phase;
-        const colors = { discover:'#22d3ee', build:'#fb923c', create:'#a78bfa', launch:'#34d399', grow:'#fbbf24' };
-        document.querySelectorAll('.phase-tab').forEach(t => { t.classList.remove('active'); t.style.borderColor=''; t.style.color=''; t.style.background=''; });
-        this.classList.add('active'); this.style.borderColor=colors[phase]; this.style.color=colors[phase]; this.style.background=colors[phase]+'1A';
-        document.querySelectorAll('.phase-panel').forEach(p => p.classList.add('hidden'));
-        document.querySelector('.phase-panel[data-phase="'+phase+'"]').classList.remove('hidden');
+    // ===== ANIMATED PRODUCT SHOWCASE =====
+    (function() {
+      const phases = ['discover', 'build', 'create', 'launch', 'grow'];
+      const colors = { discover:'#22d3ee', build:'#fb923c', create:'#a78bfa', launch:'#34d399', grow:'#fbbf24' };
+      let currentIndex = 0;
+      let autoTimer = null;
+      let progressTimer = null;
+      const CYCLE_MS = 5000;
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function activatePhase(index) {
+        currentIndex = index;
+        const phase = phases[index];
+        // Update tabs
+        document.querySelectorAll('.showcase-tab').forEach((t, i) => {
+          const isActive = i === index;
+          t.classList.toggle('active', isActive);
+          t.setAttribute('aria-selected', isActive);
+          if (isActive) {
+            t.style.borderColor = colors[phase];
+            t.style.color = colors[phase];
+            t.style.background = colors[phase] + '1A';
+          } else {
+            t.style.borderColor = '';
+            t.style.color = '';
+            t.style.background = '';
+          }
+          // Reset progress bars
+          const bar = t.querySelector('.tab-progress-bar');
+          if (bar) {
+            bar.style.transition = 'none';
+            bar.style.width = '0%';
+            if (isActive && !prefersReducedMotion) {
+              requestAnimationFrame(() => {
+                bar.style.transition = 'width ' + CYCLE_MS + 'ms linear';
+                bar.style.width = '100%';
+              });
+            }
+          }
+        });
+        // Update panels with crossfade
+        document.querySelectorAll('.showcase-panel').forEach(p => {
+          if (p.dataset.phase === phase) {
+            p.classList.remove('hidden');
+            if (!prefersReducedMotion) {
+              p.style.opacity = '0';
+              p.style.transition = 'opacity 0.3s ease-in-out';
+              requestAnimationFrame(() => { p.style.opacity = '1'; });
+            }
+          } else {
+            p.classList.add('hidden');
+          }
+        });
+      }
+
+      function startAutoAdvance() {
+        if (prefersReducedMotion) return;
+        stopAutoAdvance();
+        autoTimer = setInterval(() => {
+          activatePhase((currentIndex + 1) % phases.length);
+        }, CYCLE_MS);
+      }
+
+      function stopAutoAdvance() {
+        if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+      }
+
+      // Tab click handlers
+      document.querySelectorAll('.showcase-tab').forEach((tab, i) => {
+        tab.addEventListener('click', () => {
+          activatePhase(i);
+          stopAutoAdvance();
+          startAutoAdvance();
+        });
       });
-    });
-    // Demo tabs
-    document.querySelectorAll('.demo-tab').forEach(tab => {
-      tab.addEventListener('click', function() {
-        document.querySelectorAll('.demo-tab').forEach(t => { t.classList.remove('active'); t.className=t.className.replace(/bg-kaldon-cyan\/10 text-kaldon-cyan border-kaldon-cyan\/30/g,'text-kaldon-muted border-kaldon-border'); });
-        this.classList.add('active'); this.className=this.className.replace(/text-kaldon-muted border-kaldon-border/g,'bg-kaldon-cyan/10 text-kaldon-cyan border-kaldon-cyan/30');
-        document.querySelectorAll('.demo-panel').forEach(p => p.classList.add('hidden'));
-        document.getElementById('arcade-demo-'+this.dataset.demo).classList.remove('hidden');
+
+      // Keyboard navigation
+      document.getElementById('showcase-tabs')?.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          e.preventDefault();
+          const next = (currentIndex + 1) % phases.length;
+          activatePhase(next);
+          document.querySelectorAll('.showcase-tab')[next]?.focus();
+          stopAutoAdvance(); startAutoAdvance();
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          const prev = (currentIndex - 1 + phases.length) % phases.length;
+          activatePhase(prev);
+          document.querySelectorAll('.showcase-tab')[prev]?.focus();
+          stopAutoAdvance(); startAutoAdvance();
+        }
       });
-    });
-    // Pricing toggle
-    let isAnnual=true;
-    document.getElementById('pricing-toggle')?.addEventListener('click',function(){
-      isAnnual=!isAnnual;
-      document.getElementById('pricing-toggle-dot').style.transform=isAnnual?'translateX(24px)':'translateX(0)';
-      document.querySelectorAll('.pricing-annual').forEach(el=>el.classList.toggle('hidden',!isAnnual));
-      document.querySelectorAll('.pricing-monthly').forEach(el=>el.classList.toggle('hidden',isAnnual));
-      document.getElementById('annual-label').classList.toggle('font-medium',isAnnual);
-      document.getElementById('annual-label').classList.toggle('text-kaldon-text',isAnnual);
-      document.getElementById('annual-label').classList.toggle('text-kaldon-muted',!isAnnual);
-      document.getElementById('monthly-label').classList.toggle('font-medium',!isAnnual);
-      document.getElementById('monthly-label').classList.toggle('text-kaldon-text',!isAnnual);
-      document.getElementById('monthly-label').classList.toggle('text-kaldon-muted',isAnnual);
-    });
-    // ROI Calculator
-    function updateROI(){
-      const tools=parseInt(document.getElementById('tools-slider').value);
-      const cost=parseInt(document.getElementById('cost-slider').value);
-      const hours=parseInt(document.getElementById('hours-slider').value);
-      document.getElementById('tools-value').textContent=tools;
-      document.getElementById('cost-value').textContent='$'+cost;
-      document.getElementById('hours-value').textContent=hours;
-      const monthlySavings=Math.max(0,tools*cost-149);
-      document.getElementById('monthly-savings').textContent='$'+monthlySavings.toLocaleString();
-      document.getElementById('yearly-savings').textContent='$'+(monthlySavings*12).toLocaleString();
-      document.getElementById('hours-saved').textContent=(hours*48)+'h';
+
+      // Initialize
+      activatePhase(0);
+      startAutoAdvance();
+    })();
+
+    // ===== ROI CALCULATOR =====
+    function updateROI() {
+      const tools = parseInt(document.getElementById('tools-slider').value);
+      const cost = parseInt(document.getElementById('cost-slider').value);
+      const hours = parseInt(document.getElementById('hours-slider').value);
+      document.getElementById('tools-value').textContent = tools;
+      document.getElementById('cost-value').textContent = '$' + cost;
+      document.getElementById('hours-value').textContent = hours;
+      const monthlySavings = Math.max(0, tools * cost - 149);
+      document.getElementById('monthly-savings').textContent = '$' + monthlySavings.toLocaleString();
+      document.getElementById('yearly-savings').textContent = '$' + (monthlySavings * 12).toLocaleString();
+      document.getElementById('hours-saved').textContent = (hours * 48) + 'h';
     }
-    document.getElementById('tools-slider')?.addEventListener('input',updateROI);
-    document.getElementById('cost-slider')?.addEventListener('input',updateROI);
-    document.getElementById('hours-slider')?.addEventListener('input',updateROI);
-    // Intersection Observer
-    const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}});},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
-    document.querySelectorAll('.animate-on-scroll').forEach(el=>observer.observe(el));
+    document.getElementById('tools-slider')?.addEventListener('input', updateROI);
+    document.getElementById('cost-slider')?.addEventListener('input', updateROI);
+    document.getElementById('hours-slider')?.addEventListener('input', updateROI);
   </script>
+
+  <style>
+    .showcase-tab {
+      @apply px-5 py-2.5 rounded-lg text-sm font-medium transition-all border border-kaldon-border text-kaldon-muted cursor-pointer relative overflow-hidden;
+      min-height: 44px;
+    }
+    .showcase-tab:hover { @apply text-kaldon-text; }
+    .tab-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: rgba(255,255,255,0.05);
+    }
+    .tab-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: currentColor;
+      opacity: 0.5;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .tab-progress { display: none; }
+    }
+  </style>
+
 </BaseLayout>

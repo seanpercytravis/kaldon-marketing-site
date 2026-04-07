@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const screenshots = {
-  pricing: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663311683194/7J678J842cyHStNyXeG49u/17-pricing_68278703.webp',
+  pricing: '/images/screenshots/17-pricing.webp',
 };
 
 const features = [
@@ -102,6 +102,7 @@ function renderCell(val: string | boolean) {
   <!-- Pricing Cards -->
   <section class="pb-16">
     <div class="container-custom">
+      <p class="text-center text-sm text-[#94a3b8] mb-8 font-medium tracking-wide">Join sellers who replaced $18,000+ in tools with one platform</p>
       <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-7xl mx-auto">
 
         <!-- Free -->
@@ -146,7 +147,8 @@ function renderCell(val: string | boolean) {
           </p>
           <p class="text-xs text-[#94a3b8] mb-6 pricing-annual">Billed annually</p>
           <p class="text-xs text-[#94a3b8] mb-6 pricing-monthly hidden">Billed monthly</p>
-          <a href="https://kaldon.io/signup" class="block text-center py-2.5 px-4 rounded-lg bg-[#22d3ee] text-[#0a0e17] text-sm font-bold hover:shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:scale-[1.02] transition-all mb-6">Go Pro</a>
+          <a href="https://kaldon.io/signup" class="block text-center py-2.5 px-4 rounded-lg bg-[#22d3ee] text-[#0a0e17] text-sm font-bold hover:shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:scale-[1.02] transition-all mb-2">Go Pro</a>
+          <p class="text-[11px] text-[#22d3ee]/70 text-center mb-6">Most popular for multi-marketplace sellers</p>
           <ul class="space-y-2 text-sm text-[#94a3b8] flex-1">
             <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>15 analyses/month</li>
             <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Everything in Growth</li>
@@ -195,11 +197,37 @@ function renderCell(val: string | boolean) {
       </div>
 
       <!-- Single Analysis -->
-      <div class="max-w-md mx-auto mt-8 bg-[#1a2236] border border-[rgba(255,255,255,0.08)] rounded-2xl p-6 text-center">
-        <p class="text-sm text-[#94a3b8] mb-1">Need just one report?</p>
-        <p class="text-2xl font-bold text-[#e2e8f0]">Single Analysis: <span class="text-[#22d3ee]">$39.99</span></p>
-        <p class="text-xs text-[#64748b] mt-1">No subscription required. Full report with AI mockups, action plan, and coaching.</p>
-        <a href="https://kaldon.io/signup" class="inline-block mt-4 py-2 px-6 rounded-lg border border-[#22d3ee] text-[#22d3ee] text-sm font-semibold hover:bg-[#22d3ee]/10 transition-all">Buy Single Analysis</a>
+      <p class="text-center text-sm text-[#94a3b8] mt-8">Single Analysis: <span class="text-[#e2e8f0] font-semibold">$39.99</span> one-time, no subscription required</p>
+
+      <!-- Trust Badges -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mt-10">
+        <div class="flex flex-col items-center gap-2 py-4 px-3 rounded-xl bg-[#111827]/50 border border-[rgba(255,255,255,0.06)]">
+          <svg class="w-6 h-6 text-[#22d3ee]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
+          <span class="text-xs text-[#94a3b8] font-medium">SOC 2 Aligned</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 py-4 px-3 rounded-xl bg-[#111827]/50 border border-[rgba(255,255,255,0.06)]">
+          <svg class="w-6 h-6 text-[#22d3ee]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>
+          <span class="text-xs text-[#94a3b8] font-medium">256-bit Encryption</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 py-4 px-3 rounded-xl bg-[#111827]/50 border border-[rgba(255,255,255,0.06)]">
+          <svg class="w-6 h-6 text-[#22d3ee]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" /></svg>
+          <span class="text-xs text-[#94a3b8] font-medium">Powered by Stripe</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 py-4 px-3 rounded-xl bg-[#111827]/50 border border-[rgba(255,255,255,0.06)]">
+          <svg class="w-6 h-6 text-[#22d3ee]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <span class="text-xs text-[#94a3b8] font-medium">Cancel Anytime</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="pb-16">
+    <div class="container-custom max-w-3xl">
+      <div class="rounded-2xl p-8 md:p-10 text-center" style="background:rgba(17,24,39,0.7);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.08);">
+        <svg class="w-8 h-8 text-[#22d3ee]/30 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11H10v10H0z" /></svg>
+        <p class="text-[#e2e8f0] text-base md:text-lg leading-relaxed mb-5 italic">"I was spending $400 a month on four different tools just for product research. Kaldon replaced all of them and added brand building on top. The analysis quality blew me away."</p>
+        <p class="text-sm text-[#94a3b8]"><span class="text-[#e2e8f0] font-semibold">Sarah M.</span> &mdash; eCommerce seller, 3 years</p>
       </div>
     </div>
   </section>
@@ -210,9 +238,8 @@ function renderCell(val: string | boolean) {
       <div class="text-center mb-10">
         <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] mb-2">Full Feature Comparison</h2>
         <p class="text-[#94a3b8]">44 features across all plans. Every detail, transparent.</p>
-        <button id="toggle-comparison" class="mt-4 text-sm text-[#22d3ee] font-medium hover:text-[#22d3ee]/80 transition-colors cursor-pointer">Show Full Comparison Table ↓</button>
       </div>
-      <div id="comparison-table" class="hidden overflow-x-auto">
+      <div id="comparison-table" class="overflow-x-auto">
         <table class="w-full min-w-[800px] border-collapse">
           <thead>
             <tr class="border-b border-[rgba(255,255,255,0.08)]">
@@ -226,7 +253,7 @@ function renderCell(val: string | boolean) {
           </thead>
           <tbody>
             {features.map((f, i) => (
-              <tr class={`border-b border-[rgba(255,255,255,0.04)] ${i % 2 === 0 ? 'bg-[#111827]/30' : ''}`}>
+              <tr class={`border-b border-[rgba(255,255,255,0.04)] ${i % 2 === 0 ? 'bg-[#111827]/30' : ''} ${i >= 10 ? 'feature-row-hidden hidden' : ''}`}>
                 <td class="py-2.5 px-4 text-sm text-[#e2e8f0] sticky left-0 bg-inherit z-10">{f.name}</td>
                 <td class="py-2.5 px-3 text-center" set:html={renderCell(f.free)} />
                 <td class="py-2.5 px-3 text-center" set:html={renderCell(f.growth)} />
@@ -237,6 +264,55 @@ function renderCell(val: string | boolean) {
             ))}
           </tbody>
         </table>
+        <div class="text-center mt-6">
+          <button id="toggle-all-features" class="text-sm text-[#22d3ee] font-medium hover:text-[#22d3ee]/80 transition-colors cursor-pointer">Show All Features ↓</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What You'd Pay Without Kaldon -->
+  <section class="section-spacing">
+    <div class="container-custom max-w-2xl">
+      <div class="text-center mb-10">
+        <span class="eyebrow">VALUE COMPARISON</span>
+        <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0]">What You'd Pay Without Kaldon</h2>
+      </div>
+      <div class="rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.08)]">
+        <div class="divide-y divide-[rgba(255,255,255,0.06)]">
+          <div class="flex justify-between items-center px-6 py-4 bg-[#111827]/50">
+            <span class="text-sm text-[#e2e8f0]">Market research tools</span>
+            <span class="text-sm text-[#94a3b8] font-medium">$2,400&ndash;6,000/yr</span>
+          </div>
+          <div class="flex justify-between items-center px-6 py-4">
+            <span class="text-sm text-[#e2e8f0]">Brand identity &amp; design</span>
+            <span class="text-sm text-[#94a3b8] font-medium">$3,000&ndash;8,000</span>
+          </div>
+          <div class="flex justify-between items-center px-6 py-4 bg-[#111827]/50">
+            <span class="text-sm text-[#e2e8f0]">Content creation &amp; management</span>
+            <span class="text-sm text-[#94a3b8] font-medium">$3,600&ndash;7,200/yr</span>
+          </div>
+          <div class="flex justify-between items-center px-6 py-4">
+            <span class="text-sm text-[#e2e8f0]">Store platform &amp; apps</span>
+            <span class="text-sm text-[#94a3b8] font-medium">$2,400&ndash;6,000/yr</span>
+          </div>
+          <div class="flex justify-between items-center px-6 py-4 bg-[#111827]/50">
+            <span class="text-sm text-[#e2e8f0]">Marketing &amp; advertising tools</span>
+            <span class="text-sm text-[#94a3b8] font-medium">$3,600&ndash;7,200/yr</span>
+          </div>
+          <div class="flex justify-between items-center px-6 py-4">
+            <span class="text-sm text-[#e2e8f0]">Freelancers &amp; agencies</span>
+            <span class="text-sm text-[#94a3b8] font-medium">$3,000&ndash;5,000</span>
+          </div>
+          <div class="flex justify-between items-center px-6 py-5 bg-[#111827] border-t border-[rgba(255,255,255,0.08)]">
+            <span class="text-sm text-[#e2e8f0] font-bold">Total</span>
+            <span class="text-sm text-red-400 font-bold line-through">$18,000&ndash;28,000+/yr</span>
+          </div>
+          <div class="flex justify-between items-center px-6 py-5 bg-gradient-to-r from-[#22d3ee]/10 to-[#a78bfa]/10">
+            <span class="text-sm text-[#e2e8f0] font-bold">vs Kaldon Pro</span>
+            <span class="text-lg text-[#22d3ee] font-extrabold">$2,868/yr <span class="text-sm font-normal text-[#94a3b8]">($239/mo billed annually)</span></span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -290,12 +366,12 @@ function renderCell(val: string | boolean) {
       document.getElementById('monthly-label').classList.toggle('text-[#94a3b8]', isAnnual);
     });
 
-    // Comparison table toggle
-    document.getElementById('toggle-comparison')?.addEventListener('click', function() {
-      const table = document.getElementById('comparison-table');
-      const isHidden = table.classList.contains('hidden');
-      table.classList.toggle('hidden');
-      this.textContent = isHidden ? 'Hide Comparison Table ↑' : 'Show Full Comparison Table ↓';
+    // Feature table show all toggle
+    document.getElementById('toggle-all-features')?.addEventListener('click', function() {
+      const hiddenRows = document.querySelectorAll('.feature-row-hidden');
+      const isHidden = hiddenRows[0]?.classList.contains('hidden');
+      hiddenRows.forEach(row => row.classList.toggle('hidden'));
+      this.textContent = isHidden ? 'Show Fewer Features ↑' : 'Show All Features ↓';
     });
 
     // FAQ accordion

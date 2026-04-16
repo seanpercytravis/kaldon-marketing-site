@@ -1,24 +1,26 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/ui/PageHero.astro';
+import Button from '../../components/ui/Button.astro';
 
 const painPoints = [
-  { title: 'Overwhelmed by Tools', desc: 'You have subscriptions to Jungle Scout, Helium 10, Canva, Jasper, Shopify, and a dozen others. None of them talk to each other. You spend more time switching tabs than making progress.' },
-  { title: 'Don\'t Know Where to Start', desc: 'Every YouTube video tells you something different. Validate your niche. Find a supplier. Build a brand. Run ads. The order changes depending on who you listen to. You are stuck in research mode.' },
-  { title: 'Can\'t Afford an Agency', desc: 'Professional product research, branding, and store setup cost $10,000 to $25,000 through an agency. You do not have that budget. But doing it yourself produces amateur results.' },
+  { title: 'Overwhelmed by tools', desc: 'You have subscriptions to Jungle Scout, Helium 10, Canva, Jasper, Shopify, and a dozen others. None of them talk to each other. You spend more time switching tabs than making progress.' },
+  { title: "Don't know where to start", desc: 'Every YouTube video tells you something different. Validate your niche. Find a supplier. Build a brand. Run ads. The order changes depending on who you listen to. You are stuck in research mode.' },
+  { title: "Can't afford an agency", desc: 'Professional product research, branding, and store setup cost $10,000–25,000 through an agency. You do not have that budget. But doing it yourself produces amateur results.' },
 ];
 
 const howItHelps = [
-  { title: 'Guided Pipeline', desc: 'Kaldon walks you through 5 phases in order: Discover, Build, Create, Launch, Grow. Each step feeds the next. No guesswork about what comes next.', color: '#22d3ee' },
-  { title: 'AI Does the Heavy Lifting', desc: 'Product analysis, brand identity, content creation, store deployment, and ad optimization are all handled by AI. You make decisions. Kaldon does the work.', color: '#3b82f6' },
-  { title: 'Professional Output from Day One', desc: 'Your brand, content, and store look like you spent thousands. Competitors and customers will never know you did it yourself in an afternoon.', color: '#a78bfa' },
-  { title: '2 Free Analyses to Start', desc: 'No credit card required. Run two full product analyses before you spend a dollar. See exactly what Kaldon delivers before you commit.', color: '#34d399' },
+  { title: 'Guided pipeline', desc: 'Kaldon walks you through 5 phases in order: Discover, Build, Create, Launch, Grow. Each step feeds the next. No guesswork about what comes next.' },
+  { title: 'AI does the heavy lifting', desc: 'Product analysis, brand identity, content creation, store deployment, and ad optimization are all handled by AI. You make decisions. Kaldon does the work.' },
+  { title: 'Professional output from day one', desc: 'Your brand, content, and store look like you spent thousands. Competitors and customers will never know you did it yourself in an afternoon.' },
+  { title: '2 free analyses to start', desc: 'No credit card required. Run two full product analyses before you spend a dollar. See exactly what Kaldon delivers before you commit.' },
 ];
 
 const timeline = [
   { time: 'Hour 1', action: 'Run your first product analysis. Get a viability score, competitive breakdown, AI product mockups, and a step-by-step action plan.' },
   { time: 'Hour 2', action: 'Generate your brand identity: logo, colors, typography, voice guidelines. Everything stored in your Brand Vault.' },
   { time: 'Hour 3', action: 'Create a month of social content across 5 platforms. Generate AI videos and a conversion-optimized landing page.' },
-  { time: 'Hour 4', action: 'Deploy your store with checkout, automated emails, and chatbot. Generate optimized marketplace listings.' },
+  { time: 'Hour 4', action: 'Deploy your store with checkout, automated emails, and chatbot. Auto-scheduled SEO blog content starts running.' },
 ];
 ---
 
@@ -26,99 +28,123 @@ const timeline = [
   title="Kaldon for New Sellers — From Product Idea to First Sale"
   description="You have a product idea but don't know where to start. Kaldon's AI-powered pipeline takes you from research to revenue with zero experience required."
 >
-
-  <!-- Hero -->
-  <section class="pt-32 pb-16 relative">
-    <div class="absolute inset-0 bg-gradient-to-b from-[#22d3ee]/5 via-[#0a0e17] to-[#0a0e17]"></div>
-    <div class="container-custom relative z-10 text-center">
-      <span class="eyebrow">FOR NEW SELLERS</span>
-      <h1 class="text-4xl md:text-5xl font-extrabold text-[#e2e8f0] mb-4">From Product Idea<br/><span class="gradient-text">to First Sale</span></h1>
-      <p class="text-lg text-[#94a3b8] max-w-2xl mx-auto">You have a product idea but no idea where to start. Kaldon replaces the 12 tools, the $15,000 agency, and the months of trial and error with one guided pipeline powered by AI.</p>
-      <div class="mt-8">
-        <a href="https://kaldon.io/signup" class="btn-primary btn-large btn-glow inline-flex items-center gap-2">Start Free, 2 Analyses Included <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
-      </div>
+  <PageHero
+    kicker="For New Sellers"
+    headline="From product idea to first sale."
+    subhead="You have a product idea but no idea where to start. Kaldon replaces the 12 tools, the $15,000 agency, and the months of trial and error with one guided pipeline powered by AI."
+  >
+    <div class="mt-8 flex justify-center">
+      <Button variant="primary" size="large" href="https://kaldon.io/signup" data-event="new_sellers_hero_cta">
+        Start Free — 2 Analyses Included
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"/>
+        </svg>
+      </Button>
     </div>
-  </section>
+  </PageHero>
 
-  <!-- Pain Points -->
-  <section class="py-20 bg-[#111827]/30">
+  <section class="section-spacing" style="background: var(--void);">
     <div class="container-custom max-w-5xl">
-      <div class="text-center mb-12 animate-on-scroll">
-        <h2 class="section-headline text-[#e2e8f0]">Sound Familiar?</h2>
-        <p class="text-[#94a3b8] max-w-xl mx-auto">Every new seller hits the same walls. You are not behind. You just do not have the right system yet.</p>
-      </div>
-      <div class="grid md:grid-cols-3 gap-6">
-        {painPoints.map((pain, i) => (
-          <div class="animate-on-scroll bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl p-6" style={`animation-delay: ${i * 100}ms`}>
-            <div class="w-10 h-10 rounded-full bg-[#f87171]/10 flex items-center justify-center mb-4">
-              <svg class="w-5 h-5 text-[#f87171]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" /></svg>
-            </div>
-            <h3 class="text-lg font-bold text-[#e2e8f0] mb-2">{pain.title}</h3>
-            <p class="text-sm text-[#94a3b8] leading-relaxed">{pain.desc}</p>
+      <header class="max-w-prose mx-auto text-center mb-12">
+        <span class="kicker">Sound familiar?</span>
+        <h2 class="font-display font-semibold" style="font-weight: 600; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.15; letter-spacing: -0.015em; color: var(--chalk);">
+          Every new seller hits the same walls.
+        </h2>
+        <p class="mt-4 text-body-lg" style="color: var(--ghost);">
+          You're not behind. You just don't have the right system yet.
+        </p>
+      </header>
+      <div class="grid md:grid-cols-3 gap-4">
+        {painPoints.map((p, i) => (
+          <div class="use-card">
+            <span class="use-num">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="use-title">{p.title}</h3>
+            <p class="use-body">{p.desc}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- How Kaldon Helps -->
-  <section class="py-20 bg-[#0a0e17]">
+  <section class="section-spacing" style="background: var(--void);">
     <div class="container-custom max-w-5xl">
-      <div class="text-center mb-12 animate-on-scroll">
-        <h2 class="section-headline text-[#e2e8f0]">How Kaldon Gets You There</h2>
-        <p class="text-[#94a3b8] max-w-xl mx-auto">One platform. One pipeline. Everything connected. Everything guided.</p>
-      </div>
-      <div class="grid sm:grid-cols-2 gap-6">
-        {howItHelps.map((item, i) => (
-          <div class="animate-on-scroll bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl p-6" style={`animation-delay: ${i * 100}ms; border-left: 3px solid ${item.color}`}>
-            <h3 class="text-lg font-bold text-[#e2e8f0] mb-2">{item.title}</h3>
-            <p class="text-sm text-[#94a3b8] leading-relaxed">{item.desc}</p>
+      <header class="max-w-prose mx-auto text-center mb-12">
+        <span class="kicker">How Kaldon gets you there</span>
+        <h2 class="font-display font-semibold" style="font-weight: 600; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.15; letter-spacing: -0.015em; color: var(--chalk);">
+          One platform. One pipeline. Everything connected.
+        </h2>
+      </header>
+      <div class="grid sm:grid-cols-2 gap-4">
+        {howItHelps.map((item) => (
+          <div class="use-card">
+            <h3 class="use-title">{item.title}</h3>
+            <p class="use-body">{item.desc}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Timeline -->
-  <section class="py-20 bg-[#111827]/30">
+  <section class="section-spacing" style="background: var(--void);">
     <div class="container-custom max-w-3xl">
-      <div class="text-center mb-12 animate-on-scroll">
-        <h2 class="section-headline text-[#e2e8f0]">Your First Afternoon with Kaldon</h2>
-        <p class="text-[#94a3b8]">Here is what a single afternoon looks like when you stop guessing and start building.</p>
-      </div>
-      <div class="relative">
-        <div class="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-[#22d3ee] to-[#34d399] opacity-30"></div>
-        {timeline.map((step, i) => (
-          <div class="relative pl-16 pb-10 last:pb-0 animate-on-scroll" style={`animation-delay: ${i * 150}ms`}>
-            <div class="absolute left-3 w-7 h-7 rounded-full border-2 border-[#22d3ee] bg-[#22d3ee]/10 flex items-center justify-center">
-              <span class="text-xs font-bold text-[#22d3ee]">{i + 1}</span>
+      <header class="text-center mb-10">
+        <span class="kicker">Your first afternoon</span>
+        <h2 class="font-display font-semibold" style="font-weight: 600; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.15; letter-spacing: -0.015em; color: var(--chalk);">
+          What one session looks like.
+        </h2>
+        <p class="mt-4 text-body-lg" style="color: var(--ghost);">
+          Stop guessing. Start building.
+        </p>
+      </header>
+      <ol class="timeline">
+        {timeline.map((s, i) => (
+          <li>
+            <span class="timeline-num">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <span class="timeline-time">{s.time}</span>
+              <p class="timeline-text">{s.action}</p>
             </div>
-            <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl p-5">
-              <span class="text-xs font-bold uppercase tracking-wider text-[#22d3ee]">{step.time}</span>
-              <p class="text-sm text-[#94a3b8] mt-2 leading-relaxed">{step.action}</p>
-            </div>
-          </div>
+          </li>
         ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section-spacing-lg relative overflow-hidden" style="background: var(--void);">
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 24px 24px; -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%); mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);"
+      aria-hidden="true"
+    ></div>
+    <div class="container-custom relative z-10 text-center max-w-prose mx-auto">
+      <h2 class="font-display" style="font-weight: 500; font-size: clamp(32px, 4.5vw, 48px); line-height: 1.08; letter-spacing: -0.022em; color: var(--chalk);">
+        Stop researching. Start building.
+      </h2>
+      <p class="mt-5 text-body-lg" style="color: var(--ghost);">
+        Your first 2 analyses are free. No credit card. No experience needed.
+      </p>
+      <div class="mt-8">
+        <Button variant="primary" size="large" href="https://kaldon.io/signup" data-event="new_sellers_final_cta">
+          Start Free — 2 Analyses Included
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"/>
+          </svg>
+        </Button>
       </div>
     </div>
   </section>
-
-  <!-- Final CTA -->
-  <section class="section-spacing relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-[#22d3ee]/10 via-[#0a0e17] to-[#a78bfa]/10"></div>
-    <div class="container-custom relative z-10 text-center">
-      <h2 class="text-3xl md:text-4xl font-extrabold text-[#e2e8f0] mb-4">Stop Researching. Start Building.</h2>
-      <p class="text-lg text-[#94a3b8] mb-8">Your first 2 analyses are free. No credit card required. No experience needed.</p>
-      <a href="https://kaldon.io/signup" class="btn-primary btn-large btn-glow inline-flex items-center gap-2">Start Free, 2 Analyses Included <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
-    </div>
-  </section>
-
-  <script is:inline>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
-  </script>
 </BaseLayout>
+
+<style>
+  .use-card { padding: 26px 24px; background: var(--deep-space); border: 1px solid var(--hairline); border-radius: 12px; transition: border-color 160ms var(--ease-out-quad); }
+  .use-card:hover { border-color: var(--hairline-active); }
+  .use-num { display: block; font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: var(--gold); letter-spacing: -0.01em; margin-bottom: 10px; }
+  .use-title { font-family: var(--font-display); font-weight: 600; font-size: 17px; color: var(--chalk); letter-spacing: -0.01em; margin-bottom: 8px; }
+  .use-body { font-size: 14px; line-height: 1.55; color: var(--ghost); letter-spacing: -0.005em; }
+
+  .timeline { display: flex; flex-direction: column; gap: 12px; }
+  .timeline li { display: flex; gap: 18px; padding: 22px; background: var(--deep-space); border: 1px solid var(--hairline); border-radius: 12px; }
+  .timeline-num { font-family: var(--font-mono); font-size: 14px; font-weight: 500; color: var(--gold); letter-spacing: -0.01em; flex-shrink: 0; min-width: 24px; padding-top: 2px; }
+  .timeline-time { display: inline-block; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ghost); font-weight: 500; margin-bottom: 6px; }
+  .timeline-text { font-size: 14px; line-height: 1.55; color: var(--chalk); letter-spacing: -0.005em; }
+</style>

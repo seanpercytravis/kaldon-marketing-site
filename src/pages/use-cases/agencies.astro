@@ -1,133 +1,143 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/ui/PageHero.astro';
+import Button from '../../components/ui/Button.astro';
 
 const painPoints = [
-  { title: 'Too Much Manual Work Per Client', desc: 'Every client launch requires the same 40+ hours of work: product research, brand identity, content creation, store setup. You are the bottleneck. You cannot take on more clients without burning out or hiring more people.' },
-  { title: 'Inconsistent Quality', desc: 'When you are doing everything manually, quality varies. Monday\'s client gets your best work. Friday\'s client gets whatever you have left. Your reputation depends on consistency you cannot maintain at scale.' },
-  { title: 'Can\'t Scale the Business', desc: 'You want to grow from 2 launches per month to 10, but your current process does not allow it. Hiring is expensive and slow. Training takes months. Your revenue is capped by your personal capacity.' },
+  { title: 'Too much manual work per client', desc: 'Every client launch requires the same 40+ hours of work: product research, brand identity, content creation, store setup. You are the bottleneck. You cannot take on more clients without burning out or hiring more people.' },
+  { title: 'Inconsistent quality', desc: "When you're doing everything manually, quality varies. Monday's client gets your best work. Friday's client gets whatever you have left. Your reputation depends on consistency you can't maintain at scale." },
+  { title: "Can't scale the business", desc: 'You want to grow from 2 launches per month to 10, but your current process does not allow it. Hiring is expensive and slow. Training takes months. Your revenue is capped by your personal capacity.' },
 ];
 
 const howItHelps = [
-  { title: 'Professional Output for Every Client', desc: 'Kaldon generates agency-quality deliverables for every client: brand identities, content calendars, landing pages, and stores. Your Friday client gets the same quality as your Monday client.', color: '#34d399' },
-  { title: 'Minutes Instead of Hours', desc: 'Product analysis takes minutes, not days. Brand generation takes minutes, not weeks. Content creation takes minutes, not hours. You reclaim 30+ hours per client launch.', color: '#22d3ee' },
-  { title: 'Scale Without Hiring', desc: 'The Scale plan supports 10 brands from one dashboard. Go from 2 launches per month to 10 without adding headcount. Your margins improve as you scale.', color: '#3b82f6' },
-  { title: 'White Label Ready', desc: 'Present Kaldon\'s output as your own. Brand boards, content calendars, and store deployments all carry your client\'s branding, not Kaldon\'s. Your clients think you are a genius.', color: '#a78bfa' },
-  { title: 'Repeatable Process', desc: 'Every client goes through the same 5-phase pipeline. Discover, Build, Create, Launch, Grow. Consistent process means consistent results and predictable timelines.', color: '#fb923c' },
-  { title: 'Impress at Every Touchpoint', desc: 'Share AI analysis reports, brand boards, and content previews with clients at each milestone. They see professional deliverables and feel confident in your process.', color: '#fbbf24' },
+  { title: 'Professional output for every client', desc: "Kaldon generates agency-quality deliverables for every client: brand identities, content calendars, landing pages, and stores. Your Friday client gets the same quality as your Monday client." },
+  { title: 'Minutes instead of hours', desc: 'Product analysis takes minutes, not days. Brand generation takes minutes, not weeks. Content creation takes minutes, not hours. You reclaim 30+ hours per client launch.' },
+  { title: 'Scale without hiring', desc: 'The Scale plan supports 10 brands from one dashboard. Enterprise supports agencies and teams. Go from 2 launches per month to 10 without adding headcount. Margins improve as you scale.' },
+  { title: 'Repeatable process', desc: 'Every client goes through the same 5-phase pipeline. Discover, Build, Create, Launch, Grow. Consistent process means consistent results and predictable timelines.' },
+  { title: 'Impress at every touchpoint', desc: 'Share AI analysis reports, brand boards, and content previews with clients at each milestone. They see professional deliverables and feel confident in your process.' },
+  { title: 'Dedicated support at Enterprise', desc: 'Enterprise includes a dedicated account manager and custom onboarding. Agencies running 10+ clients get white-glove attention when they need it.' },
 ];
 
 const economics = [
-  { label: 'Your Kaldon Cost', value: '$399/mo', sub: 'Scale plan, 10 brands' },
-  { label: 'Client Launch Fee', value: '$3,000-5,000', sub: 'Per client, your pricing' },
-  { label: 'Launches Per Month', value: '8-10', sub: 'With Kaldon pipeline' },
-  { label: 'Your Time Per Launch', value: '4-6 hours', sub: 'Down from 40+ hours' },
+  { label: 'Your Kaldon cost', value: '$1,499 / mo', sub: 'Enterprise — 10+ clients' },
+  { label: 'Client launch fee', value: '$3,000–5,000', sub: 'Per client, your pricing' },
+  { label: 'Launches per month', value: '8–10', sub: 'With the Kaldon pipeline' },
+  { label: 'Your time per launch', value: '4–6 hrs', sub: 'Down from 40+ hours' },
 ];
 ---
 
 <BaseLayout
   title="Kaldon for Agencies — Scale Your Agency with AI"
-  description="You help sellers launch products but can't scale beyond a few clients per month. Kaldon gives you an AI-powered pipeline that produces agency-quality output in minutes."
+  description="Help sellers launch products without the 40-hour-per-client bottleneck. Kaldon gives agencies an AI-powered pipeline that produces agency-quality deliverables in minutes."
 >
-
-  <!-- Hero -->
-  <section class="pt-32 pb-16 relative">
-    <div class="absolute inset-0 bg-gradient-to-b from-[#34d399]/5 via-[#0a0e17] to-[#0a0e17]"></div>
-    <div class="container-custom relative z-10 text-center">
-      <span class="eyebrow">FOR COACHES &amp; AGENCIES</span>
-      <h1 class="text-4xl md:text-5xl font-extrabold text-[#e2e8f0] mb-4">Scale Your Agency<br/><span class="gradient-text">with AI</span></h1>
-      <p class="text-lg text-[#94a3b8] max-w-2xl mx-auto">You coach eCommerce sellers or run a launch agency. Every client needs the same deliverables. Kaldon produces them in minutes instead of weeks, so you can 5x your client capacity without hiring.</p>
-      <div class="mt-8">
-        <a href="https://kaldon.io/signup" class="btn-primary btn-large btn-glow inline-flex items-center gap-2">Scale Your Agency <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
-      </div>
+  <PageHero
+    kicker="For Agencies"
+    headline="Launch more clients. In hours, not weeks."
+    subhead="Your clients need research, branding, content, and a launch plan. Kaldon compresses 40 hours of work per client into a single afternoon of output — so you can move from 2 launches a month to 10 without hiring."
+  >
+    <div class="mt-8 flex justify-center">
+      <Button variant="primary" size="large" href="https://kaldon.io/signup" data-event="agencies_hero_cta">
+        Start Free — 2 Analyses Included
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"/>
+        </svg>
+      </Button>
     </div>
-  </section>
+  </PageHero>
 
-  <!-- Pain Points -->
-  <section class="py-20 bg-[#111827]/30">
+  <section class="section-spacing" style="background: var(--void);">
     <div class="container-custom max-w-5xl">
-      <div class="text-center mb-12 animate-on-scroll">
-        <h2 class="section-headline text-[#e2e8f0]">The Agency Scaling Problem</h2>
-        <p class="text-[#94a3b8] max-w-xl mx-auto">Your expertise is the product. But your time is the constraint. That math does not scale.</p>
-      </div>
-      <div class="grid md:grid-cols-3 gap-6">
-        {painPoints.map((pain, i) => (
-          <div class="animate-on-scroll bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl p-6" style={`animation-delay: ${i * 100}ms`}>
-            <div class="w-10 h-10 rounded-full bg-[#f87171]/10 flex items-center justify-center mb-4">
-              <svg class="w-5 h-5 text-[#f87171]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" /></svg>
-            </div>
-            <h3 class="text-lg font-bold text-[#e2e8f0] mb-2">{pain.title}</h3>
-            <p class="text-sm text-[#94a3b8] leading-relaxed">{pain.desc}</p>
+      <header class="max-w-prose mx-auto text-center mb-12">
+        <span class="kicker">The agency bottleneck</span>
+        <h2 class="font-display font-semibold" style="font-weight: 600; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.15; letter-spacing: -0.015em; color: var(--chalk);">
+          Why you can't take on more clients.
+        </h2>
+      </header>
+      <div class="grid md:grid-cols-3 gap-4">
+        {painPoints.map((p, i) => (
+          <div class="use-card">
+            <span class="use-num">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="use-title">{p.title}</h3>
+            <p class="use-body">{p.desc}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- How Kaldon Helps -->
-  <section class="py-20 bg-[#0a0e17]">
+  <section class="section-spacing" style="background: var(--void);">
     <div class="container-custom max-w-5xl">
-      <div class="text-center mb-12 animate-on-scroll">
-        <h2 class="section-headline text-[#e2e8f0]">How Kaldon Scales Your Agency</h2>
-        <p class="text-[#94a3b8] max-w-xl mx-auto">Replace manual work with an AI pipeline. Same quality. Ten times the capacity.</p>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {howItHelps.map((item, i) => (
-          <div class="animate-on-scroll bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl p-6" style={`animation-delay: ${i * 100}ms; border-top: 3px solid ${item.color}`}>
-            <h3 class="text-lg font-bold text-[#e2e8f0] mb-2">{item.title}</h3>
-            <p class="text-sm text-[#94a3b8] leading-relaxed">{item.desc}</p>
+      <header class="max-w-prose mx-auto text-center mb-12">
+        <span class="kicker">What Kaldon unlocks</span>
+        <h2 class="font-display font-semibold" style="font-weight: 600; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.15; letter-spacing: -0.015em; color: var(--chalk);">
+          Deliver more. Consistently. Profitably.
+        </h2>
+      </header>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {howItHelps.map((item) => (
+          <div class="use-card">
+            <h3 class="use-title">{item.title}</h3>
+            <p class="use-body">{item.desc}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Economics -->
-  <section class="py-20 bg-[#111827]/30">
+  <section class="section-spacing" style="background: var(--void);">
     <div class="container-custom max-w-4xl">
-      <div class="text-center mb-12 animate-on-scroll">
-        <h2 class="section-headline text-[#e2e8f0]">The Agency Economics</h2>
-        <p class="text-[#94a3b8]">The math speaks for itself.</p>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {economics.map((item, i) => (
-          <div class="animate-on-scroll bg-[#1a2236] border border-[rgba(255,255,255,0.08)] rounded-xl p-6 text-center" style={`animation-delay: ${i * 100}ms`}>
-            <p class="text-xs font-bold uppercase tracking-wider text-[#94a3b8] mb-2">{item.label}</p>
-            <p class="text-2xl font-extrabold text-[#34d399] mb-1">{item.value}</p>
-            <p class="text-xs text-[#94a3b8]">{item.sub}</p>
+      <header class="text-center mb-10">
+        <span class="kicker">The economics</span>
+        <h2 class="font-display font-semibold" style="font-weight: 600; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.15; letter-spacing: -0.015em; color: var(--chalk);">
+          Simple math for scaling agencies.
+        </h2>
+      </header>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+        {economics.map((e) => (
+          <div class="econ-card">
+            <span class="econ-label">{e.label}</span>
+            <p class="econ-value">{e.value}</p>
+            <span class="econ-sub">{e.sub}</span>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Day in Life -->
-  <section class="py-20 bg-[#0a0e17]">
-    <div class="container-custom max-w-3xl">
-      <div class="text-center mb-8 animate-on-scroll">
-        <h2 class="section-headline text-[#e2e8f0]">A Client Launch with Kaldon</h2>
-      </div>
-      <div class="animate-on-scroll bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl p-8">
-        <p class="text-[#94a3b8] leading-relaxed italic">A new client signs up on Monday. By Monday afternoon, you have run their product analysis and shared a professional report with viability scores and competitive intelligence. By Tuesday, their brand identity is generated and approved: logo, colors, voice, brand board. By Wednesday, their content calendar is populated with a month of on-brand posts and their landing page is live. By Thursday, their store is deployed with checkout, automated emails, and chatbot. The client is amazed by the speed and quality. You invoice them for $3,000. Kaldon cost you $399 for the month. You take Friday off and still have capacity for 9 more clients.</p>
+  <section class="section-spacing-lg relative overflow-hidden" style="background: var(--void);">
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 24px 24px; -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%); mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);"
+      aria-hidden="true"
+    ></div>
+    <div class="container-custom relative z-10 text-center max-w-prose mx-auto">
+      <h2 class="font-display" style="font-weight: 500; font-size: clamp(32px, 4.5vw, 48px); line-height: 1.08; letter-spacing: -0.022em; color: var(--chalk);">
+        More clients. Less work. Better margins.
+      </h2>
+      <p class="mt-5 text-body-lg" style="color: var(--ghost);">
+        Start free. See what agency-grade output at AI speed feels like.
+      </p>
+      <div class="mt-8">
+        <Button variant="primary" size="large" href="https://kaldon.io/signup" data-event="agencies_final_cta">
+          Start Free — 2 Analyses Included
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"/>
+          </svg>
+        </Button>
       </div>
     </div>
   </section>
-
-  <!-- Final CTA -->
-  <section class="section-spacing relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-[#34d399]/10 via-[#0a0e17] to-[#22d3ee]/10"></div>
-    <div class="container-custom relative z-10 text-center">
-      <h2 class="text-3xl md:text-4xl font-extrabold text-[#e2e8f0] mb-4">Stop Trading Hours for Dollars</h2>
-      <p class="text-lg text-[#94a3b8] mb-8">Start with 2 free analyses. See what Kaldon produces for your next client before you commit.</p>
-      <a href="https://kaldon.io/signup" class="btn-primary btn-large btn-glow inline-flex items-center gap-2">Scale Your Agency <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
-    </div>
-  </section>
-
-  <script is:inline>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
-  </script>
 </BaseLayout>
+
+<style>
+  .use-card { padding: 26px 24px; background: var(--deep-space); border: 1px solid var(--hairline); border-radius: 12px; transition: border-color 160ms var(--ease-out-quad); }
+  .use-card:hover { border-color: var(--hairline-active); }
+  .use-num { display: block; font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: var(--gold); letter-spacing: -0.01em; margin-bottom: 10px; }
+  .use-title { font-family: var(--font-display); font-weight: 600; font-size: 17px; color: var(--chalk); letter-spacing: -0.01em; margin-bottom: 8px; }
+  .use-body { font-size: 14px; line-height: 1.55; color: var(--ghost); letter-spacing: -0.005em; }
+
+  .econ-card { padding: 20px; background: var(--deep-space); border: 1px solid var(--hairline); border-radius: 12px; text-align: center; }
+  .econ-label { display: block; font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ghost); font-weight: 500; margin-bottom: 8px; }
+  .econ-value { font-family: var(--font-display); font-weight: 500; font-size: 24px; letter-spacing: -0.025em; color: var(--gold); line-height: 1; }
+  .econ-sub { display: block; margin-top: 8px; font-size: 12px; color: var(--ghost); line-height: 1.4; }
+</style>

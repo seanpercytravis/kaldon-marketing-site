@@ -6,61 +6,51 @@ const screenshots = {
 };
 
 const features = [
-  { name: 'AI Product Analyses', free: '2 total', growth: '5/mo', pro: '15/mo', scale: '50/mo', enterprise: 'Unlimited' },
+  { name: 'AI Product Analyses', free: '2 total', growth: '5/mo', pro: '15/mo', scale: '100/mo', enterprise: '300/mo' },
   { name: 'Analysis Depth', free: 'Standard', growth: 'Standard', pro: 'Deep', scale: 'Deep', enterprise: 'Custom' },
-  { name: 'Marketplace Coverage', free: 'Amazon US', growth: 'Amazon US/CA', pro: 'Amazon + Walmart', scale: 'All Marketplaces', enterprise: 'All + Custom' },
+  { name: 'Marketplace Coverage', free: 'Amazon US', growth: 'Amazon US + DTC', pro: 'Amazon US + Walmart + DTC', scale: 'Amazon US + Walmart + DTC', enterprise: 'Amazon US + Walmart + DTC + Custom' },
   { name: 'AI Product Mockups', free: '2/analysis', growth: '4/analysis', pro: '8/analysis', scale: '12/analysis', enterprise: 'Unlimited' },
   { name: 'Action Plan Generation', free: true, growth: true, pro: true, scale: true, enterprise: true },
   { name: 'AI Coaching', free: false, growth: true, pro: true, scale: true, enterprise: true },
   { name: 'Ask AI (Chat)', free: false, growth: 'Limited', pro: true, scale: true, enterprise: true },
-  { name: 'Opportunity Feed', free: false, growth: true, pro: true, scale: true, enterprise: true },
-  { name: 'Command Center', free: false, growth: false, pro: true, scale: true, enterprise: true },
-  { name: 'Market Pulse', free: false, growth: false, pro: true, scale: true, enterprise: true },
   { name: 'Brand Vault', free: false, growth: '1 brand', pro: '3 brands', scale: '10 brands', enterprise: 'Unlimited' },
   { name: 'AI Logo Generation', free: false, growth: false, pro: true, scale: true, enterprise: true },
   { name: 'Brand Board Generator', free: false, growth: true, pro: true, scale: true, enterprise: true },
-  { name: 'Brand Voice Settings', free: false, growth: true, pro: true, scale: true, enterprise: true },
   { name: 'Import Brand from Analysis', free: false, growth: true, pro: true, scale: true, enterprise: true },
   { name: 'Content Calendar', free: false, growth: true, pro: true, scale: true, enterprise: true },
   { name: 'One-Off Composer', free: false, growth: true, pro: true, scale: true, enterprise: true },
   { name: 'Multi-Platform Publishing', free: false, growth: '3 platforms', pro: '5 platforms', scale: '5 platforms', enterprise: '5 platforms' },
   { name: 'Video Studio', free: false, growth: false, pro: true, scale: true, enterprise: true },
-  { name: 'Video Templates', free: false, growth: false, pro: '5 types', scale: '9 types', enterprise: '9 types + custom' },
+  { name: 'Video Templates', free: false, growth: false, pro: '10 recipes', scale: '10 recipes', enterprise: '10 recipes + custom' },
   { name: 'Landing Page Builder', free: false, growth: false, pro: true, scale: true, enterprise: true },
   { name: 'Landing Page Templates', free: false, growth: false, pro: '3', scale: '10', enterprise: 'Unlimited' },
   { name: 'Store Deployment', free: false, growth: false, pro: false, scale: true, enterprise: true },
   { name: 'Blog Engine', free: false, growth: false, pro: false, scale: true, enterprise: true },
-  { name: 'Auto SEO Content', free: false, growth: false, pro: false, scale: 'Weekly', enterprise: 'Daily' },
-  { name: 'Marketplace Listings', free: false, growth: false, pro: false, scale: true, enterprise: true },
-  { name: 'Amazon Listing Generator', free: false, growth: false, pro: false, scale: true, enterprise: true },
-  { name: 'Walmart Listing Generator', free: false, growth: false, pro: false, scale: true, enterprise: true },
+  { name: 'Auto-Published SEO Articles', free: false, growth: false, pro: false, scale: 'Weekly', enterprise: 'Daily' },
   { name: 'Social Account Connections', free: false, growth: false, pro: false, scale: true, enterprise: true },
-  { name: 'Ad Campaign Management', free: false, growth: false, pro: false, scale: false, enterprise: true },
-  { name: 'Meta Ads Integration', free: false, growth: false, pro: false, scale: false, enterprise: true },
+  { name: 'Ad Campaign Management', free: false, growth: false, pro: false, scale: true, enterprise: true },
+  { name: 'Meta Ads Integration', free: false, growth: false, pro: false, scale: true, enterprise: true },
   { name: 'Performance Analytics', free: false, growth: false, pro: false, scale: 'Basic', enterprise: 'Advanced' },
-  { name: 'Customer Retention Tools', free: false, growth: false, pro: false, scale: false, enterprise: true },
+  { name: 'Customer Retention Tools', free: false, growth: false, pro: false, scale: true, enterprise: true },
   { name: 'GEO Optimization', free: false, growth: false, pro: false, scale: true, enterprise: true },
   { name: 'Command Palette (Cmd+K)', free: true, growth: true, pro: true, scale: true, enterprise: true },
   { name: 'Dark Mode', free: true, growth: true, pro: true, scale: true, enterprise: true },
   { name: 'Export to PDF', free: false, growth: true, pro: true, scale: true, enterprise: true },
   { name: 'Priority Support', free: false, growth: false, pro: 'Email', scale: 'Email + Chat', enterprise: 'Dedicated' },
-  { name: 'API Access', free: false, growth: false, pro: false, scale: false, enterprise: true },
-  { name: 'Custom Integrations', free: false, growth: false, pro: false, scale: false, enterprise: true },
+  { name: 'API Access', free: false, growth: false, pro: false, scale: true, enterprise: true },
   { name: 'Team Members', free: '1', growth: '1', pro: '3', scale: '10', enterprise: 'Unlimited' },
-  { name: 'White Label', free: false, growth: false, pro: false, scale: false, enterprise: true },
   { name: 'Onboarding Session', free: false, growth: false, pro: false, scale: '1 session', enterprise: 'Dedicated' },
-  { name: 'SLA', free: false, growth: false, pro: false, scale: false, enterprise: '99.9%' },
 ];
 
 const faqs = [
-  { q: 'What counts as an analysis?', a: 'One analysis is a complete AI-powered product research report. You enter a product category or idea, and Kaldon runs 9 parallel AI engines across Amazon, Walmart, and DTC to generate a comprehensive report with scoring, market data, AI product mockups, an action plan, and coaching. Each analysis is a separate report.' },
+  { q: 'What counts as an analysis?', a: 'One analysis is a complete AI-powered product intelligence report. You enter a product category or idea, and Kaldon runs 10 parallel data sources across Amazon, Walmart, and DTC, then Claude synthesizes the findings into a single report with an opportunity score, market data, AI product mockups, an action plan, and coaching. Each analysis is a separate report.' },
   { q: 'Can I switch plans?', a: 'Yes. You can upgrade or downgrade your plan at any time from your Account Settings. When you upgrade, you get immediate access to the new features. When you downgrade, your current plan stays active until the end of your billing period.' },
   { q: 'What is your refund policy?', a: 'We offer a 14-day money-back guarantee on all subscription plans. If you are not satisfied, contact us at beta@kaldon.io within 14 days of your purchase for a full refund. Single analysis purchases are non-refundable once the report has been generated.' },
   { q: 'Do I need a credit card for the free plan?', a: 'No. The free plan includes 2 analyses with no credit card required. Just sign up with your email and start analyzing products immediately.' },
   { q: 'What happens when I use all my free analyses?', a: 'You can purchase a single analysis for $39.99 (no subscription required) or upgrade to a Growth plan starting at $119/mo (annual) for 5 analyses per month plus access to Brand Vault, Content Calendar, and more.' },
   { q: 'Can I cancel anytime?', a: 'Yes. All plans are cancel-anytime with no long-term contracts. Your access continues until the end of your current billing period.' },
-  { q: 'What marketplaces does Kaldon support?', a: 'Kaldon currently supports Amazon (US, CA, UK, DE), Walmart, and DTC (direct-to-consumer). We are actively expanding marketplace coverage. Enterprise plans can include custom marketplace integrations.' },
-  { q: 'Is my data secure?', a: 'Yes. All data is encrypted with AES-256 at rest and in transit. We do not share your data with third parties. Your analyses, brands, and content are yours. We are SOC 2 aligned and follow industry best practices for data security.' },
+  { q: 'What marketplaces does Kaldon support?', a: 'Kaldon currently supports Amazon US, Walmart, and DTC (direct-to-consumer). Additional Amazon regions (CA, UK, DE) are on our roadmap. Enterprise plans can include custom marketplace integrations.' },
+  { q: 'Is my data secure?', a: 'Yes. Data is encrypted with AES-256-GCM at rest and TLS 1.2+ in transit. Billing is handled by Stripe, so we never store card data. We do not share your data with third parties — your analyses, brands, and content are yours.' },
 ];
 
 function renderCell(val: string | boolean) {
@@ -132,8 +122,8 @@ function renderCell(val: string | boolean) {
             <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>5 analyses/month</li>
             <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>AI Coaching</li>
             <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Brand Vault (1 brand)</li>
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Content Calendar</li>
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Opportunity Feed</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Content Calendar (3 platforms)</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Brand Board generator</li>
           </ul>
         </div>
 
@@ -169,11 +159,11 @@ function renderCell(val: string | boolean) {
           <p class="text-xs text-[#94a3b8] mb-6 pricing-monthly hidden">Billed monthly</p>
           <a href="https://kaldon.io/signup" class="block text-center py-2.5 px-4 rounded-lg border border-[#22d3ee] text-[#22d3ee] text-sm font-semibold hover:bg-[#22d3ee]/10 transition-all mb-6">Go Scale</a>
           <ul class="space-y-2 text-sm text-[#94a3b8] flex-1">
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>50 analyses/month</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>100 analyses/month</li>
             <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Everything in Pro</li>
             <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Store Deployment</li>
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Blog Engine</li>
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Marketplace Listings</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Blog Engine (auto-publish)</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Ad Campaign Management</li>
             <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>10 brands</li>
           </ul>
         </div>
@@ -181,16 +171,15 @@ function renderCell(val: string | boolean) {
         <!-- Enterprise -->
         <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-2xl p-6 flex flex-col">
           <h3 class="text-lg font-bold text-[#e2e8f0] mb-1">Enterprise</h3>
-          <p class="text-3xl font-extrabold text-[#e2e8f0] mb-1">Custom</p>
-          <p class="text-xs text-[#94a3b8] mb-6">Tailored to your needs</p>
-          <a href="mailto:beta@kaldon.io" class="block text-center py-2.5 px-4 rounded-lg border border-[#a78bfa] text-[#a78bfa] text-sm font-semibold hover:bg-[#a78bfa]/10 transition-all mb-6">Contact Us</a>
+          <p class="text-3xl font-extrabold text-[#e2e8f0] mb-1">$1,499<span class="text-sm font-normal text-[#94a3b8]">/mo</span></p>
+          <p class="text-xs text-[#94a3b8] mb-6">Agencies and teams</p>
+          <a href="mailto:beta@kaldon.io" class="block text-center py-2.5 px-4 rounded-lg border border-[#a78bfa] text-[#a78bfa] text-sm font-semibold hover:bg-[#a78bfa]/10 transition-all mb-6">Contact Sales</a>
           <ul class="space-y-2 text-sm text-[#94a3b8] flex-1">
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Unlimited analyses</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>300 analyses/month</li>
             <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Everything in Scale</li>
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Ad Campaign Management</li>
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>API Access</li>
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>White Label</li>
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>99.9% SLA</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Daily auto-published SEO articles</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Dedicated account manager</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#34d399] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Custom onboarding</li>
           </ul>
         </div>
 
@@ -202,16 +191,16 @@ function renderCell(val: string | boolean) {
       <!-- Trust Badges -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mt-10">
         <div class="flex flex-col items-center gap-2 py-4 px-3 rounded-xl bg-[#111827]/50 border border-[rgba(255,255,255,0.06)]">
-          <svg class="w-6 h-6 text-[#22d3ee]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
-          <span class="text-xs text-[#94a3b8] font-medium">SOC 2 Aligned</span>
+          <svg class="w-6 h-6 text-[#22d3ee]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>
+          <span class="text-xs text-[#94a3b8] font-medium">AES-256-GCM at rest</span>
         </div>
         <div class="flex flex-col items-center gap-2 py-4 px-3 rounded-xl bg-[#111827]/50 border border-[rgba(255,255,255,0.06)]">
-          <svg class="w-6 h-6 text-[#22d3ee]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>
-          <span class="text-xs text-[#94a3b8] font-medium">256-bit Encryption</span>
+          <svg class="w-6 h-6 text-[#22d3ee]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
+          <span class="text-xs text-[#94a3b8] font-medium">TLS 1.2+ in transit</span>
         </div>
         <div class="flex flex-col items-center gap-2 py-4 px-3 rounded-xl bg-[#111827]/50 border border-[rgba(255,255,255,0.06)]">
           <svg class="w-6 h-6 text-[#22d3ee]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" /></svg>
-          <span class="text-xs text-[#94a3b8] font-medium">Powered by Stripe</span>
+          <span class="text-xs text-[#94a3b8] font-medium">Stripe-powered billing</span>
         </div>
         <div class="flex flex-col items-center gap-2 py-4 px-3 rounded-xl bg-[#111827]/50 border border-[rgba(255,255,255,0.06)]">
           <svg class="w-6 h-6 text-[#22d3ee]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -221,23 +210,12 @@ function renderCell(val: string | boolean) {
     </div>
   </section>
 
-  <!-- Testimonial -->
-  <section class="pb-16">
-    <div class="container-custom max-w-3xl">
-      <div class="rounded-2xl p-8 md:p-10 text-center" style="background:rgba(17,24,39,0.7);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.08);">
-        <svg class="w-8 h-8 text-[#22d3ee]/30 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11H10v10H0z" /></svg>
-        <p class="text-[#e2e8f0] text-base md:text-lg leading-relaxed mb-5 italic">"I was spending $400 a month on four different tools just for product research. Kaldon replaced all of them and added brand building on top. The analysis quality blew me away."</p>
-        <p class="text-sm text-[#94a3b8]"><span class="text-[#e2e8f0] font-semibold">Sarah M.</span> &mdash; eCommerce seller, 3 years</p>
-      </div>
-    </div>
-  </section>
-
   <!-- Feature Comparison Table -->
   <section class="section-spacing bg-[#0a0e17]">
     <div class="container-custom">
       <div class="text-center mb-10">
         <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] mb-2">Full Feature Comparison</h2>
-        <p class="text-[#94a3b8]">44 features across all plans. Every detail, transparent.</p>
+        <p class="text-[#94a3b8]">Every plan detail, transparent.</p>
       </div>
       <div id="comparison-table" class="overflow-x-auto">
         <table class="w-full min-w-[800px] border-collapse">
@@ -411,6 +389,7 @@ function renderCell(val: string | boolean) {
       { "@type": "Offer", "name": "Growth", "price": "149", "priceCurrency": "USD", "billingIncrement": 1, "unitCode": "MON" },
       { "@type": "Offer", "name": "Pro", "price": "299", "priceCurrency": "USD", "billingIncrement": 1, "unitCode": "MON" },
       { "@type": "Offer", "name": "Scale", "price": "499", "priceCurrency": "USD", "billingIncrement": 1, "unitCode": "MON" },
+      { "@type": "Offer", "name": "Enterprise", "price": "1499", "priceCurrency": "USD", "billingIncrement": 1, "unitCode": "MON" },
       { "@type": "Offer", "name": "Single Analysis", "price": "39.99", "priceCurrency": "USD" }
     ]
   }

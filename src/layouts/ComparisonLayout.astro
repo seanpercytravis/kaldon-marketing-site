@@ -1,5 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import PageHero from '../components/ui/PageHero.astro';
+import Button from '../components/ui/Button.astro';
 
 interface Props {
   title: string;
@@ -8,71 +10,92 @@ interface Props {
   verdict: string;
   tagline: string;
   kaldonTagline: string;
-  features: Array<{ name: string; competitor: string; kaldon: string; }>;
+  features: Array<{ name: string; competitor: string; kaldon: string }>;
   competitorPrice: string;
   kaldonPrice: string;
   priceSummary: string;
-  kaldonAdvantages: Array<{ title: string; description: string; }>;
-  competitorAdvantages: Array<{ title: string; description: string; }>;
+  kaldonAdvantages: Array<{ title: string; description: string }>;
+  competitorAdvantages: Array<{ title: string; description: string }>;
   chooseCompetitor: Array<string>;
   chooseKaldon: Array<string>;
   migrationTitle: string;
   migrationBody: string;
   migrationSteps: string[];
-  faqs: Array<{ q: string; a: string; }>;
+  faqs: Array<{ q: string; a: string }>;
 }
 
-const { title, description, competitor, verdict, tagline, kaldonTagline, features, competitorPrice, kaldonPrice, priceSummary, kaldonAdvantages, competitorAdvantages, chooseCompetitor, chooseKaldon, migrationTitle, migrationBody, migrationSteps, faqs } = Astro.props;
+const {
+  title,
+  description,
+  competitor,
+  verdict,
+  tagline,
+  kaldonTagline,
+  features,
+  competitorPrice,
+  kaldonPrice,
+  priceSummary,
+  kaldonAdvantages,
+  competitorAdvantages,
+  chooseCompetitor,
+  chooseKaldon,
+  migrationTitle,
+  migrationBody,
+  migrationSteps,
+  faqs,
+} = Astro.props;
 
-function renderStatus(val: string) {
-  if (val === 'yes') return '<svg class="w-5 h-5 text-[#34d399] mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>';
-  if (val === 'no') return '<svg class="w-5 h-5 text-[#f87171] mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>';
-  if (val === 'partial') return '<svg class="w-5 h-5 text-[#fbbf24] mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" /></svg>';
-  return `<span class="text-sm text-[#94a3b8]">${val}</span>`;
+function renderStatus(val: string): string {
+  if (val === 'yes') {
+    return '<svg class="w-4 h-4 mx-auto" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 L8 14.5 L16 6" stroke="#F5F5F7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>';
+  }
+  if (val === 'no') {
+    return '<span class="text-text-quaternary text-sm" aria-hidden="true">—</span><span class="sr-only">Not included</span>';
+  }
+  if (val === 'partial') {
+    return '<span class="font-mono text-xs" style="color: var(--gold);">Partial</span>';
+  }
+  return `<span class="text-sm" style="color: var(--ghost);">${val}</span>`;
 }
 ---
 
 <BaseLayout title={title} description={description}>
-
-  <!-- Hero -->
-  <section class="pt-32 pb-16 relative">
-    <div class="absolute inset-0 bg-gradient-to-b from-[#22d3ee]/5 via-[#0a0e17] to-[#0a0e17]"></div>
-    <div class="container-custom relative z-10 text-center">
-      <span class="eyebrow">COMPARE</span>
-      <h1 class="text-4xl md:text-5xl font-extrabold text-[#e2e8f0] mb-4">{competitor} vs Kaldon</h1>
-      <p class="text-lg text-[#94a3b8] max-w-2xl mx-auto">{tagline}</p>
-    </div>
-  </section>
+  <PageHero kicker="Compare" headline={`${competitor} vs Kaldon`} subhead={tagline} />
 
   <!-- Quick Verdict -->
-  <section class="pb-16">
+  <section class="pb-12 md:pb-16" style="background: var(--void);">
     <div class="container-custom max-w-3xl">
-      <div class="bg-[#1a2236] border border-[rgba(255,255,255,0.08)] rounded-2xl p-8" style="border-left: 4px solid #22d3ee">
-        <h2 class="text-sm font-bold uppercase tracking-wider text-[#22d3ee] mb-3">Quick Verdict</h2>
-        <p class="text-[#e2e8f0] leading-relaxed">{verdict}</p>
+      <div class="rounded-card p-8" style="background: var(--deep-space); border: 1px solid var(--hairline); border-left: 2px solid var(--signal);">
+        <span class="kicker" style="color: var(--signal); margin-bottom: 10px;">Quick Verdict</span>
+        <p class="text-body-lg" style="color: var(--chalk); line-height: 1.55; letter-spacing: -0.005em;">{verdict}</p>
       </div>
     </div>
   </section>
 
-  <!-- Comparison Table -->
-  <section class="section-spacing">
+  <!-- Feature comparison -->
+  <section class="section-spacing" style="background: var(--void);">
     <div class="container-custom max-w-4xl">
-      <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] text-center mb-8">Feature-by-Feature Comparison</h2>
-      <div class="overflow-x-auto">
-        <table class="w-full border-collapse min-w-[600px]">
+      <header class="text-center mb-10">
+        <span class="kicker">Feature Comparison</span>
+        <h2 class="font-display font-semibold" style="font-weight: 600; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.15; letter-spacing: -0.015em; color: var(--chalk);">
+          Side by side
+        </h2>
+      </header>
+      <div class="comparison-wrap">
+        <table class="comparison-table">
           <thead>
-            <tr class="border-b border-[rgba(255,255,255,0.08)]">
-              <th class="text-left py-3 px-4 text-sm font-semibold text-[#94a3b8] sticky left-0 bg-[#0a0e17] z-10 min-w-[200px]">Feature</th>
-              <th class="text-center py-3 px-4 text-sm font-semibold text-[#94a3b8] w-32">{competitor}</th>
-              <th class="text-center py-3 px-4 text-sm font-semibold text-[#22d3ee] w-32">Kaldon</th>
+            <tr>
+              <th class="sticky-col">Feature</th>
+              <th>{competitor}</th>
+              <th class="highlight">Kaldon</th>
             </tr>
           </thead>
           <tbody>
-            {features.map((f, i) => (
-              <tr class={`border-b border-[rgba(255,255,255,0.04)] ${i % 2 === 0 ? 'bg-[#111827]/30' : ''}`}>
-                <td class="py-3 px-4 text-sm text-[#e2e8f0] sticky left-0 bg-inherit z-10">{f.name}</td>
-                <td class="py-3 px-4 text-center" set:html={renderStatus(f.competitor)} />
-                <td class="py-3 px-4 text-center" set:html={renderStatus(f.kaldon)} />
+            {features.map((f) => (
+              <tr>
+                <td class="sticky-col">{f.name}</td>
+                <td set:html={renderStatus(f.competitor)} />
+                <td class="highlight" set:html={renderStatus(f.kaldon)} />
               </tr>
             ))}
           </tbody>
@@ -81,39 +104,48 @@ function renderStatus(val: string) {
     </div>
   </section>
 
-  <!-- Pricing Comparison -->
-  <section class="section-spacing bg-[#111827]/30">
+  <!-- Pricing side-by-side -->
+  <section class="section-spacing" style="background: var(--void);">
     <div class="container-custom max-w-4xl">
-      <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] text-center mb-8">Pricing Comparison</h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-2xl p-8 text-center">
-          <h3 class="text-lg font-bold text-[#94a3b8] mb-2">{competitor}</h3>
-          <p class="text-3xl font-extrabold text-[#e2e8f0] mb-2">{competitorPrice}</p>
-          <p class="text-sm text-[#64748b]">For equivalent functionality</p>
+      <header class="text-center mb-10">
+        <span class="kicker">Pricing</span>
+        <h2 class="font-display font-semibold" style="font-weight: 600; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.15; letter-spacing: -0.015em; color: var(--chalk);">
+          What you pay
+        </h2>
+      </header>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="rounded-card p-8 text-center" style="background: var(--deep-space); border: 1px solid var(--hairline);">
+          <h3 class="font-display" style="font-weight: 500; font-size: 15px; color: var(--ghost); letter-spacing: -0.005em;">{competitor}</h3>
+          <p class="font-display mt-3" style="font-weight: 500; font-size: 32px; color: var(--chalk); letter-spacing: -0.025em; line-height: 1;">{competitorPrice}</p>
+          <p class="mt-2 text-body-sm" style="color: var(--ghost);">For equivalent functionality</p>
         </div>
-        <div class="bg-[#111827] border-2 border-[#22d3ee]/30 rounded-2xl p-8 text-center shadow-[0_0_30px_rgba(34,211,238,0.08)]">
-          <h3 class="text-lg font-bold text-[#22d3ee] mb-2">Kaldon</h3>
-          <p class="text-3xl font-extrabold text-[#e2e8f0] mb-2">{kaldonPrice}</p>
-          <p class="text-sm text-[#94a3b8]">{priceSummary}</p>
+        <div class="compare-pricing-kaldon rounded-card p-8 text-center relative">
+          <h3 class="font-display" style="font-weight: 500; font-size: 15px; color: var(--gold); letter-spacing: -0.005em;">Kaldon</h3>
+          <p class="font-display mt-3" style="font-weight: 500; font-size: 32px; color: var(--chalk); letter-spacing: -0.025em; line-height: 1;">{kaldonPrice}</p>
+          <p class="mt-2 text-body-sm" style="color: var(--ghost);">{priceSummary}</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- What Kaldon Does That They Don't -->
-  <section class="section-spacing">
+  <section class="section-spacing" style="background: var(--void);">
     <div class="container-custom max-w-4xl">
-      <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] text-center mb-4">What Kaldon Does That {competitor} Does Not</h2>
-      <p class="text-[#94a3b8] text-center mb-8 max-w-2xl mx-auto">Capabilities that are unique to Kaldon and not available in {competitor}.</p>
+      <header class="text-center mb-10">
+        <span class="kicker">Only in Kaldon</span>
+        <h2 class="font-display font-semibold" style="font-weight: 600; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.15; letter-spacing: -0.015em; color: var(--chalk);">
+          What Kaldon does that {competitor} doesn't
+        </h2>
+      </header>
       <div class="grid md:grid-cols-2 gap-4">
         {kaldonAdvantages.map((adv) => (
-          <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl p-5">
-            <div class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-[#22d3ee] shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-              <div>
-                <h3 class="text-[#e2e8f0] font-semibold mb-1">{adv.title}</h3>
-                <p class="text-sm text-[#94a3b8] leading-relaxed">{adv.description}</p>
-              </div>
+          <div class="advantage-card">
+            <svg class="adv-check" width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M4 10.5 L8 14.5 L16 6" stroke="#FFB800" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <div>
+              <h3 class="adv-title">{adv.title}</h3>
+              <p class="adv-desc">{adv.description}</p>
             </div>
           </div>
         ))}
@@ -122,19 +154,24 @@ function renderStatus(val: string) {
   </section>
 
   <!-- What They Do That Kaldon Doesn't -->
-  <section class="section-spacing bg-[#111827]/30">
+  <section class="section-spacing" style="background: var(--void);">
     <div class="container-custom max-w-4xl">
-      <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] text-center mb-4">What {competitor} Does That Kaldon Does Not</h2>
-      <p class="text-[#94a3b8] text-center mb-8 max-w-2xl mx-auto">Areas where {competitor} has capabilities that Kaldon currently does not offer.</p>
+      <header class="text-center mb-10">
+        <span class="kicker">Honest trade-offs</span>
+        <h2 class="font-display font-semibold" style="font-weight: 600; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.15; letter-spacing: -0.015em; color: var(--chalk);">
+          What {competitor} does that Kaldon doesn't
+        </h2>
+      </header>
       <div class="grid md:grid-cols-2 gap-4">
         {competitorAdvantages.map((adv) => (
-          <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl p-5">
-            <div class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-[#fbbf24] shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" /></svg>
-              <div>
-                <h3 class="text-[#e2e8f0] font-semibold mb-1">{adv.title}</h3>
-                <p class="text-sm text-[#94a3b8] leading-relaxed">{adv.description}</p>
-              </div>
+          <div class="advantage-card">
+            <svg class="adv-check" width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true" style="color: var(--ghost);">
+              <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5" />
+              <path d="M7 10 L13 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+            </svg>
+            <div>
+              <h3 class="adv-title">{adv.title}</h3>
+              <p class="adv-desc">{adv.description}</p>
             </div>
           </div>
         ))}
@@ -142,36 +179,29 @@ function renderStatus(val: string) {
     </div>
   </section>
 
-  <!-- Who Should Choose Whom -->
-  <section class="section-spacing">
+  <!-- Who should choose what -->
+  <section class="section-spacing" style="background: var(--void);">
     <div class="container-custom max-w-4xl">
-      <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] text-center mb-8">Who Should Choose What</h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-2xl p-6">
-          <h3 class="text-lg font-bold text-[#94a3b8] mb-4 flex items-center gap-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
-            Choose {competitor} If You...
-          </h3>
-          <ul class="space-y-3">
+      <header class="text-center mb-10">
+        <span class="kicker">Decision Guide</span>
+        <h2 class="font-display font-semibold" style="font-weight: 600; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.15; letter-spacing: -0.015em; color: var(--chalk);">
+          Who should choose what
+        </h2>
+      </header>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="choose-card">
+          <p class="choose-label">Choose {competitor} if you…</p>
+          <ul class="choose-list">
             {chooseCompetitor.map((item) => (
-              <li class="flex items-start gap-2 text-sm text-[#94a3b8]">
-                <svg class="w-4 h-4 text-[#64748b] shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
-                <span>{item}</span>
-              </li>
+              <li>{item}</li>
             ))}
           </ul>
         </div>
-        <div class="bg-[#111827] border-2 border-[#22d3ee]/30 rounded-2xl p-6 shadow-[0_0_30px_rgba(34,211,238,0.08)]">
-          <h3 class="text-lg font-bold text-[#22d3ee] mb-4 flex items-center gap-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-            Choose Kaldon If You...
-          </h3>
-          <ul class="space-y-3">
+        <div class="choose-card choose-kaldon">
+          <p class="choose-label" style="color: var(--gold);">Choose Kaldon if you…</p>
+          <ul class="choose-list">
             {chooseKaldon.map((item) => (
-              <li class="flex items-start gap-2 text-sm text-[#e2e8f0]">
-                <svg class="w-4 h-4 text-[#22d3ee] shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                <span>{item}</span>
-              </li>
+              <li>{item}</li>
             ))}
           </ul>
         </div>
@@ -179,72 +209,302 @@ function renderStatus(val: string) {
     </div>
   </section>
 
-  <!-- Migration Path -->
-  <section class="section-spacing bg-[#111827]/30">
+  <!-- Migration path -->
+  <section class="section-spacing" style="background: var(--void);">
     <div class="container-custom max-w-3xl">
-      <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] text-center mb-4">{migrationTitle}</h2>
-      <p class="text-[#94a3b8] text-center mb-8">{migrationBody}</p>
-      <div class="space-y-3">
+      <header class="text-center mb-10">
+        <span class="kicker">Migration Path</span>
+        <h2 class="font-display font-semibold" style="font-weight: 600; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.15; letter-spacing: -0.015em; color: var(--chalk);">
+          {migrationTitle}
+        </h2>
+        <p class="mt-4 text-body-lg" style="color: var(--ghost);">{migrationBody}</p>
+      </header>
+      <ol class="migration-steps">
         {migrationSteps.map((step, i) => (
-          <div class="flex items-start gap-4 bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl p-4">
-            <span class="w-8 h-8 rounded-full bg-[#22d3ee]/10 text-[#22d3ee] flex items-center justify-center text-sm font-bold shrink-0">{i + 1}</span>
-            <p class="text-sm text-[#e2e8f0] pt-1">{step}</p>
-          </div>
+          <li>
+            <span class="migration-num">{String(i + 1).padStart(2, '0')}</span>
+            <span class="migration-text">{step}</span>
+          </li>
         ))}
-      </div>
+      </ol>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section class="section-spacing">
+  <section class="section-spacing" style="background: var(--void);">
     <div class="container-custom max-w-3xl">
-      <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0] text-center mb-8">Frequently Asked Questions</h2>
+      <header class="text-center mb-10">
+        <span class="kicker">FAQ</span>
+        <h2 class="font-display font-semibold" style="font-weight: 600; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.15; letter-spacing: -0.015em; color: var(--chalk);">
+          Frequently asked questions
+        </h2>
+      </header>
       <div class="space-y-3">
-        {faqs.map((faq, i) => (
-          <div class="faq-item bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl overflow-hidden">
-            <button class="faq-toggle w-full flex items-center justify-between p-5 text-left cursor-pointer" data-faq={i}>
-              <span class="text-[#e2e8f0] font-medium pr-4">{faq.q}</span>
-              <svg class="faq-chevron w-5 h-5 text-[#94a3b8] shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-            </button>
-            <div class="faq-answer hidden px-5 pb-5">
-              <p class="text-sm text-[#94a3b8] leading-relaxed">{faq.a}</p>
-            </div>
-          </div>
+        {faqs.map((faq) => (
+          <details class="faq-item" name="compare-faq">
+            <summary class="faq-summary">
+              <span class="faq-q">{faq.q}</span>
+              <svg class="faq-chevron w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <div class="faq-answer"><p>{faq.a}</p></div>
+          </details>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section-spacing relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-[#22d3ee]/10 via-[#0a0e17] to-[#a78bfa]/10"></div>
-    <div class="container-custom relative z-10 text-center">
-      <h2 class="text-3xl md:text-4xl font-extrabold text-[#e2e8f0] mb-4">{kaldonTagline}</h2>
-      <p class="text-lg text-[#94a3b8] mb-8">Start Free, 2 Analyses Included. No credit card required.</p>
-      <a href="https://kaldon.io/signup" class="btn-primary btn-large btn-glow inline-flex items-center gap-2">Start Free, 2 Analyses Included <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
+  <!-- Final CTA -->
+  <section class="section-spacing-lg relative overflow-hidden" style="background: var(--void);">
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 24px 24px; -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%); mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);"
+      aria-hidden="true"
+    ></div>
+    <div class="container-custom relative z-10 text-center max-w-prose mx-auto">
+      <h2 class="font-display" style="font-weight: 500; font-size: clamp(32px, 4.5vw, 48px); line-height: 1.08; letter-spacing: -0.022em; color: var(--chalk);">
+        {kaldonTagline}
+      </h2>
+      <p class="mt-5 text-body-lg" style="color: var(--ghost);">
+        Start free. 2 analyses. No credit card. See for yourself.
+      </p>
+      <div class="mt-8">
+        <Button variant="primary" size="large" href="https://kaldon.io/signup" data-event="compare_cta">
+          Start Free — 2 Analyses Included
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"/>
+          </svg>
+        </Button>
+      </div>
     </div>
   </section>
 
-  <script is:inline>
-    document.querySelectorAll('.faq-toggle').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const answer = this.nextElementSibling;
-        const chevron = this.querySelector('.faq-chevron');
-        const isOpen = !answer.classList.contains('hidden');
-        document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
-        document.querySelectorAll('.faq-chevron').forEach(c => c.style.transform = '');
-        if (!isOpen) { answer.classList.remove('hidden'); chevron.style.transform = 'rotate(180deg)'; }
-      });
-    });
-  </script>
-
   <script type="application/ld+json" is:inline set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(f => ({
-      "@type": "Question",
-      "name": f.q,
-      "acceptedAnswer": { "@type": "Answer", "text": f.a }
-    }))
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
   })} />
 </BaseLayout>
+
+<style>
+  /* Comparison table — shared pattern */
+  .comparison-wrap {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid var(--hairline);
+    background: var(--deep-space);
+  }
+  .comparison-table {
+    width: 100%;
+    min-width: 560px;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 14px;
+  }
+  .comparison-table thead th {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ghost);
+    font-weight: 500;
+    text-align: center;
+    padding: 18px 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .comparison-table thead th.sticky-col { text-align: left; padding-left: 20px; }
+  .comparison-table thead th.highlight { color: var(--gold); }
+  .comparison-table td {
+    padding: 14px 12px;
+    text-align: center;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .comparison-table td.sticky-col {
+    text-align: left;
+    color: var(--chalk);
+    padding-left: 20px;
+  }
+  .comparison-table td.highlight {
+    background: rgba(255, 184, 0, 0.03);
+  }
+  .comparison-table tr:last-child td { border-bottom: none; }
+
+  /* Pricing side-by-side */
+  .compare-pricing-kaldon {
+    background: var(--deep-space);
+    border: 1px solid transparent;
+    position: relative;
+  }
+  .compare-pricing-kaldon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(to bottom right, rgba(255, 184, 0, 0.4), rgba(0, 212, 255, 0.2) 60%, rgba(255, 255, 255, 0.06));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Advantage cards */
+  .advantage-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 20px 22px;
+    background: var(--deep-space);
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    transition: border-color 160ms var(--ease-out-quad);
+  }
+  .advantage-card:hover { border-color: var(--hairline-active); }
+  .adv-check { flex-shrink: 0; margin-top: 2px; }
+  .adv-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--chalk);
+    letter-spacing: -0.01em;
+  }
+  .adv-desc {
+    margin-top: 4px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ghost);
+    letter-spacing: -0.005em;
+  }
+
+  /* Choose cards */
+  .choose-card {
+    padding: 28px;
+    background: var(--deep-space);
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+  }
+  .choose-kaldon {
+    border-color: transparent;
+    position: relative;
+  }
+  .choose-kaldon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(to bottom right, rgba(255, 184, 0, 0.5), rgba(0, 212, 255, 0.2) 60%, rgba(255, 255, 255, 0.05));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+  .choose-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ghost);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+  .choose-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .choose-list li {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    letter-spacing: -0.005em;
+    padding-left: 18px;
+    position: relative;
+  }
+  .choose-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--ghost);
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+  .choose-kaldon .choose-list li::before { color: var(--gold); }
+
+  /* Migration steps */
+  .migration-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .migration-steps li {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 18px 22px;
+    background: var(--deep-space);
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+  }
+  .migration-num {
+    font-family: var(--font-mono);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--gold);
+    letter-spacing: -0.01em;
+    flex-shrink: 0;
+  }
+  .migration-text {
+    font-size: 14px;
+    color: var(--chalk);
+    line-height: 1.5;
+    letter-spacing: -0.005em;
+  }
+
+  /* FAQ (shared with pricing page pattern) */
+  .faq-item {
+    background: var(--deep-space);
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 160ms var(--ease-out-quad);
+  }
+  .faq-item:hover { border-color: var(--hairline-active); }
+  .faq-item[open] { border-color: var(--hairline-active); }
+  .faq-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    cursor: pointer;
+    list-style: none;
+  }
+  .faq-summary::-webkit-details-marker { display: none; }
+  .faq-q {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--chalk);
+    letter-spacing: -0.01em;
+  }
+  .faq-chevron {
+    color: var(--ghost);
+    transition: transform 200ms var(--ease-out-quad);
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+  .faq-item[open] .faq-chevron { transform: rotate(180deg); }
+  .faq-answer {
+    padding: 0 24px 20px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ghost);
+  }
+</style>

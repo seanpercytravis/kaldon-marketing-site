@@ -1,181 +1,152 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/ui/PageHero.astro';
+import Button from '../components/ui/Button.astro';
 
-const personas = [
+const segments = [
   {
-    name: 'The Aspiring Launcher',
-    tagline: 'I have a product idea but no idea where to start.',
-    gradient: 'from-[#22d3ee] to-[#3b82f6]',
-    color: '#22d3ee',
-    icon: 'rocket',
-    challenge: 'You have been researching products for weeks. You have 47 browser tabs open. You have spreadsheets comparing niches, but you still do not know if your idea is actually viable. Every tool you try gives you data, but none of them tell you what to do with it. You are stuck in analysis paralysis, spending money on subscriptions and getting no closer to launching.',
-    helps: [
-      'AI Analysis Engine scores your product idea across 9 data sources and tells you if it is worth pursuing',
-      'Action Plan gives you a step-by-step roadmap with timelines, not just data',
-      'AI Coaching walks you through every decision so you never feel lost',
-      'Brand Vault generates your entire brand identity from your analysis data',
-      'Content Calendar creates a month of social content before you even have inventory',
-    ],
-    outcome: 'You go from "I think this might work" to "I have a scored analysis, a professional brand, a month of content, and a launch plan" in a single afternoon. No experience required. No guesswork. Just intelligence.',
-    dayInLife: 'Monday morning. You type "premium insulated water bottles" into Kaldon. By lunch, you have a 92-score analysis with AI product mockups, a competitive breakdown, and a step-by-step action plan. By Tuesday, your brand identity is generated: logo, colors, voice. By Wednesday, you have a month of social content scheduled across 5 platforms. By Thursday, your landing page is live. You spent $149 total. Your friends think you hired an agency.',
-    cta: 'Start Your First Analysis',
+    num: '01',
+    kicker: 'New Sellers',
+    title: 'The aspiring launcher',
+    tagline: "I have a product idea but no idea where to start.",
+    body: "Weeks of research, 47 open browser tabs, and spreadsheets comparing niches — and you still don't know if your idea is viable. Every tool gives you data, none tell you what to do with it. Kaldon collapses research, brand, content, and launch into one guided pipeline.",
+    href: '/use-cases/new-sellers',
   },
   {
-    name: 'The Expanding Seller',
-    tagline: 'I am selling on Amazon but want to go DTC and multi-channel.',
-    gradient: 'from-[#fb923c] to-[#fbbf24]',
-    color: '#fb923c',
-    icon: 'trending-up',
-    challenge: 'You are making sales on Amazon, but you are dependent on one marketplace. Amazon changes a policy, and your revenue drops 30% overnight. You know you need your own store, your own brand, your own audience. But building a DTC presence from scratch while managing your Amazon business feels impossible. You do not have time to learn Shopify, Canva, Jasper, and Meta Ads Manager on top of everything else.',
-    helps: [
-      'Vet Product mode analyzes your existing Amazon listings and identifies DTC expansion opportunities',
-      'Brand Vault creates a professional brand identity that works across Amazon, Walmart, and your own store',
-      'Store Deployment launches a complete DTC store with checkout, emails, and chatbot in one click',
-      'Marketplace Listings generates optimized listings for Walmart and other channels',
-      'Content Calendar manages content across all your channels from one dashboard',
-    ],
-    outcome: 'You stop being dependent on one marketplace. You have your own brand, your own store, your own audience. When Amazon changes a policy, you shrug. Your revenue is diversified, your brand is professional, and your customers know you by name.',
-    dayInLife: 'You paste your top Amazon ASIN into Kaldon. The Vet Product analysis shows a DTC opportunity score of 87. You click "Build Brand" and Kaldon generates a complete identity from your existing product data. You click "Deploy Store" and your DTC store is live with your brand, your products, and automated marketing. Your Amazon customers start finding you directly. Your margins improve. Your stress decreases.',
-    cta: 'Expand Your Business',
+    num: '02',
+    kicker: 'Existing Brands',
+    title: 'The expanding seller',
+    tagline: "I'm selling on Amazon and need to go multi-channel.",
+    body: "You're making sales but dependent on one marketplace. Amazon changes a policy, your revenue drops 30% overnight. Kaldon analyzes your existing ASINs, generates a DTC-ready brand, deploys your store, and gives you intelligence across Walmart and DTC without you learning six new tools.",
+    href: '/use-cases/existing-brands',
   },
   {
-    name: 'The Brand Builder',
-    tagline: 'I have products but my brand feels amateur.',
-    gradient: 'from-[#a78bfa] to-[#f472b6]',
-    color: '#a78bfa',
-    icon: 'palette',
-    challenge: 'You are selling products, but your brand looks like it was made in Microsoft Paint. Your logo is clip art. Your social media is inconsistent. Your product photos are taken on your kitchen counter. You know that a professional brand would command higher prices and more trust, but hiring a branding agency costs $5,000 to $15,000 and takes months. You cannot justify that spend at your current stage.',
-    helps: [
-      'AI generates a complete brand identity: logo concepts, color palette, typography, voice guidelines',
-      'Brand Board Generator creates a professional brand presentation for partners and manufacturers',
-      'Video Studio produces 9 types of branded videos with your identity baked in',
-      'Landing Page Builder creates conversion-optimized pages that look like a design agency built them',
-      'Everything matches automatically because your brand flows through the entire pipeline',
-    ],
-    outcome: 'Your brand looks like you spent $10,000 on it. Your social media is consistent. Your product pages convert better. Your wholesale partners take you seriously. Customers pay premium prices because your brand communicates premium quality. And it took you 15 minutes, not 3 months.',
-    dayInLife: 'You open Kaldon and click "Build Brand." You answer a few questions about your products and audience. Kaldon generates three logo concepts, a color palette, typography pairings, and voice guidelines. You pick your favorite, lock it, and suddenly every piece of content Kaldon creates matches your brand perfectly. Your Instagram looks curated. Your landing page looks expensive. Your competitors wonder who you hired.',
-    cta: 'Build Your Brand',
-  },
-  {
-    name: 'The Coach / Agency',
-    tagline: 'I help sellers launch products and need better tools.',
-    gradient: 'from-[#34d399] to-[#22d3ee]',
-    color: '#34d399',
-    icon: 'building',
-    challenge: 'You coach eCommerce sellers or run a small agency. Every client needs the same thing: product research, brand identity, content, and a store. But you are doing it manually for each client, using 6 different tools, and spending 40+ hours per launch. You cannot scale because your time is the bottleneck. You need a system that makes every client launch look professional without you doing all the work.',
-    helps: [
-      'Run analyses for clients in minutes instead of hours of manual research',
-      'Generate complete brand identities that clients think you designed yourself',
-      'Create a month of content per client without hiring a content team',
-      'Deploy stores for clients with one click instead of weeks of Shopify setup',
-      'Scale plan supports 10 brands, so you can manage multiple clients from one dashboard',
-    ],
-    outcome: 'You go from launching 2 clients per month to 10. Each client gets a professional brand, a month of content, and a live store. They think you are a genius. You charge premium rates because the output is premium. Your agency grows without hiring more people.',
-    dayInLife: 'A new client signs up on Monday. By Monday afternoon, you have run their product analysis and shared the report. By Tuesday, their brand identity is generated and approved. By Wednesday, their content calendar is populated and their landing page is live. By Thursday, their store is deployed. The client is amazed. You invoice them for $3,000. Kaldon cost you $399/month. You take Friday off.',
-    cta: 'Scale Your Agency',
+    num: '03',
+    kicker: 'Agencies',
+    title: 'The scaling operator',
+    tagline: "I run an agency and can't scale past a handful of clients.",
+    body: "Every client launch takes 40+ hours and quality varies when you're stretched thin. Kaldon compresses the work into an afternoon per client, produces agency-quality deliverables every time, and lets you move from 2 launches/mo to 10 without hiring.",
+    href: '/use-cases/agencies',
   },
 ];
 ---
 
 <BaseLayout
-  title="Who Kaldon Is For — eCommerce Sellers at Every Stage"
-  description="Whether you are launching your first product, expanding from Amazon to DTC, building a brand, or scaling an agency, Kaldon is built for your stage."
+  title="Who Kaldon Is For — From First-Time Sellers to Scaling Agencies"
+  description="Whether you're launching your first product, expanding beyond Amazon, or running an agency, Kaldon fits your stage. See the three seller profiles we're built for."
 >
+  <PageHero
+    kicker="Who It's For"
+    headline="Three profiles. One pipeline."
+    subhead="Whether you're launching your first product, expanding beyond Amazon, or running an agency — Kaldon adapts to the stage you're at."
+  />
 
-  <!-- Hero -->
-  <section class="pt-32 pb-16 relative">
-    <div class="absolute inset-0 bg-gradient-to-b from-[#22d3ee]/5 via-[#0a0e17] to-[#0a0e17]"></div>
-    <div class="container-custom relative z-10 text-center">
-      <span class="eyebrow">WHO IT'S FOR</span>
-      <h1 class="text-4xl md:text-5xl font-extrabold text-[#e2e8f0] mb-4">Built for Your Stage.<br/>Designed for Your Goals.</h1>
-      <p class="text-lg text-[#94a3b8] max-w-2xl mx-auto">Whether you are researching your first product or scaling your tenth brand, Kaldon meets you where you are and takes you where you want to go.</p>
-    </div>
-  </section>
-
-  <!-- Personas -->
-  {personas.map((p, i) => (
-    <section class={`py-20 ${i % 2 === 0 ? 'bg-[#0a0e17]' : 'bg-[#111827]/30'}`}>
-      <div class="container-custom max-w-5xl">
-        <div class="animate-on-scroll">
-          <!-- Header -->
-          <div class="flex items-center gap-4 mb-8">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style={`background:${p.color}15;`}>
-              {p.icon === 'rocket' && <svg class="w-6 h-6" style={`color:${p.color};`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>}
-              {p.icon === 'trending-up' && <svg class="w-6 h-6" style={`color:${p.color};`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>}
-              {p.icon === 'palette' && <svg class="w-6 h-6" style={`color:${p.color};`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>}
-              {p.icon === 'building' && <svg class="w-6 h-6" style={`color:${p.color};`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>}
+  <section class="section-spacing" style="background: var(--void);">
+    <div class="container-custom max-w-5xl">
+      <div class="grid gap-4">
+        {segments.map((s) => (
+          <a href={s.href} class="segment-card">
+            <div class="segment-left">
+              <span class="segment-num">{s.num}</span>
+              <span class="segment-kicker">{s.kicker}</span>
             </div>
-            <div>
-              <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0]">{p.name}</h2>
-              <p class="text-lg italic" style={`color: ${p.color}`}>"{p.tagline}"</p>
+            <div class="segment-right">
+              <h2 class="segment-title">{s.title}</h2>
+              <p class="segment-tagline">"{s.tagline}"</p>
+              <p class="segment-body">{s.body}</p>
+              <span class="link-arrow mt-5">
+                See the full playbook
+                <span class="arrow" aria-hidden="true">→</span>
+              </span>
             </div>
-          </div>
-
-          <div class="grid md:grid-cols-2 gap-8">
-            <!-- Left column -->
-            <div class="space-y-6">
-              <!-- Challenge -->
-              <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl p-6">
-                <h3 class="text-sm font-bold uppercase tracking-wider text-[#f87171] mb-3">The Challenge</h3>
-                <p class="text-[#94a3b8] text-sm leading-relaxed">{p.challenge}</p>
-              </div>
-
-              <!-- How Kaldon Helps -->
-              <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl p-6" style={`border-top: 3px solid ${p.color}`}>
-                <h3 class="text-sm font-bold uppercase tracking-wider mb-3" style={`color: ${p.color}`}>How Kaldon Helps</h3>
-                <ul class="space-y-2">
-                  {p.helps.map(h => (
-                    <li class="flex items-start gap-2 text-sm text-[#94a3b8]">
-                      <svg class="w-4 h-4 shrink-0 mt-0.5" style={`color: ${p.color}`} fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                      {h}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <!-- Right column -->
-            <div class="space-y-6">
-              <!-- Outcome -->
-              <div class="bg-[#1a2236] border border-[rgba(255,255,255,0.08)] rounded-xl p-6" style={`border-left: 3px solid ${p.color}`}>
-                <h3 class="text-sm font-bold uppercase tracking-wider text-[#34d399] mb-3">The Outcome</h3>
-                <p class="text-[#e2e8f0] text-sm leading-relaxed">{p.outcome}</p>
-              </div>
-
-              <!-- Day in the Life -->
-              <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl p-6">
-                <h3 class="text-sm font-bold uppercase tracking-wider text-[#94a3b8] mb-3">A Day in Your Life with Kaldon</h3>
-                <p class="text-[#94a3b8] text-sm leading-relaxed italic">{p.dayInLife}</p>
-              </div>
-
-              <!-- CTA -->
-              <a href="https://kaldon.io/signup" class="inline-flex items-center gap-2 py-3 px-6 rounded-lg font-semibold text-sm transition-all hover:scale-[1.02]" style={`background: ${p.color}; color: #0a0e17`}>
-                {p.cta}
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
-              </a>
-            </div>
-          </div>
-        </div>
+          </a>
+        ))}
       </div>
-    </section>
-  ))}
-
-  <!-- Final CTA -->
-  <section class="section-spacing relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-[#22d3ee]/10 via-[#0a0e17] to-[#a78bfa]/10"></div>
-    <div class="container-custom relative z-10 text-center">
-      <h2 class="text-3xl md:text-4xl font-extrabold text-[#e2e8f0] mb-4">No Matter Your Stage, Kaldon Gets You There Faster</h2>
-      <p class="text-lg text-[#94a3b8] mb-8">2 free analyses. No credit card. Start in 60 seconds.</p>
-      <a href="https://kaldon.io/signup" class="btn-primary btn-large btn-glow inline-flex items-center gap-2">Start Free <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
     </div>
   </section>
 
-  <script is:inline>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
-  </script>
+  <section class="section-spacing-lg relative overflow-hidden" style="background: var(--void);">
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 24px 24px; -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%); mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);"
+      aria-hidden="true"
+    ></div>
+    <div class="container-custom relative z-10 text-center max-w-prose mx-auto">
+      <h2 class="font-display" style="font-weight: 500; font-size: clamp(32px, 4.5vw, 48px); line-height: 1.08; letter-spacing: -0.022em; color: var(--chalk);">
+        Not sure which fits? Start free and find out.
+      </h2>
+      <p class="mt-5 text-body-lg" style="color: var(--ghost);">
+        2 analyses. No credit card. See exactly what Kaldon delivers before you commit.
+      </p>
+      <div class="mt-8">
+        <Button variant="primary" size="large" href="https://kaldon.io/signup" data-event="who_final_cta">
+          Start Free — 2 Analyses Included
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"/>
+          </svg>
+        </Button>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+  .segment-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 32px;
+    background: var(--deep-space);
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    transition: border-color 160ms var(--ease-out-quad);
+  }
+  .segment-card:hover { border-color: var(--hairline-active); }
+  .segment-card:hover .arrow { transform: translateX(3px); }
+
+  @media (min-width: 768px) {
+    .segment-card { grid-template-columns: 180px 1fr; gap: 40px; }
+  }
+
+  .segment-left { display: flex; flex-direction: column; gap: 6px; }
+  .segment-num {
+    font-family: var(--font-mono);
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--gold);
+    letter-spacing: -0.04em;
+  }
+  .segment-kicker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ghost);
+    font-weight: 500;
+  }
+
+  .segment-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--chalk);
+    letter-spacing: -0.015em;
+  }
+  .segment-tagline {
+    margin-top: 8px;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--signal);
+    letter-spacing: -0.01em;
+  }
+  .segment-body {
+    margin-top: 14px;
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ghost);
+    letter-spacing: -0.005em;
+  }
+</style>

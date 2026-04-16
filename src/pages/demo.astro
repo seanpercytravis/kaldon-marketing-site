@@ -1,61 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/ui/PageHero.astro';
+import Button from '../components/ui/Button.astro';
 
 const arcadeDemos = [
-  {
-    id: 'arcade-demo-1',
-    title: 'Discover a Winning Product',
-    desc: 'Click through a real product analysis. See the AI scoring, product mockups, action plan, and coaching flow.',
-    screenshot: '/images/screenshots/01-analysis-hero.webp',
-    alt: 'Interactive demo: Discover a Winning Product with Kaldon AI analysis',
-  },
-  {
-    id: 'arcade-demo-2',
-    title: 'Build Your Brand in Minutes',
-    desc: 'Watch how Kaldon generates a complete brand identity from analysis data. Logo, colors, voice, everything.',
-    screenshot: '/images/screenshots/07-brand-detail.webp',
-    alt: 'Interactive demo: Build Your Brand with Kaldon Brand Vault',
-  },
-  {
-    id: 'arcade-demo-3',
-    title: 'The Full Pipeline',
-    desc: 'Experience the complete journey from product idea to live store. Five phases, one platform, zero gaps.',
-    screenshot: '/images/screenshots/15-journey-progress.webp',
-    alt: 'Interactive demo: Full pipeline walkthrough from Discover to Grow',
-  },
+  { id: 'arcade-demo-1', title: 'Discover a winning product', desc: 'Click through a real product analysis. See the AI scoring, product mockups, action plan, and coaching flow.', screenshot: '/images/screenshots/01-analysis-hero.webp' },
+  { id: 'arcade-demo-2', title: 'Build your brand in minutes', desc: 'Watch how Kaldon generates a complete brand identity from analysis data. Logo, colors, voice, everything.', screenshot: '/images/screenshots/07-brand-detail.webp' },
+  { id: 'arcade-demo-3', title: 'The full pipeline', desc: 'Experience the complete journey from product idea to live store. Five phases, one platform, zero gaps.', screenshot: '/images/screenshots/15-journey-progress.webp' },
 ];
 
 const loomVideos = [
-  {
-    id: 'loom-video-1',
-    title: 'The Full Pipeline in 90 Seconds',
-    screenshot: '/images/screenshots/15-journey-progress.webp',
-    alt: 'Video walkthrough: The full Kaldon pipeline in 90 seconds',
-  },
-  {
-    id: 'loom-video-2',
-    title: 'Inside an AI Analysis Report',
-    screenshot: '/images/screenshots/01-analysis-hero.webp',
-    alt: 'Video walkthrough: Inside a Kaldon AI analysis report',
-  },
-  {
-    id: 'loom-video-3',
-    title: 'Building a Brand from Scratch',
-    screenshot: '/images/screenshots/06-brand-vault.webp',
-    alt: 'Video walkthrough: Building a brand from scratch with Kaldon',
-  },
-  {
-    id: 'loom-video-4',
-    title: 'A Month of Content in Minutes',
-    screenshot: '/images/screenshots/10-content-calendar.webp',
-    alt: 'Video walkthrough: Creating a month of content with Kaldon',
-  },
-  {
-    id: 'loom-video-5',
-    title: 'Deploying Your Store',
-    screenshot: '/images/screenshots/14-store-deployment.webp',
-    alt: 'Video walkthrough: Deploying your store with Kaldon',
-  },
+  { id: 'loom-video-1', title: 'The full pipeline in 90 seconds', screenshot: '/images/screenshots/15-journey-progress.webp' },
+  { id: 'loom-video-2', title: 'Inside an AI analysis report', screenshot: '/images/screenshots/01-analysis-hero.webp' },
+  { id: 'loom-video-3', title: 'Building a brand from scratch', screenshot: '/images/screenshots/06-brand-vault.webp' },
+  { id: 'loom-video-4', title: 'A month of content in minutes', screenshot: '/images/screenshots/10-content-calendar.webp' },
+  { id: 'loom-video-5', title: 'Deploying your store', screenshot: '/images/screenshots/14-store-deployment.webp' },
 ];
 ---
 
@@ -63,31 +22,27 @@ const loomVideos = [
   title="See Kaldon in Action — Interactive Demos and Video Walkthroughs"
   description="Click through real product analyses, brand creation, and the full pipeline. Watch video walkthroughs of every feature. No signup required."
 >
+  <PageHero
+    kicker="Demo"
+    headline="See Kaldon in action."
+    subhead="Click through real product analyses, brand creation, and the full pipeline. Watch video walkthroughs of every feature. No signup required."
+  />
 
-  <!-- Hero -->
-  <section class="pt-32 pb-16 relative">
-    <div class="absolute inset-0 bg-gradient-to-b from-[#22d3ee]/5 via-[#0a0e17] to-[#0a0e17]"></div>
-    <div class="container-custom relative z-10 text-center">
-      <span class="eyebrow">DEMO</span>
-      <h1 class="text-4xl md:text-5xl font-extrabold text-[#e2e8f0] mb-4">See Kaldon in Action</h1>
-      <p class="text-lg text-[#94a3b8] max-w-2xl mx-auto">Click through real product analyses, brand creation, and the full pipeline. Watch video walkthroughs of every feature. No signup required.</p>
-    </div>
-  </section>
-
-  <!-- Interactive Demos -->
-  <section class="section-spacing">
+  <!-- Interactive demos -->
+  <section class="section-spacing" style="background: var(--void);">
     <div class="container-custom max-w-5xl">
-      <div class="text-center mb-12">
-        <span class="eyebrow">INTERACTIVE DEMOS</span>
-        <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0]">Click Through the Real Product</h2>
-        <p class="text-[#94a3b8] mt-2">Powered by Arcade. No signup needed.</p>
-      </div>
+      <header class="text-center mb-10">
+        <span class="kicker">Interactive demos</span>
+        <h2 class="font-display font-semibold" style="font-weight: 600; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.15; letter-spacing: -0.015em; color: var(--chalk);">
+          Click through the real product.
+        </h2>
+        <p class="mt-4 text-body-lg" style="color: var(--ghost);">No signup needed.</p>
+      </header>
 
-      <!-- Demo Tabs -->
-      <div class="flex flex-wrap justify-center gap-2 mb-8">
+      <div class="flex flex-wrap justify-center gap-2 mb-10">
         {arcadeDemos.map((demo, i) => (
           <button
-            class={`demo-tab px-4 py-2 rounded-lg text-sm font-medium transition-all cursor-pointer ${i === 0 ? 'bg-[#22d3ee] text-[#0a0e17]' : 'bg-[#1a2236] text-[#94a3b8] hover:text-[#e2e8f0]'}`}
+            class={`demo-tab ${i === 0 ? 'active' : ''}`}
             data-tab={i}
           >
             {demo.title}
@@ -95,85 +50,137 @@ const loomVideos = [
         ))}
       </div>
 
-      <!-- Demo Panels -->
       {arcadeDemos.map((demo, i) => (
         <div id={demo.id} class={`demo-panel ${i > 0 ? 'hidden' : ''}`} data-panel={i}>
-          <div class="arcade-placeholder relative rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.08)] bg-[#111827] aspect-[16/10] cursor-pointer group">
-            <img src={demo.screenshot} alt={demo.alt} class="absolute inset-0 w-full h-full object-cover object-top opacity-60 group-hover:opacity-70 transition-opacity" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0e17] via-transparent to-transparent"></div>
-            <div class="absolute inset-0 flex flex-col items-center justify-center z-10">
-              <span class="inline-block px-4 py-1.5 bg-[#22d3ee]/20 backdrop-blur-sm border border-[#22d3ee]/30 rounded-full text-[#22d3ee] text-xs font-bold uppercase tracking-wider mb-4">Interactive Demo</span>
-              <p class="text-[#e2e8f0] text-lg font-semibold mb-2">{demo.title}</p>
-              <p class="text-[#94a3b8] text-sm max-w-md text-center mb-4">{demo.desc}</p>
-              <div class="w-16 h-16 rounded-full bg-[#22d3ee]/20 backdrop-blur-sm flex items-center justify-center group-hover:bg-[#22d3ee]/30 transition-colors">
-                <svg class="w-7 h-7 text-[#22d3ee]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" /></svg>
+          <button class="demo-frame">
+            <img src={demo.screenshot} alt={demo.title} class="demo-img" loading="lazy" />
+            <div class="demo-overlay">
+              <span class="kicker" style="color: var(--gold);">Interactive Demo</span>
+              <p class="demo-title">{demo.title}</p>
+              <p class="demo-desc">{demo.desc}</p>
+              <div class="demo-play">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--chalk);">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
               </div>
             </div>
-          </div>
+          </button>
         </div>
       ))}
     </div>
   </section>
 
-  <!-- Video Walkthroughs -->
-  <section class="section-spacing bg-[#111827]/30">
+  <!-- Video walkthroughs -->
+  <section class="section-spacing" style="background: var(--void);">
     <div class="container-custom max-w-5xl">
-      <div class="text-center mb-12">
-        <span class="eyebrow">VIDEO WALKTHROUGHS</span>
-        <h2 class="text-2xl md:text-3xl font-bold text-[#e2e8f0]">Watch Every Feature in Detail</h2>
-        <p class="text-[#94a3b8] mt-2">5 focused walkthroughs. See exactly what Kaldon does.</p>
-      </div>
+      <header class="text-center mb-10">
+        <span class="kicker">Video walkthroughs</span>
+        <h2 class="font-display font-semibold" style="font-weight: 600; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.15; letter-spacing: -0.015em; color: var(--chalk);">
+          Watch every feature in detail.
+        </h2>
+        <p class="mt-4 text-body-lg" style="color: var(--ghost);">5 focused walkthroughs. See exactly what Kaldon does.</p>
+      </header>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
         {loomVideos.map((video) => (
-          <div id={video.id} class="video-placeholder group cursor-pointer">
-            <div class="relative rounded-xl overflow-hidden border border-[rgba(255,255,255,0.08)] bg-[#111827] aspect-video mb-3">
-              <img src={video.screenshot} alt={video.alt} class="absolute inset-0 w-full h-full object-cover object-top opacity-40 group-hover:opacity-50 transition-opacity" loading="lazy" />
-              <div class="absolute inset-0 flex items-center justify-center">
-                <div class="w-14 h-14 rounded-full bg-[rgba(255,255,255,0.1)] backdrop-blur-sm flex items-center justify-center group-hover:bg-[rgba(255,255,255,0.2)] transition-colors">
-                  <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
+          <button id={video.id} class="video-card">
+            <div class="video-thumb">
+              <img src={video.screenshot} alt={video.title} loading="lazy" />
+              <div class="video-play">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--chalk); margin-left: 2px;">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
               </div>
             </div>
-            <h3 class="text-[#e2e8f0] font-semibold text-sm group-hover:text-[#22d3ee] transition-colors">{video.title}</h3>
-          </div>
+            <h3 class="video-title">{video.title}</h3>
+          </button>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section-spacing relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-[#22d3ee]/10 via-[#0a0e17] to-[#a78bfa]/10"></div>
-    <div class="container-custom relative z-10 text-center">
-      <h2 class="text-3xl md:text-4xl font-extrabold text-[#e2e8f0] mb-4">Ready to Try It Yourself?</h2>
-      <p class="text-lg text-[#94a3b8] mb-8">Your first 2 analyses are free. No credit card required.</p>
-      <a href="https://kaldon.io/signup" class="btn-primary btn-large btn-glow inline-flex items-center gap-2">Start Free <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
+  <section class="section-spacing-lg relative overflow-hidden" style="background: var(--void);">
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 24px 24px; -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%); mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);"
+      aria-hidden="true"
+    ></div>
+    <div class="container-custom relative z-10 text-center max-w-prose mx-auto">
+      <h2 class="font-display" style="font-weight: 500; font-size: clamp(32px, 4.5vw, 48px); line-height: 1.08; letter-spacing: -0.022em; color: var(--chalk);">
+        Ready to try it yourself?
+      </h2>
+      <p class="mt-5 text-body-lg" style="color: var(--ghost);">
+        Your first 2 analyses are free. No credit card required.
+      </p>
+      <div class="mt-8">
+        <Button variant="primary" size="large" href="https://kaldon.io/signup" data-event="demo_final_cta">
+          Start Free
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"/>
+          </svg>
+        </Button>
+      </div>
     </div>
   </section>
 
   <script is:inline>
-    // Demo tabs
     document.querySelectorAll('.demo-tab').forEach(tab => {
       tab.addEventListener('click', function() {
         const idx = this.dataset.tab;
-        document.querySelectorAll('.demo-tab').forEach(t => {
-          t.classList.remove('bg-[#22d3ee]', 'text-[#0a0e17]');
-          t.classList.add('bg-[#1a2236]', 'text-[#94a3b8]');
-        });
-        this.classList.remove('bg-[#1a2236]', 'text-[#94a3b8]');
-        this.classList.add('bg-[#22d3ee]', 'text-[#0a0e17]');
+        document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
         document.querySelectorAll('.demo-panel').forEach(p => p.classList.add('hidden'));
         document.querySelector(`[data-panel="${idx}"]`)?.classList.remove('hidden');
       });
     });
-
-    // Scroll animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
   </script>
 </BaseLayout>
+
+<style>
+  .demo-tab {
+    display: inline-flex; align-items: center; height: 34px; padding: 0 14px; border-radius: 999px;
+    background: var(--deep-space); border: 1px solid var(--hairline); color: var(--ghost);
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; cursor: pointer;
+    transition: border-color 160ms var(--ease-out-quad), color 160ms var(--ease-out-quad), background 160ms var(--ease-out-quad);
+  }
+  .demo-tab:hover { color: var(--chalk); border-color: var(--hairline-active); }
+  .demo-tab.active { background: var(--gold); color: var(--void); border-color: transparent; font-weight: 500; }
+
+  .demo-frame {
+    position: relative; display: block; width: 100%; aspect-ratio: 16 / 10;
+    background: var(--deep-space); border: 1px solid var(--hairline); border-radius: 12px;
+    overflow: hidden; cursor: pointer; transition: border-color 160ms var(--ease-out-quad);
+  }
+  .demo-frame:hover { border-color: var(--hairline-active); }
+  .demo-img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: top; opacity: 0.35;
+    transition: opacity 200ms var(--ease-out-quad);
+  }
+  .demo-frame:hover .demo-img { opacity: 0.5; }
+  .demo-overlay {
+    position: absolute; inset: 0; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; padding: 32px; gap: 12px;
+    background: linear-gradient(to bottom, rgba(10,10,15,0.3), rgba(10,10,15,0.8));
+  }
+  .demo-title { font-family: var(--font-display); font-weight: 600; font-size: 20px; color: var(--chalk); letter-spacing: -0.015em; }
+  .demo-desc { text-align: center; max-width: 420px; font-size: 14px; line-height: 1.5; color: var(--ghost); }
+  .demo-play { width: 52px; height: 52px; border-radius: 50%; background: var(--void); border: 1px solid var(--hairline-active); display: flex; align-items: center; justify-content: center; margin-top: 8px; }
+
+  .video-card {
+    display: block; text-align: left; background: transparent; border: none; padding: 0; cursor: pointer;
+  }
+  .video-thumb {
+    position: relative; aspect-ratio: 16 / 9;
+    background: var(--deep-space); border: 1px solid var(--hairline); border-radius: 12px;
+    overflow: hidden; margin-bottom: 12px;
+    transition: border-color 160ms var(--ease-out-quad);
+  }
+  .video-card:hover .video-thumb { border-color: var(--hairline-active); }
+  .video-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 0.25; }
+  .video-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .video-play svg { background: var(--void); border: 1px solid var(--hairline-active); border-radius: 50%; padding: 12px; box-sizing: content-box; }
+  .video-title { font-family: var(--font-display); font-weight: 600; font-size: 14px; color: var(--chalk); letter-spacing: -0.01em; transition: color 160ms var(--ease-out-quad); }
+  .video-card:hover .video-title { color: var(--gold); }
+</style>

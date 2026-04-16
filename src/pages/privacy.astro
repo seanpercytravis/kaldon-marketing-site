@@ -1,189 +1,186 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/ui/PageHero.astro';
 ---
 
 <BaseLayout
   title="Privacy Policy — Kaldon"
   description="Kaldon's Privacy Policy. Learn how we collect, use, and protect your data across our AI-powered eCommerce platform."
 >
-
-  <!-- Hero -->
-  <section class="pt-32 pb-16 relative">
-    <div class="absolute inset-0 bg-gradient-to-b from-[#22d3ee]/5 via-[#0a0e17] to-[#0a0e17]"></div>
-    <div class="container-custom relative z-10 text-center">
-      <span class="eyebrow">LEGAL</span>
-      <h1 class="text-4xl md:text-5xl font-extrabold text-[#e2e8f0] mb-4">Privacy Policy</h1>
-      <p class="text-lg text-[#94a3b8] max-w-2xl mx-auto">Your privacy matters. This policy explains how Kaldon, operated by DataDen Media, collects, uses, and protects your information.</p>
-      <p class="text-sm text-[#94a3b8] mt-4">Effective Date: April 2026</p>
-    </div>
-  </section>
+  <PageHero
+    kicker="Legal"
+    headline="Privacy Policy"
+    subhead="How Kaldon, operated by DataDen Media, collects, uses, and protects your information."
+  >
+    <p class="mt-3 font-mono" style="font-size: 12px; color: var(--ghost); letter-spacing: 0.04em;">Effective Date · April 2026</p>
+  </PageHero>
 
   <!-- Privacy Content -->
-  <section class="section-spacing">
+  <section class="section-spacing" style="background: var(--void);">
     <div class="container-custom max-w-3xl">
-      <div class="space-y-8">
+      <div class="space-y-4 md:space-y-5">
 
         <!-- 1. Information We Collect -->
-        <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-2xl p-8 md:p-10">
-          <h2 class="text-2xl font-bold text-[#e2e8f0] mb-6">1. Information We Collect</h2>
-          <div class="space-y-4 text-[#94a3b8] leading-relaxed">
-            <p><span class="text-[#e2e8f0] font-semibold">Account Information.</span> When you create an account, we collect your name, email address, and password. If you subscribe to a paid plan, we collect billing information through our payment processor.</p>
-            <p><span class="text-[#e2e8f0] font-semibold">Usage Data.</span> We automatically collect information about how you interact with the platform, including pages visited, features used, session duration, device type, browser type, IP address, and referring URLs.</p>
-            <p><span class="text-[#e2e8f0] font-semibold">Analysis Inputs.</span> When you use Kaldon's research, branding, content, or other AI-powered features, we collect the inputs you provide such as product ideas, keywords, brand preferences, and other data you submit for analysis. This information is necessary to deliver our services.</p>
+        <div class="legal-card">
+          <h2 class="legal-h2">1. Information We Collect</h2>
+          <div class="legal-body">
+            <p><span class="legal-emph">Account Information.</span> When you create an account, we collect your name, email address, and password. If you subscribe to a paid plan, we collect billing information through our payment processor.</p>
+            <p><span class="legal-emph">Usage Data.</span> We automatically collect information about how you interact with the platform, including pages visited, features used, session duration, device type, browser type, IP address, and referring URLs.</p>
+            <p><span class="legal-emph">Analysis Inputs.</span> When you use Kaldon's research, branding, content, or other AI-powered features, we collect the inputs you provide such as product ideas, keywords, brand preferences, and other data you submit for analysis. This information is necessary to deliver our services.</p>
           </div>
         </div>
 
         <!-- 2. How We Use Information -->
-        <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-2xl p-8 md:p-10">
-          <h2 class="text-2xl font-bold text-[#e2e8f0] mb-6">2. How We Use Your Information</h2>
-          <div class="space-y-4 text-[#94a3b8] leading-relaxed">
-            <p><span class="text-[#e2e8f0] font-semibold">Platform Operation.</span> We use your information to provide, maintain, and improve the Kaldon platform, including account management, customer support, and feature delivery.</p>
-            <p><span class="text-[#e2e8f0] font-semibold">AI Processing.</span> Your analysis inputs are sent to AI providers to generate research results, brand assets, content, and other outputs. See Section 3 for detailed information about AI data handling.</p>
-            <p><span class="text-[#e2e8f0] font-semibold">Analytics and Improvement.</span> We use aggregated and anonymized usage data to understand how the platform is used, identify areas for improvement, and develop new features.</p>
-            <p><span class="text-[#e2e8f0] font-semibold">Communications.</span> We may use your email address to send transactional messages related to your account, as well as product updates and announcements. You can opt out of non-essential communications at any time.</p>
+        <div class="legal-card">
+          <h2 class="legal-h2">2. How We Use Your Information</h2>
+          <div class="legal-body">
+            <p><span class="legal-emph">Platform Operation.</span> We use your information to provide, maintain, and improve the Kaldon platform, including account management, customer support, and feature delivery.</p>
+            <p><span class="legal-emph">AI Processing.</span> Your analysis inputs are sent to AI providers to generate research results, brand assets, content, and other outputs. See Section 3 for detailed information about AI data handling.</p>
+            <p><span class="legal-emph">Analytics and Improvement.</span> We use aggregated and anonymized usage data to understand how the platform is used, identify areas for improvement, and develop new features.</p>
+            <p><span class="legal-emph">Communications.</span> We may use your email address to send transactional messages related to your account, as well as product updates and announcements. You can opt out of non-essential communications at any time.</p>
           </div>
         </div>
 
         <!-- 3. AI Data Handling -->
-        <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-2xl p-8 md:p-10">
-          <h2 class="text-2xl font-bold text-[#e2e8f0] mb-6">3. AI Data Handling</h2>
-          <div class="space-y-4 text-[#94a3b8] leading-relaxed">
+        <div class="legal-card">
+          <h2 class="legal-h2">3. AI Data Handling</h2>
+          <div class="legal-body">
             <p>Kaldon uses multiple third-party AI providers to power its analysis and content generation features. When you submit data for processing, your inputs may be sent to one or more of the following providers:</p>
             <ul class="list-none space-y-2 pl-4">
               <li class="flex items-start gap-3">
-                <span class="text-[#22d3ee] mt-1.5 shrink-0">&#8226;</span>
-                <span><span class="text-[#e2e8f0] font-medium">Anthropic</span> (Claude)</span>
+                <span class="legal-bullet">•</span>
+                <span><span class="legal-emph">Anthropic</span> (Claude)</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="text-[#22d3ee] mt-1.5 shrink-0">&#8226;</span>
-                <span><span class="text-[#e2e8f0] font-medium">xAI</span> (Grok)</span>
+                <span class="legal-bullet">•</span>
+                <span><span class="legal-emph">xAI</span> (Grok)</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="text-[#22d3ee] mt-1.5 shrink-0">&#8226;</span>
-                <span><span class="text-[#e2e8f0] font-medium">Perplexity</span></span>
+                <span class="legal-bullet">•</span>
+                <span><span class="legal-emph">Perplexity</span></span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="text-[#22d3ee] mt-1.5 shrink-0">&#8226;</span>
-                <span><span class="text-[#e2e8f0] font-medium">OpenAI</span> (GPT)</span>
+                <span class="legal-bullet">•</span>
+                <span><span class="legal-emph">OpenAI</span> (GPT)</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="text-[#22d3ee] mt-1.5 shrink-0">&#8226;</span>
-                <span><span class="text-[#e2e8f0] font-medium">Google</span> (Gemini)</span>
+                <span class="legal-bullet">•</span>
+                <span><span class="legal-emph">Google</span> (Gemini)</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="text-[#22d3ee] mt-1.5 shrink-0">&#8226;</span>
-                <span><span class="text-[#e2e8f0] font-medium">Freepik</span> (image generation)</span>
+                <span class="legal-bullet">•</span>
+                <span><span class="legal-emph">Freepik</span> (image generation)</span>
               </li>
             </ul>
-            <div class="bg-[#0a0e17] border border-[#22d3ee]/20 rounded-xl p-5 mt-4">
+            <div class="legal-callout">
               <p class="text-[#e2e8f0] font-semibold mb-2">Important:</p>
-              <p>Your data is sent to these providers solely for the purpose of processing your requests and generating outputs. <span class="text-[#22d3ee] font-medium">Your data is not used to train the AI models of any of these providers.</span> We use API-level access with each provider under terms that prohibit the use of customer data for model training.</p>
+              <p>Your data is sent to these providers solely for the purpose of processing your requests and generating outputs. <span style="color: var(--signal); font-weight: 500;">Your data is not used to train the AI models of any of these providers.</span> We use API-level access with each provider under terms that prohibit the use of customer data for model training.</p>
             </div>
             <p>We select which provider to use based on the specific task being performed. You do not need to have a separate account with any of these providers to use Kaldon.</p>
           </div>
         </div>
 
         <!-- 4. Data Storage and Security -->
-        <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-2xl p-8 md:p-10">
-          <h2 class="text-2xl font-bold text-[#e2e8f0] mb-6">4. Data Storage and Security</h2>
-          <div class="space-y-4 text-[#94a3b8] leading-relaxed">
+        <div class="legal-card">
+          <h2 class="legal-h2">4. Data Storage and Security</h2>
+          <div class="legal-body">
             <p>We take the security of your data seriously and implement industry-standard measures to protect it.</p>
-            <p><span class="text-[#e2e8f0] font-semibold">Hosting.</span> The Kaldon platform is hosted on <span class="text-[#e2e8f0]">Railway</span>, a cloud infrastructure provider with robust security practices.</p>
-            <p><span class="text-[#e2e8f0] font-semibold">Content Delivery.</span> We use <span class="text-[#e2e8f0]">Cloudflare CDN</span> to deliver content quickly and securely, with DDoS protection and SSL/TLS encryption for all data in transit.</p>
-            <p><span class="text-[#e2e8f0] font-semibold">File Storage.</span> User-generated files and assets are stored in <span class="text-[#e2e8f0]">Cloudflare R2</span> object storage.</p>
-            <p><span class="text-[#e2e8f0] font-semibold">Encryption.</span> All data is encrypted at rest and in transit. We use TLS 1.2 or higher for all communications between your browser and our servers.</p>
+            <p><span class="legal-emph">Hosting.</span> The Kaldon platform is hosted on <span style="color: var(--chalk);">Railway</span>, a cloud infrastructure provider with robust security practices.</p>
+            <p><span class="legal-emph">Content Delivery.</span> We use <span style="color: var(--chalk);">Cloudflare CDN</span> to deliver content quickly and securely, with DDoS protection and SSL/TLS encryption for all data in transit.</p>
+            <p><span class="legal-emph">File Storage.</span> User-generated files and assets are stored in <span style="color: var(--chalk);">Cloudflare R2</span> object storage.</p>
+            <p><span class="legal-emph">Encryption.</span> All data is encrypted at rest and in transit. We use TLS 1.2 or higher for all communications between your browser and our servers.</p>
             <p>While no method of transmission or storage is 100% secure, we continuously review and update our security practices to protect your information.</p>
           </div>
         </div>
 
         <!-- 5. Third-Party Services -->
-        <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-2xl p-8 md:p-10">
-          <h2 class="text-2xl font-bold text-[#e2e8f0] mb-6">5. Third-Party Services</h2>
-          <div class="space-y-4 text-[#94a3b8] leading-relaxed">
+        <div class="legal-card">
+          <h2 class="legal-h2">5. Third-Party Services</h2>
+          <div class="legal-body">
             <p>In addition to AI providers listed in Section 3, we use the following third-party services to operate the platform:</p>
-            <p><span class="text-[#e2e8f0] font-semibold">Stripe</span> — Payment processing. When you subscribe to a paid plan, your payment information is collected and processed directly by Stripe. We do not store your full credit card number on our servers. Stripe's privacy policy governs their handling of your payment data.</p>
-            <p><span class="text-[#e2e8f0] font-semibold">Resend</span> — Transactional email delivery. We use Resend to send account-related emails such as verification emails, password resets, and subscription confirmations.</p>
-            <p><span class="text-[#e2e8f0] font-semibold">GoHighLevel</span> — Customer relationship management. We may use GoHighLevel to manage customer communications, onboarding sequences, and support workflows.</p>
+            <p><span class="legal-emph">Stripe</span> — Payment processing. When you subscribe to a paid plan, your payment information is collected and processed directly by Stripe. We do not store your full credit card number on our servers. Stripe's privacy policy governs their handling of your payment data.</p>
+            <p><span class="legal-emph">Resend</span> — Transactional email delivery. We use Resend to send account-related emails such as verification emails, password resets, and subscription confirmations.</p>
+            <p><span class="legal-emph">GoHighLevel</span> — Customer relationship management. We may use GoHighLevel to manage customer communications, onboarding sequences, and support workflows.</p>
             <p>Each of these services has their own privacy policies, and we encourage you to review them.</p>
           </div>
         </div>
 
         <!-- 6. Cookies and Tracking -->
-        <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-2xl p-8 md:p-10">
-          <h2 class="text-2xl font-bold text-[#e2e8f0] mb-6">6. Cookies and Tracking</h2>
-          <div class="space-y-4 text-[#94a3b8] leading-relaxed">
+        <div class="legal-card">
+          <h2 class="legal-h2">6. Cookies and Tracking</h2>
+          <div class="legal-body">
             <p>Kaldon takes a privacy-first approach to cookies and tracking.</p>
-            <p><span class="text-[#e2e8f0] font-semibold">Essential Cookies.</span> We use essential cookies required for the platform to function, such as session cookies to keep you logged in and security cookies to prevent fraud.</p>
-            <p><span class="text-[#e2e8f0] font-semibold">Analytics.</span> If configured, we may use privacy-first analytics to understand aggregate usage patterns. We do not use invasive tracking tools, and we do not sell your data to advertisers or data brokers.</p>
-            <p><span class="text-[#e2e8f0] font-semibold">No Third-Party Ad Tracking.</span> We do not use third-party advertising trackers, and we do not participate in ad networks that track you across the web.</p>
+            <p><span class="legal-emph">Essential Cookies.</span> We use essential cookies required for the platform to function, such as session cookies to keep you logged in and security cookies to prevent fraud.</p>
+            <p><span class="legal-emph">Analytics.</span> If configured, we may use privacy-first analytics to understand aggregate usage patterns. We do not use invasive tracking tools, and we do not sell your data to advertisers or data brokers.</p>
+            <p><span class="legal-emph">No Third-Party Ad Tracking.</span> We do not use third-party advertising trackers, and we do not participate in ad networks that track you across the web.</p>
           </div>
         </div>
 
         <!-- 7. Your Rights -->
-        <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-2xl p-8 md:p-10">
-          <h2 class="text-2xl font-bold text-[#e2e8f0] mb-6">7. Your Rights</h2>
-          <div class="space-y-4 text-[#94a3b8] leading-relaxed">
+        <div class="legal-card">
+          <h2 class="legal-h2">7. Your Rights</h2>
+          <div class="legal-body">
             <p>You have the following rights regarding your personal data:</p>
-            <p><span class="text-[#e2e8f0] font-semibold">Access.</span> You can request a copy of the personal data we hold about you at any time.</p>
-            <p><span class="text-[#e2e8f0] font-semibold">Deletion.</span> You can request that we delete your account and all associated personal data. Upon receiving a verified deletion request, we will delete your data within 30 days, except where we are required by law to retain it.</p>
-            <p><span class="text-[#e2e8f0] font-semibold">Export.</span> You can request an export of your data in a commonly used, machine-readable format.</p>
-            <p><span class="text-[#e2e8f0] font-semibold">Correction.</span> You can request that we correct any inaccurate personal data we hold about you.</p>
-            <p>To exercise any of these rights, contact us at <a href="mailto:privacy@kaldon.io" class="text-[#22d3ee] hover:underline">privacy@kaldon.io</a>. We will respond to all verified requests within 30 days.</p>
+            <p><span class="legal-emph">Access.</span> You can request a copy of the personal data we hold about you at any time.</p>
+            <p><span class="legal-emph">Deletion.</span> You can request that we delete your account and all associated personal data. Upon receiving a verified deletion request, we will delete your data within 30 days, except where we are required by law to retain it.</p>
+            <p><span class="legal-emph">Export.</span> You can request an export of your data in a commonly used, machine-readable format.</p>
+            <p><span class="legal-emph">Correction.</span> You can request that we correct any inaccurate personal data we hold about you.</p>
+            <p>To exercise any of these rights, contact us at <a href="mailto:privacy@kaldon.io" class="legal-link">privacy@kaldon.io</a>. We will respond to all verified requests within 30 days.</p>
           </div>
         </div>
 
         <!-- 8. Data Retention -->
-        <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-2xl p-8 md:p-10">
-          <h2 class="text-2xl font-bold text-[#e2e8f0] mb-6">8. Data Retention</h2>
-          <div class="space-y-4 text-[#94a3b8] leading-relaxed">
+        <div class="legal-card">
+          <h2 class="legal-h2">8. Data Retention</h2>
+          <div class="legal-body">
             <p>We retain your personal data only for as long as necessary to fulfill the purposes described in this policy.</p>
-            <p><span class="text-[#e2e8f0] font-semibold">Active Accounts.</span> We retain your data for as long as your account is active and you continue to use the platform.</p>
-            <p><span class="text-[#e2e8f0] font-semibold">Closed Accounts.</span> After you close your account or request deletion, we will delete your personal data within 30 days, except where retention is required for legal, tax, or regulatory purposes.</p>
-            <p><span class="text-[#e2e8f0] font-semibold">Aggregated Data.</span> We may retain anonymized and aggregated data that cannot be used to identify you for analytical and improvement purposes indefinitely.</p>
+            <p><span class="legal-emph">Active Accounts.</span> We retain your data for as long as your account is active and you continue to use the platform.</p>
+            <p><span class="legal-emph">Closed Accounts.</span> After you close your account or request deletion, we will delete your personal data within 30 days, except where retention is required for legal, tax, or regulatory purposes.</p>
+            <p><span class="legal-emph">Aggregated Data.</span> We may retain anonymized and aggregated data that cannot be used to identify you for analytical and improvement purposes indefinitely.</p>
           </div>
         </div>
 
         <!-- 9. Children's Privacy -->
-        <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-2xl p-8 md:p-10">
-          <h2 class="text-2xl font-bold text-[#e2e8f0] mb-6">9. Children's Privacy</h2>
-          <div class="space-y-4 text-[#94a3b8] leading-relaxed">
+        <div class="legal-card">
+          <h2 class="legal-h2">9. Children's Privacy</h2>
+          <div class="legal-body">
             <p>Kaldon is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If we become aware that we have collected personal data from a child under 13, we will take steps to delete that information promptly.</p>
-            <p>If you are a parent or guardian and believe your child has provided us with personal information, please contact us at <a href="mailto:privacy@kaldon.io" class="text-[#22d3ee] hover:underline">privacy@kaldon.io</a> so we can take appropriate action.</p>
+            <p>If you are a parent or guardian and believe your child has provided us with personal information, please contact us at <a href="mailto:privacy@kaldon.io" class="legal-link">privacy@kaldon.io</a> so we can take appropriate action.</p>
           </div>
         </div>
 
         <!-- 10. California Privacy Rights -->
-        <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-2xl p-8 md:p-10">
-          <h2 class="text-2xl font-bold text-[#e2e8f0] mb-6">10. California Privacy Rights (CCPA)</h2>
-          <div class="space-y-4 text-[#94a3b8] leading-relaxed">
+        <div class="legal-card">
+          <h2 class="legal-h2">10. California Privacy Rights (CCPA)</h2>
+          <div class="legal-body">
             <p>If you are a California resident, the California Consumer Privacy Act (CCPA) provides you with additional rights regarding your personal information.</p>
-            <p><span class="text-[#e2e8f0] font-semibold">Right to Know.</span> You have the right to request that we disclose the categories and specific pieces of personal information we have collected about you, the categories of sources from which it was collected, and the business purpose for collecting it.</p>
-            <p><span class="text-[#e2e8f0] font-semibold">Right to Delete.</span> You have the right to request deletion of your personal information, subject to certain exceptions.</p>
-            <p><span class="text-[#e2e8f0] font-semibold">Right to Non-Discrimination.</span> We will not discriminate against you for exercising any of your CCPA rights.</p>
-            <p><span class="text-[#e2e8f0] font-semibold">No Sale of Personal Information.</span> Kaldon does not sell your personal information and has not sold personal information in the preceding 12 months.</p>
-            <p>To exercise your California privacy rights, contact us at <a href="mailto:privacy@kaldon.io" class="text-[#22d3ee] hover:underline">privacy@kaldon.io</a>. We will verify your identity before processing your request.</p>
+            <p><span class="legal-emph">Right to Know.</span> You have the right to request that we disclose the categories and specific pieces of personal information we have collected about you, the categories of sources from which it was collected, and the business purpose for collecting it.</p>
+            <p><span class="legal-emph">Right to Delete.</span> You have the right to request deletion of your personal information, subject to certain exceptions.</p>
+            <p><span class="legal-emph">Right to Non-Discrimination.</span> We will not discriminate against you for exercising any of your CCPA rights.</p>
+            <p><span class="legal-emph">No Sale of Personal Information.</span> Kaldon does not sell your personal information and has not sold personal information in the preceding 12 months.</p>
+            <p>To exercise your California privacy rights, contact us at <a href="mailto:privacy@kaldon.io" class="legal-link">privacy@kaldon.io</a>. We will verify your identity before processing your request.</p>
           </div>
         </div>
 
         <!-- 11. Changes to This Policy -->
-        <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-2xl p-8 md:p-10">
-          <h2 class="text-2xl font-bold text-[#e2e8f0] mb-6">11. Changes to This Policy</h2>
-          <div class="space-y-4 text-[#94a3b8] leading-relaxed">
+        <div class="legal-card">
+          <h2 class="legal-h2">11. Changes to This Policy</h2>
+          <div class="legal-body">
             <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, or legal requirements. When we make material changes, we will notify you by updating the effective date at the top of this page and, where appropriate, by sending you an email notification.</p>
             <p>We encourage you to review this policy periodically. Your continued use of the platform after any changes constitutes your acceptance of the updated policy.</p>
           </div>
         </div>
 
         <!-- 12. Contact -->
-        <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-2xl p-8 md:p-10">
-          <h2 class="text-2xl font-bold text-[#e2e8f0] mb-6">12. Contact Us</h2>
-          <div class="space-y-4 text-[#94a3b8] leading-relaxed">
+        <div class="legal-card">
+          <h2 class="legal-h2">12. Contact Us</h2>
+          <div class="legal-body">
             <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:</p>
-            <div class="bg-[#0a0e17] border border-[rgba(255,255,255,0.08)] rounded-xl p-5 space-y-2">
-              <p class="text-[#e2e8f0] font-semibold">Kaldon</p>
+            <div class="legal-contact-card">
+              <p class="legal-emph">Kaldon</p>
               <p>Operated by DataDen Media</p>
               <p>Redondo Beach, California</p>
-              <p>Email: <a href="mailto:privacy@kaldon.io" class="text-[#22d3ee] hover:underline">privacy@kaldon.io</a></p>
+              <p>Email: <a href="mailto:privacy@kaldon.io" class="legal-link">privacy@kaldon.io</a></p>
             </div>
           </div>
         </div>
@@ -191,5 +188,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
   </section>
-
 </BaseLayout>
+
+<style>
+  .legal-card { padding: 32px; background: var(--deep-space); border: 1px solid var(--hairline); border-radius: 12px; }
+  .legal-h2 { font-family: var(--font-display); font-weight: 600; font-size: 20px; color: var(--chalk); letter-spacing: -0.015em; margin-bottom: 20px; }
+  .legal-body { display: flex; flex-direction: column; gap: 14px; font-size: 14.5px; line-height: 1.65; color: var(--ghost); letter-spacing: -0.005em; }
+  .legal-emph { color: var(--chalk); font-weight: 600; }
+  .legal-link { color: var(--signal); transition: color 160ms var(--ease-out-quad); }
+  .legal-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .legal-callout { background: var(--void); border: 1px solid var(--hairline-active); border-left: 2px solid var(--signal); border-radius: 8px; padding: 16px 18px; margin-top: 16px; }
+  .legal-contact-card { background: var(--void); border: 1px solid var(--hairline); border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 6px; }
+  .legal-bullet { color: var(--gold); margin-top: 4px; flex-shrink: 0; font-weight: 500; }
+  .legal-body ul { display: flex; flex-direction: column; gap: 8px; padding-left: 0; list-style: none; }
+  .legal-body ul li { display: flex; gap: 10px; }
+</style>

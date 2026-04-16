@@ -1,106 +1,62 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/ui/PageHero.astro';
 
 const posts = [
-  {
-    slug: 'true-cost-ecommerce-product-launch-2026',
-    title: 'The True Cost of Launching an eCommerce Product in 2026',
-    excerpt: 'Six subscriptions. $205+ per month. 200+ hours of manual work. We break down exactly what it costs to launch a product the old way, and show you the alternative.',
-    category: 'Product Research',
-    date: 'Mar 18, 2026',
-    readTime: '8 min read',
-    image: '/images/screenshots/01-analysis-hero.webp',
-  },
-  {
-    slug: 'how-to-find-winning-product-sell-online-2026',
-    title: 'How to Find a Winning Product to Sell Online (Complete 2026 Guide)',
-    excerpt: 'A step-by-step guide to finding profitable products in 2026. From niche selection to validation, with actionable frameworks you can use today.',
-    category: 'Product Research',
-    date: 'Mar 18, 2026',
-    readTime: '12 min read',
-    image: '/images/screenshots/16-opportunity-feed.webp',
-  },
-  {
-    slug: 'amazon-to-dtc-build-brand-beyond-marketplace',
-    title: 'Amazon to DTC: How to Build a Brand Beyond the Marketplace',
-    excerpt: 'You are making sales on Amazon. Now what? How to reduce marketplace dependency and build a brand that customers seek out directly.',
-    category: 'Brand Building',
-    date: 'Mar 18, 2026',
-    readTime: '10 min read',
-    image: '/images/screenshots/07-brand-detail.webp',
-  },
-  {
-    slug: 'helium-10-vs-jungle-scout-vs-kaldon',
-    title: 'Helium 10 vs Jungle Scout vs Kaldon: Which Should You Use?',
-    excerpt: 'A fair, detailed three-way comparison of the most popular product research platforms. We compare features, pricing, and what happens after research.',
-    category: 'Marketplace Tips',
-    date: 'Mar 18, 2026',
-    readTime: '10 min read',
-    image: '/images/screenshots/17-pricing.webp',
-  },
-  {
-    slug: 'what-ai-product-research-actually-looks-like',
-    title: 'What AI Product Research Actually Looks Like (No Hype, Real Output)',
-    excerpt: 'Forget the marketing buzzwords. We show you a real AI-powered product analysis report with commentary on every section. See exactly what you get.',
-    category: 'Product Research',
-    date: 'Mar 18, 2026',
-    readTime: '9 min read',
-    image: '/images/screenshots/03-analysis-action-plan.webp',
-  },
+  { slug: 'true-cost-ecommerce-product-launch-2026', title: 'The true cost of launching an eCommerce product in 2026', excerpt: 'Six subscriptions. $205+ per month. 200+ hours of manual work. We break down exactly what it costs to launch a product the old way — and the alternative.', category: 'Product Research', date: 'Mar 18, 2026', readTime: '8 min', image: '/images/screenshots/01-analysis-hero.webp' },
+  { slug: 'how-to-find-winning-product-sell-online-2026', title: 'How to find a winning product to sell online (complete 2026 guide)', excerpt: 'A step-by-step guide to finding profitable products in 2026. From niche selection to validation, with actionable frameworks.', category: 'Product Research', date: 'Mar 18, 2026', readTime: '12 min', image: '/images/screenshots/16-opportunity-feed.webp' },
+  { slug: 'amazon-to-dtc-build-brand-beyond-marketplace', title: 'Amazon to DTC: how to build a brand beyond the marketplace', excerpt: "You're making sales on Amazon. Now what? How to reduce marketplace dependency and build a brand customers seek out directly.", category: 'Brand Building', date: 'Mar 18, 2026', readTime: '10 min', image: '/images/screenshots/07-brand-detail.webp' },
+  { slug: 'helium-10-vs-jungle-scout-vs-kaldon', title: 'Helium 10 vs Jungle Scout vs Kaldon: which should you use?', excerpt: 'A fair, detailed three-way comparison of the most popular product research platforms. Features, pricing, and what happens after research.', category: 'Marketplace Tips', date: 'Mar 18, 2026', readTime: '10 min', image: '/images/screenshots/17-pricing.webp' },
+  { slug: 'what-ai-product-research-actually-looks-like', title: 'What AI product research actually looks like (no hype, real output)', excerpt: 'Forget the marketing buzzwords. A real AI-powered product analysis report with commentary on every section.', category: 'Product Research', date: 'Mar 18, 2026', readTime: '9 min', image: '/images/screenshots/03-analysis-action-plan.webp' },
 ];
 
-const categories = ['All', 'Product Research', 'Brand Building', 'Content Strategy', 'Marketplace Tips', 'Platform Updates'];
+const categories = ['All', 'Product Research', 'Brand Building', 'Marketplace Tips'];
 ---
 
 <BaseLayout
   title="Kaldon Blog — eCommerce Intelligence, Product Research, and Brand Building"
   description="Expert insights on product research, brand building, content strategy, and marketplace optimization. Real strategies from the Kaldon team."
 >
+  <PageHero
+    kicker="Blog"
+    headline="eCommerce intelligence, unpacked."
+    subhead="Product research, brand building, and growing across marketplaces. No hype, real frameworks."
+  />
 
-  <!-- Hero -->
-  <section class="pt-32 pb-16 relative">
-    <div class="absolute inset-0 bg-gradient-to-b from-[#22d3ee]/5 via-[#0a0e17] to-[#0a0e17]"></div>
-    <div class="container-custom relative z-10 text-center">
-      <span class="eyebrow">BLOG</span>
-      <h1 class="text-4xl md:text-5xl font-extrabold text-[#e2e8f0] mb-4">eCommerce Intelligence</h1>
-      <p class="text-lg text-[#94a3b8] max-w-2xl mx-auto">Expert insights on product research, brand building, and growing your eCommerce business.</p>
+  <!-- Category filter -->
+  <section class="pb-10" style="background: var(--void);">
+    <div class="container-custom flex flex-wrap justify-center gap-2">
+      {categories.map((cat, i) => (
+        <button
+          class={`category-tab ${i === 0 ? 'active' : ''}`}
+          data-category={cat}
+        >
+          {cat}
+        </button>
+      ))}
     </div>
   </section>
 
-  <!-- Category Tabs -->
-  <section class="pb-8">
-    <div class="container-custom">
-      <div class="flex flex-wrap justify-center gap-2">
-        {categories.map((cat, i) => (
-          <button
-            class={`category-tab px-4 py-2 rounded-lg text-sm font-medium transition-all cursor-pointer ${i === 0 ? 'bg-[#22d3ee] text-[#0a0e17]' : 'bg-[#1a2236] text-[#94a3b8] hover:text-[#e2e8f0]'}`}
-            data-category={cat}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Posts Grid -->
-  <section class="section-spacing">
+  <!-- Posts grid -->
+  <section class="section-spacing" style="background: var(--void);">
     <div class="container-custom">
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="posts-grid">
         {posts.map((post) => (
-          <a href={`/blog/${post.slug}`} class="blog-card group" data-category={post.category}>
-            <div class="bg-[#111827] border border-[rgba(255,255,255,0.08)] rounded-xl overflow-hidden hover:border-[rgba(255,255,255,0.15)] hover:-translate-y-0.5 transition-all">
-              <div class="aspect-[16/9] overflow-hidden">
-                <img src={post.image} alt={post.title} class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+          <a href={`/blog/${post.slug}`} class="blog-card" data-category={post.category}>
+            <div class="blog-card-image">
+              <img src={post.image} alt={post.title} loading="lazy" />
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-card-meta">
+                <span class="kicker" style="margin: 0;">{post.category}</span>
+                <span class="font-mono" style="font-size: 10px; color: var(--ghost); opacity: 0.6;">·</span>
+                <span class="font-mono" style="font-size: 10px; color: var(--ghost);">{post.readTime}</span>
               </div>
-              <div class="p-5">
-                <div class="flex items-center gap-2 mb-3">
-                  <span class="px-2 py-0.5 bg-[#22d3ee]/10 text-[#22d3ee] text-[10px] font-bold uppercase tracking-wider rounded-full">{post.category}</span>
-                  <span class="text-xs text-[#64748b]">{post.readTime}</span>
-                </div>
-                <h3 class="text-[#e2e8f0] font-bold mb-2 group-hover:text-[#22d3ee] transition-colors leading-snug">{post.title}</h3>
-                <p class="text-sm text-[#94a3b8] line-clamp-2">{post.excerpt}</p>
-                <div class="mt-3 text-xs text-[#64748b]">{post.date}</div>
+              <h3 class="blog-card-title">{post.title}</h3>
+              <p class="blog-card-excerpt">{post.excerpt}</p>
+              <div class="blog-card-footer">
+                <span class="font-mono" style="font-size: 11px; color: var(--ghost);">{post.date}</span>
+                <span class="arrow" aria-hidden="true">→</span>
               </div>
             </div>
           </a>
@@ -113,12 +69,8 @@ const categories = ['All', 'Product Research', 'Brand Building', 'Content Strate
     document.querySelectorAll('.category-tab').forEach(tab => {
       tab.addEventListener('click', function() {
         const cat = this.dataset.category;
-        document.querySelectorAll('.category-tab').forEach(t => {
-          t.classList.remove('bg-[#22d3ee]', 'text-[#0a0e17]');
-          t.classList.add('bg-[#1a2236]', 'text-[#94a3b8]');
-        });
-        this.classList.remove('bg-[#1a2236]', 'text-[#94a3b8]');
-        this.classList.add('bg-[#22d3ee]', 'text-[#0a0e17]');
+        document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
         document.querySelectorAll('.blog-card').forEach(card => {
           if (cat === 'All' || card.dataset.category === cat) {
             card.style.display = '';
@@ -130,3 +82,85 @@ const categories = ['All', 'Product Research', 'Brand Building', 'Content Strate
     });
   </script>
 </BaseLayout>
+
+<style>
+  .category-tab {
+    display: inline-flex;
+    align-items: center;
+    height: 32px;
+    padding: 0 14px;
+    border-radius: 999px;
+    background: var(--deep-space);
+    border: 1px solid var(--hairline);
+    color: var(--ghost);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: border-color 160ms var(--ease-out-quad), color 160ms var(--ease-out-quad), background 160ms var(--ease-out-quad);
+  }
+  .category-tab:hover { color: var(--chalk); border-color: var(--hairline-active); }
+  .category-tab.active {
+    background: var(--gold);
+    color: var(--void);
+    border-color: transparent;
+    font-weight: 500;
+  }
+
+  .blog-card {
+    display: block;
+    background: var(--deep-space);
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 160ms var(--ease-out-quad);
+  }
+  .blog-card:hover { border-color: var(--hairline-active); }
+  .blog-card:hover .arrow { transform: translateX(3px); }
+  .blog-card:hover .blog-card-image img { transform: scale(1.03); }
+
+  .blog-card-image {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-bottom: 1px solid var(--hairline);
+    background: var(--void);
+  }
+  .blog-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: transform 300ms var(--ease-out-quad);
+  }
+
+  .blog-card-body { padding: 20px 22px 22px; }
+  .blog-card-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+  .blog-card-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+    color: var(--chalk);
+    margin-bottom: 10px;
+  }
+  .blog-card-excerpt {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ghost);
+    letter-spacing: -0.005em;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .blog-card-footer {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .arrow { transition: transform 200ms var(--ease-out-quad); color: var(--ghost); }
+</style>

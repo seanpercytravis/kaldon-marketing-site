@@ -1,0 +1,45 @@
+---
+// PageHero.astro — shared internal-page hero. Dot-lattice background,
+// mono kicker, Satoshi H1, narrow Ghost subhead. No gradient text.
+interface Props {
+  kicker?: string;
+  headline: string;
+  subhead?: string;
+  align?: 'left' | 'center';
+  class?: string;
+}
+const {
+  kicker,
+  headline,
+  subhead,
+  align = 'center',
+  class: className = '',
+} = Astro.props;
+---
+
+<section class={`relative overflow-hidden ${className}`.trim()} style="background: var(--void);">
+  <!-- Dot lattice, fades to Void at bottom -->
+  <div
+    class="absolute inset-0 pointer-events-none"
+    style="background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 24px 24px; background-position: center top; -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 100%); mask-image: linear-gradient(to bottom, black 20%, transparent 100%);"
+    aria-hidden="true"
+  ></div>
+
+  <div class="container-custom relative z-10 pt-20 md:pt-28 pb-14 md:pb-20">
+    <header class={`${align === 'center' ? 'text-center mx-auto' : ''} max-w-prose`}>
+      {kicker && <span class="kicker">{kicker}</span>}
+      <h1
+        class="font-display"
+        style="font-weight: 500; font-size: clamp(40px, 5.5vw, 56px); line-height: 1.08; letter-spacing: -0.022em; color: var(--chalk); margin-top: 4px;"
+      >
+        <slot name="headline">{headline}</slot>
+      </h1>
+      {subhead && (
+        <p class="mt-5 text-body-lg" style="color: var(--ghost); line-height: 1.5;">
+          {subhead}
+        </p>
+      )}
+      <slot />
+    </header>
+  </div>
+</section>

@@ -1,0 +1,30 @@
+---
+interface Props {
+  kicker?: string;
+  headline: string;
+  subhead?: string;
+  align?: 'left' | 'center';
+  class?: string;
+}
+const {
+  kicker,
+  headline,
+  subhead,
+  align = 'center',
+  class: className = '',
+} = Astro.props;
+
+const alignClass = align === 'center' ? 'text-center mx-auto' : '';
+---
+
+<header class={`max-w-prose ${alignClass} mb-12 md:mb-16 ${className}`.trim()}>
+  {kicker && <span class="kicker">{kicker}</span>}
+  <h2 class="text-h2 font-display font-semibold text-chalk" style="font-weight: 600;">
+    {headline}
+  </h2>
+  {subhead && (
+    <p class="text-body-lg text-ghost mt-4 max-w-prose" style="line-height: 1.5;">
+      {subhead}
+    </p>
+  )}
+</header>

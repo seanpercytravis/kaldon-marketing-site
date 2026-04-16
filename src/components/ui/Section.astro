@@ -1,0 +1,42 @@
+---
+interface Props {
+  id?: string;
+  spacing?: 'default' | 'large' | 'tight' | 'none';
+  lattice?: boolean;
+  hairlineTop?: boolean;
+  hairlineBottom?: boolean;
+  class?: string;
+  [key: string]: any;
+}
+const {
+  id,
+  spacing = 'default',
+  lattice = false,
+  hairlineTop = false,
+  hairlineBottom = false,
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+const spacingClass = {
+  default: 'section-spacing',
+  large: 'section-spacing-lg',
+  tight: 'py-16',
+  none: '',
+}[spacing];
+
+const classes = [
+  spacingClass,
+  lattice ? 'dot-lattice' : '',
+  hairlineTop ? 'hairline-t' : '',
+  hairlineBottom ? 'hairline-b' : '',
+  'relative',
+  className,
+].filter(Boolean).join(' ');
+---
+
+<section id={id} class={classes} {...rest}>
+  <div class="container-custom relative z-10">
+    <slot />
+  </div>
+</section>

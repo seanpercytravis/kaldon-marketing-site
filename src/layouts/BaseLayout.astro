@@ -52,10 +52,8 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={fullOgImage} />
 
-  <!-- Fonts: DM Sans (headings + body) + Space Mono (labels, badges, eyebrow) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- Fonts: self-hosted Satoshi + Inter Variable + JetBrains Mono via global.css -->
+  <link rel="preload" href="/fonts/satoshi/Satoshi-Medium.woff2" as="font" type="font/woff2" crossorigin />
 
   <!-- Plausible Analytics (C3) -->
   <script defer data-domain="kaldon.io" src="https://plausible.io/js/script.js"></script>
@@ -127,7 +125,7 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
     </div>
 
     <!-- Mobile Menu: full-height slide-in -->
-    <div id="mobile-menu" class="md:hidden hidden fixed inset-0 top-16 z-50" style="background:#0a0e17;">
+    <div id="mobile-menu" class="md:hidden hidden fixed inset-0 top-16 z-50" style="background:#0A0A0F;">
       <div class="px-6 py-8 space-y-1 overflow-y-auto h-full">
         <a href="/how-it-works" class="block py-3 text-kaldon-muted hover:text-kaldon-text transition-colors font-medium text-lg">How It Works</a>
         <a href="/pricing" class="block py-3 text-kaldon-muted hover:text-kaldon-text transition-colors font-medium text-lg">Pricing</a>
@@ -156,7 +154,7 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
   </main>
 
   <!-- Footer: spec says 4 columns + email capture + bottom row -->
-  <footer style="background:#0a0e17;border-top:1px solid rgba(255,255,255,0.08);" class="mt-auto">
+  <footer style="background:#0A0A0F;border-top:1px solid rgba(255,255,255,0.08);" class="mt-auto">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <!-- Email Capture Row -->
       <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-12 pb-12 border-b border-kaldon-border">

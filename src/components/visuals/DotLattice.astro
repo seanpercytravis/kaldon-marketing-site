@@ -1,0 +1,18 @@
+---
+interface Props {
+  class?: string;
+  position?: 'absolute' | 'fixed';
+  opacity?: number;
+}
+const {
+  class: className = '',
+  position = 'absolute',
+  opacity = 1,
+} = Astro.props;
+---
+
+<div
+  class={`${position} inset-0 pointer-events-none ${className}`.trim()}
+  style={`background-image: radial-gradient(circle, rgba(255,255,255,${0.04 * opacity}) 1px, transparent 1px); background-size: 24px 24px; background-position: center top;`}
+  aria-hidden="true"
+/>

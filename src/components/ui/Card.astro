@@ -1,0 +1,24 @@
+---
+interface Props {
+  variant?: 'default' | 'muted' | 'gradient-border';
+  as?: string;
+  class?: string;
+  [key: string]: any;
+}
+const {
+  variant = 'default',
+  as: Tag = 'div',
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+const variantClass = {
+  default: 'card',
+  muted: 'card-muted',
+  'gradient-border': 'gradient-border',
+}[variant];
+---
+
+<Tag class={`${variantClass} ${className}`.trim()} {...rest}>
+  <slot />
+</Tag>

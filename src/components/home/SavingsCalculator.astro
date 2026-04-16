@@ -1,0 +1,133 @@
+---
+// SavingsCalculator.astro — monochrome redesign of the interactive calculator.
+// Sliders use Signal Cyan (live-data allowed), output numbers in Gold.
+---
+
+<section class="section-spacing" style="background: var(--void);">
+  <div class="container-custom">
+    <header class="max-w-prose mx-auto text-center mb-10 md:mb-12">
+      <span class="kicker">The Math</span>
+      <h2 class="font-display font-semibold text-chalk" style="font-weight: 600; font-size: clamp(32px, 4.5vw, 48px); line-height: 1.1; letter-spacing: -0.02em;">
+        See what Kaldon saves you.
+      </h2>
+    </header>
+
+    <div class="max-w-2xl mx-auto rounded-card p-8 md:p-10" style="background: var(--deep-space); border: 1px solid var(--hairline);">
+      <div class="space-y-6">
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <label for="tools-slider" class="text-body-sm" style="color: var(--ghost);">How many tools do you pay for?</label>
+            <span id="tools-value" class="font-mono text-body-sm" style="color: var(--chalk); font-weight: 500;">4</span>
+          </div>
+          <input id="tools-slider" type="range" min="0" max="10" value="4" class="sc-slider" aria-label="Number of tools" />
+        </div>
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <label for="cost-slider" class="text-body-sm" style="color: var(--ghost);">Average cost per tool?</label>
+            <span id="cost-value" class="font-mono text-body-sm" style="color: var(--chalk); font-weight: 500;">$50</span>
+          </div>
+          <input id="cost-slider" type="range" min="0" max="200" value="50" class="sc-slider" aria-label="Average cost per tool in dollars" />
+        </div>
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <label for="hours-slider" class="text-body-sm" style="color: var(--ghost);">Hours per week on manual tasks?</label>
+            <span id="hours-value" class="font-mono text-body-sm" style="color: var(--chalk); font-weight: 500;">8</span>
+          </div>
+          <input id="hours-slider" type="range" min="0" max="20" value="8" class="sc-slider" aria-label="Hours per week on manual tasks" />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-3 gap-4 mt-8 pt-8" style="border-top: 1px solid var(--hairline);">
+        <div>
+          <p id="monthly-savings" class="font-display" style="font-weight: 500; font-size: 24px; color: var(--gold); letter-spacing: -0.015em; line-height: 1;">$51</p>
+          <p class="mt-1 text-small" style="color: var(--ghost);">Saved / mo</p>
+        </div>
+        <div>
+          <p id="yearly-savings" class="font-display" style="font-weight: 500; font-size: 24px; color: var(--gold); letter-spacing: -0.015em; line-height: 1;">$612</p>
+          <p class="mt-1 text-small" style="color: var(--ghost);">Saved / yr</p>
+        </div>
+        <div>
+          <p id="hours-saved" class="font-display" style="font-weight: 500; font-size: 24px; color: var(--gold); letter-spacing: -0.015em; line-height: 1;">384h</p>
+          <p class="mt-1 text-small" style="color: var(--ghost);">Hours / yr</p>
+        </div>
+      </div>
+
+      <div class="mt-8 flex justify-center">
+        <a href="https://kaldon.io/signup" class="btn-primary" data-event="calculator_cta_click">
+          Start Saving — 2 Free Analyses
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sc-slider {
+    width: 100%;
+    height: 6px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: var(--graphite);
+    border-radius: 999px;
+    outline: none;
+  }
+  .sc-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--chalk);
+    cursor: pointer;
+    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.2);
+    transition: box-shadow 150ms ease-out;
+  }
+  .sc-slider::-webkit-slider-thumb:hover {
+    box-shadow: 0 0 0 6px rgba(0, 212, 255, 0.25);
+  }
+  .sc-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--chalk);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.2);
+  }
+</style>
+
+<script is:inline>
+  (function() {
+    const toolsS = document.getElementById('tools-slider');
+    const costS  = document.getElementById('cost-slider');
+    const hoursS = document.getElementById('hours-slider');
+    if (!toolsS) return;
+
+    const toolsV = document.getElementById('tools-value');
+    const costV  = document.getElementById('cost-value');
+    const hoursV = document.getElementById('hours-value');
+    const mS = document.getElementById('monthly-savings');
+    const yS = document.getElementById('yearly-savings');
+    const hS = document.getElementById('hours-saved');
+
+    function fmt(n) { return '$' + n.toLocaleString(); }
+    function update() {
+      const tools = +toolsS.value;
+      const cost  = +costS.value;
+      const hours = +hoursS.value;
+
+      toolsV.textContent = tools;
+      costV.textContent  = '$' + cost;
+      hoursV.textContent = hours;
+
+      const monthly = Math.max(0, tools * cost - 149);     // vs Growth tier
+      const yearly  = monthly * 12;
+      const hoursY  = hours * 48;
+
+      mS.textContent = fmt(monthly);
+      yS.textContent = fmt(yearly);
+      hS.textContent = hoursY + 'h';
+    }
+    [toolsS, costS, hoursS].forEach(s => s.addEventListener('input', update));
+    update();
+  })();
+</script>

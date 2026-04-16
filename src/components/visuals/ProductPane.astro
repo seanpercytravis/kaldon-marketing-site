@@ -1,0 +1,352 @@
+---
+// ProductPane.astro — the hero's right-side 3D-isometric "analysis" mockup.
+// Built as live HTML/CSS (Linear/Attio pattern — no PNG, no browser chrome).
+// Rendered at perspective(4000px) rotateX(38deg) rotateY(30deg) rotate(325deg).
+// Bottom fades to Void via CSS mask.
+---
+
+<div class="product-pane-wrap" aria-hidden="true">
+  <div class="product-pane">
+    <!-- Custom app bar (NO browser chrome, NO Safari frame) -->
+    <div class="pane-bar">
+      <div class="pane-breadcrumb">
+        <span class="pane-brand">Kaldon</span>
+        <span class="pane-sep">›</span>
+        <span class="pane-path">Analysis</span>
+        <span class="pane-sep">›</span>
+        <span class="pane-current">Iron Bottle Co.</span>
+      </div>
+      <div class="pane-status">
+        <span class="pulse-dot"></span>
+        <span class="pane-status-text">Data streaming</span>
+      </div>
+    </div>
+
+    <!-- Main card: opportunity score + chart -->
+    <div class="pane-body">
+      <div class="pane-score-card">
+        <div class="score-header">
+          <span class="kicker" style="margin-bottom: 0; color: var(--ghost);">Opportunity Score</span>
+        </div>
+        <div class="score-value">
+          <span class="score-num">82</span>
+          <span class="score-denom">/ 100</span>
+        </div>
+        <div class="score-sub">
+          <span class="score-trend">↑ 14</span>
+          <span class="score-trend-label">vs. 30-day avg</span>
+        </div>
+
+        <!-- Minimal sparkline -->
+        <svg class="score-chart" viewBox="0 0 280 72" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="rgba(0,212,255,0.28)" />
+              <stop offset="100%" stop-color="rgba(0,212,255,0)" />
+            </linearGradient>
+          </defs>
+          <path d="M0,58 L20,52 L40,55 L60,48 L80,50 L100,44 L120,40 L140,36 L160,30 L180,28 L200,22 L220,18 L240,14 L260,16 L280,10 L280,72 L0,72 Z" fill="url(#sparkGrad)" />
+          <path d="M0,58 L20,52 L40,55 L60,48 L80,50 L100,44 L120,40 L140,36 L160,30 L180,28 L200,22 L220,18 L240,14 L260,16 L280,10" stroke="#00D4FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+        </svg>
+      </div>
+
+      <!-- Signals grid -->
+      <div class="pane-signals">
+        <div class="signal">
+          <span class="signal-label">Demand</span>
+          <span class="signal-value">High</span>
+        </div>
+        <div class="signal">
+          <span class="signal-label">Competition</span>
+          <span class="signal-value">Medium</span>
+        </div>
+        <div class="signal">
+          <span class="signal-label">Margin</span>
+          <span class="signal-value">38–52%</span>
+        </div>
+      </div>
+
+      <!-- Filter pills -->
+      <div class="pane-filters">
+        <span class="filter active">All</span>
+        <span class="filter">Amazon</span>
+        <span class="filter">Walmart</span>
+        <span class="filter">DTC</span>
+      </div>
+
+      <!-- Data rows -->
+      <div class="pane-rows">
+        <div class="row">
+          <span class="row-num">01</span>
+          <span class="row-title">Insulated 32oz · Matte Sage</span>
+          <span class="row-score">94</span>
+        </div>
+        <div class="row">
+          <span class="row-num">02</span>
+          <span class="row-title">Glass 18oz · Fluted</span>
+          <span class="row-score">87</span>
+        </div>
+        <div class="row">
+          <span class="row-num">03</span>
+          <span class="row-title">Collapsible Silicone · Travel</span>
+          <span class="row-score">81</span>
+        </div>
+        <div class="row muted">
+          <span class="row-num">04</span>
+          <span class="row-title">Standard 24oz · Black</span>
+          <span class="row-score">62</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .product-pane-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 620px;
+    aspect-ratio: 1 / 1;
+    margin-left: auto;
+    /* Fade bottom of whole pane into Void */
+    -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 92%);
+            mask-image: linear-gradient(to bottom, black 55%, transparent 92%);
+    /* 3D perspective context */
+    perspective: 4000px;
+    pointer-events: none;
+  }
+
+  .product-pane {
+    position: absolute;
+    inset: 0;
+    background: var(--deep-space);
+    border: 1px solid var(--hairline);
+    border-radius: 12px 12px 0 0;
+    /* Signature Linear transform */
+    transform: rotateX(38deg) rotateY(30deg) rotate(325deg) translateZ(0);
+    transform-origin: 50% 50%;
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+      0 40px 80px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+  }
+
+  /* Gradient border trick — subtle light-source highlight */
+  .product-pane::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.02) 40%, rgba(255, 255, 255, 0.06));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* App bar */
+  .pane-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--hairline);
+    background: rgba(255, 255, 255, 0.015);
+  }
+  .pane-breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ghost);
+    letter-spacing: 0.02em;
+  }
+  .pane-brand { color: var(--chalk); }
+  .pane-sep { color: rgba(139, 139, 163, 0.35); }
+  .pane-path { color: var(--ghost); }
+  .pane-current { color: var(--chalk); }
+
+  .pane-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ghost);
+  }
+  .pane-status .pulse-dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  .pane-body {
+    padding: 24px 24px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Score card */
+  .pane-score-card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .score-value {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-top: 2px;
+  }
+  .score-num {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 72px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--chalk);
+  }
+  .score-denom {
+    font-family: var(--font-mono);
+    font-size: 18px;
+    color: var(--ghost);
+  }
+  .score-sub {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+  }
+  .score-trend {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: rgba(0, 212, 255, 0.08);
+    color: var(--signal);
+    font-weight: 500;
+  }
+  .score-trend-label {
+    color: var(--ghost);
+  }
+  .score-chart {
+    width: 100%;
+    height: 68px;
+    margin-top: 8px;
+  }
+
+  /* Signals */
+  .pane-signals {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding-top: 16px;
+    border-top: 1px solid var(--hairline);
+  }
+  .signal {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .signal-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ghost);
+  }
+  .signal-value {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--chalk);
+    letter-spacing: -0.01em;
+  }
+
+  /* Filter pills */
+  .pane-filters {
+    display: flex;
+    gap: 6px;
+  }
+  .filter {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--hairline);
+    color: var(--ghost);
+    background: transparent;
+  }
+  .filter.active {
+    border-color: transparent;
+    background: rgba(245, 245, 247, 0.08);
+    color: var(--chalk);
+  }
+
+  /* Data rows */
+  .pane-rows {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--hairline);
+    padding-top: 8px;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 32px 1fr auto;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .row:last-child { border-bottom: none; }
+  .row-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-quaternary);
+  }
+  .row-title {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--chalk);
+    letter-spacing: -0.005em;
+  }
+  .row-score {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--signal);
+  }
+  .row.muted .row-score { color: var(--ghost); }
+  .row.muted .row-title { color: var(--ghost); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pane-status .pulse-dot { animation: none; }
+  }
+
+  /* On narrow viewports, flatten the 3D transform so the pane reads clearly */
+  @media (max-width: 1023px) {
+    .product-pane-wrap {
+      max-width: 100%;
+      aspect-ratio: auto;
+      height: auto;
+    }
+    .product-pane {
+      position: relative;
+      inset: auto;
+      transform: none;
+      border-radius: 12px;
+    }
+    .product-pane-wrap {
+      -webkit-mask-image: none;
+              mask-image: none;
+    }
+  }
+</style>

@@ -1,0 +1,36 @@
+---
+import Button from '../ui/Button.astro';
+---
+
+<section class="section-spacing-lg relative overflow-hidden" style="background: var(--void);">
+  <!-- Dot lattice, hero + final CTA only -->
+  <div
+    class="absolute inset-0 pointer-events-none"
+    style="background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 24px 24px; background-position: center top; -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%); mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);"
+    aria-hidden="true"
+  ></div>
+
+  <div class="container-custom relative z-10">
+    <div class="max-w-prose mx-auto text-center">
+      <span class="kicker">Start Building</span>
+      <h2 class="font-display font-semibold text-chalk" style="font-weight: 500; font-size: clamp(36px, 5vw, 56px); line-height: 1.05; letter-spacing: -0.022em;">
+        Your next product is waiting.<br />
+        On every marketplace.
+      </h2>
+      <p class="mt-6 text-body-lg" style="color: var(--ghost); line-height: 1.5;">
+        Join sellers who've replaced $10,000+ in tools, consultants, and agencies with one intelligent platform. Your first two analyses are free.
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+        <Button variant="primary" size="large" href="https://kaldon.io/signup" data-event="final_cta_click">
+          Start Free — 2 Analyses Included
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"/>
+          </svg>
+        </Button>
+      </div>
+      <p class="mt-6 text-small" style="color: var(--text-quaternary);">
+        No credit card. 2 free analyses. Cancel anytime.
+      </p>
+    </div>
+  </div>
+</section>

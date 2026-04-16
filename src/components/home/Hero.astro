@@ -1,0 +1,69 @@
+---
+import ProductPane from '../visuals/ProductPane.astro';
+import Button from '../ui/Button.astro';
+import LinkArrow from '../ui/LinkArrow.astro';
+---
+
+<section class="hero relative overflow-hidden">
+  <!-- Dot lattice background (Vercel pattern) -->
+  <div
+    class="absolute inset-0 pointer-events-none"
+    style="background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 24px 24px; background-position: center top; -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 95%); mask-image: linear-gradient(to bottom, black 40%, transparent 95%);"
+    aria-hidden="true"
+  ></div>
+
+  <div class="container-custom relative z-10 pt-20 md:pt-28 pb-20 md:pb-32">
+    <div class="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-14 lg:gap-20 items-center">
+      <div class="max-w-hero-copy">
+        <span class="kicker">AI-Powered eCommerce Intelligence</span>
+        <h1
+          class="font-display"
+          style="font-weight: 500; font-size: clamp(44px, 6.5vw, 64px); line-height: 1.05; letter-spacing: -0.022em; color: var(--chalk); margin-top: 4px;"
+        >
+          From Research to Revenue.<br />
+          <span style="color: var(--text-secondary);">Any Marketplace.</span>
+        </h1>
+        <p class="mt-6 text-body-lg max-w-subhead" style="color: var(--ghost); line-height: 1.5;">
+          Kaldon finds winning products across Amazon, Walmart, and DTC — then builds your brand, creates your content, launches your store, and grows your business.
+        </p>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-3 sm:items-center">
+          <Button
+            variant="primary"
+            size="large"
+            href="https://kaldon.io/signup"
+            data-event="hero_cta_click"
+          >
+            Start Free — 2 Analyses Included
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"/>
+            </svg>
+          </Button>
+          <LinkArrow href="#pipeline" data-event="hero_see_how_click" class="sm:ml-4">
+            See how it works
+          </LinkArrow>
+        </div>
+
+        <p class="mt-6 text-small" style="color: var(--text-quaternary);">
+          No credit card. Free plan available. Cancel anytime.
+        </p>
+      </div>
+
+      <div class="hero-visual-col">
+        <ProductPane />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    background: var(--void);
+  }
+  .hero-visual-col {
+    position: relative;
+  }
+  @media (max-width: 1023px) {
+    .hero-visual-col { margin-top: 32px; }
+  }
+</style>

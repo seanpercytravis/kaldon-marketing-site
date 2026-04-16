@@ -57,7 +57,9 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
   <meta name="twitter:image" content={fullOgImage} />
 
   <!-- Fonts: self-hosted Satoshi + Inter Variable + JetBrains Mono via global.css -->
+  <link rel="preload" href="/fonts/inter/inter-variable-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/satoshi/Satoshi-Medium.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/jetbrains-mono/jetbrains-mono-variable-latin.woff2" as="font" type="font/woff2" crossorigin />
 
   <!-- Plausible Analytics -->
   <script defer data-domain="kaldon.io" src="https://plausible.io/js/script.js"></script>

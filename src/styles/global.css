@@ -1,12 +1,22 @@
-/* Self-hosted font stack — Satoshi (display), Inter Variable (workhorse), JetBrains Mono (accent) */
-@import '@fontsource-variable/inter';
-@import '@fontsource-variable/jetbrains-mono';
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Satoshi — self-hosted woff2 from Fontshare CDN (OFL-licensed, downloaded locally) */
+/* Self-hosted fonts — Satoshi display, Inter Variable workhorse, JetBrains Mono kicker accent */
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/inter/inter-variable-latin.woff2') format('woff2-variations');
+}
+@font-face {
+  font-family: 'JetBrains Mono Variable';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono/jetbrains-mono-variable-latin.woff2') format('woff2-variations');
+}
 @font-face {
   font-family: 'Satoshi';
   font-style: normal;

@@ -1,0 +1,60 @@
+---
+// IntelligenceDepth.astro — typographic list with mono numerals (Cal pattern).
+// 11 intelligence sources, no colored icons.
+
+const sources = [
+  { num: '01', name: 'Marketplace Sales Data', desc: 'Real sales volume, rank, and velocity across Amazon and Walmart.' },
+  { num: '02', name: 'Advertising Intelligence', desc: 'Keyword CPC, ad competition, and share of voice by category.' },
+  { num: '03', name: 'Historical Pricing Trends', desc: 'Price elasticity and seasonal patterns across years.' },
+  { num: '04', name: 'Search Demand Signals', desc: 'Google, Amazon, and TikTok search volume and direction.' },
+  { num: '05', name: 'Social Media Momentum', desc: 'What\'s trending before it shows up in sales data.' },
+  { num: '06', name: 'Competitor Ad Strategies', desc: 'Where and how competitors are spending — and what\'s working.' },
+  { num: '07', name: 'Cross-Marketplace Comparison', desc: 'Amazon vs. Walmart vs. DTC side-by-side opportunity mapping.' },
+  { num: '08', name: 'Deep Market Research', desc: 'Four parallel research streams synthesizing the broader category.' },
+  { num: '09', name: 'AI Intelligence Synthesis', desc: 'Every source read and weighed together, not handed to you raw.' },
+  { num: '10', name: 'Comprehensive Report', desc: 'Opportunity score, competitive picture, and clear recommendation.' },
+  { num: '11', name: 'Guided Coaching', desc: 'An AI coach walks you through every decision from analysis to launch.' },
+];
+---
+
+<section class="section-spacing" style="background: var(--void);">
+  <div class="container-custom">
+    <header class="max-w-prose mx-auto text-center mb-12 md:mb-16">
+      <span class="kicker">Intelligence Depth</span>
+      <h2 class="font-display font-semibold text-chalk" style="font-weight: 600; font-size: clamp(32px, 4.5vw, 48px); line-height: 1.1; letter-spacing: -0.02em;">
+        See the full picture. Not just one marketplace.
+      </h2>
+      <p class="mt-4 text-body-lg" style="color: var(--ghost); line-height: 1.5;">
+        Most research tools show you Amazon data. That's like making a business decision by looking through a keyhole. Kaldon opens the entire door — eleven intelligence sources, read together by AI, turned into one strategy.
+      </p>
+    </header>
+
+    <div class="max-w-4xl mx-auto">
+      <ul class="divide-y" style="border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);">
+        {sources.map((s) => (
+          <li class="grid items-baseline py-5 md:py-6 gap-4" style="grid-template-columns: 48px 1fr; --tw-divide-opacity: 1;">
+            <span class="font-mono text-body-sm" style="color: var(--text-quaternary); letter-spacing: -0.01em;">
+              {s.num}
+            </span>
+            <div>
+              <h3 class="font-display" style="font-weight: 600; font-size: 18px; color: var(--chalk); letter-spacing: -0.01em;">
+                {s.name}
+              </h3>
+              <p class="mt-1 text-body-sm" style="color: var(--ghost); line-height: 1.5;">
+                {s.desc}
+              </p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <p class="mt-12 md:mt-16 text-center font-display italic" style="font-weight: 500; font-size: clamp(20px, 2.2vw, 24px); color: var(--gold); letter-spacing: -0.015em;">
+      Other tools give you a spreadsheet. Kaldon gives you a strategy.
+    </p>
+  </div>
+</section>
+
+<style>
+  ul li + li { border-top: 1px solid var(--hairline); }
+</style>

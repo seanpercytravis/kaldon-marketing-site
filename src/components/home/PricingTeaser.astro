@@ -1,0 +1,132 @@
+---
+// PricingTeaser.astro — 5-tier teaser (Free / Growth / Pro / Scale / Enterprise)
+// Matches V3 spec prices: 0 / 149 / 299 / 499 / 1,499.
+// Pro gets the gradient-border treatment. Gold CTA on Pro, secondary elsewhere.
+
+const tiers = [
+  { name: 'Free',       price: '$0',    period: 'forever', sub: '2 analyses',          cta: 'Start Free' },
+  { name: 'Growth',     price: '$149',  period: '/ mo',    sub: '5 analyses / mo',      cta: 'Start Growth' },
+  { name: 'Pro',        price: '$299',  period: '/ mo',    sub: '15 analyses / mo',     cta: 'Go Pro',        highlight: true },
+  { name: 'Scale',      price: '$499',  period: '/ mo',    sub: 'Unlimited + store',    cta: 'Start Scale' },
+  { name: 'Enterprise', price: '$1,499', period: '/ mo',   sub: 'Agencies + teams',     cta: 'Contact Sales' },
+];
+---
+
+<section class="section-spacing" style="background: var(--void);">
+  <div class="container-custom">
+    <header class="max-w-prose mx-auto text-center mb-12 md:mb-16">
+      <span class="kicker">Pricing</span>
+      <h2 class="font-display font-semibold text-chalk" style="font-weight: 600; font-size: clamp(32px, 4.5vw, 48px); line-height: 1.1; letter-spacing: -0.02em;">
+        Premium intelligence. Accessible pricing.
+      </h2>
+      <p class="mt-4 text-body-lg" style="color: var(--ghost);">
+        Every plan includes full-quality intelligence across all marketplaces. Scale when you're ready.
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
+      {tiers.map((t) => (
+        <div class={`tier ${t.highlight ? 'tier-highlight' : ''}`}>
+          {t.highlight && <span class="tier-badge">Most Popular</span>}
+          <p class="tier-name">{t.name}</p>
+          <p class="tier-price">
+            <span class="tier-amount">{t.price}</span>
+            {t.period && <span class="tier-period">{t.period}</span>}
+          </p>
+          <p class="tier-sub">{t.sub}</p>
+          <a
+            href={t.name === 'Enterprise' ? '/contact' : 'https://kaldon.io/signup'}
+            class={t.highlight ? 'btn-primary w-full justify-center' : 'btn-secondary w-full justify-center'}
+            style="margin-top: 20px; height: 40px; font-size: 14px;"
+          >
+            {t.cta}
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-10 md:mt-12 text-center">
+      <a href="/pricing" class="link-arrow">
+        See all plans and features
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .tier {
+    background: var(--deep-space);
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .tier-highlight {
+    background: var(--deep-space);
+    position: relative;
+  }
+  .tier-highlight::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(to bottom right, rgba(255, 184, 0, 0.5), rgba(0, 212, 255, 0.25) 60%, rgba(255, 255, 255, 0.05));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+  .tier-highlight { border-color: transparent; }
+
+  .tier-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: var(--gold);
+    color: var(--void);
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border-radius: 999px;
+  }
+
+  .tier-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--chalk);
+    letter-spacing: -0.01em;
+  }
+  .tier-price {
+    margin-top: 8px;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+  .tier-amount {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 32px;
+    color: var(--chalk);
+    letter-spacing: -0.025em;
+    line-height: 1;
+  }
+  .tier-period {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ghost);
+  }
+  .tier-sub {
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--ghost);
+    flex: 1;
+  }
+</style>

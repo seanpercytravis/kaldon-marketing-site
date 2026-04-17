@@ -1,11 +1,24 @@
 ---
-// PageHero.astro — shared internal-page hero. Dot-lattice background,
-// mono kicker, Satoshi H1, narrow Ghost subhead. No gradient text.
+// PageHero.astro — shared internal-page hero. Dot-lattice background +
+// grain overlay for material depth, mono kicker, Satoshi H1, narrow Ghost
+// subhead. Optional stats prop renders a 3-tile StatTile band below.
+import StatTile from './StatTile.astro';
+
+interface Stat {
+  label: string;
+  numeral: string | number;
+  prefix?: string;
+  suffix?: string;
+  sub?: string;
+  accent?: 'chalk' | 'gold' | 'signal';
+}
+
 interface Props {
   kicker?: string;
   headline: string;
   subhead?: string;
   align?: 'left' | 'center';
+  stats?: Stat[];
   class?: string;
 }
 const {
@@ -13,17 +26,20 @@ const {
   headline,
   subhead,
   align = 'center',
+  stats,
   class: className = '',
 } = Astro.props;
 ---
 
 <section class={`relative overflow-hidden ${className}`.trim()} style="background: var(--void);">
-  <!-- Dot lattice, fades to Void at bottom -->
+  <!-- Dot lattice — fades into Void -->
   <div
     class="absolute inset-0 pointer-events-none"
-    style="background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 24px 24px; background-position: center top; -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 100%); mask-image: linear-gradient(to bottom, black 20%, transparent 100%);"
+    style="background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 24px 24px; background-position: center top; -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 100%); mask-image: linear-gradient(to bottom, black 20%, transparent 100%);"
     aria-hidden="true"
   ></div>
+  <!-- Grain overlay — material depth -->
+  <div class="grain-overlay" aria-hidden="true" style="opacity: 0.3;"></div>
 
   <div class="container-custom relative z-10 pt-20 md:pt-28 pb-14 md:pb-20">
     <header class={`${align === 'center' ? 'text-center mx-auto' : ''} max-w-prose`}>
@@ -41,5 +57,20 @@ const {
       )}
       <slot />
     </header>
+
+    {stats && stats.length > 0 && (
+      <div class="grid grid-cols-3 gap-3 md:gap-4 max-w-3xl mx-auto mt-12 md:mt-14">
+        {stats.map((s) => (
+          <StatTile
+            label={s.label}
+            numeral={s.numeral}
+            prefix={s.prefix}
+            suffix={s.suffix}
+            sub={s.sub}
+            accent={s.accent}
+          />
+        ))}
+      </div>
+    )}
   </div>
 </section>

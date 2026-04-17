@@ -1,0 +1,31 @@
+---
+// StatTile.astro — oversized mono numeral + mono kicker + optional descriptor.
+// Use for data moments: "10 parallel sources", "11 intelligence signals",
+// "$18,000+ replaced". Three variants via `accent`: chalk (default), gold, signal.
+interface Props {
+  label: string;
+  numeral: string | number;
+  prefix?: string;
+  suffix?: string;
+  sub?: string;
+  accent?: 'chalk' | 'gold' | 'signal';
+  class?: string;
+}
+const {
+  label,
+  numeral,
+  prefix = '',
+  suffix = '',
+  sub,
+  accent = 'chalk',
+  class: className = '',
+} = Astro.props;
+---
+
+<div class={`stat-tile ${className}`.trim()}>
+  <span class="stat-label">{label}</span>
+  <span class={`stat-numeral ${accent}`}>
+    {prefix}{numeral}{suffix}
+  </span>
+  {sub && <span class="stat-sub">{sub}</span>}
+</div>

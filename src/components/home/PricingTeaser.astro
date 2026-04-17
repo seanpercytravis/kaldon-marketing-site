@@ -67,6 +67,9 @@ const tiers = [
   .tier-highlight {
     background: var(--deep-space);
     position: relative;
+    border-color: transparent;
+    box-shadow: var(--shadow-lift);
+    transform: translateY(-4px);
   }
   .tier-highlight::before {
     content: '';
@@ -74,13 +77,12 @@ const tiers = [
     inset: 0;
     padding: 1px;
     border-radius: inherit;
-    background: linear-gradient(to bottom right, rgba(255, 184, 0, 0.5), rgba(0, 212, 255, 0.25) 60%, rgba(255, 255, 255, 0.05));
+    background: linear-gradient(135deg, rgba(255, 184, 0, 0.55), rgba(0, 212, 255, 0.28) 55%, rgba(255, 255, 255, 0.05));
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
             mask-composite: exclude;
     pointer-events: none;
   }
-  .tier-highlight { border-color: transparent; }
 
   .tier-badge {
     position: absolute;

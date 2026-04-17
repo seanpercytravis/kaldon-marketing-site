@@ -1,22 +1,29 @@
 ---
-// WhoItsFor.astro — 3 cards linking to use-case pages
+// WhoItsFor.astro — 3 persona cards with giant mono numerals for visual mass.
+// Middle tier gets the featured gradient-border treatment (the most common
+// buyer persona: existing brands). Matches PricingTeaser's "middle is elevated"
+// pattern for consistent hierarchy.
 const segments = [
   {
+    num: '01',
     kicker: 'New Sellers',
-    title: 'Find your first product with confidence.',
-    body: 'Kaldon scans markets across Amazon, Walmart, and DTC to find real demand with room for a new brand. Your first analysis is free.',
+    title: 'Find your first product. Built on real demand.',
+    body: "Kaldon surfaces the unmet demand your first product can own — then validates the UVP, verifies a supplier, and walks you from concept to shipped product. Your first analysis is free.",
     href: '/use-cases/new-sellers',
   },
   {
+    num: '02',
     kicker: 'Existing Brands',
-    title: 'Automate your marketing. Expand to new channels.',
-    body: 'Import your brand. Generate months of on-brand content in minutes. Expand beyond the one marketplace you\'re on.',
+    title: "Add new products to the brand you've already built.",
+    body: "Kaldon finds the adjacent unmet demand your existing brand is positioned to own, validates the UVP, verifies a supplier, and generates on-brand launch assets for Walmart and DTC.",
     href: '/use-cases/existing-brands',
+    featured: true,
   },
   {
+    num: '03',
     kicker: 'Agencies',
-    title: 'Deliver $10,000 in value per client. In a day.',
-    body: 'Run research, build brand identities, generate all assets, and deploy stores for clients in hours instead of weeks.',
+    title: 'Ship new products for clients. In hours, not weeks.',
+    body: 'Compress 40 hours of per-client launch work into one afternoon. Unmet-demand discovery, validated UVP, verified supplier, on-brand content, live store — scale from 2 launches/mo to 10.',
     href: '/use-cases/agencies',
   },
 ];
@@ -27,24 +34,17 @@ const segments = [
     <header class="max-w-prose mx-auto text-center mb-12 md:mb-16">
       <span class="kicker">Who It's For</span>
       <h2 class="font-display font-semibold text-chalk" style="font-weight: 600; font-size: clamp(32px, 4.5vw, 48px); line-height: 1.1; letter-spacing: -0.02em;">
-        Built for the people building real businesses.
+        Three profiles. One creation pipeline.
       </h2>
     </header>
 
     <div class="grid md:grid-cols-3 gap-4 md:gap-5">
       {segments.map((s) => (
-        <a
-          href={s.href}
-          class="group block rounded-card p-8 transition-colors duration-150"
-          style="background: var(--deep-space); border: 1px solid var(--hairline);"
-        >
-          <span class="kicker" style="color: var(--signal); margin-bottom: 20px;">{s.kicker}</span>
-          <h3 class="font-display" style="font-weight: 600; font-size: 22px; color: var(--chalk); letter-spacing: -0.015em; line-height: 1.25;">
-            {s.title}
-          </h3>
-          <p class="mt-3 text-body-sm" style="color: var(--ghost); line-height: 1.6;">
-            {s.body}
-          </p>
+        <a href={s.href} class={`segment-link group ${s.featured ? 'segment-featured' : ''}`}>
+          <span class="segment-num" aria-hidden="true">{s.num}</span>
+          <span class="kicker" style="color: var(--signal); margin-top: 20px; margin-bottom: 16px; display: inline-block;">{s.kicker}</span>
+          <h3 class="segment-title">{s.title}</h3>
+          <p class="segment-body">{s.body}</p>
           <span class="link-arrow mt-6 inline-flex">
             Learn more
             <span class="arrow" aria-hidden="true">→</span>
@@ -56,5 +56,59 @@ const segments = [
 </section>
 
 <style>
-  a.group:hover { border-color: var(--hairline-active); }
+  .segment-link {
+    display: block;
+    padding: 32px 28px;
+    background: var(--deep-space);
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    box-shadow: var(--shadow-inset-soft);
+    transition: border-color 160ms var(--ease-out-quad), box-shadow 160ms var(--ease-out-quad);
+  }
+  .segment-link:hover { border-color: var(--hairline-active); box-shadow: var(--shadow-inset-strong); }
+  .segment-link:hover .arrow { transform: translateX(3px); }
+
+  .segment-featured {
+    border-color: transparent;
+    box-shadow: var(--shadow-lift);
+    position: relative;
+  }
+  .segment-featured::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(255,184,0,0.35), rgba(0,212,255,0.18) 60%, rgba(255,255,255,0.05) 100%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+  .segment-num {
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 48px;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--text-quaternary);
+    display: block;
+  }
+  .segment-featured .segment-num { color: var(--gold); }
+
+  .segment-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--chalk);
+    letter-spacing: -0.015em;
+    line-height: 1.25;
+  }
+  .segment-body {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ghost);
+    letter-spacing: -0.005em;
+  }
 </style>

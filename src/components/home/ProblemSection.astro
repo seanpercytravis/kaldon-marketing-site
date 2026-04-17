@@ -45,16 +45,25 @@ const tools = [
       ))}
     </div>
 
-    <div class="mt-12 md:mt-16 text-center">
-      <p class="text-body-lg" style="color: var(--ghost);">
-        <span class="font-display" style="font-weight: 500; color: var(--text-secondary); text-decoration: line-through; text-decoration-color: rgba(139,139,163,0.4); text-decoration-thickness: 1.5px;">
-          $207–400/month
-        </span>
-        <span class="ml-3">And none of them talk to each other.</span>
-      </p>
-      <p class="mt-4 font-display" style="font-weight: 500; font-size: 18px; color: var(--gold);">
-        There's a better way.
-      </p>
+    <div class="mt-16 md:mt-20 grid md:grid-cols-[1fr_auto_1fr] gap-8 md:gap-12 items-center max-w-4xl mx-auto">
+      <div class="text-center md:text-right">
+        <span class="font-mono" style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ghost); font-weight: 500; display: block; margin-bottom: 12px;">DIY tool stack</span>
+        <p class="font-mono" style="font-weight: 400; font-size: clamp(40px, 6vw, 64px); color: var(--text-secondary); letter-spacing: -0.04em; line-height: 0.95; text-decoration: line-through; text-decoration-color: rgba(139,139,163,0.35); text-decoration-thickness: 1.5px;">
+          $207–400<span style="font-size: 0.5em; letter-spacing: 0; text-decoration: none; color: var(--ghost);">/mo</span>
+        </p>
+      </div>
+      <div class="font-mono text-center" style="font-size: 14px; color: var(--ghost); letter-spacing: 0.04em;">
+        <span aria-hidden="true">→</span>
+      </div>
+      <div class="text-center md:text-left">
+        <span class="font-mono" style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); font-weight: 500; display: block; margin-bottom: 12px;">Kaldon Growth</span>
+        <p class="font-mono" style="font-weight: 400; font-size: clamp(40px, 6vw, 64px); color: var(--gold); letter-spacing: -0.04em; line-height: 0.95;">
+          $149<span style="font-size: 0.5em; letter-spacing: 0; color: var(--ghost);">/mo</span>
+        </p>
+      </div>
     </div>
+    <p class="mt-8 text-center text-body" style="color: var(--ghost);">
+      Six subscriptions and six workflows, replaced by one.
+    </p>
   </div>
 </section>

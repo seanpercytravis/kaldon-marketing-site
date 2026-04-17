@@ -1,6 +1,7 @@
 ---
 // IntelligenceDepth.astro — typographic list with mono numerals (Cal pattern).
 // 11 intelligence sources, no colored icons.
+import StatTile from '../ui/StatTile.astro';
 
 const sources = [
   { num: '01', name: 'Marketplace Sales Data', desc: 'Real sales volume, rank, and velocity across Amazon and Walmart.' },
@@ -25,9 +26,16 @@ const sources = [
         Find gaps nobody else sees.
       </h2>
       <p class="mt-4 text-body-lg" style="color: var(--ghost); line-height: 1.5;">
-        Research tools show you Amazon data — a keyhole view of what's already selling. Kaldon reads eleven signal sources in parallel, cross-references them, and surfaces the <span style="color: var(--chalk); font-weight: 500;">unmet demand patterns</span> nobody else is building for yet.
+        Research tools show you Amazon data — a keyhole view of what's already selling. Kaldon reads eleven signal sources in parallel, cross-references them, and surfaces the <span class="emph-chalk">unmet demand patterns</span> nobody else is building for yet.
       </p>
     </header>
+
+    <!-- Three-stat band — gives the section a data-forward visual anchor -->
+    <div class="grid grid-cols-3 gap-3 md:gap-4 max-w-3xl mx-auto mb-14 md:mb-20">
+      <StatTile label="Signal sources" numeral="10" sub="Parallel data streams" />
+      <StatTile label="AI synthesis" numeral="1" sub="Claude, cross-referenced" accent="signal" />
+      <StatTile label="Marketplaces" numeral="3" sub="Amazon · Walmart · DTC" accent="gold" />
+    </div>
 
     <div class="max-w-4xl mx-auto">
       <ul class="divide-y" style="border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);">

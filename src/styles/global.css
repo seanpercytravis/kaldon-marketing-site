@@ -68,6 +68,20 @@
 
   --container: 1200px;
   --nav-h: 64px;
+
+  /* ---- Visual pop tokens ---- */
+  --shadow-inset-soft: inset 0 0 0 1px rgba(255,255,255,0.03);
+  --shadow-inset-strong: inset 0 0 0 1px rgba(255,255,255,0.06);
+  --shadow-lift: 0 1px 0 0 rgba(255,255,255,0.04) inset, 0 24px 48px -24px rgba(0,0,0,0.65), 0 60px 120px -60px rgba(0,0,0,0.4);
+  --shadow-gold-aura: 0 0 0 1px rgba(255,184,0,0.10), 0 24px 60px -24px rgba(255,184,0,0.08);
+  --shadow-signal-aura: 0 0 0 1px rgba(0,212,255,0.10), 0 16px 40px -16px rgba(0,212,255,0.08);
+
+  --gradient-text-subtle: linear-gradient(180deg, var(--chalk) 0%, var(--chalk) 60%, rgba(245,245,247,0.72) 100%);
+  --lattice-bright: rgba(255,255,255,0.06);
+
+  /* SVG grain (low-entropy fractal noise, baseFreq 0.9) — adds material depth without chroma.
+     Used with background-blend-mode: overlay. Opacity controlled via .bg-grain utility. */
+  --bg-grain: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.7 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
 }
 
 /* ---------- Base ---------- */
@@ -266,6 +280,115 @@
     background-size: 24px 24px;
     background-position: center top;
   }
+
+  /* Grain overlay — material-quality noise, use on elevated surfaces only.
+     Layer via CSS blend-mode overlay so it's chroma-neutral. */
+  .grain-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: var(--bg-grain);
+    background-size: 200px 200px;
+    mix-blend-mode: overlay;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  /* StatTile — oversized mono numeral for data moments */
+  .stat-tile {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 28px;
+    background: var(--deep-space);
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    box-shadow: var(--shadow-inset-soft);
+    transition: border-color 160ms var(--ease-out-quad), box-shadow 160ms var(--ease-out-quad);
+  }
+  .stat-tile:hover { border-color: var(--hairline-active); box-shadow: var(--shadow-inset-strong); }
+  .stat-tile .stat-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ghost);
+  }
+  .stat-tile .stat-numeral {
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: clamp(48px, 6vw, 72px);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: var(--chalk);
+  }
+  .stat-tile .stat-numeral.gold { color: var(--gold); }
+  .stat-tile .stat-numeral.signal { color: var(--signal); }
+  .stat-tile .stat-sub {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ghost);
+    letter-spacing: -0.005em;
+  }
+
+  /* FeaturedCard — elevated variant with gradient border + lift shadow */
+  .card-featured {
+    @apply rounded-card;
+    background: var(--deep-space);
+    border: 1px solid transparent;
+    padding: 32px;
+    position: relative;
+    box-shadow: var(--shadow-lift);
+  }
+  .card-featured::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(255,184,0,0.40), rgba(0,212,255,0.20) 50%, rgba(255,255,255,0.06) 100%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Display-size moments — sparing use, hero and pre-footer only */
+  .display-hero {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(56px, 9vw, 96px);
+    line-height: 1;
+    letter-spacing: -0.032em;
+    color: var(--chalk);
+  }
+
+  /* Signals chip — micro-stat pill with live pulse indicator */
+  .signals-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px 8px 12px;
+    background: var(--deep-space);
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    box-shadow: var(--shadow-inset-soft);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--ghost);
+  }
+  .signals-chip .chip-num {
+    color: var(--chalk);
+    font-weight: 500;
+  }
+  .signals-chip .pulse-dot { width: 7px; height: 7px; }
+
+  /* Inline emphasis for body copy — key phrases in Chalk or Gold */
+  .emph-chalk { color: var(--chalk); font-weight: 500; }
+  .emph-gold { color: var(--gold); font-weight: 500; }
+  .emph-signal { color: var(--signal); font-weight: 500; }
 
   /* Nav link — small pill hit target, no decoration (Linear) */
   .nav-link {

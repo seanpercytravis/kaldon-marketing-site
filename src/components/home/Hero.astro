@@ -8,9 +8,11 @@ import LinkArrow from '../ui/LinkArrow.astro';
   <!-- Dot lattice background (Vercel pattern) -->
   <div
     class="absolute inset-0 pointer-events-none"
-    style="background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 24px 24px; background-position: center top; -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 95%); mask-image: linear-gradient(to bottom, black 40%, transparent 95%);"
+    style="background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 24px 24px; background-position: center top; -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 95%); mask-image: linear-gradient(to bottom, black 40%, transparent 95%);"
     aria-hidden="true"
   ></div>
+  <!-- Grain overlay — chroma-neutral material depth -->
+  <div class="grain-overlay" aria-hidden="true" style="opacity: 0.35;"></div>
 
   <div class="container-custom relative z-10 pt-20 md:pt-28 pb-20 md:pb-32">
     <div class="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-14 lg:gap-20 items-center">
@@ -50,6 +52,10 @@ import LinkArrow from '../ui/LinkArrow.astro';
       </div>
 
       <div class="hero-visual-col">
+        <div class="signals-chip mb-5">
+          <span class="pulse-dot"></span>
+          <span><span class="chip-num">+2,847</span> NEW SIGNALS · LAST 24H</span>
+        </div>
         <ProductPane />
       </div>
     </div>

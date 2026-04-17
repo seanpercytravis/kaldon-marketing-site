@@ -53,7 +53,7 @@ const loomVideos = [
       {arcadeDemos.map((demo, i) => (
         <div id={demo.id} class={`demo-panel ${i > 0 ? 'hidden' : ''}`} data-panel={i}>
           <button class="demo-frame">
-            <img src={demo.screenshot} alt={demo.title} class="demo-img" loading="lazy" />
+            <img src={demo.screenshot} alt={demo.title} width="1124" height="712" class="demo-img" loading="lazy" decoding="async" />
             <div class="demo-overlay">
               <span class="kicker" style="color: var(--gold);">Interactive Demo</span>
               <p class="demo-title">{demo.title}</p>
@@ -86,7 +86,7 @@ const loomVideos = [
         {loomVideos.map((video) => (
           <button id={video.id} class="video-card">
             <div class="video-thumb">
-              <img src={video.screenshot} alt={video.title} loading="lazy" />
+              <img src={video.screenshot} alt={video.title} width="1124" height="712" loading="lazy" decoding="async" />
               <div class="video-play">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--chalk); margin-left: 2px;">
                   <path d="M8 5v14l11-7z" />

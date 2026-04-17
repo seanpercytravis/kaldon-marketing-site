@@ -23,6 +23,12 @@
   font-weight: 500;
   font-display: swap;
   src: url('/fonts/satoshi/Satoshi-Medium.woff2') format('woff2');
+  /* size-adjust: match Inter Variable's x-height so the fallback → Satoshi
+     swap doesn't shift layout. Satoshi's x-height is slightly smaller. */
+  size-adjust: 103%;
+  ascent-override: 98%;
+  descent-override: 22%;
+  line-gap-override: 0%;
 }
 @font-face {
   font-family: 'Satoshi';
@@ -30,6 +36,10 @@
   font-weight: 700;
   font-display: swap;
   src: url('/fonts/satoshi/Satoshi-Bold.woff2') format('woff2');
+  size-adjust: 103%;
+  ascent-override: 98%;
+  descent-override: 22%;
+  line-gap-override: 0%;
 }
 
 /* ---------- Design tokens (V3 spec) ---------- */
@@ -45,6 +55,10 @@
   --ghost: #8B8BA3;
   --chalk: #F5F5F7;
   --text-secondary: #C8CAD3;
+  /* text-quaternary is for DECORATIVE / structural use only (numerals with
+     aria-hidden, table dashes, non-critical separators). Contrast ≈ 2.5:1 on
+     Void — do not use for readable body text. Use --ghost (#8B8BA3, ~5.8:1)
+     for any actual content. */
   --text-quaternary: rgba(139, 139, 163, 0.55);
   --hairline: rgba(255, 255, 255, 0.06);
   --hairline-active: rgba(255, 255, 255, 0.14);

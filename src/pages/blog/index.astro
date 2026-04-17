@@ -44,7 +44,7 @@ const categories = ['All', 'Product Research', 'Brand Building', 'Marketplace Ti
         {posts.map((post) => (
           <a href={`/blog/${post.slug}`} class="blog-card" data-category={post.category}>
             <div class="blog-card-image">
-              <img src={post.image} alt={post.title} loading="lazy" />
+              <img src={post.image} alt={post.title} width="1124" height="712" loading="lazy" decoding="async" />
             </div>
             <div class="blog-card-body">
               <div class="blog-card-meta">

@@ -235,6 +235,11 @@ function renderCell(val: string | boolean): string {
     kicker="Pricing"
     headline="Premium intelligence. Accessible pricing."
     subhead="Every plan includes full-quality intelligence across all marketplaces. Scale when you're ready."
+    stats={[
+      { label: 'Plans to pick from', numeral: 5, sub: 'Free · Growth · Pro · Scale · Enterprise' },
+      { label: 'Tools it replaces', prefix: '$', numeral: '18k', suffix: '+/yr', sub: 'Research · brand · content · store', accent: 'gold' },
+      { label: 'Free analyses', numeral: 2, sub: 'No credit card required', accent: 'signal' },
+    ]}
   >
     <p class="mt-3 text-small" style="color: var(--ghost);">
       All plans include 2 free analyses. No credit card required to start.

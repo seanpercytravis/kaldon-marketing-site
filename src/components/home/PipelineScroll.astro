@@ -124,6 +124,12 @@ const phases = [
       ))}
     </div>
 
+    <!-- Scrub progress bar — tracks scroll-scrub progress through the
+         pinned section. Signal-hued, 2px tall, pinned to top of stage. -->
+    <div class="pipeline-scrub-track" aria-hidden="true">
+      <div class="pipeline-scrub-fill" id="pipeline-scrub-fill"></div>
+    </div>
+
     <!-- Progress indicator (desktop only) -->
     <div class="phase-progress" aria-hidden="true">
       {phases.map((_, i) => (
@@ -262,6 +268,25 @@ const phases = [
     color: var(--chalk);
   }
 
+  /* Scrub progress bar — appears at top of pinned stage */
+  .pipeline-scrub-track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.04);
+    overflow: hidden;
+    z-index: 3;
+  }
+  .pipeline-scrub-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--signal) 100%);
+    transform-origin: left center;
+    transform: scaleX(0);
+    will-change: transform;
+  }
+
   /* Progress dots */
   .phase-progress {
     position: absolute;
@@ -319,6 +344,7 @@ const phases = [
   if (isDesktop && !reducedMotion) {
     const stage = document.getElementById('pipeline-stage') as HTMLElement | null;
     const track = document.getElementById('pipeline-track') as HTMLElement | null;
+    const scrubFill = document.getElementById('pipeline-scrub-fill') as HTMLElement | null;
     const dots = document.querySelectorAll<HTMLElement>('.phase-dot');
 
     if (stage && track) {
@@ -339,11 +365,16 @@ const phases = [
           invalidateOnRefresh: true,
           anticipatePin: 1,
           onUpdate: (self) => {
+            // Phase dots — snap to nearest panel
             const idx = Math.min(
               totalPanels - 1,
               Math.round(self.progress * (totalPanels - 1))
             );
             dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+            // Scrub progress bar — smooth fill
+            if (scrubFill) {
+              scrubFill.style.transform = `scaleX(${self.progress})`;
+            }
           },
         },
       });

@@ -132,3 +132,8 @@ const tiers = [
     flex: 1;
   }
 </style>
+
+<script>
+  import { revealCards } from '../../scripts/motion';
+  revealCards('.tier', { stagger: 0.08, distance: 16, start: 'top 90%' });
+</script>

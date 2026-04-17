@@ -112,3 +112,8 @@ const segments = [
     letter-spacing: -0.005em;
   }
 </style>
+
+<script>
+  import { revealCards } from '../../scripts/motion';
+  revealCards('.segment-link', { stagger: 0.12, distance: 24 });
+</script>

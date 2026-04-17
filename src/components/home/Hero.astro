@@ -15,16 +15,16 @@ import LinkArrow from '../ui/LinkArrow.astro';
   <div class="container-custom relative z-10 pt-20 md:pt-28 pb-20 md:pb-32">
     <div class="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-14 lg:gap-20 items-center">
       <div class="max-w-hero-copy">
-        <span class="kicker">AI-Powered eCommerce Intelligence</span>
+        <span class="kicker">AI-Powered Product Creation Platform</span>
         <h1
-          class="font-display"
-          style="font-weight: 500; font-size: clamp(40px, 6vw, 60px); line-height: 1.05; letter-spacing: -0.022em; color: var(--chalk); margin-top: 4px;"
+          class="font-display hero-h1"
+          style="color: var(--chalk); margin-top: 4px;"
         >
-          Products the market is asking for.<br />
-          <span style="color: var(--text-secondary);">Built and launched from one platform.</span>
+          <span class="hero-h1-line-1">Products the market is demanding</span><br />
+          <span class="hero-h1-line-2">that nobody's making yet.</span>
         </h1>
         <p class="mt-6 text-body-lg" style="color: var(--ghost); line-height: 1.5; max-width: 540px;">
-          Billions of market data points identify what to create. Then Kaldon builds the brand, generates the content, deploys the store, and scales the ads — across Amazon, Walmart, and DTC. From market signal to shipped business, in one continuous platform.
+          Kaldon reads <span style="color: var(--chalk); font-weight: 500;">billions of market signals</span> to surface unmet demand, validates a unique value proposition your product can own, verifies a supplier who can actually manufacture it, builds the brand, generates the content, deploys the store, and scales the ads. <span style="color: var(--gold); font-weight: 500;">From market gap to shipped business</span> — one continuous platform.
         </p>
 
         <div class="mt-8 flex flex-col sm:flex-row gap-3 sm:items-center">
@@ -66,4 +66,14 @@ import LinkArrow from '../ui/LinkArrow.astro';
   @media (max-width: 1023px) {
     .hero-visual-col { margin-top: 32px; }
   }
+
+  /* Bigger display scale with weight contrast within the headline */
+  .hero-h1 {
+    font-size: clamp(44px, 7vw, 72px);
+    line-height: 1.02;
+    letter-spacing: -0.028em;
+    font-weight: 500;
+  }
+  .hero-h1-line-1 { font-weight: 500; }
+  .hero-h1-line-2 { font-weight: 400; color: var(--text-secondary); }
 </style>

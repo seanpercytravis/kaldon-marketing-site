@@ -6,22 +6,31 @@ const year = new Date().getFullYear();
 
 <footer class="mt-auto hairline-t" style="background: var(--void);">
   <div class="container-custom py-16 md:py-20">
-    <!-- Email Capture Row -->
+    <!-- Email capture — submits to Formspree / FormsFlow / Resend later.
+         Until a real endpoint is wired, the form posts to a mailto: action
+         so that Subscribe opens the user's email client addressed to the
+         beta@ inbox. Better to degrade to a real channel than pretend. -->
     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8 pb-12 mb-12 border-b border-hairline">
       <div class="max-w-md">
         <h3 class="text-h4 font-display font-semibold text-chalk" style="font-weight: 600;">
-          Get eCommerce intelligence in your inbox
+          Get market-demand intelligence in your inbox
         </h3>
         <p class="text-body-sm text-ghost mt-2">
-          Product research trends, platform updates, and launch playbooks. No spam, unsubscribe anytime.
+          Weekly unmet-demand briefs, launch playbooks, and platform updates. No spam, unsubscribe anytime.
         </p>
       </div>
-      <form id="footer-email-form" class="flex flex-col sm:flex-row gap-3 w-full md:w-auto md:shrink-0">
+      <form
+        id="footer-email-form"
+        class="flex flex-col sm:flex-row gap-3 w-full md:w-auto md:shrink-0"
+        action="mailto:beta@kaldon.io"
+        method="post"
+        enctype="text/plain"
+      >
         <label for="footer-email" class="sr-only">Your email address</label>
         <input
           id="footer-email"
           type="email"
-          name="email"
+          name="Subscribe"
           autocomplete="email"
           placeholder="you@example.com"
           required
@@ -98,14 +107,13 @@ const year = new Date().getFullYear();
 </footer>
 
 <script is:inline>
+  // Track the email-capture intent, then let the native form submission
+  // happen (action="mailto:beta@kaldon.io"). When a real API endpoint is
+  // wired (Resend/Formspree/Plausible custom goal), swap the action and
+  // remove the mailto degrade path.
   (function() {
     const form = document.getElementById('footer-email-form');
-    form?.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const btn = this.querySelector('button');
-      btn.textContent = 'Subscribed';
-      btn.disabled = true;
-      btn.style.opacity = '0.6';
+    form?.addEventListener('submit', function() {
       if (typeof window.trackEvent === 'function') {
         window.trackEvent('email_capture', { source: 'footer' });
       }

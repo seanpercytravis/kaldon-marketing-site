@@ -1,0 +1,176 @@
+---
+// MarketGapWeek.astro — a rotating "This week's unmet demand" signal card.
+// Populated manually each week (cheap content op). Demonstrates Kaldon's
+// core value — finding gaps — with a real-feeling signal on the homepage.
+// Mark content as illustrative until automated content-ops is wired.
+
+interface Props {
+  kicker?: string;
+  signalCategory: string;
+  signalHeadline: string;
+  signalDetail: string;
+  demandLift: string; // e.g. "340% YoY"
+  supplySupply: string; // e.g. "0 purpose-built products shipping"
+  searchVolume?: string;
+  updatedLabel?: string;
+}
+
+const {
+  kicker = 'This Week — Unmet Demand',
+  signalCategory = 'Beverage Accessories',
+  signalHeadline = 'Insulated mugs with integrated lid-based tea infusers',
+  signalDetail = "Search growth across Amazon, Walmart, TikTok, and Pinterest outpaces every other insulated-mug subcategory. Only three competitors ship a lid-infuser combo and none of them use ceramic-lined interiors — the format readers keep asking for in reviews.",
+  demandLift = '340%',
+  supplySupply = '3',
+  searchVolume = '48k / mo',
+  updatedLabel = 'Updated weekly',
+} = Astro.props;
+---
+
+<section class="section-spacing" style="background: var(--void);">
+  <div class="container-custom max-w-5xl">
+    <header class="text-center mb-10">
+      <span class="kicker">Live Intelligence</span>
+      <h2 class="font-display font-semibold" style="font-weight: 600; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.15; letter-spacing: -0.015em; color: var(--chalk);">
+        This is what Kaldon finds. Every week.
+      </h2>
+      <p class="mt-4 text-body-lg" style="color: var(--ghost);">
+        A sample unmet-demand signal from this week's run. In your account, you get one tuned to your category.
+      </p>
+    </header>
+
+    <div class="gap-card">
+      <div class="gap-head">
+        <div class="gap-head-left">
+          <span class="gap-kicker">{kicker}</span>
+          <span class="gap-category">{signalCategory}</span>
+        </div>
+        <span class="gap-updated">
+          <span class="pulse-dot" style="width: 7px; height: 7px;"></span>
+          {updatedLabel}
+        </span>
+      </div>
+
+      <h3 class="gap-headline">{signalHeadline}</h3>
+      <p class="gap-detail">{signalDetail}</p>
+
+      <div class="gap-stats">
+        <div class="gap-stat">
+          <span class="gap-stat-num" style="color: var(--signal);">↑ {demandLift}</span>
+          <span class="gap-stat-label">Search demand YoY</span>
+        </div>
+        <div class="gap-stat">
+          <span class="gap-stat-num" style="color: var(--chalk);">{searchVolume}</span>
+          <span class="gap-stat-label">Monthly search volume</span>
+        </div>
+        <div class="gap-stat">
+          <span class="gap-stat-num" style="color: var(--gold);">{supplySupply}</span>
+          <span class="gap-stat-label">Products currently shipping</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .gap-card {
+    position: relative;
+    padding: 36px 36px 32px;
+    background: var(--deep-space);
+    border: 1px solid transparent;
+    border-radius: 16px;
+    box-shadow: var(--shadow-lift);
+  }
+  .gap-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(0,212,255,0.4), rgba(255,184,0,0.2) 55%, rgba(255,255,255,0.06));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .gap-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .gap-head-left { display: flex; flex-direction: column; gap: 6px; }
+  .gap-kicker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--signal);
+    font-weight: 500;
+  }
+  .gap-category {
+    font-family: var(--font-display);
+    font-size: 13px;
+    color: var(--ghost);
+    letter-spacing: -0.005em;
+  }
+  .gap-updated {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ghost);
+    font-weight: 500;
+  }
+
+  .gap-headline {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(22px, 2.8vw, 30px);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--chalk);
+  }
+  .gap-detail {
+    margin-top: 14px;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ghost);
+    letter-spacing: -0.005em;
+  }
+
+  .gap-stats {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--hairline);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  @media (min-width: 768px) {
+    .gap-stats { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  }
+  .gap-stat { display: flex; flex-direction: column; gap: 4px; }
+  .gap-stat-num {
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 32px;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .gap-stat-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ghost);
+    font-weight: 500;
+  }
+</style>

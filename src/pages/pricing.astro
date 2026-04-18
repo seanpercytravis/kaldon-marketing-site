@@ -435,6 +435,18 @@ function renderCell(val: string | boolean): string {
           What you'd pay without Kaldon
         </h2>
       </header>
+
+      <!-- Giant typographic moment: the DIY cost as display type -->
+      <div class="diy-anchor">
+        <span class="diy-anchor-kicker">DIY tool + freelancer + agency stack</span>
+        <p class="diy-anchor-num">
+          <span class="diy-strike">$18,000</span>
+          <span class="diy-to">–</span>
+          <span class="diy-strike">28,000</span>
+          <span class="diy-unit">/ year</span>
+        </p>
+      </div>
+
       <div class="rounded-card overflow-hidden" style="border: 1px solid var(--hairline);">
         {[
           { label: 'Market research tools', cost: '$2,400–6,000 / yr' },
@@ -449,10 +461,6 @@ function renderCell(val: string | boolean): string {
             <span class="font-mono text-body-sm" style="color: var(--ghost);">{row.cost}</span>
           </div>
         ))}
-        <div class="flex justify-between items-center px-6 py-5" style="border-top: 1px solid var(--hairline); background: rgba(255,255,255,0.02);">
-          <span class="font-display font-semibold" style="font-weight: 600; color: var(--chalk); font-size: 15px;">Total (DIY)</span>
-          <span class="font-display font-semibold" style="font-weight: 500; color: var(--ghost); font-size: 18px; letter-spacing: -0.015em; text-decoration: line-through; text-decoration-thickness: 1.5px;">$18,000–28,000 / yr</span>
-        </div>
         <div class="flex justify-between items-center px-6 py-5" style="border-top: 1px solid var(--hairline); background: rgba(255, 184, 0, 0.06);">
           <span class="font-display font-semibold" style="font-weight: 600; color: var(--chalk); font-size: 15px;">vs Kaldon Pro</span>
           <span class="font-display" style="font-weight: 500; color: var(--gold); font-size: 22px; letter-spacing: -0.02em;">$2,868 / yr <span class="font-mono text-small" style="color: var(--ghost);">($239/mo annual)</span></span>
@@ -643,6 +651,49 @@ function renderCell(val: string | boolean): string {
     line-height: 1.65;
     color: var(--ghost);
     letter-spacing: -0.005em;
+  }
+
+  /* DIY anchor — oversized typographic moment for the DIY cost */
+  .diy-anchor {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .diy-anchor-kicker {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ghost);
+    font-weight: 500;
+    margin-bottom: 14px;
+  }
+  .diy-anchor-num {
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: clamp(56px, 10vw, 112px);
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+    color: var(--text-secondary);
+  }
+  .diy-strike {
+    text-decoration: line-through;
+    text-decoration-color: rgba(255, 184, 0, 0.5);
+    text-decoration-thickness: 3px;
+  }
+  .diy-to {
+    padding: 0 12px;
+    color: var(--ghost);
+    font-weight: 300;
+  }
+  .diy-unit {
+    font-family: var(--font-mono);
+    font-size: 0.25em;
+    letter-spacing: 0;
+    color: var(--ghost);
+    margin-left: 12px;
+    font-weight: 500;
+    vertical-align: super;
   }
   .tier-badge {
     position: absolute;

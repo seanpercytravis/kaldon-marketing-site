@@ -13,6 +13,26 @@ interface Props {
 }
 
 const { title, description, category, date, readTime, heroImage, heroAlt } = Astro.props;
+
+// All blog posts — source of truth for "Related posts" at the bottom.
+// Kept inline here since the blog is small; move to a content collection
+// if it grows past ~20 posts.
+const allPosts = [
+  { slug: 'true-cost-ecommerce-product-launch-2026', title: 'The true cost of launching an eCommerce product in 2026', excerpt: 'Six subscriptions. $205+/mo. 200+ hours of manual work.', category: 'Product Research', date: 'Mar 18, 2026', readTime: '8 min', image: '/images/screenshots/01-analysis-hero.webp' },
+  { slug: 'how-to-find-winning-product-sell-online-2026', title: 'How to find a winning product to sell online (2026)', excerpt: 'Step-by-step: niche selection to validation, with frameworks.', category: 'Product Research', date: 'Mar 18, 2026', readTime: '12 min', image: '/images/screenshots/16-opportunity-feed.webp' },
+  { slug: 'amazon-to-dtc-build-brand-beyond-marketplace', title: 'Amazon to DTC: build a brand beyond the marketplace', excerpt: 'Reduce marketplace dependency. Build a brand customers seek.', category: 'Brand Building', date: 'Mar 18, 2026', readTime: '10 min', image: '/images/screenshots/07-brand-detail.webp' },
+  { slug: 'helium-10-vs-jungle-scout-vs-kaldon', title: 'Helium 10 vs Jungle Scout vs Kaldon: which to use?', excerpt: 'Fair three-way comparison. Features, pricing, what happens after research.', category: 'Marketplace Tips', date: 'Mar 18, 2026', readTime: '10 min', image: '/images/screenshots/17-pricing.webp' },
+  { slug: 'what-ai-product-research-actually-looks-like', title: 'What AI product research actually looks like', excerpt: 'Real AI-powered analysis report with commentary on every section.', category: 'Product Research', date: 'Mar 18, 2026', readTime: '9 min', image: '/images/screenshots/03-analysis-action-plan.webp' },
+];
+
+// Derive current slug from URL so we can filter the current post out.
+const currentSlug = Astro.url.pathname.replace(/\/$/, '').split('/').pop();
+
+// Pick up to 2 related posts: prefer same category, fall back to any
+// other post. Deterministic order.
+const sameCategory = allPosts.filter((p) => p.category === category && p.slug !== currentSlug);
+const otherPosts = allPosts.filter((p) => p.category !== category && p.slug !== currentSlug);
+const relatedPosts = [...sameCategory, ...otherPosts].slice(0, 2);
 ---
 
 <BaseLayout title={`${title} | Kaldon Blog`} description={description}>
@@ -71,6 +91,33 @@ const { title, description, category, date, readTime, heroImage, heroAlt } = Ast
           </Button>
         </div>
       </div>
+
+      <!-- Related posts — zero-cost CRO lift over exiting at the single CTA -->
+      {relatedPosts.length > 0 && (
+        <aside class="mt-16 pt-12" style="border-top: 1px solid var(--hairline);">
+          <span class="kicker">Keep reading</span>
+          <h3 class="font-display font-semibold mt-1 mb-8" style="font-weight: 600; font-size: 22px; color: var(--chalk); letter-spacing: -0.015em;">Related from the Kaldon blog</h3>
+          <div class="related-grid">
+            {relatedPosts.map((p) => (
+              <a href={`/blog/${p.slug}`} class="related-card">
+                <div class="related-thumb">
+                  <img src={p.image} alt={p.title} width="1124" height="712" loading="lazy" decoding="async" />
+                </div>
+                <div class="related-meta">
+                  <span class="kicker" style="margin: 0; font-size: 10px;">{p.category}</span>
+                  <span class="related-dot">·</span>
+                  <span class="related-read">{p.readTime}</span>
+                </div>
+                <h4 class="related-title">{p.title}</h4>
+                <span class="link-arrow" style="margin-top: 12px; font-size: 13px;">
+                  Read
+                  <span class="arrow" aria-hidden="true">→</span>
+                </span>
+              </a>
+            ))}
+          </div>
+        </aside>
+      )}
     </div>
   </article>
 
@@ -212,5 +259,61 @@ const { title, description, category, date, readTime, heroImage, heroAlt } = Ast
     border: none;
     border-top: 1px solid var(--hairline);
     margin: 48px 0;
+  }
+
+  /* Related posts */
+  .related-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 640px) {
+    .related-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+  }
+  .related-card {
+    display: block;
+    padding: 20px;
+    background: var(--deep-space);
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    transition: border-color 160ms var(--ease-out-quad);
+  }
+  .related-card:hover { border-color: var(--hairline-active); }
+  .related-card:hover .arrow { transform: translateX(3px); }
+  .related-card:hover .related-thumb img { transform: scale(1.03); }
+  .related-thumb {
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--void);
+    margin-bottom: 14px;
+    border: 1px solid var(--hairline);
+  }
+  .related-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: transform 300ms var(--ease-out-quad);
+  }
+  .related-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .related-dot { color: var(--ghost); opacity: 0.5; }
+  .related-read {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--ghost);
+  }
+  .related-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--chalk);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
   }
 </style>

@@ -16,14 +16,47 @@ const {
   title,
   description,
   canonicalUrl = Astro.url.href,
-  ogImage = '/images/og-default.webp',
+  ogImage,
   ogType = 'website',
   noIndex = false,
   structuredData = [],
 } = Astro.props;
 
 const siteUrl = 'https://kaldon.io';
-const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+
+// Auto-select per-page OG image from pathname if no explicit ogImage passed.
+// See scripts/generate-og.mjs for the generator; PNGs live in
+// public/images/og/. Fallback: og-default.webp.
+function ogSlugFromPath(path: string): string {
+  const clean = path.replace(/\/$/, '').replace(/^\//, '');
+  if (clean === '') return 'home';
+  // Translate URL path to OG slug (matches generate-og.mjs page slugs)
+  const map: Record<string, string> = {
+    'use-cases/new-sellers': 'use-cases-new-sellers',
+    'use-cases/existing-brands': 'use-cases-existing-brands',
+    'use-cases/agencies': 'use-cases-agencies',
+    'compare/research-tools': 'compare-research-tools',
+    'compare/ecommerce-platforms': 'compare-ecommerce-platforms',
+    'compare/doing-it-yourself': 'compare-doing-it-yourself',
+    'vs/helium-10': 'vs-helium-10',
+    'vs/jungle-scout': 'vs-jungle-scout',
+    'vs/shopify': 'vs-shopify',
+  };
+  if (map[clean]) return map[clean];
+  // Single-segment routes: pricing, features, how-it-works, demo, blog,
+  // about, who-its-for → use the segment directly
+  if (!clean.includes('/')) return clean;
+  return '';
+}
+const derivedSlug = ogSlugFromPath(Astro.url.pathname);
+const resolvedOgImage = ogImage
+  ? ogImage
+  : derivedSlug
+    ? `/images/og/${derivedSlug}.png`
+    : '/images/og-default.webp';
+const fullOgImage = resolvedOgImage.startsWith('http')
+  ? resolvedOgImage
+  : `${siteUrl}${resolvedOgImage}`;
 
 // Auto-generate BreadcrumbList from the current URL path.
 // "/" renders no breadcrumbs. Otherwise: Home > segment 1 > segment 2…

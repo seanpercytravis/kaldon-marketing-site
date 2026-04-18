@@ -7,6 +7,8 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "generate:og": "node scripts/generate-og.mjs",
+    "prebuild": "node scripts/generate-og.mjs",
     "build": "astro build",
     "preview": "pnpm run build && wrangler dev",
     "astro": "astro",
@@ -21,9 +23,13 @@
     "lucide-astro": "^0.556.0"
   },
   "devDependencies": {
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/jetbrains-mono": "^5.2.8",
+    "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/postcss": "^4.2.2",
     "autoprefixer": "^10.4.27",
     "postcss": "^8.5.8",
+    "satori": "^0.26.0",
     "tailwindcss": "^3.4.19",
     "wrangler": "^4.75.0"
   }

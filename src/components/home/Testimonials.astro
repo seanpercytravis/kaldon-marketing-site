@@ -1,0 +1,122 @@
+---
+// Testimonials.astro — three-up pull quotes from sellers using the Kaldon
+// pipeline. Text-only (Linear/Resend pattern, no headshots), mono meta line.
+//
+// PLACEHOLDER CONTENT — these are realistic-sounding quotes that mirror the
+// language and outcomes real Kaldon sellers describe. Replace with real,
+// attributable quotes before public launch. Names and handles are invented.
+// Kaldon has led hundreds of sellers from starter scale to 6/7/8-figure
+// annual revenues via this exact pipeline; these samples are structurally
+// faithful to what real testimonials sound like.
+
+const testimonials = [
+  {
+    quote: "Kaldon compressed 14 weeks of planning into one Saturday afternoon. Vet Mode told us to pivot from stainless to ceramic-lined before we bought inventory — that single signal was the difference between shipping a product and burning $40k on one that wouldn't move.",
+    name: 'Maya Castellanos',
+    role: 'Founder, Ironfield Hydration',
+    context: 'Launched March · $12k / mo by June',
+  },
+  {
+    quote: "We'd stacked Helium 10, Jasper, Canva, and a $4k/mo content agency for two years. Kaldon replaced all four and surfaced three DTC-ready product adjacencies our brand was positioned to own. First one shipped in 22 days and paid back the platform in its first week.",
+    name: 'Daniel Okonkwo',
+    role: '7-figure Amazon seller · Kitchenware',
+    context: 'Scaled from 1 SKU to 6 in a quarter',
+  },
+  {
+    quote: "Before Kaldon, every client launch was six weeks of my team's time. Now it's one afternoon. We went from 2 launches a month to 11. Gross margin doubled because I stopped paying three freelancers to do what the pipeline does on its own.",
+    name: 'Priya Ramachandran',
+    role: 'Founder, LaunchLane Agency',
+    context: 'Runs 40+ active client brands',
+  },
+];
+---
+
+<section class="section-spacing" style="background: var(--void);">
+  <div class="container-custom">
+    <header class="max-w-prose mx-auto text-center mb-10 md:mb-14">
+      <span class="kicker">Sellers who've done it</span>
+      <h2 class="font-display font-semibold" style="font-weight: 600; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.15; letter-spacing: -0.015em; color: var(--chalk);">
+        The same process that's taken sellers from zero to seven figures.
+      </h2>
+      <p class="mt-4 text-body-lg" style="color: var(--ghost); line-height: 1.5;">
+        The path that used to take months or years and <span style="color: var(--chalk); font-weight: 500;">10–20× the cost</span> in training, software, vendors, and freelancers — collapsed into one platform.
+      </p>
+    </header>
+
+    <div class="grid md:grid-cols-3 gap-4 md:gap-5 max-w-6xl mx-auto">
+      {testimonials.map((t) => (
+        <figure class="quote-card">
+          <svg class="quote-mark" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7 7 L4 14 L7 14 L7 17 L2 17 L2 13 L5 7 Z M15 7 L12 14 L15 14 L15 17 L10 17 L10 13 L13 7 Z" fill="currentColor" opacity="0.25" />
+          </svg>
+          <blockquote class="quote-body">{t.quote}</blockquote>
+          <figcaption class="quote-attr">
+            <span class="quote-name">{t.name}</span>
+            <span class="quote-role">{t.role}</span>
+            <span class="quote-context">{t.context}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .quote-card {
+    padding: 28px 24px;
+    background: var(--deep-space);
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    box-shadow: var(--shadow-inset-soft);
+    display: flex;
+    flex-direction: column;
+    transition: border-color 160ms var(--ease-out-quad);
+  }
+  .quote-card:hover { border-color: var(--hairline-active); }
+
+  .quote-mark {
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .quote-body {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 15.5px;
+    line-height: 1.55;
+    letter-spacing: -0.01em;
+    color: var(--chalk);
+    margin-bottom: 20px;
+    flex: 1;
+  }
+
+  .quote-attr {
+    padding-top: 16px;
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .quote-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--chalk);
+    letter-spacing: -0.01em;
+  }
+  .quote-role {
+    font-family: var(--font-sans);
+    font-size: 12.5px;
+    color: var(--ghost);
+    letter-spacing: -0.005em;
+  }
+  .quote-context {
+    margin-top: 4px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+</style>

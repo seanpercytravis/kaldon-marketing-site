@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/ui/PageHero.astro';
 import Button from '../../components/ui/Button.astro';
+import UseCaseCrossLinks from '../../components/ui/UseCaseCrossLinks.astro';
 
 const painPoints = [
   { title: 'Stuck on one marketplace', desc: 'All your revenue comes from Amazon. One algorithm change, one policy update, one suspended listing — and your income disappears overnight. You know diversification is critical, but you don\'t have time to figure out Walmart, DTC, and social commerce on your own.' },
@@ -111,6 +112,8 @@ const results = [
       </ul>
     </div>
   </section>
+
+  <UseCaseCrossLinks current="existing-brands" />
 
   <section class="section-spacing-lg relative overflow-hidden" style="background: var(--void);">
     <div

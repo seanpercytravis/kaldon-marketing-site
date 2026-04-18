@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/ui/PageHero.astro';
 import Button from '../../components/ui/Button.astro';
+import UseCaseCrossLinks from '../../components/ui/UseCaseCrossLinks.astro';
 
 const painPoints = [
   { title: 'Overwhelmed by tools', desc: 'You have subscriptions to Jungle Scout, Helium 10, Canva, Jasper, Shopify, and a dozen others. None of them talk to each other. You spend more time switching tabs than making progress.' },
@@ -114,6 +115,8 @@ const timeline = [
       </ol>
     </div>
   </section>
+
+  <UseCaseCrossLinks current="new-sellers" />
 
   <section class="section-spacing-lg relative overflow-hidden" style="background: var(--void);">
     <div

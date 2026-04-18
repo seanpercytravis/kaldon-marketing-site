@@ -421,6 +421,36 @@
     background: rgba(255, 255, 255, 0.06);
   }
 
+  /* Nav dropdown item — two-line treatment: title + sub-description.
+     Gives the Compare / Use Cases menus Stripe-level navigation gravity
+     without ballooning into a full mega-menu. */
+  .nav-drop-item {
+    display: block;
+    padding: 12px 14px;
+    border-radius: 6px;
+    transition: background 160ms var(--ease-out-quad);
+  }
+  .nav-drop-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .nav-drop-item .nav-drop-title {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 13.5px;
+    color: var(--chalk);
+    letter-spacing: -0.01em;
+  }
+  .nav-drop-item .nav-drop-sub {
+    display: block;
+    margin-top: 2px;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    color: var(--ghost);
+    letter-spacing: -0.005em;
+    line-height: 1.35;
+  }
+
   /* Hairline divider */
   .hairline-t { border-top: 1px solid var(--hairline); }
   .hairline-b { border-bottom: 1px solid var(--hairline); }

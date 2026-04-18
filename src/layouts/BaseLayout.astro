@@ -29,6 +29,7 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
 // "/" renders no breadcrumbs. Otherwise: Home > segment 1 > segment 2…
 function titleize(segment: string): string {
   const overrides: Record<string, string> = {
+    // Section overrides
     'vs': 'Compare',
     'use-cases': 'Use Cases',
     'how-it-works': 'How It Works',
@@ -38,6 +39,22 @@ function titleize(segment: string): string {
     'doing-it-yourself': 'DIY',
     'new-sellers': 'New Sellers',
     'existing-brands': 'Existing Brands',
+    // Blog post slug → real title (prevents awkward auto-titleize like
+    // "True Cost Ecommerce Product Launch 2026")
+    'true-cost-ecommerce-product-launch-2026':
+      'The True Cost of Launching an eCommerce Product in 2026',
+    'how-to-find-winning-product-sell-online-2026':
+      'How to Find a Winning Product to Sell Online (2026)',
+    'amazon-to-dtc-build-brand-beyond-marketplace':
+      'Amazon to DTC: Building a Brand Beyond the Marketplace',
+    'helium-10-vs-jungle-scout-vs-kaldon':
+      'Helium 10 vs Jungle Scout vs Kaldon',
+    'what-ai-product-research-actually-looks-like':
+      'What AI Product Research Actually Looks Like',
+    // Competitor slugs for /vs/*
+    'helium-10': 'Helium 10',
+    'jungle-scout': 'Jungle Scout',
+    'shopify': 'Shopify',
   };
   if (overrides[segment]) return overrides[segment];
   return segment

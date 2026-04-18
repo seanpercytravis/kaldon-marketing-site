@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/ui/PageHero.astro';
 import Button from '../../components/ui/Button.astro';
+import UseCaseCrossLinks from '../../components/ui/UseCaseCrossLinks.astro';
 
 const painPoints = [
   { title: 'Too much manual work per client', desc: 'Every client launch requires the same 40+ hours of work: product research, brand identity, content creation, store setup. You are the bottleneck. You cannot take on more clients without burning out or hiring more people.' },
@@ -108,6 +109,8 @@ const economics = [
       </div>
     </div>
   </section>
+
+  <UseCaseCrossLinks current="agencies" />
 
   <section class="section-spacing-lg relative overflow-hidden" style="background: var(--void);">
     <div

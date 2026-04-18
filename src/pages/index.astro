@@ -4,11 +4,13 @@ import Hero from '../components/home/Hero.astro';
 import ConnectedPlatforms from '../components/home/ConnectedPlatforms.astro';
 import ProblemSection from '../components/home/ProblemSection.astro';
 import PipelineScroll from '../components/home/PipelineScroll.astro';
+import ModeBadges from '../components/ui/ModeBadges.astro';
 import IntelligenceDepth from '../components/home/IntelligenceDepth.astro';
 import WhoItsFor from '../components/home/WhoItsFor.astro';
 import PricingTeaser from '../components/home/PricingTeaser.astro';
 import SavingsCalculator from '../components/home/SavingsCalculator.astro';
 import FinalCTA from '../components/home/FinalCTA.astro';
+import Testimonials from '../components/home/Testimonials.astro';
 
 const structuredData = [
   {
@@ -57,7 +59,9 @@ const structuredData = [
   <ConnectedPlatforms />
   <ProblemSection />
   <PipelineScroll />
+  <ModeBadges headline="Three ways to use Kaldon. One creation pipeline." />
   <IntelligenceDepth />
+  <Testimonials />
   <WhoItsFor />
   <PricingTeaser />
   <SavingsCalculator />

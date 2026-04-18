@@ -1,0 +1,95 @@
+---
+// UseCaseCrossLinks.astro — footer row on each /use-cases/* page showing
+// the other two use cases. Lightweight CRO primitive: a reader who finishes
+// a use-case page shouldn't exit with one CTA — they should be offered the
+// two adjacent funnels in case they misidentified themselves.
+
+interface Props {
+  /** Current page's slug so it's excluded from the cross-link list. */
+  current: 'new-sellers' | 'existing-brands' | 'agencies';
+}
+
+const { current } = Astro.props;
+
+const all = [
+  {
+    slug: 'new-sellers',
+    kicker: 'For New Sellers',
+    title: 'Find your first product. Built on real demand.',
+    body: "Don't guess what to sell — build what the market is asking for.",
+    href: '/use-cases/new-sellers',
+  },
+  {
+    slug: 'existing-brands',
+    kicker: 'For Existing Brands',
+    title: 'Vet your catalog. Ship what\'s next.',
+    body: 'Three modes — VET, DISCOVER, EXPAND — for the seller who already has traction.',
+    href: '/use-cases/existing-brands',
+  },
+  {
+    slug: 'agencies',
+    kicker: 'For Agencies',
+    title: 'Ship client products in hours, not weeks.',
+    body: 'Collapse 40 hours of per-client work into one afternoon. Scale launches without hiring.',
+    href: '/use-cases/agencies',
+  },
+];
+
+const others = all.filter((uc) => uc.slug !== current);
+---
+
+<section class="section-spacing" style="background: var(--void);">
+  <div class="container-custom max-w-5xl">
+    <header class="text-center mb-10">
+      <span class="kicker">Other use cases</span>
+      <h2 class="font-display font-semibold" style="font-weight: 600; font-size: clamp(24px, 3vw, 32px); line-height: 1.2; letter-spacing: -0.015em; color: var(--chalk);">
+        Not quite your fit? See the other two.
+      </h2>
+    </header>
+    <div class="grid md:grid-cols-2 gap-4">
+      {others.map((uc) => (
+        <a href={uc.href} class="cross-card">
+          <span class="kicker" style="color: var(--signal); margin-bottom: 12px; display: inline-block;">{uc.kicker}</span>
+          <h3 class="cross-title">{uc.title}</h3>
+          <p class="cross-body">{uc.body}</p>
+          <span class="link-arrow mt-5">
+            Read the use case
+            <span class="arrow" aria-hidden="true">→</span>
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .cross-card {
+    display: block;
+    padding: 28px;
+    background: var(--deep-space);
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    box-shadow: var(--shadow-inset-soft);
+    transition: border-color 160ms var(--ease-out-quad), box-shadow 160ms var(--ease-out-quad);
+  }
+  .cross-card:hover {
+    border-color: var(--hairline-active);
+    box-shadow: var(--shadow-inset-strong);
+  }
+  .cross-card:hover .arrow { transform: translateX(3px); }
+  .cross-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--chalk);
+    letter-spacing: -0.015em;
+    line-height: 1.25;
+  }
+  .cross-body {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ghost);
+    letter-spacing: -0.005em;
+  }
+</style>

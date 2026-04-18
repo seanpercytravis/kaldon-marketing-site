@@ -1,0 +1,141 @@
+---
+// ModeBadges.astro — the three Kaldon entry modes surfaced as first-class
+// cards. Same 5-phase pipeline, three different starting points:
+//   · DISCOVER: "I don't know what to build. Find me unmet demand."
+//   · VET: "I have an idea. Validate it before I spend."
+//   · EXPAND: "I'm already selling. Find what I should ship next."
+// Usable on homepage, /features, /how-it-works for consistent messaging.
+
+interface Props {
+  /** Optional override kicker. Default: "Three modes · One pipeline" */
+  kicker?: string;
+  /** Optional H2-style headline above the grid. */
+  headline?: string;
+  /** Visual density: 'default' full cards or 'compact' inline row. */
+  variant?: 'default' | 'compact';
+  class?: string;
+}
+
+const {
+  kicker = 'Three modes · One pipeline',
+  headline,
+  variant = 'default',
+  class: className = '',
+} = Astro.props;
+
+const modes = [
+  {
+    num: '01',
+    name: 'Discover',
+    body: "You don't know what to build yet. Kaldon reads billions of signals and surfaces the products the market is demanding that nobody's making.",
+    verb: "Find what's missing",
+    accent: 'signal',
+  },
+  {
+    num: '02',
+    name: 'Vet',
+    body: "You have a product in mind — or you're already selling it. Kaldon scores its unmet-demand potential, maps pricing and review gaps, and tells you whether it's worth shipping or optimizing.",
+    verb: 'Validate before you invest',
+    accent: 'gold',
+  },
+  {
+    num: '03',
+    name: 'Expand',
+    body: "You have an existing brand. Kaldon surfaces the adjacent unmet demand your brand is positioned to own next, validates the UVP, and verifies a supplier who can make it.",
+    verb: "Ship what's next",
+    accent: 'signal',
+  },
+];
+---
+
+<section class={`mode-badges section-spacing ${className}`.trim()} style="background: var(--void);">
+  <div class="container-custom">
+    <header class="max-w-prose mx-auto text-center mb-10 md:mb-14">
+      <span class="kicker">{kicker}</span>
+      {headline && (
+        <h2 class="font-display font-semibold mt-2" style="font-weight: 600; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.15; letter-spacing: -0.015em; color: var(--chalk);">
+          {headline}
+        </h2>
+      )}
+    </header>
+
+    <div class={`mode-grid ${variant}`}>
+      {modes.map((m) => (
+        <div class="mode-card">
+          <div class="mode-head">
+            <span class="mode-num" aria-hidden="true">{m.num}</span>
+            <span class={`mode-name mode-${m.accent}`}>{m.name}</span>
+          </div>
+          <p class="mode-verb">{m.verb}</p>
+          <p class="mode-body">{m.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .mode-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  @media (min-width: 768px) {
+    .mode-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  }
+  .mode-grid.compact { gap: 12px; }
+
+  .mode-card {
+    padding: 28px;
+    background: var(--deep-space);
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    box-shadow: var(--shadow-inset-soft);
+    transition: border-color 160ms var(--ease-out-quad), box-shadow 160ms var(--ease-out-quad);
+  }
+  .mode-card:hover {
+    border-color: var(--hairline-active);
+    box-shadow: var(--shadow-inset-strong);
+  }
+
+  .mode-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .mode-num {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-quaternary);
+    letter-spacing: -0.01em;
+  }
+  .mode-name {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 32px;
+    letter-spacing: -0.025em;
+    line-height: 1;
+  }
+  .mode-signal { color: var(--signal); }
+  .mode-gold { color: var(--gold); }
+
+  .mode-verb {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ghost);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .mode-body {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ghost);
+    letter-spacing: -0.005em;
+  }
+</style>

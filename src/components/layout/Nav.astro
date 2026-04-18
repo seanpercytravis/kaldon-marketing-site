@@ -9,10 +9,11 @@ const isActive = (path: string) =>
 
 <nav id="main-nav" class="fixed top-0 inset-x-0 z-50 transition-colors duration-100 ease-out" aria-label="Main navigation">
   <div class="container-custom">
-    <div class="flex items-center justify-between h-16">
-      <!-- Logo — sized for Linear/Stripe-level visual weight -->
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo — roughly 2x the prior size so the "AI-Powered eCommerce
+           Intelligence" descriptor is legible at normal reading distance. -->
       <a href="/" class="flex items-center shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-2 focus-visible:ring-offset-void rounded-sm">
-        <img src="/images/logos/kaldon-logo-dark.svg" alt="Kaldon" class="h-9 md:h-10 w-auto" width="200" height="40" />
+        <img src="/images/logos/kaldon-logo-dark.svg" alt="Kaldon — AI-Powered eCommerce Intelligence" class="h-14 md:h-16 w-auto" width="320" height="64" />
       </a>
 
       <!-- Desktop Nav -->
@@ -65,7 +66,7 @@ const isActive = (path: string) =>
   </div>
 
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="md:hidden hidden fixed inset-0 top-16 z-50 overflow-y-auto" style="background: #0A0A0F;">
+  <div id="mobile-menu" class="md:hidden hidden fixed inset-0 top-20 z-50 overflow-y-auto" style="background: #0A0A0F;">
     <div class="container-custom py-10 space-y-1">
       <a href="/how-it-works" class="block py-3 text-lg font-medium text-chalk hover:text-signal transition-colors">How It Works</a>
       <a href="/features" class="block py-3 text-lg font-medium text-chalk hover:text-signal transition-colors">Features</a>
@@ -100,7 +101,7 @@ const isActive = (path: string) =>
 </nav>
 
 <!-- Nav spacer (fixed nav means content needs top offset) -->
-<div class="h-16" aria-hidden="true"></div>
+<div class="h-20" aria-hidden="true"></div>
 
 <script is:inline>
   (function() {

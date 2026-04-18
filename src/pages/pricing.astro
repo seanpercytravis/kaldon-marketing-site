@@ -237,7 +237,7 @@ function renderCell(val: string | boolean): string {
     subhead="Every plan includes full-quality intelligence across all marketplaces. Scale when you're ready."
     stats={[
       { label: 'Plans to pick from', numeral: 5, sub: 'Free · Growth · Pro · Scale · Enterprise' },
-      { label: 'Tools it replaces', prefix: '$', numeral: '18k', suffix: '+/yr', sub: 'Research · brand · content · store', accent: 'gold' },
+      { label: 'Tools it replaces', prefix: '$', numeral: '18k+', sub: 'per year in research, brand, content, store', accent: 'gold' },
       { label: 'Free analyses', numeral: 2, sub: 'No credit card required', accent: 'signal' },
     ]}
   >
@@ -246,20 +246,21 @@ function renderCell(val: string | boolean): string {
     </p>
   </PageHero>
 
-  <!-- Billing toggle -->
+  <!-- Billing toggle — defaults to monthly so the prices people see on
+       first load match what they'll be charged month-to-month. -->
   <section class="pb-6" style="background: var(--void);">
     <div class="container-custom flex items-center justify-center gap-3">
-      <span class="text-small" id="billing-monthly" style="color: var(--ghost);">Monthly</span>
+      <span class="text-small" id="billing-monthly" style="color: var(--chalk); font-weight: 500;">Monthly</span>
       <button
         id="pricing-toggle"
         class="relative inline-flex items-center rounded-full border transition-colors"
         style="width: 52px; height: 28px; background: var(--deep-space); border-color: var(--hairline);"
         aria-label="Toggle annual pricing"
-        aria-pressed="true"
+        aria-pressed="false"
       >
-        <span id="pricing-toggle-dot" class="absolute top-0.5 left-0.5 rounded-full transition-transform" style="width: 22px; height: 22px; background: var(--gold); transform: translateX(24px);"></span>
+        <span id="pricing-toggle-dot" class="absolute top-0.5 left-0.5 rounded-full transition-transform" style="width: 22px; height: 22px; background: var(--gold); transform: translateX(0);"></span>
       </button>
-      <span class="text-small inline-flex items-center gap-2" id="billing-annual" style="color: var(--chalk); font-weight: 500;">
+      <span class="text-small inline-flex items-center gap-2" id="billing-annual" style="color: var(--ghost);">
         Annual
         <span class="font-mono" style="font-size: 11px; padding: 2px 8px; border-radius: 999px; background: rgba(255, 184, 0, 0.1); color: var(--gold); letter-spacing: 0.04em;">Save 20%</span>
       </span>
@@ -278,9 +279,14 @@ function renderCell(val: string | boolean): string {
             {t.highlight && <span class="tier-badge">Most Popular</span>}
             <p class="tier-name">{t.name}</p>
             <p class="tier-price">
-              <span class="tier-amount" data-annual={t.annual} data-monthly={t.monthly}>{t.annual}</span>
+              <span class="tier-amount" data-annual={t.annual} data-monthly={t.monthly}>{t.monthly}</span>
               <span class="tier-period">{t.period}</span>
             </p>
+            {t.annual !== t.monthly && (
+              <p class="tier-annual-note">
+                <span class="tier-annual-amount" data-annual={t.annual} data-monthly={t.monthly}>{t.annual}</span>/mo with annual · <span style="color: var(--gold);">save 20%</span>
+              </p>
+            )}
             <p class="tier-sub">{t.sub}</p>
             <a
               href={t.href}
@@ -477,13 +483,14 @@ function renderCell(val: string | boolean): string {
 
 <script is:inline>
   (function() {
-    // Billing toggle
+    // Billing toggle — defaults to MONTHLY (matches initial HTML state)
     const toggle = document.getElementById('pricing-toggle');
     const dot = document.getElementById('pricing-toggle-dot');
     const monthlyLabel = document.getElementById('billing-monthly');
     const annualLabel = document.getElementById('billing-annual');
+    const annualNotes = document.querySelectorAll('.tier-annual-note');
     if (!toggle) return;
-    let annual = true;
+    let annual = false; // default: monthly
     toggle.addEventListener('click', () => {
       annual = !annual;
       toggle.setAttribute('aria-pressed', String(annual));
@@ -495,10 +502,12 @@ function renderCell(val: string | boolean): string {
       document.querySelectorAll('.tier-amount').forEach(el => {
         el.textContent = annual ? el.dataset.annual : el.dataset.monthly;
       });
+      // Hide the "$X/mo with annual" note when annual is already selected
+      annualNotes.forEach(n => {
+        n.style.visibility = annual ? 'hidden' : 'visible';
+      });
     });
   })();
-
-  // Function needed server-side — inline for Astro static build
 </script>
 
 <style>
@@ -513,22 +522,36 @@ function renderCell(val: string | boolean): string {
     position: relative;
   }
   .tier-highlight {
-    background: var(--deep-space);
+    background: linear-gradient(180deg, rgba(255, 184, 0, 0.04) 0%, var(--deep-space) 60%);
     position: relative;
     border-color: transparent;
+    box-shadow: var(--shadow-lift);
+    transform: translateY(-6px);
+    z-index: 2;
   }
   .tier-highlight::before {
     content: '';
     position: absolute;
     inset: 0;
-    padding: 1px;
+    padding: 1.5px;
     border-radius: inherit;
-    background: linear-gradient(to bottom right, rgba(255, 184, 0, 0.5), rgba(0, 212, 255, 0.25) 60%, rgba(255, 255, 255, 0.05));
+    background: linear-gradient(135deg, rgba(255, 184, 0, 0.85) 0%, rgba(255, 184, 0, 0.4) 25%, rgba(0, 212, 255, 0.3) 65%, rgba(255, 255, 255, 0.06) 100%);
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
             mask-composite: exclude;
     pointer-events: none;
   }
+  .tier-highlight .tier-amount { color: var(--gold); }
+
+  /* Tier annual note — only shown when monthly toggle active */
+  .tier-annual-note {
+    margin-top: 6px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ghost);
+    letter-spacing: 0.02em;
+  }
+  .tier-annual-amount { color: var(--chalk); font-weight: 500; }
   .tier-badge {
     position: absolute;
     top: 16px;

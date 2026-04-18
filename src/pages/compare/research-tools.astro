@@ -3,12 +3,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/ui/PageHero.astro';
 import Button from '../../components/ui/Button.astro';
 
+// Prices reflect the PREMIUM / equivalent-capability tier — not the
+// starter entry fee. Kaldon is a premium platform; comparing to entry
+// tiers understates the true cost of matching Kaldon's coverage.
 const tools = [
-  { name: 'Helium 10', price: '$99–279 / mo', focus: 'Amazon + Walmart + TikTok Shop', strength: 'Cerebro / Magnet keyword research', link: '/vs/helium-10' },
-  { name: 'Jungle Scout', price: '$29–129 / mo', focus: 'Amazon', strength: 'Product Tracker, Supplier Database', link: '/vs/jungle-scout' },
-  { name: 'SmartScout', price: '$29–187 / mo', focus: 'Amazon', strength: 'Brand and subcategory analytics', link: null },
-  { name: 'Viral Launch', price: '$69–199 / mo', focus: 'Amazon', strength: 'Market Intelligence, launch tools', link: null },
-  { name: 'AMZScout', price: '$29–49 / mo', focus: 'Amazon', strength: 'Chrome extension, beginner-friendly', link: null },
+  { name: 'Helium 10 (Diamond)', price: '$279 / mo', focus: 'Amazon + Walmart + TikTok Shop', strength: 'Cerebro / Magnet keyword research', link: '/vs/helium-10' },
+  { name: 'Jungle Scout (Professional)', price: '$349 / mo', focus: 'Amazon', strength: 'Product Tracker, Supplier Database', link: '/vs/jungle-scout' },
+  { name: 'SmartScout (Business)', price: '$187 / mo', focus: 'Amazon', strength: 'Brand and subcategory analytics', link: null },
+  { name: 'Viral Launch (Pro Plus)', price: '$199 / mo', focus: 'Amazon', strength: 'Market Intelligence, launch tools', link: null },
+  { name: 'AMZScout (Business)', price: '$49 / mo', focus: 'Amazon', strength: 'Chrome extension, beginner-friendly', link: null },
 ];
 
 const features = [
@@ -66,7 +69,7 @@ function renderCell(val: string): string {
     stats={[
       { label: 'Research tools cover', numeral: 1, sub: 'Step: what to sell', accent: 'chalk' },
       { label: 'Kaldon covers', numeral: 5, sub: 'Phases: Discover → Grow', accent: 'gold' },
-      { label: 'Marketplaces', numeral: 3, sub: 'Amazon · Walmart · DTC', accent: 'signal' },
+      { label: 'Marketplaces', numeral: 'All', sub: 'Amazon, Walmart, TikTok, Etsy, Pinterest, WooCommerce, DTC, and more', accent: 'signal' },
     ]}
   />
 
@@ -90,6 +93,9 @@ function renderCell(val: string): string {
         <h2 class="font-display font-semibold" style="font-weight: 600; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.15; letter-spacing: -0.015em; color: var(--chalk);">
           The research tool landscape
         </h2>
+        <p class="mt-4 text-body-lg" style="color: var(--ghost);">
+          Prices shown are <span style="color: var(--chalk); font-weight: 500;">premium-tier equivalents</span> — the plans that match Kaldon's coverage. Entry-level tiers cost less but cover far fewer signals, marketplaces, and capabilities.
+        </p>
       </header>
       <div class="grid gap-3">
         {tools.map((tool) => (

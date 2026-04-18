@@ -2,6 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/ui/PageHero.astro';
 import Button from '../components/ui/Button.astro';
+import DiscoverPane from '../components/visuals/phases/DiscoverPane.astro';
+import BuildPane from '../components/visuals/phases/BuildPane.astro';
+import CreatePane from '../components/visuals/phases/CreatePane.astro';
+import LaunchPane from '../components/visuals/phases/LaunchPane.astro';
+import GrowPane from '../components/visuals/phases/GrowPane.astro';
 
 const phases = [
   {
@@ -74,7 +79,7 @@ const phases = [
         <!-- Vertical spine (desktop only) -->
         <div class="timeline-spine" aria-hidden="true"></div>
 
-        {phases.map((phase) => (
+        {phases.map((phase, i) => (
           <div class="timeline-row">
             <!-- Phase marker -->
             <div class="timeline-marker">
@@ -105,15 +110,13 @@ const phases = [
                   </div>
                 </div>
 
-                <!-- Screenshot -->
+                <!-- Custom phase pane (live DOM, not a screenshot) -->
                 <div class="timeline-visual">
-                  <div class="visual-frame">
-                    <div class="visual-bar">
-                      <span class="visual-breadcrumb">Kaldon · {phase.name}</span>
-                      <span class="pulse-dot" style="width: 6px; height: 6px;"></span>
-                    </div>
-                    <img src={phase.screenshot} alt={phase.alt} width="1124" height="712" class="w-full h-auto" loading="lazy" decoding="async" />
-                  </div>
+                  {i === 0 && <DiscoverPane variant="inline" />}
+                  {i === 1 && <BuildPane variant="inline" />}
+                  {i === 2 && <CreatePane variant="inline" />}
+                  {i === 3 && <LaunchPane variant="inline" />}
+                  {i === 4 && <GrowPane variant="inline" />}
                 </div>
               </div>
             </div>

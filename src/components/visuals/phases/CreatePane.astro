@@ -1,0 +1,344 @@
+---
+// CreatePane.astro — Phase 3 graphic: content calendar + scheduling.
+// 4-week mini calendar with per-day post indicators, platform badges,
+// and a queue preview. Same 3D isometric chrome as the other panes.
+interface Props {
+  variant?: 'hero' | 'inline';
+}
+const { variant = 'hero' } = Astro.props;
+
+// 28-cell mini month — each cell gets 0-3 scheduled posts. Deterministic
+// pattern so the visual reads as "full month planned", not random.
+const cells: Array<{ posts: Array<'ig' | 'x' | 'li' | 'fb' | 'pin'> }> = [
+  { posts: [] }, { posts: ['ig'] }, { posts: ['x'] }, { posts: [] }, { posts: ['ig', 'fb'] }, { posts: [] }, { posts: ['pin'] },
+  { posts: ['li'] }, { posts: ['ig', 'x'] }, { posts: [] }, { posts: ['fb'] }, { posts: ['ig'] }, { posts: [] }, { posts: ['x', 'pin'] },
+  { posts: [] }, { posts: ['ig'] }, { posts: ['li'] }, { posts: ['x'] }, { posts: [] }, { posts: ['ig', 'fb', 'pin'] }, { posts: [] },
+  { posts: ['x'] }, { posts: [] }, { posts: ['ig'] }, { posts: ['li', 'fb'] }, { posts: [] }, { posts: ['x'] }, { posts: ['ig'] },
+];
+const platformColors: Record<string, string> = {
+  ig: '#00D4FF',
+  x: '#FFB800',
+  li: '#00D4FF',
+  fb: '#FFB800',
+  pin: '#00D4FF',
+};
+---
+
+<div class={`phase-pane-wrap ${variant === 'inline' ? 'inline-variant' : ''}`} aria-hidden="true">
+  <div class="phase-pane">
+    <div class="pane-bar">
+      <div class="pane-breadcrumb">
+        <span class="pane-brand">Kaldon</span>
+        <span class="pane-sep">›</span>
+        <span class="pane-path">Create</span>
+        <span class="pane-sep">›</span>
+        <span class="pane-current">Calendar · Apr</span>
+      </div>
+      <div class="pane-status">
+        <span class="pulse-dot"></span>
+        <span class="pane-status-text">28 posts queued</span>
+      </div>
+    </div>
+
+    <div class="pane-body">
+      <!-- Hero stat: post count -->
+      <div class="content-hero">
+        <div>
+          <span class="create-kicker">Scheduled this month</span>
+          <div class="create-hero-line">
+            <span class="create-hero-num">28</span>
+            <span class="create-hero-sub">posts · 5 platforms</span>
+          </div>
+        </div>
+        <div class="platform-legend">
+          <span class="legend-item"><span class="legend-dot" style="background: #00D4FF;"></span>IG</span>
+          <span class="legend-item"><span class="legend-dot" style="background: #FFB800;"></span>FB</span>
+          <span class="legend-item"><span class="legend-dot" style="background: #00D4FF;"></span>LI</span>
+          <span class="legend-item"><span class="legend-dot" style="background: #FFB800;"></span>X</span>
+          <span class="legend-item"><span class="legend-dot" style="background: #00D4FF;"></span>Pin</span>
+        </div>
+      </div>
+
+      <!-- 4-week calendar grid -->
+      <div class="calendar">
+        <div class="cal-header">
+          {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((d) => (
+            <span class="cal-day-label">{d}</span>
+          ))}
+        </div>
+        <div class="cal-grid">
+          {cells.map((cell, i) => (
+            <div class={`cal-cell ${cell.posts.length > 0 ? 'has-posts' : ''}`}>
+              <span class="cal-date">{i + 1}</span>
+              {cell.posts.length > 0 && (
+                <div class="cal-dots">
+                  {cell.posts.map((p) => (
+                    <span class="cal-dot" style={`background: ${platformColors[p]};`}></span>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Next-post preview -->
+      <div class="next-post">
+        <div class="next-post-meta">
+          <span class="next-post-kicker">Next post</span>
+          <span class="next-post-when">in 4h 23m</span>
+        </div>
+        <p class="next-post-title">Why most hydration brands ignore the last 20% of capacity…</p>
+        <div class="next-post-tags">
+          <span class="post-tag">IG · Reel</span>
+          <span class="post-tag">Generated from Vet Mode findings</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .phase-pane-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 620px;
+    aspect-ratio: 1 / 1;
+    margin-left: auto;
+    -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 92%);
+            mask-image: linear-gradient(to bottom, black 55%, transparent 92%);
+    perspective: 4000px;
+    pointer-events: none;
+  }
+  .phase-pane-wrap.inline-variant {
+    max-width: 520px;
+    aspect-ratio: 5 / 4;
+    margin-left: 0;
+    -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 98%);
+            mask-image: linear-gradient(to bottom, black 65%, transparent 98%);
+  }
+
+  .phase-pane {
+    position: absolute;
+    inset: 0;
+    background: var(--deep-space);
+    border: 1px solid var(--hairline);
+    border-radius: 12px 12px 0 0;
+    transform: rotateX(38deg) rotateY(30deg) rotate(325deg) translateZ(0);
+    transform-origin: 50% 50%;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.03) inset, 0 40px 80px rgba(0,0,0,0.4);
+    overflow: hidden;
+  }
+  .phase-pane::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02) 40%, rgba(255,255,255,0.06));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .pane-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--hairline);
+    background: rgba(255,255,255,0.015);
+  }
+  .pane-breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ghost);
+    letter-spacing: 0.02em;
+  }
+  .pane-brand { color: var(--chalk); }
+  .pane-sep { color: rgba(139,139,163,0.35); }
+  .pane-current { color: var(--chalk); }
+  .pane-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ghost);
+  }
+  .pane-status .pulse-dot { width: 7px; height: 7px; }
+
+  .pane-body {
+    padding: 20px 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .create-kicker {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ghost);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .content-hero {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .create-hero-line { display: flex; align-items: baseline; gap: 8px; }
+  .create-hero-num {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 1;
+    letter-spacing: -0.035em;
+    color: var(--chalk);
+  }
+  .create-hero-sub {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ghost);
+  }
+  .platform-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    text-align: right;
+  }
+  .legend-item {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--ghost);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: flex-end;
+  }
+  .legend-dot { width: 6px; height: 6px; border-radius: 999px; }
+
+  /* Calendar */
+  .calendar {
+    padding-top: 12px;
+    border-top: 1px solid var(--hairline);
+  }
+  .cal-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 3px;
+    margin-bottom: 4px;
+  }
+  .cal-day-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--ghost);
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 3px;
+  }
+  .cal-cell {
+    aspect-ratio: 1;
+    border-radius: 4px;
+    background: var(--void);
+    border: 1px solid var(--hairline);
+    padding: 3px 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 22px;
+  }
+  .cal-cell.has-posts { border-color: rgba(255,184,0,0.15); background: rgba(255,184,0,0.03); }
+  .cal-date { font-family: var(--font-mono); font-size: 8px; color: var(--ghost); }
+  .cal-cell.has-posts .cal-date { color: var(--chalk); }
+  .cal-dots { display: flex; gap: 2px; }
+  .cal-dot { width: 3px; height: 3px; border-radius: 999px; }
+
+  /* Next post */
+  .next-post {
+    padding: 14px 16px;
+    background: var(--void);
+    border: 1px solid var(--hairline);
+    border-left: 2px solid var(--gold);
+    border-radius: 6px;
+  }
+  .next-post-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .next-post-kicker {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .next-post-when {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--chalk);
+    font-weight: 500;
+  }
+  .next-post-title {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--chalk);
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+  }
+  .next-post-tags {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+  .post-tag {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--ghost);
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.03);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pane-status .pulse-dot { animation: none; }
+  }
+
+  @media (max-width: 1023px) {
+    .phase-pane-wrap {
+      max-width: 100%;
+      aspect-ratio: auto;
+      height: auto;
+      -webkit-mask-image: none;
+              mask-image: none;
+    }
+    .phase-pane {
+      position: relative;
+      inset: auto;
+      transform: none;
+      border-radius: 12px;
+    }
+  }
+</style>

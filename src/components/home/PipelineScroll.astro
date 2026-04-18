@@ -4,6 +4,11 @@
 // ScrollTrigger (containerAnimation pattern). No scroll-jacking — reversible,
 // stays in natural scroll flow, collapses to vertical stack at <1024px and
 // when prefers-reduced-motion is set.
+import DiscoverPane from '../visuals/phases/DiscoverPane.astro';
+import BuildPane from '../visuals/phases/BuildPane.astro';
+import CreatePane from '../visuals/phases/CreatePane.astro';
+import LaunchPane from '../visuals/phases/LaunchPane.astro';
+import GrowPane from '../visuals/phases/GrowPane.astro';
 
 const phases = [
   {
@@ -107,16 +112,11 @@ const phases = [
                 </ul>
               </div>
               <div class="phase-visual">
-                <!-- Placeholder phase illustration — typographic badge in lieu of real UI -->
-                <div class="phase-badge">
-                  <div class="phase-badge-bar">
-                    <span class="kicker" style="margin: 0; font-size: 10px; color: var(--ghost);">Phase {phase.num} · {phase.name}</span>
-                    <span class="pulse-dot" style="width: 6px; height: 6px;"></span>
-                  </div>
-                  <div class="phase-badge-body">
-                    <p class="phase-badge-title">{phase.headline}</p>
-                  </div>
-                </div>
+                {i === 0 && <DiscoverPane variant="inline" />}
+                {i === 1 && <BuildPane variant="inline" />}
+                {i === 2 && <CreatePane variant="inline" />}
+                {i === 3 && <LaunchPane variant="inline" />}
+                {i === 4 && <GrowPane variant="inline" />}
               </div>
             </div>
           </div>

@@ -1,0 +1,308 @@
+---
+// BuildPane.astro — Phase 2 graphic: brand identity generation.
+// Same 3D isometric transform + app-bar chrome as DiscoverPane.
+// Shows a live brand kit being generated — name, palette, type, voice.
+interface Props {
+  variant?: 'hero' | 'inline';
+}
+const { variant = 'hero' } = Astro.props;
+---
+
+<div class={`phase-pane-wrap ${variant === 'inline' ? 'inline-variant' : ''}`} aria-hidden="true">
+  <div class="phase-pane">
+    <div class="pane-bar">
+      <div class="pane-breadcrumb">
+        <span class="pane-brand">Kaldon</span>
+        <span class="pane-sep">›</span>
+        <span class="pane-path">Build</span>
+        <span class="pane-sep">›</span>
+        <span class="pane-current">Brand Kit</span>
+      </div>
+      <div class="pane-status">
+        <span class="pulse-dot"></span>
+        <span class="pane-status-text">Generating</span>
+      </div>
+    </div>
+
+    <div class="pane-body">
+      <!-- Brand name as the hero moment (replaces the score) -->
+      <div>
+        <span class="build-kicker">Brand name</span>
+        <div class="brand-name">Ironfield<span class="brand-caret" aria-hidden="true">|</span></div>
+        <div class="brand-tag">Hydration, engineered.</div>
+      </div>
+
+      <!-- Color palette strip -->
+      <div class="palette-section">
+        <span class="build-kicker">Palette</span>
+        <div class="palette">
+          <span class="swatch" style="background: #1A2438;"></span>
+          <span class="swatch" style="background: #7A9B8E;"></span>
+          <span class="swatch" style="background: #E8DFD3;"></span>
+          <span class="swatch" style="background: #D44C2C;"></span>
+          <span class="swatch" style="background: #F5F5F7;"></span>
+        </div>
+        <div class="palette-codes">
+          <span>#1A2438</span>
+          <span>#7A9B8E</span>
+          <span>#D44C2C</span>
+        </div>
+      </div>
+
+      <!-- Typography preview -->
+      <div class="type-section">
+        <span class="build-kicker">Typography</span>
+        <div class="type-pair">
+          <div class="type-row">
+            <span class="type-label">Display</span>
+            <span class="type-sample type-display">Aa — Satoshi</span>
+          </div>
+          <div class="type-row">
+            <span class="type-label">Body</span>
+            <span class="type-sample type-body">Aa — Inter Variable</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Brand voice chips -->
+      <div class="voice-section">
+        <span class="build-kicker">Voice</span>
+        <div class="voice-chips">
+          <span class="voice-chip active">Confident</span>
+          <span class="voice-chip active">Technical</span>
+          <span class="voice-chip active">Warm</span>
+          <span class="voice-chip">Playful</span>
+          <span class="voice-chip">Clinical</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .phase-pane-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 620px;
+    aspect-ratio: 1 / 1;
+    margin-left: auto;
+    -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 92%);
+            mask-image: linear-gradient(to bottom, black 55%, transparent 92%);
+    perspective: 4000px;
+    pointer-events: none;
+  }
+  .phase-pane-wrap.inline-variant {
+    max-width: 520px;
+    aspect-ratio: 5 / 4;
+    margin-left: 0;
+    -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 98%);
+            mask-image: linear-gradient(to bottom, black 65%, transparent 98%);
+  }
+
+  .phase-pane {
+    position: absolute;
+    inset: 0;
+    background: var(--deep-space);
+    border: 1px solid var(--hairline);
+    border-radius: 12px 12px 0 0;
+    transform: rotateX(38deg) rotateY(30deg) rotate(325deg) translateZ(0);
+    transform-origin: 50% 50%;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.03) inset, 0 40px 80px rgba(0,0,0,0.4);
+    overflow: hidden;
+  }
+  .phase-pane::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02) 40%, rgba(255,255,255,0.06));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* App bar — identical chrome as DiscoverPane */
+  .pane-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--hairline);
+    background: rgba(255,255,255,0.015);
+  }
+  .pane-breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ghost);
+    letter-spacing: 0.02em;
+  }
+  .pane-brand { color: var(--chalk); }
+  .pane-sep { color: rgba(139,139,163,0.35); }
+  .pane-current { color: var(--chalk); }
+  .pane-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ghost);
+  }
+  .pane-status .pulse-dot { width: 7px; height: 7px; }
+
+  .pane-body {
+    padding: 22px 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .build-kicker {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ghost);
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+
+  /* Brand name as hero */
+  .brand-name {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 44px;
+    line-height: 1;
+    letter-spacing: -0.035em;
+    color: var(--chalk);
+    display: inline-flex;
+    align-items: baseline;
+  }
+  .brand-caret {
+    color: var(--signal);
+    font-weight: 400;
+    margin-left: 2px;
+    animation: caret-blink 1.1s steps(2) infinite;
+  }
+  @keyframes caret-blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+  .brand-tag {
+    margin-top: 6px;
+    font-family: var(--font-sans);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ghost);
+    letter-spacing: -0.005em;
+  }
+
+  /* Palette */
+  .palette-section { border-top: 1px solid var(--hairline); padding-top: 14px; }
+  .palette {
+    display: flex;
+    gap: 4px;
+    height: 36px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--hairline);
+  }
+  .swatch { flex: 1; }
+  .palette-codes {
+    margin-top: 8px;
+    display: flex;
+    gap: 16px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--ghost);
+    letter-spacing: 0;
+  }
+
+  /* Typography */
+  .type-section { border-top: 1px solid var(--hairline); padding-top: 14px; }
+  .type-pair {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .type-row {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .type-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ghost);
+  }
+  .type-sample { color: var(--chalk); }
+  .type-display {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+  }
+  .type-body {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: -0.005em;
+  }
+
+  /* Voice chips */
+  .voice-section { border-top: 1px solid var(--hairline); padding-top: 14px; }
+  .voice-chips {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .voice-chip {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--hairline);
+    color: var(--ghost);
+    background: transparent;
+    letter-spacing: 0.02em;
+  }
+  .voice-chip.active {
+    border-color: rgba(255, 184, 0, 0.3);
+    background: rgba(255, 184, 0, 0.08);
+    color: var(--gold);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pane-status .pulse-dot { animation: none; }
+    .brand-caret { animation: none; opacity: 1; }
+  }
+
+  @media (max-width: 1023px) {
+    .phase-pane-wrap {
+      max-width: 100%;
+      aspect-ratio: auto;
+      height: auto;
+      -webkit-mask-image: none;
+              mask-image: none;
+    }
+    .phase-pane {
+      position: relative;
+      inset: auto;
+      transform: none;
+      border-radius: 12px;
+    }
+  }
+</style>

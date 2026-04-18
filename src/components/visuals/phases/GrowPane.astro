@@ -1,0 +1,356 @@
+---
+// GrowPane.astro — Phase 5 graphic: ROAS / CAC / LTV dashboard with
+// AI ad optimization signals. Same isometric chrome as other panes.
+interface Props {
+  variant?: 'hero' | 'inline';
+}
+const { variant = 'hero' } = Astro.props;
+
+const campaigns = [
+  { name: 'Fall launch · IG Reels', spend: 1240, roas: 4.8, status: 'up' },
+  { name: 'Retargeting · Meta', spend: 680, roas: 3.9, status: 'up' },
+  { name: 'Cold traffic · TikTok', spend: 420, roas: 2.1, status: 'down' },
+];
+---
+
+<div class={`phase-pane-wrap ${variant === 'inline' ? 'inline-variant' : ''}`} aria-hidden="true">
+  <div class="phase-pane">
+    <div class="pane-bar">
+      <div class="pane-breadcrumb">
+        <span class="pane-brand">Kaldon</span>
+        <span class="pane-sep">›</span>
+        <span class="pane-path">Grow</span>
+        <span class="pane-sep">›</span>
+        <span class="pane-current">Performance</span>
+      </div>
+      <div class="pane-status">
+        <span class="pulse-dot"></span>
+        <span class="pane-status-text">Optimizing · 4 creatives</span>
+      </div>
+    </div>
+
+    <div class="pane-body">
+      <!-- Hero KPI band -->
+      <div class="kpi-grid">
+        <div class="kpi-cell kpi-hero">
+          <span class="grow-kicker">ROAS · 7d</span>
+          <div class="kpi-value-row">
+            <span class="kpi-value">4.2<span class="kpi-x">×</span></span>
+            <span class="kpi-trend up">↑ 0.6</span>
+          </div>
+          <!-- Signal-hued sparkline -->
+          <svg class="kpi-chart" viewBox="0 0 220 48" preserveAspectRatio="none" fill="none">
+            <defs>
+              <linearGradient id="growGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="rgba(0,212,255,0.28)" />
+                <stop offset="100%" stop-color="rgba(0,212,255,0)" />
+              </linearGradient>
+            </defs>
+            <path d="M0,38 L20,36 L40,32 L60,34 L80,30 L100,28 L120,24 L140,22 L160,18 L180,14 L200,10 L220,6 L220,48 L0,48 Z" fill="url(#growGrad)" />
+            <path d="M0,38 L20,36 L40,32 L60,34 L80,30 L100,28 L120,24 L140,22 L160,18 L180,14 L200,10 L220,6" stroke="#00D4FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+          </svg>
+        </div>
+        <div class="kpi-side">
+          <div class="kpi-mini">
+            <span class="grow-kicker">CAC</span>
+            <span class="kpi-mini-num">$18.40</span>
+            <span class="kpi-trend down">↓ 12%</span>
+          </div>
+          <div class="kpi-mini">
+            <span class="grow-kicker">LTV</span>
+            <span class="kpi-mini-num">$142</span>
+            <span class="kpi-trend up">↑ 8%</span>
+          </div>
+          <div class="kpi-mini">
+            <span class="grow-kicker">AOV</span>
+            <span class="kpi-mini-num">$58</span>
+            <span class="kpi-trend up">↑ 3%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Campaign rows -->
+      <div class="campaigns">
+        <div class="campaigns-header">
+          <span class="grow-kicker">Active campaigns</span>
+          <span class="campaigns-total">$2,340 / 7d</span>
+        </div>
+        {campaigns.map((c) => (
+          <div class="campaign-row">
+            <div class="campaign-bar">
+              <div class="campaign-fill" style={`width: ${(c.spend / 1500) * 100}%; background: ${c.status === 'up' ? 'var(--signal)' : 'var(--gold)'};`}></div>
+            </div>
+            <span class="campaign-name">{c.name}</span>
+            <span class="campaign-spend">${c.spend}</span>
+            <span class={`campaign-roas ${c.status}`}>{c.roas}×</span>
+          </div>
+        ))}
+      </div>
+
+      <!-- AI recommendation -->
+      <div class="ai-rec">
+        <span class="ai-rec-kicker">AI recommendation</span>
+        <p class="ai-rec-body">Reallocate <span class="ai-rec-emph">+$280</span> from TikTok Cold Traffic → Fall Launch Reels. Projected ROAS lift <span class="ai-rec-emph">+0.4×</span>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .phase-pane-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 620px;
+    aspect-ratio: 1 / 1;
+    margin-left: auto;
+    -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 92%);
+            mask-image: linear-gradient(to bottom, black 55%, transparent 92%);
+    perspective: 4000px;
+    pointer-events: none;
+  }
+  .phase-pane-wrap.inline-variant {
+    max-width: 520px;
+    aspect-ratio: 5 / 4;
+    margin-left: 0;
+    -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 98%);
+            mask-image: linear-gradient(to bottom, black 65%, transparent 98%);
+  }
+
+  .phase-pane {
+    position: absolute;
+    inset: 0;
+    background: var(--deep-space);
+    border: 1px solid var(--hairline);
+    border-radius: 12px 12px 0 0;
+    transform: rotateX(38deg) rotateY(30deg) rotate(325deg) translateZ(0);
+    transform-origin: 50% 50%;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.03) inset, 0 40px 80px rgba(0,0,0,0.4);
+    overflow: hidden;
+  }
+  .phase-pane::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02) 40%, rgba(255,255,255,0.06));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .pane-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--hairline);
+    background: rgba(255,255,255,0.015);
+  }
+  .pane-breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ghost);
+    letter-spacing: 0.02em;
+  }
+  .pane-brand { color: var(--chalk); }
+  .pane-sep { color: rgba(139,139,163,0.35); }
+  .pane-current { color: var(--chalk); }
+  .pane-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ghost);
+  }
+  .pane-status .pulse-dot { width: 7px; height: 7px; }
+
+  .pane-body {
+    padding: 20px 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .grow-kicker {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ghost);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  /* KPI grid */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 16px;
+  }
+  .kpi-hero { }
+  .kpi-value-row { display: flex; align-items: baseline; gap: 10px; }
+  .kpi-value {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 52px;
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    color: var(--chalk);
+  }
+  .kpi-x { font-size: 24px; color: var(--ghost); margin-left: 2px; }
+  .kpi-trend {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 7px;
+    border-radius: 4px;
+  }
+  .kpi-trend.up { color: var(--signal); background: rgba(0,212,255,0.08); }
+  .kpi-trend.down { color: var(--gold); background: rgba(255,184,0,0.08); }
+  .kpi-chart {
+    width: 100%;
+    height: 42px;
+    margin-top: 8px;
+  }
+
+  .kpi-side {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-left: 1px solid var(--hairline);
+    padding-left: 16px;
+  }
+  .kpi-mini {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    row-gap: 2px;
+    align-items: baseline;
+  }
+  .kpi-mini .grow-kicker { grid-column: 1 / -1; margin-bottom: 0; }
+  .kpi-mini-num {
+    font-family: var(--font-mono);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--chalk);
+  }
+  .kpi-mini .kpi-trend { font-size: 10px; padding: 1px 6px; }
+
+  /* Campaigns */
+  .campaigns {
+    padding-top: 14px;
+    border-top: 1px solid var(--hairline);
+  }
+  .campaigns-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+  }
+  .campaigns-total {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--chalk);
+    font-weight: 500;
+  }
+  .campaign-row {
+    display: grid;
+    grid-template-columns: 4px 1fr auto auto;
+    gap: 10px;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .campaign-row:last-child { border-bottom: none; }
+  .campaign-bar {
+    width: 4px;
+    height: 24px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+  }
+  .campaign-fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 2px;
+  }
+  .campaign-name {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    color: var(--chalk);
+    letter-spacing: -0.005em;
+  }
+  .campaign-spend {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ghost);
+  }
+  .campaign-roas {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .campaign-roas.up { color: var(--signal); }
+  .campaign-roas.down { color: var(--gold); }
+
+  /* AI rec */
+  .ai-rec {
+    padding: 12px 14px;
+    background: var(--void);
+    border: 1px solid var(--hairline);
+    border-left: 2px solid var(--gold);
+    border-radius: 6px;
+  }
+  .ai-rec-kicker {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .ai-rec-body {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    letter-spacing: -0.005em;
+  }
+  .ai-rec-emph { color: var(--gold); font-weight: 500; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pane-status .pulse-dot { animation: none; }
+  }
+
+  @media (max-width: 1023px) {
+    .phase-pane-wrap {
+      max-width: 100%;
+      aspect-ratio: auto;
+      height: auto;
+      -webkit-mask-image: none;
+              mask-image: none;
+    }
+    .phase-pane {
+      position: relative;
+      inset: auto;
+      transform: none;
+      border-radius: 12px;
+    }
+  }
+</style>

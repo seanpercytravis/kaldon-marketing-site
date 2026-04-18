@@ -1,0 +1,307 @@
+---
+// LaunchPane.astro — Phase 4 graphic: store deployment.
+// Shows the domain + deployment checklist + live metrics.
+interface Props {
+  variant?: 'hero' | 'inline';
+}
+const { variant = 'hero' } = Astro.props;
+
+const deployments = [
+  { label: 'Storefront', status: 'live', detail: 'Cloudflare Workers · 2 regions' },
+  { label: 'Checkout', status: 'live', detail: 'Stripe · 3 payment methods' },
+  { label: 'Email', status: 'live', detail: '4 sequences · 12 templates' },
+  { label: 'SMS', status: 'live', detail: '3 automation flows' },
+  { label: 'Chatbot', status: 'live', detail: 'Trained on product data' },
+  { label: 'Blog', status: 'scheduled', detail: 'Next: "Ironfield · Cold brew"' },
+  { label: 'Ads', status: 'ready', detail: '12 creatives · awaiting budget' },
+];
+
+const statusLabels: Record<string, { text: string; color: string }> = {
+  live: { text: 'LIVE', color: 'var(--signal)' },
+  scheduled: { text: 'SCHEDULED', color: 'var(--gold)' },
+  ready: { text: 'READY', color: 'var(--ghost)' },
+};
+---
+
+<div class={`phase-pane-wrap ${variant === 'inline' ? 'inline-variant' : ''}`} aria-hidden="true">
+  <div class="phase-pane">
+    <div class="pane-bar">
+      <div class="pane-breadcrumb">
+        <span class="pane-brand">Kaldon</span>
+        <span class="pane-sep">›</span>
+        <span class="pane-path">Launch</span>
+        <span class="pane-sep">›</span>
+        <span class="pane-current">ironfield.co</span>
+      </div>
+      <div class="pane-status live">
+        <span class="pulse-dot"></span>
+        <span class="pane-status-text">Live · 128 ms TTFB</span>
+      </div>
+    </div>
+
+    <div class="pane-body">
+      <!-- Domain + hero status -->
+      <div class="launch-hero">
+        <div>
+          <span class="launch-kicker">Deployment status</span>
+          <div class="domain-row">
+            <span class="lock-icon" aria-hidden="true">⊙</span>
+            <span class="domain">ironfield.co</span>
+            <span class="domain-badge">SSL</span>
+          </div>
+          <div class="launch-meta">
+            <span>Deployed 4m ago</span>
+            <span class="meta-sep">·</span>
+            <span>Cloudflare Workers</span>
+          </div>
+        </div>
+        <div class="uptime-tile">
+          <span class="uptime-num">100<span class="uptime-pct">%</span></span>
+          <span class="uptime-label">Uptime · 30d</span>
+        </div>
+      </div>
+
+      <!-- Deployment checklist -->
+      <div class="deploy-list">
+        {deployments.map((d) => (
+          <div class={`deploy-row ${d.status}`}>
+            <span class="deploy-check" aria-hidden="true">
+              {d.status === 'live' ? (
+                <svg width="12" height="12" viewBox="0 0 20 20" fill="none"><path d="M4 10.5 L8 14.5 L16 6" stroke="#00D4FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              ) : d.status === 'scheduled' ? (
+                <svg width="12" height="12" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#FFB800" stroke-width="1.5" /><path d="M10 6 L10 10 L13 12" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" /></svg>
+              ) : (
+                <svg width="12" height="12" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#8B8BA3" stroke-width="1.5" /></svg>
+              )}
+            </span>
+            <span class="deploy-label">{d.label}</span>
+            <span class="deploy-detail">{d.detail}</span>
+            <span class="deploy-status" style={`color: ${statusLabels[d.status].color};`}>{statusLabels[d.status].text}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .phase-pane-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 620px;
+    aspect-ratio: 1 / 1;
+    margin-left: auto;
+    -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 92%);
+            mask-image: linear-gradient(to bottom, black 55%, transparent 92%);
+    perspective: 4000px;
+    pointer-events: none;
+  }
+  .phase-pane-wrap.inline-variant {
+    max-width: 520px;
+    aspect-ratio: 5 / 4;
+    margin-left: 0;
+    -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 98%);
+            mask-image: linear-gradient(to bottom, black 65%, transparent 98%);
+  }
+
+  .phase-pane {
+    position: absolute;
+    inset: 0;
+    background: var(--deep-space);
+    border: 1px solid var(--hairline);
+    border-radius: 12px 12px 0 0;
+    transform: rotateX(38deg) rotateY(30deg) rotate(325deg) translateZ(0);
+    transform-origin: 50% 50%;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.03) inset, 0 40px 80px rgba(0,0,0,0.4);
+    overflow: hidden;
+  }
+  .phase-pane::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02) 40%, rgba(255,255,255,0.06));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .pane-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--hairline);
+    background: rgba(255,255,255,0.015);
+  }
+  .pane-breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ghost);
+    letter-spacing: 0.02em;
+  }
+  .pane-brand { color: var(--chalk); }
+  .pane-sep { color: rgba(139,139,163,0.35); }
+  .pane-current { color: var(--signal); }
+  .pane-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ghost);
+  }
+  .pane-status.live { color: var(--signal); }
+  .pane-status .pulse-dot { width: 7px; height: 7px; }
+
+  .pane-body {
+    padding: 22px 24px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .launch-kicker {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ghost);
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+
+  .launch-hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .domain-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .lock-icon {
+    font-size: 14px;
+    color: var(--signal);
+  }
+  .domain {
+    font-family: var(--font-mono);
+    font-size: 22px;
+    color: var(--chalk);
+    letter-spacing: -0.02em;
+  }
+  .domain-badge {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    color: var(--signal);
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: rgba(0,212,255,0.08);
+    border: 1px solid rgba(0,212,255,0.2);
+    font-weight: 500;
+  }
+  .launch-meta {
+    margin-top: 8px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--ghost);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .meta-sep { color: rgba(139,139,163,0.4); }
+
+  .uptime-tile {
+    text-align: right;
+    border-left: 1px solid var(--hairline);
+    padding-left: 16px;
+  }
+  .uptime-num {
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--signal);
+    display: inline-block;
+  }
+  .uptime-pct { font-size: 16px; color: var(--ghost); }
+  .uptime-label {
+    display: block;
+    margin-top: 4px;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ghost);
+  }
+
+  /* Deployment checklist */
+  .deploy-list {
+    padding-top: 14px;
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    flex-direction: column;
+  }
+  .deploy-row {
+    display: grid;
+    grid-template-columns: 16px auto 1fr auto;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .deploy-row:last-child { border-bottom: none; }
+  .deploy-check { display: flex; align-items: center; }
+  .deploy-label {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--chalk);
+  }
+  .deploy-detail {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--ghost);
+    text-align: left;
+  }
+  .deploy-status {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pane-status .pulse-dot { animation: none; }
+  }
+
+  @media (max-width: 1023px) {
+    .phase-pane-wrap {
+      max-width: 100%;
+      aspect-ratio: auto;
+      height: auto;
+      -webkit-mask-image: none;
+              mask-image: none;
+    }
+    .phase-pane {
+      position: relative;
+      inset: auto;
+      transform: none;
+      border-radius: 12px;
+    }
+  }
+</style>

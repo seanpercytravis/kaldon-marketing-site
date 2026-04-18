@@ -315,6 +315,39 @@ function renderCell(val: string | boolean): string {
     </div>
   </section>
 
+  <!-- Enterprise "why $1,499" explainer — justify the top tier -->
+  <section class="section-spacing" style="background: var(--void);">
+    <div class="container-custom max-w-4xl">
+      <div class="enterprise-math">
+        <div class="enterprise-lede">
+          <span class="kicker" style="color: var(--gold);">Why Enterprise is $1,499</span>
+          <h2 class="font-display font-semibold mt-2" style="font-weight: 600; font-size: clamp(22px, 2.8vw, 30px); line-height: 1.25; letter-spacing: -0.015em; color: var(--chalk);">
+            300 analyses = roughly one month of agency throughput.
+          </h2>
+        </div>
+        <div class="enterprise-math-grid">
+          <div class="em-cell">
+            <span class="em-label">30</span>
+            <span class="em-sub">clients / month</span>
+          </div>
+          <span class="em-op" aria-hidden="true">×</span>
+          <div class="em-cell">
+            <span class="em-label">10</span>
+            <span class="em-sub">concept vets each</span>
+          </div>
+          <span class="em-op" aria-hidden="true">=</span>
+          <div class="em-cell">
+            <span class="em-label em-gold">300</span>
+            <span class="em-sub">analyses / month</span>
+          </div>
+        </div>
+        <p class="enterprise-body">
+          Enterprise is built for agencies running 20+ active client brands and for in-house teams launching adjacent products monthly. Includes a <span style="color: var(--chalk); font-weight: 500;">dedicated account manager</span>, <span style="color: var(--chalk); font-weight: 500;">custom onboarding</span>, and <span style="color: var(--chalk); font-weight: 500;">daily auto-published SEO content</span> across all client brands. For context, one $5k/mo brand-design agency retainer covers two launches. $1,499 / month covers ten times that.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- Trust strip -->
   <section class="hairline-t hairline-b" style="background: var(--void);">
     <div class="container-custom py-10 md:py-12">
@@ -552,6 +585,65 @@ function renderCell(val: string | boolean): string {
     letter-spacing: 0.02em;
   }
   .tier-annual-amount { color: var(--chalk); font-weight: 500; }
+
+  /* Enterprise math box */
+  .enterprise-math {
+    padding: 36px 32px;
+    background: var(--deep-space);
+    border: 1px solid var(--hairline);
+    border-radius: 16px;
+    box-shadow: var(--shadow-inset-strong);
+  }
+  .enterprise-math-grid {
+    margin-top: 24px;
+    padding: 24px 28px;
+    background: var(--void);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .em-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .em-label {
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: var(--chalk);
+  }
+  .em-label.em-gold { color: var(--gold); }
+  .em-sub {
+    margin-top: 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ghost);
+    font-weight: 500;
+  }
+  .em-op {
+    font-family: var(--font-mono);
+    font-size: 32px;
+    color: var(--ghost);
+    padding-bottom: 18px;
+    opacity: 0.6;
+  }
+  .enterprise-body {
+    margin-top: 24px;
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ghost);
+    letter-spacing: -0.005em;
+  }
   .tier-badge {
     position: absolute;
     top: 16px;

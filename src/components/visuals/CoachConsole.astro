@@ -1,0 +1,197 @@
+---
+// CoachConsole.astro — a sample AI-coaching exchange rendered as a chat
+// console. Demonstrates the quality of Kaldon's AI coach without requiring
+// the visitor to sign up. Static DOM; no live model behind it.
+---
+
+<div class="coach-console" aria-hidden="true">
+  <!-- App bar -->
+  <div class="coach-bar">
+    <div class="coach-breadcrumb">
+      <span class="coach-brand">Kaldon Coach</span>
+      <span class="coach-sep">›</span>
+      <span class="coach-context">Ironfield · Pricing decision</span>
+    </div>
+    <div class="coach-status">
+      <span class="pulse-dot"></span>
+      <span>Thinking</span>
+    </div>
+  </div>
+
+  <!-- Conversation -->
+  <div class="coach-log">
+    <div class="coach-turn user">
+      <span class="coach-role">You</span>
+      <p class="coach-body">Is $39 too high for the Ironfield 32oz launch? I'm seeing competitors at $29.</p>
+    </div>
+
+    <div class="coach-turn agent">
+      <span class="coach-role coach-role-agent">Kaldon Coach</span>
+      <p class="coach-body">
+        You're looking at 1,247 competitor SKUs in insulated 32oz. Median sits at <span class="coach-emph-chalk">$34</span>. But bottles with a ceramic-lined interior command a <span class="coach-emph-gold">+42% premium</span>, averaging $49.
+      </p>
+      <p class="coach-body">
+        Your $39 positions below premium but above commodity — a valid "accessible premium" slot. However, Walmart search data: <span class="coach-emph-chalk">78%</span> of "insulated water bottle" queries filter by $25–35.
+      </p>
+      <p class="coach-body">
+        <span class="coach-emph-gold">Recommendation:</span> Launch at <span class="coach-emph-chalk">$34.99</span> on Amazon to capture high-intent search. Introduce a <span class="coach-emph-chalk">$44</span> premium variant on DTC for the ceramic-lined moat. Two-tier positioning, one supplier run.
+      </p>
+      <div class="coach-refs">
+        <span class="coach-ref">Source · Amazon SP-API</span>
+        <span class="coach-ref">Source · Walmart search data</span>
+        <span class="coach-ref">Source · Competitor Vet Mode · 1,247 SKUs</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Input chrome (visual only, not interactive) -->
+  <div class="coach-input">
+    <span class="coach-input-hint">Ask a follow-up — margin, supplier, positioning, ads…</span>
+    <span class="coach-input-key" aria-hidden="true">⌘ K</span>
+  </div>
+</div>
+
+<style>
+  .coach-console {
+    position: relative;
+    background: var(--deep-space);
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lift);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .coach-console::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(255,184,0,0.25), rgba(0,212,255,0.15) 60%, rgba(255,255,255,0.05));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* App bar */
+  .coach-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--hairline);
+    background: rgba(255,255,255,0.015);
+  }
+  .coach-breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ghost);
+    letter-spacing: 0.02em;
+  }
+  .coach-brand { color: var(--gold); }
+  .coach-sep { color: rgba(139,139,163,0.35); }
+  .coach-context { color: var(--chalk); }
+  .coach-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ghost);
+  }
+  .coach-status .pulse-dot { width: 7px; height: 7px; }
+
+  /* Conversation */
+  .coach-log {
+    padding: 24px 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .coach-turn {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .coach-role {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ghost);
+  }
+  .coach-role-agent { color: var(--gold); }
+
+  .coach-body {
+    font-family: var(--font-sans);
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    letter-spacing: -0.005em;
+  }
+  .coach-turn.user .coach-body { color: var(--chalk); }
+
+  .coach-emph-chalk {
+    color: var(--chalk);
+    font-weight: 500;
+  }
+  .coach-emph-gold {
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  .coach-refs {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .coach-ref {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--ghost);
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--hairline);
+    letter-spacing: 0.02em;
+  }
+
+  /* Input chrome */
+  .coach-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-top: 1px solid var(--hairline);
+    background: rgba(255,255,255,0.015);
+  }
+  .coach-input-hint {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--ghost);
+    letter-spacing: -0.005em;
+  }
+  .coach-input-key {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--ghost);
+    padding: 3px 7px;
+    border-radius: 4px;
+    background: var(--void);
+    border: 1px solid var(--hairline);
+    letter-spacing: 0.02em;
+  }
+</style>

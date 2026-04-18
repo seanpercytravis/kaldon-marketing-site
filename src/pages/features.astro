@@ -2,6 +2,13 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/ui/PageHero.astro';
 import Button from '../components/ui/Button.astro';
+import ModeBadges from '../components/ui/ModeBadges.astro';
+import DiscoverPane from '../components/visuals/phases/DiscoverPane.astro';
+import BuildPane from '../components/visuals/phases/BuildPane.astro';
+import CreatePane from '../components/visuals/phases/CreatePane.astro';
+import LaunchPane from '../components/visuals/phases/LaunchPane.astro';
+import GrowPane from '../components/visuals/phases/GrowPane.astro';
+import CoachConsole from '../components/visuals/CoachConsole.astro';
 
 const phases = [
   {
@@ -93,7 +100,10 @@ const phases = [
     </div>
   </section>
 
-  <!-- Phase sections -->
+  <!-- Three modes · One pipeline — unify messaging with homepage -->
+  <ModeBadges headline="Three modes. Same five-phase pipeline." />
+
+  <!-- Phase sections — each with its custom pane to the side -->
   {phases.map((phase, i) => (
     <section id={`phase-${phase.num}`} class="section-spacing" style="background: var(--void);">
       <div class="container-custom max-w-6xl">
@@ -107,13 +117,22 @@ const phases = [
           </h2>
         </header>
 
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {phase.features.map((feat) => (
-            <div class="feat-card">
-              <h3 class="feat-title">{feat.title}</h3>
-              <p class="feat-desc">{feat.desc}</p>
-            </div>
-          ))}
+        <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-14 items-start">
+          <div class="grid sm:grid-cols-2 gap-4">
+            {phase.features.map((feat) => (
+              <div class="feat-card">
+                <h3 class="feat-title">{feat.title}</h3>
+                <p class="feat-desc">{feat.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div class="feat-visual">
+            {i === 0 && <DiscoverPane variant="inline" />}
+            {i === 1 && <BuildPane variant="inline" />}
+            {i === 2 && <CreatePane variant="inline" />}
+            {i === 3 && <LaunchPane variant="inline" />}
+            {i === 4 && <GrowPane variant="inline" />}
+          </div>
         </div>
       </div>
       {i < phases.length - 1 && (
@@ -123,6 +142,53 @@ const phases = [
       )}
     </section>
   ))}
+
+  <!-- Supplier Verification spotlight — underplayed elsewhere, elevate here -->
+  <section class="section-spacing" style="background: var(--void);">
+    <div class="container-custom max-w-4xl">
+      <div class="supplier-card">
+        <div class="supplier-lede">
+          <span class="kicker" style="color: var(--gold);">Verified Suppliers</span>
+          <h2 class="font-display font-semibold mt-2" style="font-weight: 600; font-size: clamp(24px, 3vw, 32px); line-height: 1.2; letter-spacing: -0.015em; color: var(--chalk);">
+            Every concept ships with a supplier who can actually make it.
+          </h2>
+          <p class="mt-4 text-body-lg" style="color: var(--ghost); line-height: 1.55;">
+            Most tools surface products. Kaldon surfaces <span style="color: var(--chalk); font-weight: 500;">products plus the manufacturers with the capability to produce them</span> — MOQs, certifications, material specs, lead times, and verified production samples. No more shipping a validated concept only to discover no factory can make it to your spec.
+          </p>
+        </div>
+        <div class="supplier-stats">
+          <div class="supplier-stat">
+            <span class="supplier-stat-num">MOQ-matched</span>
+            <span class="supplier-stat-label">From 50 units to 50,000</span>
+          </div>
+          <div class="supplier-stat">
+            <span class="supplier-stat-num">Certified</span>
+            <span class="supplier-stat-label">ISO, FDA, BSCI as spec requires</span>
+          </div>
+          <div class="supplier-stat">
+            <span class="supplier-stat-num">Sampled</span>
+            <span class="supplier-stat-label">Production samples before commit</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Coach demonstration — show don't tell -->
+  <section class="section-spacing" style="background: var(--void);">
+    <div class="container-custom max-w-4xl">
+      <header class="text-center mb-10">
+        <span class="kicker">AI Coach</span>
+        <h2 class="font-display font-semibold" style="font-weight: 600; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.15; letter-spacing: -0.015em; color: var(--chalk);">
+          An AI coach that actually walks you through decisions.
+        </h2>
+        <p class="mt-4 text-body-lg" style="color: var(--ghost);">
+          Not a chatbot. A strategist that cites sources, shows math, and recommends action.
+        </p>
+      </header>
+      <CoachConsole />
+    </div>
+  </section>
 
   <!-- Pipeline advantage callout -->
   <section class="section-spacing" style="background: var(--void);">
@@ -242,5 +308,63 @@ const phases = [
     line-height: 1.55;
     color: var(--ghost);
     letter-spacing: -0.005em;
+  }
+
+  .feat-visual {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  @media (max-width: 1023px) {
+    .feat-visual { margin-top: 24px; }
+  }
+
+  /* Supplier Verification spotlight */
+  .supplier-card {
+    padding: 40px 36px;
+    background: var(--deep-space);
+    border: 1px solid transparent;
+    border-radius: 16px;
+    position: relative;
+    box-shadow: var(--shadow-lift);
+  }
+  .supplier-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(255,184,0,0.45), rgba(0,212,255,0.2) 60%, rgba(255,255,255,0.06));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+  .supplier-stats {
+    margin-top: 28px;
+    padding-top: 28px;
+    border-top: 1px solid var(--hairline);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 768px) {
+    .supplier-stats { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  }
+  .supplier-stat { display: flex; flex-direction: column; gap: 4px; }
+  .supplier-stat-num {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--gold);
+    letter-spacing: -0.02em;
+  }
+  .supplier-stat-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ghost);
+    font-weight: 500;
   }
 </style>

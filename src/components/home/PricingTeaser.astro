@@ -4,11 +4,11 @@
 // Pro gets the gradient-border treatment. Gold CTA on Pro, secondary elsewhere.
 
 const tiers = [
-  { name: 'Free',       price: '$0',    period: 'forever', sub: '2 analyses',            cta: 'Start Free' },
-  { name: 'Growth',     price: '$149',  period: '/ mo',    sub: '5 analyses / mo',        cta: 'Start Growth' },
-  { name: 'Pro',        price: '$299',  period: '/ mo',    sub: '15 analyses / mo',       cta: 'Go Pro',        highlight: true },
-  { name: 'Scale',      price: '$499',  period: '/ mo',    sub: '100 analyses + store',   cta: 'Start Scale' },
-  { name: 'Enterprise', price: '$1,499', period: '/ mo',   sub: '300 analyses + agency',  cta: 'Contact Sales' },
+  { name: 'Free',       slug: 'free',       price: '$0',     period: 'forever', sub: '2 analyses',            cta: 'Start Free' },
+  { name: 'Growth',     slug: 'growth',     price: '$149',   period: '/ mo',    sub: '5 analyses / mo',        cta: 'Start Growth' },
+  { name: 'Pro',        slug: 'pro',        price: '$299',   period: '/ mo',    sub: '15 analyses / mo',       cta: 'Go Pro',        highlight: true },
+  { name: 'Scale',      slug: 'scale',      price: '$499',   period: '/ mo',    sub: '100 analyses + store',   cta: 'Start Scale' },
+  { name: 'Enterprise', slug: 'enterprise', price: '$1,499', period: '/ mo',    sub: '300 analyses + agency',  cta: 'Contact Sales' },
 ];
 ---
 
@@ -35,7 +35,7 @@ const tiers = [
           </p>
           <p class="tier-sub">{t.sub}</p>
           <a
-            href={t.name === 'Enterprise' ? '/contact' : 'https://kaldon.io/signup'}
+            href={t.name === 'Enterprise' ? 'mailto:beta@kaldon.io?subject=Enterprise%20plan%20inquiry' : `https://kaldon.io/signup?plan=${t.slug}`}
             class={t.highlight ? 'btn-primary w-full justify-center' : 'btn-secondary w-full justify-center'}
             style="margin-top: 20px; height: 40px; font-size: 14px;"
           >

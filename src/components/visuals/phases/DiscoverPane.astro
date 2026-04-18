@@ -331,22 +331,24 @@
     .pane-status .pulse-dot { animation: none; }
   }
 
-  /* On narrow viewports, flatten the 3D transform so the pane reads clearly */
+  /* On narrow viewports, swap the extreme 3D transform for a subtle 2°
+     tilt. Preserves the "alive" signature without making the mockup
+     hard to read on a phone. */
   @media (max-width: 1023px) {
     .product-pane-wrap {
       max-width: 100%;
       aspect-ratio: auto;
       height: auto;
+      perspective: 2000px;
+      -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+              mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
     }
     .product-pane {
       position: relative;
       inset: auto;
-      transform: none;
+      transform: rotateX(3deg) rotateY(-2deg) rotate(-0.5deg);
       border-radius: 12px;
-    }
-    .product-pane-wrap {
-      -webkit-mask-image: none;
-              mask-image: none;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.03) inset, 0 16px 32px rgba(0,0,0,0.35);
     }
   }
 </style>

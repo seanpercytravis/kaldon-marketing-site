@@ -1,30 +1,46 @@
 ---
-// MarketGapWeek.astro — a rotating "This week's unmet demand" signal card.
-// Populated manually each week (cheap content op). Demonstrates Kaldon's
-// core value — finding gaps — with a real-feeling signal on the homepage.
-// Mark content as illustrative until automated content-ops is wired.
+// MarketGapWeek.astro — "This week's unmet demand" signal card that
+// auto-rotates through multiple recent-week scenarios. Demonstrates
+// Kaldon's find-the-gap value with concrete, specific signals instead
+// of abstract claims. Pauses on hover; keyboard-accessible dots.
+//
+// Content is illustrative — swap the `signals` array as real
+// Kaldon Discover-mode outputs become available.
 
-interface Props {
-  kicker?: string;
-  signalCategory: string;
-  signalHeadline: string;
-  signalDetail: string;
-  demandLift: string; // e.g. "340% YoY"
-  supplySupply: string; // e.g. "0 purpose-built products shipping"
-  searchVolume?: string;
-  updatedLabel?: string;
-}
-
-const {
-  kicker = 'This Week — Unmet Demand',
-  signalCategory = 'Beverage Accessories',
-  signalHeadline = 'Insulated mugs with integrated lid-based tea infusers',
-  signalDetail = "Search growth across Amazon, Walmart, TikTok, and Pinterest outpaces every other insulated-mug subcategory. Only three competitors ship a lid-infuser combo and none of them use ceramic-lined interiors — the format readers keep asking for in reviews.",
-  demandLift = '340%',
-  supplySupply = '3',
-  searchVolume = '48k / mo',
-  updatedLabel = 'Updated weekly',
-} = Astro.props;
+const signals = [
+  {
+    category: 'Beverage Accessories',
+    headline: 'Insulated mugs with integrated lid-based tea infusers',
+    detail: "Search growth across Amazon, Walmart, TikTok, and Pinterest outpaces every other insulated-mug subcategory. Only three competitors ship a lid-infuser combo and none use ceramic-lined interiors — the format readers keep asking for in reviews.",
+    demandLift: '340%',
+    searchVolume: '48k / mo',
+    supply: '3',
+  },
+  {
+    category: 'Pet Supplies',
+    headline: 'Orthopedic dog beds with washable cooling-gel cores',
+    detail: "Reviews across 1,200 competing SKUs consistently flag non-removable covers as the deal-breaker. Walmart + TikTok Shop demand is up year-over-year but every premium option sits at $180+. A mid-market orthopedic with a zip-off cooling core has no serious shipping entry.",
+    demandLift: '212%',
+    searchVolume: '31k / mo',
+    supply: '2',
+  },
+  {
+    category: 'Home Organization',
+    headline: 'Modular under-sink drawer systems for non-standard cabinets',
+    detail: "Every Amazon bestseller assumes 18-inch cabinet depth. Pinterest and TikTok both show a 480% lift in \"under sink\" queries from renters with 14- and 16-inch cabinets — a segment nobody is building for. Margin opportunity: $38 COGS, $129 retail.",
+    demandLift: '480%',
+    searchVolume: '62k / mo',
+    supply: '0',
+  },
+  {
+    category: 'Travel Accessories',
+    headline: 'Compression packing cubes with integrated RFID-shielded document pouches',
+    detail: "Two separate categories (compression cubes and RFID wallets) have high demand. Nobody has combined them despite clear search intent: 22% of \"packing cubes\" shoppers also query \"RFID wallet\" within 14 days. One product covers both.",
+    demandLift: '178%',
+    searchVolume: '27k / mo',
+    supply: '0',
+  },
+];
 ---
 
 <section class="section-spacing" style="background: var(--void);">
@@ -35,52 +51,134 @@ const {
         This is what Kaldon finds. Every week.
       </h2>
       <p class="mt-4 text-body-lg" style="color: var(--ghost);">
-        A sample unmet-demand signal from this week's run. In your account, you get one tuned to your category.
+        Four sample unmet-demand signals from recent Kaldon runs. In your account, every signal is tuned to your category.
       </p>
     </header>
 
-    <div class="gap-card">
+    <div class="gap-card" id="gap-card" role="region" aria-label="Rotating market-gap signals">
       <div class="gap-head">
         <div class="gap-head-left">
-          <span class="gap-kicker">{kicker}</span>
-          <span class="gap-category">{signalCategory}</span>
+          <span class="gap-kicker">This Week — Unmet Demand</span>
+          <span class="gap-category" id="gap-category">{signals[0].category}</span>
         </div>
         <span class="gap-updated">
           <span class="pulse-dot" style="width: 7px; height: 7px;"></span>
-          {updatedLabel}
+          Updated weekly
         </span>
       </div>
 
-      <h3 class="gap-headline">{signalHeadline}</h3>
-      <p class="gap-detail">{signalDetail}</p>
+      <h3 class="gap-headline" id="gap-headline">{signals[0].headline}</h3>
+      <p class="gap-detail" id="gap-detail">{signals[0].detail}</p>
 
       <div class="gap-stats">
         <div class="gap-stat">
-          <span class="gap-stat-num" style="color: var(--signal);">↑ {demandLift}</span>
+          <span class="gap-stat-num" id="gap-lift" style="color: var(--signal);">↑ {signals[0].demandLift}</span>
           <span class="gap-stat-label">Search demand YoY</span>
         </div>
         <div class="gap-stat">
-          <span class="gap-stat-num" style="color: var(--chalk);">{searchVolume}</span>
+          <span class="gap-stat-num" id="gap-volume" style="color: var(--chalk);">{signals[0].searchVolume}</span>
           <span class="gap-stat-label">Monthly search volume</span>
         </div>
         <div class="gap-stat">
-          <span class="gap-stat-num" style="color: var(--gold);">{supplySupply}</span>
+          <span class="gap-stat-num" id="gap-supply" style="color: var(--gold);">{signals[0].supply}</span>
           <span class="gap-stat-label">Products currently shipping</span>
         </div>
+      </div>
+
+      <!-- Rotation controls -->
+      <div class="gap-dots" role="tablist" aria-label="Choose a signal">
+        {signals.map((_, i) => (
+          <button
+            class={`gap-dot ${i === 0 ? 'active' : ''}`}
+            role="tab"
+            aria-selected={i === 0}
+            aria-label={`Show signal ${i + 1}`}
+            data-idx={i}
+          ></button>
+        ))}
       </div>
     </div>
   </div>
 </section>
 
+<script is:inline define:vars={{ signals }}>
+  (function () {
+    const card = document.getElementById('gap-card');
+    if (!card) return;
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const els = {
+      category: document.getElementById('gap-category'),
+      headline: document.getElementById('gap-headline'),
+      detail: document.getElementById('gap-detail'),
+      lift: document.getElementById('gap-lift'),
+      volume: document.getElementById('gap-volume'),
+      supply: document.getElementById('gap-supply'),
+    };
+    const dots = card.querySelectorAll('.gap-dot');
+    let idx = 0;
+    let timer = null;
+    const INTERVAL = 7000;
+
+    function render(i) {
+      idx = i;
+      const s = signals[i];
+      // Short fade-swap via class toggle
+      card.classList.add('is-swapping');
+      setTimeout(() => {
+        els.category.textContent = s.category;
+        els.headline.textContent = s.headline;
+        els.detail.textContent = s.detail;
+        els.lift.textContent = '↑ ' + s.demandLift;
+        els.volume.textContent = s.searchVolume;
+        els.supply.textContent = s.supply;
+        dots.forEach((d, di) => {
+          d.classList.toggle('active', di === i);
+          d.setAttribute('aria-selected', String(di === i));
+        });
+        card.classList.remove('is-swapping');
+      }, reduced ? 0 : 220);
+    }
+
+    function advance() { render((idx + 1) % signals.length); }
+
+    function start() { if (!reduced && !timer) timer = setInterval(advance, INTERVAL); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+    dots.forEach((d) => d.addEventListener('click', () => {
+      const i = parseInt(d.dataset.idx, 10);
+      render(i);
+      stop();
+      start();
+    }));
+
+    card.addEventListener('mouseenter', stop);
+    card.addEventListener('mouseleave', start);
+    card.addEventListener('focusin', stop);
+    card.addEventListener('focusout', start);
+
+    // Start rotation once the section scrolls near viewport
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) { start(); io.disconnect(); }
+      });
+    }, { threshold: 0.25 });
+    io.observe(card);
+  })();
+</script>
+
 <style>
   .gap-card {
     position: relative;
-    padding: 36px 36px 32px;
+    padding: 36px 36px 28px;
     background: var(--deep-space);
     border: 1px solid transparent;
     border-radius: 16px;
     box-shadow: var(--shadow-lift);
+    transition: opacity 220ms var(--ease-out-quad);
   }
+  .gap-card.is-swapping { opacity: 0.35; }
   .gap-card::before {
     content: '';
     position: absolute;
@@ -173,4 +271,27 @@ const {
     color: var(--ghost);
     font-weight: 500;
   }
+
+  /* Rotation dots */
+  .gap-dots {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+  }
+  .gap-dot {
+    width: 28px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--hairline-active);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background 200ms var(--ease-out-quad);
+  }
+  .gap-dot:hover { background: rgba(255,255,255,0.24); }
+  .gap-dot.active { background: var(--signal); }
+  .gap-dot:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
 </style>

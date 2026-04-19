@@ -271,7 +271,7 @@ function renderCell(val: string | boolean): string {
   <section class="pb-20 md:pb-24" style="background: var(--void);">
     <div class="container-custom">
       <p class="text-center text-small mb-8" style="color: var(--ghost);">
-        Join sellers who've replaced $18,000+ in tools, consultants, and agencies.
+        Join sellers who've replaced $18,000 to $50,000+ per year in tools, consultants, and agencies.
       </p>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 max-w-7xl mx-auto">
         {tiers.map((t) => (
@@ -438,23 +438,24 @@ function renderCell(val: string | boolean): string {
 
       <!-- Giant typographic moment: the DIY cost as display type -->
       <div class="diy-anchor">
-        <span class="diy-anchor-kicker">DIY tool + freelancer + agency stack</span>
+        <span class="diy-anchor-kicker">Premium DIY tool + freelancer + agency stack</span>
         <p class="diy-anchor-num">
           <span class="diy-strike">$18,000</span>
-          <span class="diy-to">–</span>
-          <span class="diy-strike">28,000</span>
+          <span class="diy-to">to</span>
+          <span class="diy-strike">$53,000</span>
           <span class="diy-unit">/ year</span>
         </p>
       </div>
 
       <div class="rounded-card overflow-hidden" style="border: 1px solid var(--hairline);">
         {[
-          { label: 'Market research tools', cost: '$2,400–6,000 / yr' },
-          { label: 'Brand identity & design', cost: '$3,000–8,000' },
-          { label: 'Content creation & management', cost: '$3,600–7,200 / yr' },
-          { label: 'Store platform & apps', cost: '$2,400–6,000 / yr' },
-          { label: 'Marketing & advertising tools', cost: '$3,600–7,200 / yr' },
-          { label: 'Freelancers & agencies', cost: '$3,000–5,000' },
+          { label: 'Premium research (JS Brand Owner + H10 Diamond)', cost: '$1,788–4,788 / yr' },
+          { label: 'AI copy + content (Jasper Business + Copy.ai Team)', cost: '$1,788–4,188 / yr' },
+          { label: 'AI generation (ChatGPT Pro + Claude Max)', cost: '$720–2,400 / yr' },
+          { label: 'Visual + brand design (Canva Teams + Adobe CC + MJ)', cost: '$1,200–3,600 / yr' },
+          { label: 'Social scheduling (Later Agency + Hootsuite Business)', cost: '$1,188–2,988 / yr' },
+          { label: 'Store + website (Shopify Advanced + theme + apps)', cost: '$5,988–9,588 / yr' },
+          { label: 'Per-launch services (photography, listings, brand studio)', cost: '$4,100–25,000' },
         ].map((row, i) => (
           <div class="flex justify-between items-center px-6 py-4" style={`background: ${i % 2 === 0 ? 'rgba(255,255,255,0.015)' : 'transparent'}; border-top: ${i === 0 ? 'none' : '1px solid var(--hairline)'};`}>
             <span class="text-body-sm" style="color: var(--chalk);">{row.label}</span>

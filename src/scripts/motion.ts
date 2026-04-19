@@ -1,28 +1,42 @@
 // Shared motion primitives built on GSAP + ScrollTrigger.
-// All motion respects prefers-reduced-motion (ppulls the no-op path).
-// Load lazily. each consumer imports only what it needs.
+// All motion respects prefers-reduced-motion (pulls the no-op path).
+//
+// ScrollTrigger is loaded lazily via dynamic import() inside the scroll-
+// dependent helpers only. Pages that call revealHero() alone (which uses
+// GSAP core but no ScrollTrigger) do not download the ScrollTrigger chunk.
+// This keeps /privacy, /terms, /contact, /404 and similar static pages
+// under the smaller baseline bundle.
 
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const reducedMotion = () =>
   typeof window !== 'undefined' &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Lazy loader. Caches the ScrollTrigger module so repeat callers pay once.
+let scrollTriggerPromise: Promise<typeof import('gsap/ScrollTrigger').ScrollTrigger> | null = null;
+function loadScrollTrigger() {
+  if (!scrollTriggerPromise) {
+    scrollTriggerPromise = import('gsap/ScrollTrigger').then((mod) => {
+      gsap.registerPlugin(mod.ScrollTrigger);
+      return mod.ScrollTrigger;
+    });
+  }
+  return scrollTriggerPromise;
+}
 
 /**
  * revealHero. one-shot staggered entrance on page load.
  * Reveals direct descendants of the container in order:
  *   kicker → h1 → subhead → cta row → trust line
  * Total duration ~900ms, ease out-quad.
+ * Does NOT pull ScrollTrigger. Safe for static pages.
  */
 export function revealHero(selector: string): void {
   if (reducedMotion()) return;
   const el = document.querySelector<HTMLElement>(selector);
   if (!el) return;
 
-  // Build target list. match common hero primitives
   const targets = [
     el.querySelector('.kicker'),
     el.querySelector('h1'),
@@ -50,8 +64,9 @@ export function revealHero(selector: string): void {
  * revealCards. staggered reveal of card-like elements when they enter
  * the viewport. Uses ScrollTrigger.batch for performance (single observer
  * instead of N instances). Once-only; doesn't re-animate on re-entry.
+ * Pulls ScrollTrigger via dynamic import.
  */
-export function revealCards(
+export async function revealCards(
   selector: string,
   options: {
     start?: string;
@@ -59,12 +74,13 @@ export function revealCards(
     duration?: number;
     distance?: number;
   } = {}
-): void {
+): Promise<void> {
   if (reducedMotion()) return;
   const targets = document.querySelectorAll<HTMLElement>(selector);
   if (targets.length === 0) return;
 
-  // Starting state. must apply before ScrollTrigger evaluates
+  const ScrollTrigger = await loadScrollTrigger();
+
   gsap.set(targets, { opacity: 0, y: options.distance ?? 20 });
 
   ScrollTrigger.batch(selector, {
@@ -86,23 +102,23 @@ export function revealCards(
 /**
  * pipelineScrubIndicator. adds a Signal-hued progress bar that fills
  * horizontally as the user scrubs through a pinned ScrollTrigger
- * animation. Returns a cleanup function.
+ * animation. Returns a cleanup function (as a promise).
  *
  * The caller is responsible for creating the bar element in markup
  * (keep separate from the tween target). Pass the bar's selector.
+ * Pulls ScrollTrigger via dynamic import.
  */
-export function pipelineScrubIndicator(
+export async function pipelineScrubIndicator(
   triggerSelector: string,
   barSelector: string
-): (() => void) | void {
+): Promise<(() => void) | void> {
   if (reducedMotion()) return;
   const trigger = document.querySelector<HTMLElement>(triggerSelector);
   const bar = document.querySelector<HTMLElement>(barSelector);
   if (!trigger || !bar) return;
 
-  // Bar is controlled via scaleX from 0 → 1 tied to the trigger's progress.
-  // Use a lightweight standalone ScrollTrigger (not linked to any tween)
-  // that matches the pinned section range.
+  const ScrollTrigger = await loadScrollTrigger();
+
   const st = ScrollTrigger.create({
     trigger,
     start: 'top top',

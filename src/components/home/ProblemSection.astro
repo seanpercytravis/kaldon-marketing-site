@@ -4,11 +4,16 @@
 
 const tools = [
   { name: 'Jungle Scout / Helium 10', role: 'Product research', cost: '$79–99/mo' },
-  { name: 'Canva Pro / Looka', role: 'Brand design + logo', cost: '$15–35/mo' },
-  { name: 'Jasper / Copy.ai', role: 'Content writing', cost: '$49–59/mo' },
+  { name: 'Canva Pro / Midjourney', role: 'Brand + content design', cost: '$20–50/mo' },
+  { name: 'Jasper / Copy.ai', role: 'AI content writing', cost: '$49–59/mo' },
   { name: 'Later / Hootsuite', role: 'Social scheduling', cost: '$25–49/mo' },
-  { name: 'Shopify', role: 'Store platform', cost: '$39–79/mo' },
-  { name: 'Meta Ads Manager', role: 'Ad management', cost: 'Your time' },
+  { name: 'Shopify + theme + apps', role: 'Store + website dev', cost: '$79–250/mo' },
+  { name: 'Meta / TikTok / Google Ads', role: 'Ad management', cost: 'Your time' },
+];
+const services = [
+  { name: 'Freelance product photography', role: 'Listing + site imagery', cost: '$200–500 / shoot' },
+  { name: 'Marketplace listing agency', role: 'Amazon + Walmart SEO', cost: '$500 / listing' },
+  { name: 'Copywriter / brand strategist', role: 'Brand story + post copy', cost: '$500–2,000 / project' },
 ];
 ---
 
@@ -20,10 +25,13 @@ const tools = [
         Creating a new product shouldn't cost $10,000 before you ship one unit.
       </h2>
       <p class="mt-4 text-body-lg" style="color: var(--ghost); line-height: 1.5;">
-        Finding unmet demand, validating a UVP, sourcing a supplier, building a brand, creating content, and launching a store means six tools, six subscriptions, and six workflows that don't talk to each other, plus the agencies you'll hire to stitch them together.
+        Finding unmet demand, validating a UVP, sourcing a supplier, building a brand, designing a website, writing listings, shooting photos, creating social content, and launching ads means nine tools, six subscriptions, three freelance shoots per launch, and workflows that don't talk to each other.
       </p>
     </header>
 
+    <div class="stack-group-label">
+      <span class="font-mono" style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ghost); font-weight: 500;">Monthly subscriptions</span>
+    </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
       {tools.map((t) => (
         <div
@@ -45,11 +53,38 @@ const tools = [
       ))}
     </div>
 
+    <div class="stack-group-label">
+      <span class="font-mono" style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ghost); font-weight: 500;">Per-launch services</span>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+      {services.map((s) => (
+        <div
+          class="rounded-card p-6 flex items-start justify-between gap-6 transition-colors duration-150"
+          style="background: var(--deep-space); border: 1px solid var(--hairline);"
+        >
+          <div>
+            <h3 class="font-display" style="font-weight: 600; font-size: 16px; color: var(--chalk); letter-spacing: -0.01em;">
+              {s.name}
+            </h3>
+            <p class="mt-1 text-small" style="color: var(--ghost);">
+              {s.role}
+            </p>
+          </div>
+          <span class="font-mono text-small" style="color: var(--ghost); white-space: nowrap;">
+            {s.cost}
+          </span>
+        </div>
+      ))}
+    </div>
+
     <div class="mt-16 md:mt-20 grid md:grid-cols-[1fr_auto_1fr] gap-8 md:gap-12 items-center max-w-4xl mx-auto">
       <div class="text-center md:text-right">
         <span class="font-mono" style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ghost); font-weight: 500; display: block; margin-bottom: 12px;">DIY tool stack</span>
         <p class="font-mono" style="font-weight: 400; font-size: clamp(40px, 6vw, 64px); color: var(--text-secondary); letter-spacing: -0.04em; line-height: 0.95; text-decoration: line-through; text-decoration-color: rgba(139,139,163,0.35); text-decoration-thickness: 1.5px;">
-          $207–400<span style="font-size: 0.5em; letter-spacing: 0; text-decoration: none; color: var(--ghost);">/mo</span>
+          $252–507<span style="font-size: 0.5em; letter-spacing: 0; text-decoration: none; color: var(--ghost);">/mo</span>
+        </p>
+        <p class="font-mono" style="margin-top: 10px; font-size: 12px; color: var(--ghost); letter-spacing: 0.02em;">
+          + $1,200–3,000 per launch in services
         </p>
       </div>
       <div class="font-mono text-center" style="font-size: 14px; color: var(--ghost); letter-spacing: 0.04em;">
@@ -60,10 +95,33 @@ const tools = [
         <p class="font-mono" style="font-weight: 400; font-size: clamp(40px, 6vw, 64px); color: var(--gold); letter-spacing: -0.04em; line-height: 0.95;">
           $149<span style="font-size: 0.5em; letter-spacing: 0; color: var(--ghost);">/mo</span>
         </p>
+        <p class="font-mono" style="margin-top: 10px; font-size: 12px; color: var(--gold); letter-spacing: 0.02em;">
+          Everything included. No per-launch fees.
+        </p>
       </div>
     </div>
     <p class="mt-8 text-center text-body" style="color: var(--ghost);">
-      Six subscriptions and six workflows, replaced by one.
+      Nine tools, six subscriptions, and every freelance service, replaced by one platform.
     </p>
+
+    <style>
+      .stack-group-label {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-top: 32px;
+        margin-bottom: 16px;
+      }
+      .stack-group-label::before,
+      .stack-group-label::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--hairline);
+      }
+      .stack-group-label:first-of-type {
+        margin-top: 0;
+      }
+    </style>
   </div>
 </section>

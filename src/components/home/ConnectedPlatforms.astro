@@ -3,13 +3,16 @@
 // Real SVG logos would be ideal; pending those, typographic wordmarks at
 // -0.02em tracking read as intentional on a dark background.
 const platforms = [
-  { name: 'Amazon', w: 'tracking-tight' },
+  { name: 'Amazon' },
   { name: 'Walmart' },
+  { name: 'Shopify' },
   { name: 'Stripe' },
   { name: 'Meta' },
   { name: 'TikTok' },
   { name: 'Google' },
-  { name: 'Shopify' },
+  { name: 'GoHighLevel' },
+  { name: 'Etsy' },
+  { name: 'Pinterest' },
 ];
 ---
 
@@ -18,7 +21,7 @@ const platforms = [
     <p class="text-center text-small" style="color: var(--ghost);">
       Connected to the marketplaces, ad platforms, and tools your business runs on.
     </p>
-    <div class="mt-8 flex flex-wrap justify-center items-center gap-x-10 gap-y-6 md:gap-x-14">
+    <div class="mt-8 flex flex-wrap justify-center items-center gap-x-8 gap-y-6 md:gap-x-12">
       {platforms.map((p) => (
         <span
           class="font-display"
@@ -27,6 +30,12 @@ const platforms = [
           {p.name}
         </span>
       ))}
+      <span
+        class="font-mono"
+        style="font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); padding: 5px 10px; border: 1px solid rgba(255, 184, 0, 0.35); border-radius: 999px;"
+      >
+        +40 more
+      </span>
     </div>
   </div>
 </section>

@@ -22,6 +22,7 @@ interface Props {
   migrationBody: string;
   migrationSteps: string[];
   faqs: Array<{ q: string; a: string }>;
+  structuredData?: object[];
 }
 
 const {
@@ -43,7 +44,28 @@ const {
   migrationBody,
   migrationSteps,
   faqs,
+  structuredData = [],
 } = Astro.props;
+
+// Auto-extend with a SoftwareApplication schema specific to this comparison.
+// Search engines use this to surface Kaldon as an alternative in competitor
+// queries (e.g. "jungle scout alternative").
+const softwareAppSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Kaldon',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  description: `Kaldon is an AI-powered eCommerce intelligence platform that replaces ${competitor} and the full creation stack. ${kaldonTagline}`,
+  offers: {
+    '@type': 'AggregateOffer',
+    lowPrice: '0',
+    highPrice: '1499',
+    priceCurrency: 'USD',
+    offerCount: '5',
+  },
+};
+const allStructuredData = [softwareAppSchema, ...structuredData];
 
 function renderStatus(val: string): string {
   if (val === 'yes') {
@@ -59,7 +81,7 @@ function renderStatus(val: string): string {
 }
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} structuredData={allStructuredData}>
   <PageHero kicker="Compare" headline={`${competitor} vs Kaldon`} subhead={tagline} />
 
   <!-- Quick Verdict -->

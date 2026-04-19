@@ -73,6 +73,33 @@ const phases = [
 <BaseLayout
   title="Kaldon Features. The Complete eCommerce Intelligence Platform"
   description="Five phases. One connected pipeline. Discover winning products, build professional brands, create content, launch stores, and grow with AI-optimized ads. Every feature feeds the next."
+  structuredData={[
+    {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: 'Kaldon',
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Web',
+      description: 'AI-powered eCommerce intelligence platform. Five phases, one pipeline: Discover unmet demand, Build a brand, Create content, Launch a store, and Grow with AI-optimized ads.',
+      featureList: [
+        'Unmet-demand product research',
+        'AI brand identity generation',
+        'AI content creation across 6 platforms',
+        'One-click store deployment',
+        'Marketing and ad optimization',
+        'Supplier verification',
+        'Auto-published SEO blog',
+        'Video recipe library',
+      ],
+      offers: {
+        '@type': 'AggregateOffer',
+        lowPrice: '0',
+        highPrice: '1499',
+        priceCurrency: 'USD',
+        offerCount: '5',
+      },
+    },
+  ]}
 >
   <PageHero
     kicker="Features"

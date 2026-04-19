@@ -60,6 +60,36 @@ const phases = [
 <BaseLayout
   title="How Kaldon Works. From Product Idea to Revenue in 5 Phases"
   description="See how Kaldon's AI-powered pipeline takes you from product research to a live, revenue-generating store in 5 connected phases. No juggling tools. No gaps."
+  structuredData={[
+    {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: 'How Kaldon takes a seller from market gap to shipped business',
+      description: 'A 5-phase AI-powered pipeline: Discover unmet demand, Build a brand, Create content, Launch a store, and Grow with AI-optimized ads.',
+      step: [
+        { '@type': 'HowToStep', position: 1, name: 'Discover', text: 'Kaldon reads 10 parallel data sources (sales, pricing, search demand, social momentum, ad saturation, competitor coverage) across Amazon, Walmart, and DTC, then surfaces the products the market is paying for but nobody is shipping.' },
+        { '@type': 'HowToStep', position: 2, name: 'Build', text: 'Kaldon generates a complete brand identity from the research signals: logo, palette, typography, voice. A professional brand in minutes.' },
+        { '@type': 'HowToStep', position: 3, name: 'Create', text: 'Kaldon generates a month of on-brand content across Instagram, TikTok, LinkedIn, X, Pinterest, and Facebook. Blogs auto-publish on schedule.' },
+        { '@type': 'HowToStep', position: 4, name: 'Launch', text: 'Kaldon deploys a full DTC storefront in minutes with checkout, email sequences, SMS flows, and a chatbot trained on the product data.' },
+        { '@type': 'HowToStep', position: 5, name: 'Grow', text: 'Kaldon optimizes ads across Meta, TikTok, and Google. Monitors CAC, ROAS, and LTV, and proposes the next product adjacency when margin allows.' },
+      ],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: 'Kaldon',
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Web',
+      description: 'AI-powered eCommerce intelligence platform. From market gap to shipped business in one continuous pipeline.',
+      offers: {
+        '@type': 'AggregateOffer',
+        lowPrice: '0',
+        highPrice: '1499',
+        priceCurrency: 'USD',
+        offerCount: '5',
+      },
+    },
+  ]}
 >
   <PageHero
     kicker="How It Works"

@@ -16,12 +16,12 @@ const phases = [
     name: 'Discover',
     tagline: 'Find unmet demand the market is paying for.',
     features: [
-      { title: 'Unmet-Demand Engine', desc: 'Ten parallel data sources synthesized by Claude — sales velocity, pricing gaps, search demand, social momentum, ad saturation, competitor coverage. Output: the gaps nobody is building for.' },
+      { title: 'Unmet-Demand Engine', desc: 'Ten parallel data sources synthesized by Claude: sales velocity, pricing gaps, search demand, social momentum, ad saturation, competitor coverage. Output: the gaps nobody is building for.' },
       { title: 'Market Intelligence', desc: 'Competitive landscape, demand forecasting, and pricing insights drawn from real-time marketplace data across Amazon, Walmart, and DTC.' },
       { title: 'AI Product Mockups', desc: 'Render photorealistic images of the new product before you source a single unit. Test the concept visually while you still can change it.' },
       { title: 'Supplier Verification', desc: 'Find manufacturers who can actually produce the product, not just generic factories. Verified capability before you commit capital.' },
       { title: 'Action Plans', desc: 'Step-by-step roadmaps with timelines and milestones. Every concept produces a prioritized plan from spec to first shipment.' },
-      { title: 'AI Coaching', desc: 'An AI coach walks you through every decision — go/no-go calls, spec trade-offs, supplier choice — so you never guess.' },
+      { title: 'AI Coaching', desc: 'An AI coach walks you through every decision: go/no-go calls, spec trade-offs, supplier choice, so you never guess.' },
     ],
   },
   {
@@ -29,7 +29,7 @@ const phases = [
     name: 'Build',
     tagline: 'A professional brand identity, in minutes, not months.',
     features: [
-      { title: 'Brand Vault', desc: 'Store and manage every brand asset in one place — logo, palette, typography, voice — and have it flow automatically into every downstream step.' },
+      { title: 'Brand Vault', desc: 'Store and manage every brand asset in one place: logo, palette, typography, voice, and have it flow automatically into every downstream step.' },
       { title: 'AI Logo Generation', desc: 'Generate multiple logo concepts from your analysis data. Pick your favorite and lock it into your brand identity.' },
       { title: 'Brand Board', desc: 'A shareable, professional brand presentation with your logo, palette, typography, and voice. Send it to partners and manufacturers.' },
     ],
@@ -41,7 +41,7 @@ const phases = [
     features: [
       { title: 'Content Calendar', desc: 'A full month of social media posts across 5 platforms, all matching your brand voice. Schedule, preview, and publish from one view.' },
       { title: 'One-Off Composer', desc: 'Need a single post or announcement? Compose on-brand content for any platform in seconds.' },
-      { title: 'Video Studio', desc: '10 AI-video recipes — product reveals, brand stories, testimonials, product demos, before/after, and more. No filming required.' },
+      { title: 'Video Studio', desc: '10 AI-video recipes: product reveals, brand stories, testimonials, product demos, before/after, and more. No filming required.' },
       { title: 'Landing Page Builder', desc: 'Conversion-optimized landing pages that look like a design agency built them. Your brand identity is baked in automatically.' },
       { title: 'Multi-Platform Publishing', desc: 'Publish to Instagram, Facebook, LinkedIn, X, and Pinterest from a single dashboard. No switching between apps.' },
     ],
@@ -71,7 +71,7 @@ const phases = [
 ---
 
 <BaseLayout
-  title="Kaldon Features — The Complete eCommerce Intelligence Platform"
+  title="Kaldon Features. The Complete eCommerce Intelligence Platform"
   description="Five phases. One connected pipeline. Discover winning products, build professional brands, create content, launch stores, and grow with AI-optimized ads. Every feature feeds the next."
 >
   <PageHero
@@ -100,10 +100,10 @@ const phases = [
     </div>
   </section>
 
-  <!-- Three modes · One pipeline — unify messaging with homepage -->
+  <!-- Three modes · One pipeline. unify messaging with homepage -->
   <ModeBadges headline="Three modes. Same five-phase pipeline." />
 
-  <!-- Phase sections — each with its custom pane to the side -->
+  <!-- Phase sections. each with its custom pane to the side -->
   {phases.map((phase, i) => (
     <section id={`phase-${phase.num}`} class="section-spacing" style="background: var(--void);">
       <div class="container-custom max-w-6xl">
@@ -143,7 +143,7 @@ const phases = [
     </section>
   ))}
 
-  <!-- Supplier Verification spotlight — underplayed elsewhere, elevate here -->
+  <!-- Supplier Verification spotlight. underplayed elsewhere, elevate here -->
   <section class="section-spacing" style="background: var(--void);">
     <div class="container-custom max-w-4xl">
       <div class="supplier-card">
@@ -153,7 +153,7 @@ const phases = [
             Every concept ships with a supplier who can actually make it.
           </h2>
           <p class="mt-4 text-body-lg" style="color: var(--ghost); line-height: 1.55;">
-            Most tools surface products. Kaldon surfaces <span style="color: var(--chalk); font-weight: 500;">products plus the manufacturers with the capability to produce them</span> — MOQs, certifications, material specs, lead times, and verified production samples. No more shipping a validated concept only to discover no factory can make it to your spec.
+            Most tools surface products. Kaldon surfaces <span style="color: var(--chalk); font-weight: 500;">products plus the manufacturers with the capability to produce them</span>. MOQs, certifications, material specs, lead times, and verified production samples. No more shipping a validated concept only to discover no factory can make it to your spec.
           </p>
         </div>
         <div class="supplier-stats">
@@ -174,7 +174,7 @@ const phases = [
     </div>
   </section>
 
-  <!-- AI Coach demonstration — show don't tell -->
+  <!-- AI Coach demonstration. show don't tell -->
   <section class="section-spacing" style="background: var(--void);">
     <div class="container-custom max-w-4xl">
       <header class="text-center mb-10">
@@ -231,7 +231,7 @@ const phases = [
       </p>
       <div class="mt-8">
         <Button variant="primary" size="large" href="https://kaldon.io/signup" data-event="features_final_cta">
-          Start Free — 2 Analyses Included
+          Start Free, 2 Analyses Included
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"/>
           </svg>

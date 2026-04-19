@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Self-hosted fonts — Satoshi display, Inter Variable workhorse, JetBrains Mono kicker accent */
+/* Self-hosted fonts. Satoshi display, Inter Variable workhorse, JetBrains Mono kicker accent */
 @font-face {
   font-family: 'Inter Variable';
   font-style: normal;
@@ -57,7 +57,7 @@
   --text-secondary: #C8CAD3;
   /* text-quaternary is for DECORATIVE / structural use only (numerals with
      aria-hidden, table dashes, non-critical separators). Contrast ≈ 2.5:1 on
-     Void — do not use for readable body text. Use --ghost (#8B8BA3, ~5.8:1)
+     Void. do not use for readable body text. Use --ghost (#8B8BA3, ~5.8:1)
      for any actual content. */
   --text-quaternary: rgba(139, 139, 163, 0.55);
   --hairline: rgba(255, 255, 255, 0.06);
@@ -93,7 +93,7 @@
   --gradient-text-subtle: linear-gradient(180deg, var(--chalk) 0%, var(--chalk) 60%, rgba(245,245,247,0.72) 100%);
   --lattice-bright: rgba(255,255,255,0.06);
 
-  /* SVG grain (low-entropy fractal noise, baseFreq 0.9) — adds material depth without chroma.
+  /* SVG grain (low-entropy fractal noise, baseFreq 0.9). adds material depth without chroma.
      Used with background-blend-mode: overlay. Opacity controlled via .bg-grain utility. */
   --bg-grain: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.7 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
 }
@@ -144,7 +144,7 @@
 
 /* ---------- Components ---------- */
 @layer components {
-  /* Buttons — Linear-school: flat, no glow, no scale, 6px radius */
+  /* Buttons. Linear-school: flat, no glow, no scale, 6px radius */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 rounded-btn font-semibold whitespace-nowrap;
     background: var(--gold);
@@ -208,7 +208,7 @@
   }
   .link-arrow:hover .arrow { transform: translateX(3px); }
 
-  /* Kicker — Mono uppercase section label (Vercel pattern) */
+  /* Kicker. Mono uppercase section label (Vercel pattern) */
   .kicker {
     font-family: var(--font-mono);
     font-size: 12px;
@@ -220,7 +220,7 @@
     margin-bottom: 16px;
   }
 
-  /* Card — hairline surface, no drop-shadow (Attio/Linear) */
+  /* Card. hairline surface, no drop-shadow (Attio/Linear) */
   .card {
     @apply rounded-card transition-colors;
     background: var(--deep-space);
@@ -238,7 +238,7 @@
     padding: 24px;
   }
 
-  /* Gradient-border trick — reserved for Pro pricing tier + hero product pane (Linear pattern) */
+  /* Gradient-border trick. reserved for Pro pricing tier + hero product pane (Linear pattern) */
   .gradient-border {
     position: relative;
     background: var(--deep-space);
@@ -258,7 +258,7 @@
     pointer-events: none;
   }
 
-  /* Live-data pulse dot — Signal Cyan, only place Signal becomes decorative */
+  /* Live-data pulse dot. Signal Cyan, only place Signal becomes decorative */
   .pulse-dot {
     width: 10px;
     height: 10px;
@@ -280,7 +280,7 @@
     padding-inline: clamp(16px, 3vw, 32px);
   }
 
-  /* Section padding — 128px rhythm (Linear) */
+  /* Section padding. 128px rhythm (Linear) */
   .section-spacing {
     padding-block: clamp(80px, 10vw, 128px);
   }
@@ -288,14 +288,14 @@
     padding-block: clamp(120px, 14vw, 180px);
   }
 
-  /* Dot lattice background — Vercel pattern, hero + final CTA only */
+  /* Dot lattice background. Vercel pattern, hero + final CTA only */
   .dot-lattice {
     background-image: radial-gradient(circle, var(--lattice) 1px, transparent 1px);
     background-size: 24px 24px;
     background-position: center top;
   }
 
-  /* Grain overlay — material-quality noise, use on elevated surfaces only.
+  /* Grain overlay. material-quality noise, use on elevated surfaces only.
      Layer via CSS blend-mode overlay so it's chroma-neutral. */
   .grain-overlay {
     position: absolute;
@@ -307,7 +307,7 @@
     pointer-events: none;
   }
 
-  /* StatTile — oversized mono numeral for data moments */
+  /* StatTile. oversized mono numeral for data moments */
   .stat-tile {
     display: flex;
     flex-direction: column;
@@ -345,7 +345,7 @@
     letter-spacing: -0.005em;
   }
 
-  /* FeaturedCard — elevated variant with gradient border + lift shadow */
+  /* FeaturedCard. elevated variant with gradient border + lift shadow */
   .card-featured {
     @apply rounded-card;
     background: var(--deep-space);
@@ -367,7 +367,7 @@
     pointer-events: none;
   }
 
-  /* Display-size moments — sparing use, hero and pre-footer only */
+  /* Display-size moments. sparing use, hero and pre-footer only */
   .display-hero {
     font-family: var(--font-display);
     font-weight: 500;
@@ -377,7 +377,7 @@
     color: var(--chalk);
   }
 
-  /* Signals chip — micro-stat pill with live pulse indicator */
+  /* Signals chip. micro-stat pill with live pulse indicator */
   .signals-chip {
     display: inline-flex;
     align-items: center;
@@ -399,12 +399,12 @@
   }
   .signals-chip .pulse-dot { width: 7px; height: 7px; }
 
-  /* Inline emphasis for body copy — key phrases in Chalk or Gold */
+  /* Inline emphasis for body copy. key phrases in Chalk or Gold */
   .emph-chalk { color: var(--chalk); font-weight: 500; }
   .emph-gold { color: var(--gold); font-weight: 500; }
   .emph-signal { color: var(--signal); font-weight: 500; }
 
-  /* Nav link — small pill hit target, no decoration (Linear) */
+  /* Nav link. small pill hit target, no decoration (Linear) */
   .nav-link {
     display: inline-flex;
     align-items: center;
@@ -421,7 +421,7 @@
     background: rgba(255, 255, 255, 0.06);
   }
 
-  /* Nav dropdown item — two-line treatment: title + sub-description.
+  /* Nav dropdown item. two-line treatment: title + sub-description.
      Gives the Compare / Use Cases menus Stripe-level navigation gravity
      without ballooning into a full mega-menu. */
   .nav-drop-item {

@@ -1,7 +1,7 @@
 ---
-// PipelineScroll.astro — the signature moment.
+// PipelineScroll.astro. the signature moment.
 // Pinned vertical-scroll → horizontal-pan across 5 phase panels via GSAP
-// ScrollTrigger (containerAnimation pattern). No scroll-jacking — reversible,
+// ScrollTrigger (containerAnimation pattern). No scroll-jacking. reversible,
 // stays in natural scroll flow, collapses to vertical stack at <1024px and
 // when prefers-reduced-motion is set.
 import DiscoverPane from '../visuals/phases/DiscoverPane.astro';
@@ -16,7 +16,7 @@ const phases = [
     name: 'Discover',
     headline: 'Find the products the market is demanding that nobody\'s making.',
     body:
-      'Kaldon reads billions of market signals — sales velocity, pricing gaps, search demand, social momentum, advertising saturation, and competitor coverage — across Amazon, Walmart, and the broader market. The output isn\'t a list of products to resell. It\'s a map of unmet demand: what people are actively asking for, what they\'re already paying for, and what nobody is shipping yet.',
+      'Kaldon reads billions of market signals: sales velocity, pricing gaps, search demand, social momentum, advertising saturation, and competitor coverage across Amazon, Walmart, and the broader market. The output isn\'t a list of products to resell. It\'s a map of unmet demand: what people are actively asking for, what they\'re already paying for, and what nobody is shipping yet.',
     outcomes: [
       'Unmet-demand score with a clear go / no-go',
       'Validated unique value proposition your product can own',
@@ -40,17 +40,17 @@ const phases = [
     name: 'Create',
     headline: 'Months of marketing content, ready in minutes.',
     body:
-      'Kaldon generates social posts, product videos, landing pages, and blog articles — all on-brand, scheduled across Instagram, Facebook, LinkedIn, X, and Pinterest.',
+      'Kaldon generates social posts, product videos, landing pages, and blog articles. All on-brand, scheduled across Instagram, Facebook, LinkedIn, X, and Pinterest.',
     outcomes: [
       'Full content calendar across 5 platforms',
       'Product videos, landing pages, SEO articles',
-      'Blog auto-publishes on schedule — hands-free',
+      'Blog auto-publishes on schedule, hands-free',
     ],
   },
   {
     num: '04',
     name: 'Launch',
-    headline: 'Your store, marketing, and customer pipeline — in one click.',
+    headline: 'Your store, marketing, and customer pipeline, in one click.',
     body:
       'Kaldon builds your entire business infrastructure automatically: online store, email sequences, automated workflows, customer database, ad campaigns, and an AI customer support assistant.',
     outcomes: [
@@ -75,7 +75,7 @@ const phases = [
 ---
 
 <section id="pipeline" class="pipeline-section">
-  <!-- Intro header — static, above the pinned section -->
+  <!-- Intro header. static, above the pinned section -->
   <div class="pipeline-intro container-custom">
     <div class="max-w-prose mx-auto text-center">
       <span class="kicker">The Pipeline</span>
@@ -124,7 +124,7 @@ const phases = [
       ))}
     </div>
 
-    <!-- Scrub progress bar — tracks scroll-scrub progress through the
+    <!-- Scrub progress bar. tracks scroll-scrub progress through the
          pinned section. Signal-hued, 2px tall, pinned to top of stage. -->
     <div class="pipeline-scrub-track" aria-hidden="true">
       <div class="pipeline-scrub-fill" id="pipeline-scrub-fill"></div>
@@ -268,7 +268,7 @@ const phases = [
     color: var(--chalk);
   }
 
-  /* Scrub progress bar — appears at top of pinned stage */
+  /* Scrub progress bar. appears at top of pinned stage */
   .pipeline-scrub-track {
     position: absolute;
     top: 0;
@@ -365,13 +365,13 @@ const phases = [
           invalidateOnRefresh: true,
           anticipatePin: 1,
           onUpdate: (self) => {
-            // Phase dots — snap to nearest panel
+            // Phase dots. snap to nearest panel
             const idx = Math.min(
               totalPanels - 1,
               Math.round(self.progress * (totalPanels - 1))
             );
             dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-            // Scrub progress bar — smooth fill
+            // Scrub progress bar. smooth fill
             if (scrubFill) {
               scrubFill.style.transform = `scaleX(${self.progress})`;
             }

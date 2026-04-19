@@ -1,7 +1,7 @@
 ---
-// BuildPane.astro — Phase 2 graphic: brand identity generation.
+// BuildPane.astro. Phase 2 graphic: brand identity generation.
 // Same 3D isometric transform + app-bar chrome as DiscoverPane.
-// Shows a live brand kit being generated — name, palette, type, voice.
+// Shows a live brand kit being generated. name, palette, type, voice.
 interface Props {
   variant?: 'hero' | 'inline';
 }
@@ -55,11 +55,11 @@ const { variant = 'hero' } = Astro.props;
         <div class="type-pair">
           <div class="type-row">
             <span class="type-label">Display</span>
-            <span class="type-sample type-display">Aa — Satoshi</span>
+            <span class="type-sample type-display">Aa · Satoshi</span>
           </div>
           <div class="type-row">
             <span class="type-label">Body</span>
-            <span class="type-sample type-body">Aa — Inter Variable</span>
+            <span class="type-sample type-body">Aa · Inter Variable</span>
           </div>
         </div>
       </div>
@@ -123,7 +123,7 @@ const { variant = 'hero' } = Astro.props;
     pointer-events: none;
   }
 
-  /* App bar — identical chrome as DiscoverPane */
+  /* App bar. identical chrome as DiscoverPane */
   .pane-bar {
     display: flex;
     align-items: center;

@@ -1,17 +1,17 @@
 ---
-// MarketGapWeek.astro — "This week's unmet demand" signal card that
+// MarketGapWeek.astro. "This week's unmet demand" signal card that
 // auto-rotates through multiple recent-week scenarios. Demonstrates
 // Kaldon's find-the-gap value with concrete, specific signals instead
 // of abstract claims. Pauses on hover; keyboard-accessible dots.
 //
-// Content is illustrative — swap the `signals` array as real
+// Content is illustrative. swap the `signals` array as real
 // Kaldon Discover-mode outputs become available.
 
 const signals = [
   {
     category: 'Beverage Accessories',
     headline: 'Insulated mugs with integrated lid-based tea infusers',
-    detail: "Search growth across Amazon, Walmart, TikTok, and Pinterest outpaces every other insulated-mug subcategory. Only three competitors ship a lid-infuser combo and none use ceramic-lined interiors — the format readers keep asking for in reviews.",
+    detail: "Search growth across Amazon, Walmart, TikTok, and Pinterest outpaces every other insulated-mug subcategory. Only three competitors ship a lid-infuser combo and none use ceramic-lined interiors, the format readers keep asking for in reviews.",
     demandLift: '340%',
     searchVolume: '48k / mo',
     supply: '3',
@@ -27,7 +27,7 @@ const signals = [
   {
     category: 'Home Organization',
     headline: 'Modular under-sink drawer systems for non-standard cabinets',
-    detail: "Every Amazon bestseller assumes 18-inch cabinet depth. Pinterest and TikTok both show a 480% lift in \"under sink\" queries from renters with 14- and 16-inch cabinets — a segment nobody is building for. Margin opportunity: $38 COGS, $129 retail.",
+    detail: "Every Amazon bestseller assumes 18-inch cabinet depth. Pinterest and TikTok both show a 480% lift in \"under sink\" queries from renters with 14- and 16-inch cabinets, a segment nobody is building for. Margin opportunity: $38 COGS, $129 retail.",
     demandLift: '480%',
     searchVolume: '62k / mo',
     supply: '0',
@@ -58,7 +58,7 @@ const signals = [
     <div class="gap-card" id="gap-card" role="region" aria-label="Rotating market-gap signals">
       <div class="gap-head">
         <div class="gap-head-left">
-          <span class="gap-kicker">This Week — Unmet Demand</span>
+          <span class="gap-kicker">This Week · Unmet Demand</span>
           <span class="gap-category" id="gap-category">{signals[0].category}</span>
         </div>
         <span class="gap-updated">

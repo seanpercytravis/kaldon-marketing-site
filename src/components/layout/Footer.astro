@@ -1,12 +1,12 @@
 ---
-// Footer.astro — 4-column link grid + email capture + bottom bar
+// Footer.astro. 4-column link grid + email capture + bottom bar
 // Single Void background with hairline top divider (Linear pattern)
 const year = new Date().getFullYear();
 ---
 
 <footer class="mt-auto hairline-t" style="background: var(--void);">
   <div class="container-custom py-16 md:py-20">
-    <!-- Email capture — submits to Formspree / FormsFlow / Resend later.
+    <!-- Email capture. submits to Formspree / FormsFlow / Resend later.
          Until a real endpoint is wired, the form posts to a mailto: action
          so that Subscribe opens the user's email client addressed to the
          beta@ inbox. Better to degrade to a real channel than pretend. -->

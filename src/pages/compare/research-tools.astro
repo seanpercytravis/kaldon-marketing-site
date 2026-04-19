@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/ui/PageHero.astro';
 import Button from '../../components/ui/Button.astro';
 
-// Prices reflect the PREMIUM / equivalent-capability tier — not the
+// Prices reflect the PREMIUM / equivalent-capability tier. not the
 // starter entry fee. Kaldon is a premium platform; comparing to entry
 // tiers understates the true cost of matching Kaldon's coverage.
 const tools = [
@@ -52,7 +52,7 @@ function renderCell(val: string): string {
     return '<svg class="w-4 h-4 mx-auto" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 L8 14.5 L16 6" stroke="#F5F5F7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>';
   }
   if (val === 'no') {
-    return '<span style="color: var(--text-quaternary); font-size: 16px;" aria-hidden="true">—</span><span class="sr-only">Not included</span>';
+    return '<span style="color: var(--text-quaternary); font-size: 16px;" aria-hidden="true">. </span><span class="sr-only">Not included</span>';
   }
   return `<span style="font-family: var(--font-mono); font-size: 12px; color: var(--gold);">${val}</span>`;
 }
@@ -79,7 +79,7 @@ function renderCell(val: string): string {
       <div class="rounded-card p-8" style="background: var(--deep-space); border: 1px solid var(--hairline); border-left: 2px solid var(--signal);">
         <span class="kicker" style="color: var(--signal); margin-bottom: 10px;">Different Tool, Different Job</span>
         <p class="text-body-lg" style="color: var(--chalk); line-height: 1.55; letter-spacing: -0.005em;">
-          Research tools answer one question: "What's already selling that I could resell?" That's a cloning game. Kaldon answers a different question: "What is the market demanding that nobody's making yet — and how do I build it?" Market intelligence, supplier verification, brand, content, storefront, and growth — all in one creation pipeline.
+          Research tools answer one question: "What's already selling that I could resell?" That's a cloning game. Kaldon answers a different question: "What is the market demanding that nobody's making yet, and how do I build it?" Market intelligence, supplier verification, brand, content, storefront, and growth, all in one creation pipeline.
         </p>
       </div>
     </div>
@@ -94,7 +94,7 @@ function renderCell(val: string): string {
           The research tool landscape
         </h2>
         <p class="mt-4 text-body-lg" style="color: var(--ghost);">
-          Prices shown are <span style="color: var(--chalk); font-weight: 500;">premium-tier equivalents</span> — the plans that match Kaldon's coverage. Entry-level tiers cost less but cover far fewer signals, marketplaces, and capabilities.
+          Prices shown are <span style="color: var(--chalk); font-weight: 500;">premium-tier equivalents</span>, the plans that match Kaldon's coverage. Entry-level tiers cost less but cover far fewer signals, marketplaces, and capabilities.
         </p>
       </header>
       <div class="grid gap-3">
@@ -264,7 +264,7 @@ function renderCell(val: string): string {
       </p>
       <div class="mt-8">
         <Button variant="primary" size="large" href="https://kaldon.io/signup" data-event="compare_research_cta">
-          Start Free — 2 Analyses Included
+          Start Free, 2 Analyses Included
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"/>
           </svg>

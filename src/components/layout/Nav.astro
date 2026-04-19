@@ -1,5 +1,5 @@
 ---
-// Nav.astro — transparent at top, glass-blur on scroll (Linear pattern)
+// Nav.astro. transparent at top, glass-blur on scroll (Linear pattern)
 // 64px height, Gold primary CTA, mono-label mobile menu
 
 const currentPath = Astro.url.pathname;
@@ -10,10 +10,10 @@ const isActive = (path: string) =>
 <nav id="main-nav" class="fixed top-0 inset-x-0 z-50 transition-colors duration-100 ease-out" aria-label="Main navigation">
   <div class="container-custom">
     <div class="flex items-center justify-between h-20">
-      <!-- Logo — roughly 2x the prior size so the "AI-Powered eCommerce
+      <!-- Logo. roughly 2x the prior size so the "AI-Powered eCommerce
            Intelligence" descriptor is legible at normal reading distance. -->
       <a href="/" class="flex items-center shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-2 focus-visible:ring-offset-void rounded-sm">
-        <img src="/images/logos/kaldon-logo-dark.svg" alt="Kaldon — AI-Powered eCommerce Intelligence" class="h-14 md:h-16 w-auto" width="320" height="64" />
+        <img src="/images/logos/kaldon-logo-dark.svg" alt="Kaldon. AI-Powered eCommerce Intelligence" class="h-14 md:h-16 w-auto" width="320" height="64" />
       </a>
 
       <!-- Desktop Nav -->
@@ -34,7 +34,7 @@ const isActive = (path: string) =>
             </a>
             <a href="/compare/ecommerce-platforms" class="nav-drop-item">
               <span class="nav-drop-title">vs eCommerce Platforms</span>
-              <span class="nav-drop-sub">Shopify sells products — Kaldon builds them first</span>
+              <span class="nav-drop-sub">Shopify sells products. Kaldon builds them first</span>
             </a>
             <a href="/compare/doing-it-yourself" class="nav-drop-item">
               <span class="nav-drop-title">DIY vs Kaldon</span>
@@ -55,7 +55,7 @@ const isActive = (path: string) =>
             </a>
             <a href="/use-cases/existing-brands" class="nav-drop-item">
               <span class="nav-drop-title">Existing Brands</span>
-              <span class="nav-drop-sub">VET · DISCOVER · EXPAND — three modes</span>
+              <span class="nav-drop-sub">VET · DISCOVER · EXPAND · three modes</span>
             </a>
             <a href="/use-cases/agencies" class="nav-drop-item">
               <span class="nav-drop-title">Agencies</span>

@@ -1,6 +1,6 @@
 // Shared motion primitives built on GSAP + ScrollTrigger.
 // All motion respects prefers-reduced-motion (ppulls the no-op path).
-// Load lazily — each consumer imports only what it needs.
+// Load lazily. each consumer imports only what it needs.
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -12,7 +12,7 @@ const reducedMotion = () =>
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /**
- * revealHero — one-shot staggered entrance on page load.
+ * revealHero. one-shot staggered entrance on page load.
  * Reveals direct descendants of the container in order:
  *   kicker → h1 → subhead → cta row → trust line
  * Total duration ~900ms, ease out-quad.
@@ -22,7 +22,7 @@ export function revealHero(selector: string): void {
   const el = document.querySelector<HTMLElement>(selector);
   if (!el) return;
 
-  // Build target list — match common hero primitives
+  // Build target list. match common hero primitives
   const targets = [
     el.querySelector('.kicker'),
     el.querySelector('h1'),
@@ -47,7 +47,7 @@ export function revealHero(selector: string): void {
 }
 
 /**
- * revealCards — staggered reveal of card-like elements when they enter
+ * revealCards. staggered reveal of card-like elements when they enter
  * the viewport. Uses ScrollTrigger.batch for performance (single observer
  * instead of N instances). Once-only; doesn't re-animate on re-entry.
  */
@@ -64,7 +64,7 @@ export function revealCards(
   const targets = document.querySelectorAll<HTMLElement>(selector);
   if (targets.length === 0) return;
 
-  // Starting state — must apply before ScrollTrigger evaluates
+  // Starting state. must apply before ScrollTrigger evaluates
   gsap.set(targets, { opacity: 0, y: options.distance ?? 20 });
 
   ScrollTrigger.batch(selector, {
@@ -84,7 +84,7 @@ export function revealCards(
 }
 
 /**
- * pipelineScrubIndicator — adds a Signal-hued progress bar that fills
+ * pipelineScrubIndicator. adds a Signal-hued progress bar that fills
  * horizontally as the user scrubs through a pinned ScrollTrigger
  * animation. Returns a cleanup function.
  *

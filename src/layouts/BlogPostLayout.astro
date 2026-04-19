@@ -14,7 +14,7 @@ interface Props {
 
 const { title, description, category, date, readTime, heroImage, heroAlt } = Astro.props;
 
-// All blog posts — source of truth for "Related posts" at the bottom.
+// All blog posts. source of truth for "Related posts" at the bottom.
 // Kept inline here since the blog is small; move to a content collection
 // if it grows past ~20 posts.
 const allPosts = [
@@ -92,7 +92,7 @@ const relatedPosts = [...sameCategory, ...otherPosts].slice(0, 2);
         </div>
       </div>
 
-      <!-- Related posts — zero-cost CRO lift over exiting at the single CTA -->
+      <!-- Related posts. zero-cost CRO lift over exiting at the single CTA -->
       {relatedPosts.length > 0 && (
         <aside class="mt-16 pt-12" style="border-top: 1px solid var(--hairline);">
           <span class="kicker">Keep reading</span>
@@ -163,7 +163,7 @@ const relatedPosts = [...sameCategory, ...otherPosts].slice(0, 2);
     background: var(--deep-space);
   }
 
-  /* Typographic prose — editorial treatment */
+  /* Typographic prose. editorial treatment */
   .blog-prose {
     color: var(--text-secondary);
     font-size: 16.5px;

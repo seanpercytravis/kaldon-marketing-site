@@ -4,7 +4,7 @@ import PageHero from '../components/ui/PageHero.astro';
 import Button from '../components/ui/Button.astro';
 import LinkArrow from '../components/ui/LinkArrow.astro';
 
-// Pricing tiers — annual default, monthly toggle swaps display values
+// Pricing tiers. annual default, monthly toggle swaps display values
 const tiers = [
   {
     name: 'Free',
@@ -185,7 +185,7 @@ const faqs = [
   },
   {
     q: 'Is my data secure?',
-    a: 'Yes. Data is encrypted with AES-256-GCM at rest and TLS 1.2+ in transit. Billing is handled by Stripe, so we never store card data. We do not share your data with third parties — your analyses, brands, and content are yours.',
+    a: 'Yes. Data is encrypted with AES-256-GCM at rest and TLS 1.2+ in transit. Billing is handled by Stripe, so we never store card data. We do not share your data with third parties. Your analyses, brands, and content are yours.',
   },
 ];
 
@@ -220,14 +220,14 @@ function renderCell(val: string | boolean): string {
     return '<svg class="w-4 h-4 mx-auto" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 L8 14.5 L16 6" stroke="#F5F5F7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>';
   }
   if (val === false) {
-    return '<span class="cell-muted" aria-hidden="true">—</span><span class="sr-only">Not included</span>';
+    return '<span class="cell-muted" aria-hidden="true">. </span><span class="sr-only">Not included</span>';
   }
   return `<span>${val}</span>`;
 }
 ---
 
 <BaseLayout
-  title="Kaldon Pricing — Plans for Every Stage of Your eCommerce Journey"
+  title="Kaldon Pricing. Plans for Every Stage of Your eCommerce Journey"
   description="Simple, transparent pricing. Start free with 2 analyses. Growth from $119/mo. Pro from $239/mo. Scale from $399/mo. Enterprise $1,499/mo."
   structuredData={structuredData}
 >
@@ -246,7 +246,7 @@ function renderCell(val: string | boolean): string {
     </p>
   </PageHero>
 
-  <!-- Billing toggle — defaults to monthly so the prices people see on
+  <!-- Billing toggle. defaults to monthly so the prices people see on
        first load match what they'll be charged month-to-month. -->
   <section class="pb-6" style="background: var(--void);">
     <div class="container-custom flex items-center justify-center gap-3">
@@ -310,12 +310,12 @@ function renderCell(val: string | boolean): string {
         ))}
       </div>
       <p class="text-center text-small mt-8" style="color: var(--ghost);">
-        Need just one report? <span style="color: var(--chalk); font-weight: 500;">Single Analysis — $39.99 one-time</span>, no subscription required.
+        Need just one report? <span style="color: var(--chalk); font-weight: 500;">Single Analysis. $39.99 one-time</span>, no subscription required.
       </p>
     </div>
   </section>
 
-  <!-- Enterprise "why $1,499" explainer — justify the top tier -->
+  <!-- Enterprise "why $1,499" explainer. justify the top tier -->
   <section class="section-spacing" style="background: var(--void);">
     <div class="container-custom max-w-4xl">
       <div class="enterprise-math">
@@ -512,7 +512,7 @@ function renderCell(val: string | boolean): string {
       </p>
       <div class="mt-8">
         <Button variant="primary" size="large" href="https://kaldon.io/signup" data-event="pricing_final_cta">
-          Start Free — 2 Analyses Included
+          Start Free, 2 Analyses Included
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"/>
           </svg>
@@ -524,7 +524,7 @@ function renderCell(val: string | boolean): string {
 
 <script is:inline>
   (function() {
-    // Billing toggle — defaults to MONTHLY (matches initial HTML state)
+    // Billing toggle. defaults to MONTHLY (matches initial HTML state)
     const toggle = document.getElementById('pricing-toggle');
     const dot = document.getElementById('pricing-toggle-dot');
     const monthlyLabel = document.getElementById('billing-monthly');
@@ -552,7 +552,7 @@ function renderCell(val: string | boolean): string {
 </script>
 
 <style>
-  /* Pricing tier cards — match homepage PricingTeaser pattern */
+  /* Pricing tier cards. match homepage PricingTeaser pattern */
   .tier {
     background: var(--deep-space);
     border: 1px solid var(--hairline);
@@ -584,7 +584,7 @@ function renderCell(val: string | boolean): string {
   }
   .tier-highlight .tier-amount { color: var(--gold); }
 
-  /* Tier annual note — only shown when monthly toggle active */
+  /* Tier annual note. only shown when monthly toggle active */
   .tier-annual-note {
     margin-top: 6px;
     font-family: var(--font-mono);
@@ -653,7 +653,7 @@ function renderCell(val: string | boolean): string {
     letter-spacing: -0.005em;
   }
 
-  /* DIY anchor — oversized typographic moment for the DIY cost */
+  /* DIY anchor. oversized typographic moment for the DIY cost */
   .diy-anchor {
     text-align: center;
     margin-bottom: 40px;

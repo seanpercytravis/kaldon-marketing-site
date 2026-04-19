@@ -11,7 +11,7 @@ import LinkArrow from '../ui/LinkArrow.astro';
     style="background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 24px 24px; background-position: center top; -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 95%); mask-image: linear-gradient(to bottom, black 40%, transparent 95%);"
     aria-hidden="true"
   ></div>
-  <!-- Grain overlay — chroma-neutral material depth -->
+  <!-- Grain overlay. chroma-neutral material depth -->
   <div class="grain-overlay" aria-hidden="true" style="opacity: 0.35;"></div>
 
   <div class="container-custom relative z-10 pt-20 md:pt-28 pb-20 md:pb-32">
@@ -26,7 +26,7 @@ import LinkArrow from '../ui/LinkArrow.astro';
           <span class="hero-h1-line-2">that nobody's making yet.</span>
         </h1>
         <p class="mt-6 text-body-lg" style="color: var(--ghost); line-height: 1.5; max-width: 540px;">
-          Kaldon reads <span style="color: var(--chalk); font-weight: 500;">billions of market signals</span> to surface unmet demand, validates a unique value proposition your product can own, verifies a supplier who can actually manufacture it, builds the brand, generates the content, deploys the store, and scales the ads. <span style="color: var(--gold); font-weight: 500;">From market gap to shipped business</span> — one continuous platform.
+          Kaldon reads <span style="color: var(--chalk); font-weight: 500;">billions of market signals</span> to surface unmet demand, validates a unique value proposition your product can own, verifies a supplier who can actually manufacture it, builds the brand, generates the content, deploys the store, and scales the ads. <span style="color: var(--gold); font-weight: 500;">From market gap to shipped business.</span> One continuous platform.
         </p>
 
         <div class="hero-cta-row mt-8 flex flex-col sm:flex-row gap-3 sm:items-center">
@@ -36,7 +36,7 @@ import LinkArrow from '../ui/LinkArrow.astro';
             href="https://kaldon.io/signup"
             data-event="hero_cta_click"
           >
-            Start Free — 2 Analyses Included
+            Start Free, 2 Analyses Included
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"/>
             </svg>
@@ -86,7 +86,7 @@ import LinkArrow from '../ui/LinkArrow.astro';
 
 <script>
   import { revealHero } from '../../scripts/motion';
-  // Fire on DOMContentLoaded — the section is above the fold, so we want
+  // Fire on DOMContentLoaded. the section is above the fold, so we want
   // the entrance to begin as soon as the DOM is ready, not wait for load.
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => revealHero('.hero'));

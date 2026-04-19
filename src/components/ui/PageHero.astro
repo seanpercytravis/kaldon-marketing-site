@@ -1,5 +1,5 @@
 ---
-// PageHero.astro — shared internal-page hero. Dot-lattice background +
+// PageHero.astro. shared internal-page hero. Dot-lattice background +
 // grain overlay for material depth, mono kicker, Satoshi H1, narrow Ghost
 // subhead. Optional stats prop renders a 3-tile StatTile band below.
 import StatTile from './StatTile.astro';
@@ -32,13 +32,13 @@ const {
 ---
 
 <section class={`relative overflow-hidden ${className}`.trim()} style="background: var(--void);">
-  <!-- Dot lattice — fades into Void -->
+  <!-- Dot lattice. fades into Void -->
   <div
     class="absolute inset-0 pointer-events-none"
     style="background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 24px 24px; background-position: center top; -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 100%); mask-image: linear-gradient(to bottom, black 20%, transparent 100%);"
     aria-hidden="true"
   ></div>
-  <!-- Grain overlay — material depth -->
+  <!-- Grain overlay. material depth -->
   <div class="grain-overlay" aria-hidden="true" style="opacity: 0.3;"></div>
 
   <div class="container-custom relative z-10 pt-20 md:pt-28 pb-14 md:pb-20">

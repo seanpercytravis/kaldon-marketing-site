@@ -47,7 +47,7 @@ const faqs = [
 
 function renderCell(val: string): string {
   if (val === 'yes') return '<svg class="w-4 h-4 mx-auto" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 L8 14.5 L16 6" stroke="#F5F5F7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>';
-  if (val === 'no') return '<span style="color: var(--text-quaternary); font-size: 16px;" aria-hidden="true">—</span><span class="sr-only">Not included</span>';
+  if (val === 'no') return '<span style="color: var(--text-quaternary); font-size: 16px;" aria-hidden="true">. </span><span class="sr-only">Not included</span>';
   return `<span style="font-family: var(--font-mono); font-size: 12px; color: var(--gold);">${val}</span>`;
 }
 ---
@@ -192,7 +192,7 @@ function renderCell(val: string): string {
       </p>
       <div class="mt-8">
         <Button variant="primary" size="large" href="https://kaldon.io/signup" data-event="compare_platforms_cta">
-          Start Free — 2 Analyses Included
+          Start Free, 2 Analyses Included
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"/>
           </svg>

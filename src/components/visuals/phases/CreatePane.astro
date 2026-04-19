@@ -1,5 +1,5 @@
 ---
-// CreatePane.astro — Phase 3 graphic: content calendar + scheduling.
+// CreatePane.astro. Phase 3 graphic: content calendar + scheduling.
 // 4-week mini calendar with per-day post indicators, platform badges,
 // and a queue preview. Same 3D isometric chrome as the other panes.
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
 }
 const { variant = 'hero' } = Astro.props;
 
-// 28-cell mini month — each cell gets 0-3 scheduled posts. Deterministic
+// 28-cell mini month. each cell gets 0-3 scheduled posts. Deterministic
 // pattern so the visual reads as "full month planned", not random.
 const cells: Array<{ posts: Array<'ig' | 'x' | 'li' | 'fb' | 'pin'> }> = [
   { posts: [] }, { posts: ['ig'] }, { posts: ['x'] }, { posts: [] }, { posts: ['ig', 'fb'] }, { posts: [] }, { posts: ['pin'] },

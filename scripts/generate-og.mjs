@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// generate-og.mjs — renders per-page OG images to public/images/og/
+// generate-og.mjs. renders per-page OG images to public/images/og/
 // Runs as a prebuild step. Uses Satori (HTML/JSX → SVG) + Resvg (SVG → PNG).
 // Fonts are the actual self-hosted woff2 files from public/fonts/ so OG
 // images match on-site typography.
@@ -13,14 +13,14 @@ import { Resvg } from '@resvg/resvg-js';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
 
-// Pages — slug is the output filename; the URL path is derived from slug.
+// Pages. slug is the output filename; the URL path is derived from slug.
 const pages = [
   { slug: 'home', kicker: 'AI-Powered Product Creation Platform', title: 'Products the market is demanding that nobody\'s making yet.' },
   { slug: 'pricing', kicker: 'Pricing', title: 'Premium intelligence. Accessible pricing.' },
   { slug: 'features', kicker: 'Features', title: 'Everything you need to create new products from market demand.' },
   { slug: 'how-it-works', kicker: 'How It Works', title: 'From market gap to shipped product. Five phases.' },
   { slug: 'about', kicker: 'About', title: 'Built by sellers who were tired of cloning what\'s already selling.' },
-  { slug: 'demo', kicker: 'Demo', title: 'Watch Kaldon create a new product — end to end.' },
+  { slug: 'demo', kicker: 'Demo', title: 'Watch Kaldon create a new product. end to end.' },
   { slug: 'blog', kicker: 'Blog', title: 'eCommerce intelligence, unpacked.' },
   { slug: 'who-its-for', kicker: "Who It's For", title: 'Three profiles. One creation pipeline.' },
   { slug: 'use-cases-new-sellers', kicker: 'For New Sellers', title: 'From market gap to your first product.' },
@@ -39,7 +39,7 @@ const satoshiMediumPath = join(root, 'public/fonts/satoshi/Satoshi-Medium.woff2'
 const interVariablePath = join(root, 'public/fonts/inter/inter-variable-latin.woff2');
 const jbMonoPath = join(root, 'public/fonts/jetbrains-mono/jetbrains-mono-variable-latin.woff2');
 
-// Satori needs ttf/otf — it doesn't speak woff2 natively. Convert on the
+// Satori needs ttf/otf. it doesn't speak woff2 natively. Convert on the
 // fly via wawoff2's transform if available; otherwise Satori will error.
 // Simpler: bundle TTF copies alongside woff2. Since we don't have TTFs in
 // repo, we'll use generic fallback fonts (the visual output is close
@@ -49,7 +49,7 @@ const jbMonoPath = join(root, 'public/fonts/jetbrains-mono/jetbrains-mono-variab
 // needs decompression first. We ship with base64-embedded TTF fallbacks.
 //
 // Pragmatic approach: download Satoshi and Inter as TTF once into
-// scripts/fonts/ (not committed — gitignored) and use those. If they're
+// scripts/fonts/ (not committed. gitignored) and use those. If they're
 // missing, skip the generation with a warning.
 
 const fontsDir = join(root, 'scripts', 'fonts');
@@ -72,7 +72,7 @@ const fonts = [
   { name: 'JetBrains Mono', data: readFileSync(jbMonoTTF), weight: 400, style: 'normal' },
 ];
 
-// Template — Void background, dot lattice, big kicker + title, brand mark.
+// Template. Void background, dot lattice, big kicker + title, brand mark.
 function template({ kicker, title }) {
   return {
     type: 'div',

@@ -1,26 +1,31 @@
 ---
-// CreatePane.astro. Phase 3 graphic: content calendar + scheduling.
-// 4-week mini calendar with per-day post indicators, platform badges,
-// and a queue preview. Same 3D isometric chrome as the other panes.
+// CreatePane.astro. Phase 3 graphic: content calendar + live post mockups.
+// A compact week strip hints at the 28-post month, while three realistic
+// social post mockups (IG Reel, TikTok, LinkedIn) make the "content creation"
+// promise visible at a glance. Same 3D isometric chrome as the other panes.
 interface Props {
   variant?: 'hero' | 'inline';
 }
 const { variant = 'hero' } = Astro.props;
 
-// 28-cell mini month. each cell gets 0-3 scheduled posts. Deterministic
-// pattern so the visual reads as "full month planned", not random.
-const cells: Array<{ posts: Array<'ig' | 'x' | 'li' | 'fb' | 'pin'> }> = [
-  { posts: [] }, { posts: ['ig'] }, { posts: ['x'] }, { posts: [] }, { posts: ['ig', 'fb'] }, { posts: [] }, { posts: ['pin'] },
-  { posts: ['li'] }, { posts: ['ig', 'x'] }, { posts: [] }, { posts: ['fb'] }, { posts: ['ig'] }, { posts: [] }, { posts: ['x', 'pin'] },
-  { posts: [] }, { posts: ['ig'] }, { posts: ['li'] }, { posts: ['x'] }, { posts: [] }, { posts: ['ig', 'fb', 'pin'] }, { posts: [] },
-  { posts: ['x'] }, { posts: [] }, { posts: ['ig'] }, { posts: ['li', 'fb'] }, { posts: [] }, { posts: ['x'] }, { posts: ['ig'] },
+// 7-cell week strip. Deterministic pattern so visual reads as "full week planned".
+const weekCells: Array<{ day: string; posts: Array<'ig' | 'x' | 'li' | 'fb' | 'pin' | 'tt'> }> = [
+  { day: 'M', posts: ['ig', 'fb'] },
+  { day: 'T', posts: ['tt'] },
+  { day: 'W', posts: ['ig', 'li', 'x'] },
+  { day: 'T', posts: ['pin'] },
+  { day: 'F', posts: ['ig', 'tt'] },
+  { day: 'S', posts: ['x'] },
+  { day: 'S', posts: ['fb', 'li'] },
 ];
+
 const platformColors: Record<string, string> = {
   ig: '#00D4FF',
   x: '#FFB800',
   li: '#00D4FF',
   fb: '#FFB800',
   pin: '#00D4FF',
+  tt: '#FFB800',
 };
 ---
 
@@ -32,7 +37,7 @@ const platformColors: Record<string, string> = {
         <span class="pane-sep">›</span>
         <span class="pane-path">Create</span>
         <span class="pane-sep">›</span>
-        <span class="pane-current">Calendar · Apr</span>
+        <span class="pane-current">Content · Apr</span>
       </div>
       <div class="pane-status">
         <span class="pulse-dot"></span>
@@ -41,57 +46,91 @@ const platformColors: Record<string, string> = {
     </div>
 
     <div class="pane-body">
-      <!-- Hero stat: post count -->
+      <!-- Hero stat: post count + platforms -->
       <div class="content-hero">
         <div>
           <span class="create-kicker">Scheduled this month</span>
           <div class="create-hero-line">
             <span class="create-hero-num">28</span>
-            <span class="create-hero-sub">posts · 5 platforms</span>
+            <span class="create-hero-sub">posts · 6 platforms</span>
           </div>
         </div>
         <div class="platform-legend">
           <span class="legend-item"><span class="legend-dot" style="background: #00D4FF;"></span>IG</span>
-          <span class="legend-item"><span class="legend-dot" style="background: #FFB800;"></span>FB</span>
-          <span class="legend-item"><span class="legend-dot" style="background: #00D4FF;"></span>LI</span>
-          <span class="legend-item"><span class="legend-dot" style="background: #FFB800;"></span>X</span>
-          <span class="legend-item"><span class="legend-dot" style="background: #00D4FF;"></span>Pin</span>
+          <span class="legend-item"><span class="legend-dot" style="background: #FFB800;"></span>TikTok</span>
+          <span class="legend-item"><span class="legend-dot" style="background: #00D4FF;"></span>LinkedIn</span>
+          <span class="legend-item"><span class="legend-dot" style="background: #FFB800;"></span>X · Pin · FB</span>
         </div>
       </div>
 
-      <!-- 4-week calendar grid -->
-      <div class="calendar">
-        <div class="cal-header">
-          {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((d) => (
-            <span class="cal-day-label">{d}</span>
-          ))}
-        </div>
-        <div class="cal-grid">
-          {cells.map((cell, i) => (
-            <div class={`cal-cell ${cell.posts.length > 0 ? 'has-posts' : ''}`}>
-              <span class="cal-date">{i + 1}</span>
-              {cell.posts.length > 0 && (
-                <div class="cal-dots">
-                  {cell.posts.map((p) => (
-                    <span class="cal-dot" style={`background: ${platformColors[p]};`}></span>
-                  ))}
-                </div>
-              )}
+      <!-- Week strip -->
+      <div class="week-strip">
+        <span class="week-strip-kicker">This week</span>
+        <div class="week-grid">
+          {weekCells.map((cell) => (
+            <div class={`week-cell ${cell.posts.length > 0 ? 'has-posts' : ''}`}>
+              <span class="week-day">{cell.day}</span>
+              <div class="week-dots">
+                {cell.posts.map((p) => (
+                  <span class="week-dot" style={`background: ${platformColors[p]};`}></span>
+                ))}
+              </div>
             </div>
           ))}
         </div>
       </div>
 
-      <!-- Next-post preview -->
-      <div class="next-post">
-        <div class="next-post-meta">
-          <span class="next-post-kicker">Next post</span>
-          <span class="next-post-when">in 4h 23m</span>
+      <!-- Post mockups row: IG Reel, TikTok, LinkedIn -->
+      <div class="posts-row">
+        <!-- IG Reel (vertical) -->
+        <div class="post-card post-ig">
+          <div class="post-thumb">
+            <div class="post-thumb-img post-thumb-ig"></div>
+            <span class="post-play" aria-hidden="true">▶</span>
+            <span class="post-badge post-badge-ig">Reel</span>
+          </div>
+          <p class="post-caption">Why 78% of buyers filter by $25–35…</p>
+          <div class="post-meta">
+            <span class="post-meta-dot" style="background: #00D4FF;"></span>
+            <span class="post-meta-text">Instagram · 9:00 AM</span>
+          </div>
         </div>
-        <p class="next-post-title">Why most hydration brands ignore the last 20% of capacity…</p>
-        <div class="next-post-tags">
-          <span class="post-tag">IG · Reel</span>
-          <span class="post-tag">Generated from Vet Mode findings</span>
+
+        <!-- TikTok (vertical) -->
+        <div class="post-card post-tt">
+          <div class="post-thumb">
+            <div class="post-thumb-img post-thumb-tt"></div>
+            <span class="post-play" aria-hidden="true">▶</span>
+            <span class="post-badge post-badge-tt">0:23</span>
+          </div>
+          <p class="post-caption">POV: you found the gap before…</p>
+          <div class="post-meta">
+            <span class="post-meta-dot" style="background: #FFB800;"></span>
+            <span class="post-meta-text">TikTok · 6:00 PM</span>
+          </div>
+        </div>
+
+        <!-- LinkedIn (article) -->
+        <div class="post-card post-li">
+          <div class="post-thumb post-thumb-article">
+            <div class="post-article-header">
+              <span class="post-avatar"></span>
+              <div class="post-article-meta">
+                <span class="post-article-name">Ironfield</span>
+                <span class="post-article-sub">2h · Article</span>
+              </div>
+            </div>
+            <div class="post-article-body">
+              <span class="post-article-line w-90"></span>
+              <span class="post-article-line w-70"></span>
+              <span class="post-article-line w-80"></span>
+            </div>
+          </div>
+          <p class="post-caption">The 14% pricing gap nobody is pricing to…</p>
+          <div class="post-meta">
+            <span class="post-meta-dot" style="background: #00D4FF;"></span>
+            <span class="post-meta-text">LinkedIn · Tue 8 AM</span>
+          </div>
         </div>
       </div>
     </div>
@@ -177,10 +216,10 @@ const platformColors: Record<string, string> = {
   .pane-status .pulse-dot { width: 7px; height: 7px; }
 
   .pane-body {
-    padding: 20px 22px 24px;
+    padding: 18px 20px 22px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 14px;
   }
 
   .create-kicker {
@@ -204,7 +243,7 @@ const platformColors: Record<string, string> = {
   .create-hero-num {
     font-family: var(--font-display);
     font-weight: 500;
-    font-size: 48px;
+    font-size: 42px;
     line-height: 1;
     letter-spacing: -0.035em;
     color: var(--chalk);
@@ -231,96 +270,195 @@ const platformColors: Record<string, string> = {
   }
   .legend-dot { width: 6px; height: 6px; border-radius: 999px; }
 
-  /* Calendar */
-  .calendar {
-    padding-top: 12px;
+  /* Week strip */
+  .week-strip {
+    padding-top: 10px;
     border-top: 1px solid var(--hairline);
   }
-  .cal-header {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 3px;
-    margin-bottom: 4px;
-  }
-  .cal-day-label {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    color: var(--ghost);
-    text-align: center;
-    letter-spacing: 0.05em;
-  }
-  .cal-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 3px;
-  }
-  .cal-cell {
-    aspect-ratio: 1;
-    border-radius: 4px;
-    background: var(--void);
-    border: 1px solid var(--hairline);
-    padding: 3px 4px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 22px;
-  }
-  .cal-cell.has-posts { border-color: rgba(255,184,0,0.15); background: rgba(255,184,0,0.03); }
-  .cal-date { font-family: var(--font-mono); font-size: 8px; color: var(--ghost); }
-  .cal-cell.has-posts .cal-date { color: var(--chalk); }
-  .cal-dots { display: flex; gap: 2px; }
-  .cal-dot { width: 3px; height: 3px; border-radius: 999px; }
-
-  /* Next post */
-  .next-post {
-    padding: 14px 16px;
-    background: var(--void);
-    border: 1px solid var(--hairline);
-    border-left: 2px solid var(--gold);
-    border-radius: 6px;
-  }
-  .next-post-meta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 8px;
-  }
-  .next-post-kicker {
+  .week-strip-kicker {
+    display: block;
     font-family: var(--font-mono);
     font-size: 9px;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--gold);
+    letter-spacing: 0.1em;
+    color: var(--ghost);
     font-weight: 500;
+    margin-bottom: 6px;
   }
-  .next-post-when {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--chalk);
-    font-weight: 500;
+  .week-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
   }
-  .next-post-title {
-    font-family: var(--font-display);
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--chalk);
-    line-height: 1.4;
-    letter-spacing: -0.01em;
-  }
-  .next-post-tags {
+  .week-cell {
+    padding: 5px 4px;
+    border-radius: 4px;
+    background: var(--void);
+    border: 1px solid var(--hairline);
     display: flex;
-    gap: 6px;
-    margin-top: 8px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    min-height: 32px;
   }
-  .post-tag {
+  .week-cell.has-posts {
+    border-color: rgba(255,184,0,0.2);
+    background: rgba(255,184,0,0.04);
+  }
+  .week-day {
     font-family: var(--font-mono);
     font-size: 9px;
     color: var(--ghost);
-    padding: 2px 6px;
-    border-radius: 3px;
-    background: rgba(255,255,255,0.03);
+    font-weight: 500;
   }
+  .week-cell.has-posts .week-day { color: var(--chalk); }
+  .week-dots { display: flex; gap: 2px; }
+  .week-dot { width: 4px; height: 4px; border-radius: 999px; }
+
+  /* Post mockup row */
+  .posts-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .post-card {
+    padding: 8px;
+    background: var(--void);
+    border: 1px solid var(--hairline);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    overflow: hidden;
+  }
+  .post-ig { border-left: 2px solid #00D4FF; }
+  .post-tt { border-left: 2px solid #FFB800; }
+  .post-li { border-left: 2px solid #00D4FF; }
+
+  .post-thumb {
+    position: relative;
+    aspect-ratio: 9 / 12;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--deep-space);
+  }
+  .post-thumb-article { aspect-ratio: 9 / 12; padding: 8px; background: var(--deep-space); border: 1px solid var(--hairline); }
+
+  .post-thumb-img {
+    position: absolute;
+    inset: 0;
+  }
+  .post-thumb-ig {
+    background:
+      radial-gradient(ellipse at 30% 40%, rgba(0, 212, 255, 0.28), transparent 50%),
+      radial-gradient(ellipse at 70% 75%, rgba(255, 184, 0, 0.18), transparent 50%),
+      linear-gradient(135deg, #1a1a2e 0%, #12121a 100%);
+  }
+  .post-thumb-tt {
+    background:
+      radial-gradient(circle at 50% 35%, rgba(255, 184, 0, 0.32), transparent 45%),
+      radial-gradient(circle at 25% 75%, rgba(0, 212, 255, 0.2), transparent 45%),
+      linear-gradient(170deg, #1f1a14 0%, #12121a 100%);
+  }
+
+  .post-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    color: #0a0a0f;
+    font-size: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 2px;
+  }
+  .post-badge {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-family: var(--font-mono);
+    font-size: 7px;
+    font-weight: 600;
+    padding: 2px 5px;
+    border-radius: 3px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .post-badge-ig { background: rgba(0, 212, 255, 0.2); color: #00D4FF; }
+  .post-badge-tt { background: rgba(255, 184, 0, 0.2); color: #FFB800; }
+
+  /* LinkedIn article mockup */
+  .post-article-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+  .post-avatar {
+    width: 16px;
+    height: 16px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #00D4FF, #FFB800);
+    flex-shrink: 0;
+  }
+  .post-article-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .post-article-name {
+    font-family: var(--font-display);
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--chalk);
+    letter-spacing: -0.01em;
+  }
+  .post-article-sub {
+    font-family: var(--font-mono);
+    font-size: 7px;
+    color: var(--ghost);
+  }
+  .post-article-body {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-top: 6px;
+  }
+  .post-article-line {
+    height: 4px;
+    background: rgba(245, 245, 247, 0.12);
+    border-radius: 2px;
+  }
+  .post-article-line.w-90 { width: 90%; }
+  .post-article-line.w-80 { width: 80%; }
+  .post-article-line.w-70 { width: 70%; }
+
+  .post-caption {
+    font-family: var(--font-display);
+    font-size: 9px;
+    color: var(--chalk);
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+    font-weight: 500;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--font-mono);
+    font-size: 8px;
+    color: var(--ghost);
+  }
+  .post-meta-dot { width: 4px; height: 4px; border-radius: 999px; flex-shrink: 0; }
 
   @media (prefers-reduced-motion: reduce) {
     .pane-status .pulse-dot { animation: none; }

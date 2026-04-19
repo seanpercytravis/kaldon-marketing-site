@@ -1,24 +1,25 @@
 ---
-// LaunchPane.astro. Phase 4 graphic: store deployment.
-// Shows the domain + deployment checklist + live metrics.
+// LaunchPane.astro. Phase 4 graphic: live storefront mockup + deployment.
+// Shows a realistic browser frame with Ironfield's shipped DTC storefront
+// (hero, product grid, nav), alongside a compact deployment checklist that
+// signals every downstream system is live. Same 3D isometric chrome.
 interface Props {
   variant?: 'hero' | 'inline';
 }
 const { variant = 'hero' } = Astro.props;
 
 const deployments = [
-  { label: 'Storefront', status: 'live', detail: 'Cloudflare Workers · 2 regions' },
-  { label: 'Checkout', status: 'live', detail: 'Stripe · 3 payment methods' },
-  { label: 'Email', status: 'live', detail: '4 sequences · 12 templates' },
-  { label: 'SMS', status: 'live', detail: '3 automation flows' },
-  { label: 'Chatbot', status: 'live', detail: 'Trained on product data' },
-  { label: 'Blog', status: 'scheduled', detail: 'Next: "Ironfield · Cold brew"' },
-  { label: 'Ads', status: 'ready', detail: '12 creatives · awaiting budget' },
+  { label: 'Storefront', status: 'live' },
+  { label: 'Checkout', status: 'live' },
+  { label: 'Email + SMS', status: 'live' },
+  { label: 'Chatbot', status: 'live' },
+  { label: 'Blog', status: 'scheduled' },
+  { label: 'Ads', status: 'ready' },
 ];
 
 const statusLabels: Record<string, { text: string; color: string }> = {
   live: { text: 'LIVE', color: 'var(--signal)' },
-  scheduled: { text: 'SCHEDULED', color: 'var(--gold)' },
+  scheduled: { text: 'QUEUED', color: 'var(--gold)' },
   ready: { text: 'READY', color: 'var(--ghost)' },
 };
 ---
@@ -40,43 +41,80 @@ const statusLabels: Record<string, { text: string; color: string }> = {
     </div>
 
     <div class="pane-body">
-      <!-- Domain + hero status -->
-      <div class="launch-hero">
-        <div>
-          <span class="launch-kicker">Deployment status</span>
-          <div class="domain-row">
-            <span class="lock-icon" aria-hidden="true">⊙</span>
-            <span class="domain">ironfield.co</span>
-            <span class="domain-badge">SSL</span>
+      <!-- Storefront browser mockup -->
+      <div class="browser-frame">
+        <div class="browser-chrome">
+          <div class="browser-dots">
+            <span class="browser-dot"></span>
+            <span class="browser-dot"></span>
+            <span class="browser-dot"></span>
           </div>
-          <div class="launch-meta">
-            <span>Deployed 4m ago</span>
-            <span class="meta-sep">·</span>
-            <span>Cloudflare Workers</span>
+          <div class="browser-url">
+            <span class="browser-lock" aria-hidden="true">⊙</span>
+            <span class="browser-url-text">ironfield.co</span>
           </div>
+          <div class="browser-spacer"></div>
         </div>
-        <div class="uptime-tile">
-          <span class="uptime-num">100<span class="uptime-pct">%</span></span>
-          <span class="uptime-label">Uptime · 30d</span>
+        <div class="storefront">
+          <!-- Nav -->
+          <div class="store-nav">
+            <span class="store-logo">IRONFIELD</span>
+            <div class="store-nav-links">
+              <span>Shop</span>
+              <span>Story</span>
+              <span>Journal</span>
+            </div>
+            <span class="store-cart">Cart · 0</span>
+          </div>
+
+          <!-- Hero -->
+          <div class="store-hero">
+            <div class="store-hero-copy">
+              <span class="store-hero-kicker">Ceramic-lined hydration</span>
+              <p class="store-hero-title">Built for the next 20%.</p>
+              <span class="store-hero-cta">Shop the launch →</span>
+            </div>
+            <div class="store-hero-product">
+              <div class="store-product-img" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <!-- Product grid -->
+          <div class="store-grid">
+            <div class="store-tile">
+              <div class="store-tile-img store-tile-img-a"></div>
+              <span class="store-tile-name">Ironfield 32</span>
+              <span class="store-tile-price">$42</span>
+            </div>
+            <div class="store-tile">
+              <div class="store-tile-img store-tile-img-b"></div>
+              <span class="store-tile-name">Ironfield 24</span>
+              <span class="store-tile-price">$36</span>
+            </div>
+            <div class="store-tile">
+              <div class="store-tile-img store-tile-img-c"></div>
+              <span class="store-tile-name">Field Kit</span>
+              <span class="store-tile-price">$58</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Deployment checklist -->
-      <div class="deploy-list">
+      <!-- Compact deployment checklist -->
+      <div class="deploy-compact">
         {deployments.map((d) => (
-          <div class={`deploy-row ${d.status}`}>
-            <span class="deploy-check" aria-hidden="true">
+          <div class={`deploy-pill ${d.status}`}>
+            <span class="deploy-pill-check" aria-hidden="true">
               {d.status === 'live' ? (
-                <svg width="12" height="12" viewBox="0 0 20 20" fill="none"><path d="M4 10.5 L8 14.5 L16 6" stroke="#00D4FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                <svg width="10" height="10" viewBox="0 0 20 20" fill="none"><path d="M4 10.5 L8 14.5 L16 6" stroke="#00D4FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
               ) : d.status === 'scheduled' ? (
-                <svg width="12" height="12" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#FFB800" stroke-width="1.5" /><path d="M10 6 L10 10 L13 12" stroke="#FFB800" stroke-width="1.5" stroke-linecap="round" /></svg>
+                <svg width="10" height="10" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#FFB800" stroke-width="2" /><path d="M10 6 L10 10 L13 12" stroke="#FFB800" stroke-width="2" stroke-linecap="round" /></svg>
               ) : (
-                <svg width="12" height="12" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#8B8BA3" stroke-width="1.5" /></svg>
+                <svg width="10" height="10" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#8B8BA3" stroke-width="2" /></svg>
               )}
             </span>
-            <span class="deploy-label">{d.label}</span>
-            <span class="deploy-detail">{d.detail}</span>
-            <span class="deploy-status" style={`color: ${statusLabels[d.status].color};`}>{statusLabels[d.status].text}</span>
+            <span class="deploy-pill-label">{d.label}</span>
+            <span class="deploy-pill-status" style={`color: ${statusLabels[d.status].color};`}>{statusLabels[d.status].text}</span>
           </div>
         ))}
       </div>
@@ -164,124 +202,223 @@ const statusLabels: Record<string, { text: string; color: string }> = {
   .pane-status .pulse-dot { width: 7px; height: 7px; }
 
   .pane-body {
-    padding: 22px 24px 26px;
+    padding: 18px 20px 22px;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 14px;
   }
 
-  .launch-kicker {
-    display: block;
-    font-family: var(--font-mono);
-    font-size: 9px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--ghost);
-    font-weight: 500;
-    margin-bottom: 6px;
+  /* Browser frame + storefront */
+  .browser-frame {
+    border: 1px solid var(--hairline);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--void);
   }
-
-  .launch-hero {
+  .browser-chrome {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 16px;
-  }
-  .domain-row {
-    display: inline-flex;
     align-items: center;
-    gap: 8px;
-  }
-  .lock-icon {
-    font-size: 14px;
-    color: var(--signal);
-  }
-  .domain {
-    font-family: var(--font-mono);
-    font-size: 22px;
-    color: var(--chalk);
-    letter-spacing: -0.02em;
-  }
-  .domain-badge {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    letter-spacing: 0.08em;
-    color: var(--signal);
-    padding: 2px 6px;
-    border-radius: 3px;
-    background: rgba(0,212,255,0.08);
-    border: 1px solid rgba(0,212,255,0.2);
-    font-weight: 500;
-  }
-  .launch-meta {
-    margin-top: 8px;
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--ghost);
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
-  .meta-sep { color: rgba(139,139,163,0.4); }
-
-  .uptime-tile {
-    text-align: right;
-    border-left: 1px solid var(--hairline);
-    padding-left: 16px;
-  }
-  .uptime-num {
-    font-family: var(--font-mono);
-    font-weight: 400;
-    font-size: 32px;
-    line-height: 1;
-    letter-spacing: -0.03em;
-    color: var(--signal);
-    display: inline-block;
-  }
-  .uptime-pct { font-size: 16px; color: var(--ghost); }
-  .uptime-label {
-    display: block;
-    margin-top: 4px;
-    font-family: var(--font-mono);
-    font-size: 9px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ghost);
-  }
-
-  /* Deployment checklist */
-  .deploy-list {
-    padding-top: 14px;
-    border-top: 1px solid var(--hairline);
-    display: flex;
-    flex-direction: column;
-  }
-  .deploy-row {
-    display: grid;
-    grid-template-columns: 16px auto 1fr auto;
-    align-items: center;
-    gap: 12px;
-    padding: 8px 0;
+    gap: 10px;
+    padding: 8px 10px;
+    background: rgba(255,255,255,0.02);
     border-bottom: 1px solid var(--hairline);
   }
-  .deploy-row:last-child { border-bottom: none; }
-  .deploy-check { display: flex; align-items: center; }
-  .deploy-label {
-    font-family: var(--font-sans);
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--chalk);
+  .browser-dots { display: flex; gap: 5px; }
+  .browser-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: rgba(139, 139, 163, 0.3);
   }
-  .deploy-detail {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--ghost);
-    text-align: left;
-  }
-  .deploy-status {
+  .browser-url {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 3px 10px;
+    background: var(--deep-space);
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
     font-family: var(--font-mono);
     font-size: 9px;
+    color: var(--ghost);
+    max-width: 60%;
+    margin: 0 auto;
+  }
+  .browser-lock { color: var(--signal); font-size: 10px; }
+  .browser-url-text { color: var(--chalk); letter-spacing: -0.01em; }
+  .browser-spacer { width: 21px; }
+
+  .storefront {
+    background: #F5F5F0;
+    color: #14141a;
+    padding: 10px 12px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .store-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(20, 20, 26, 0.08);
+  }
+  .store-logo {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: #14141a;
+  }
+  .store-nav-links {
+    display: inline-flex;
+    gap: 10px;
+    font-family: var(--font-sans);
+    font-size: 8px;
+    color: rgba(20, 20, 26, 0.7);
+    letter-spacing: 0.01em;
+  }
+  .store-cart {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    color: rgba(20, 20, 26, 0.6);
+    letter-spacing: 0.02em;
+  }
+
+  .store-hero {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 8px;
+    padding: 10px;
+    background: linear-gradient(135deg, #1a1f2e 0%, #0a0f1a 100%);
+    border-radius: 5px;
+    color: #F5F5F0;
+    min-height: 80px;
+    align-items: center;
+  }
+  .store-hero-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .store-hero-kicker {
+    font-family: var(--font-mono);
+    font-size: 7px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #FFB800;
     font-weight: 500;
+  }
+  .store-hero-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #F5F5F0;
+    margin: 0;
+  }
+  .store-hero-cta {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    color: #00D4FF;
+    letter-spacing: 0.04em;
+    margin-top: 4px;
+  }
+  .store-hero-product {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .store-product-img {
+    width: 70%;
+    aspect-ratio: 1 / 1.4;
+    border-radius: 4px;
+    background:
+      radial-gradient(ellipse at 40% 30%, rgba(0, 212, 255, 0.32), transparent 55%),
+      radial-gradient(ellipse at 70% 70%, rgba(255, 184, 0, 0.22), transparent 55%),
+      linear-gradient(160deg, #2a3142 0%, #14141a 100%);
+    border: 1px solid rgba(245, 245, 240, 0.12);
+  }
+
+  .store-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+  .store-tile {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .store-tile-img {
+    aspect-ratio: 1;
+    border-radius: 3px;
+    border: 1px solid rgba(20, 20, 26, 0.08);
+  }
+  .store-tile-img-a {
+    background:
+      radial-gradient(circle at 50% 45%, rgba(0, 150, 200, 0.25), transparent 60%),
+      linear-gradient(135deg, #E8E5DD, #C9C3B6);
+  }
+  .store-tile-img-b {
+    background:
+      radial-gradient(circle at 50% 45%, rgba(200, 150, 80, 0.28), transparent 60%),
+      linear-gradient(135deg, #EBE5D7, #D4C8B0);
+  }
+  .store-tile-img-c {
+    background:
+      radial-gradient(circle at 50% 45%, rgba(60, 70, 90, 0.35), transparent 60%),
+      linear-gradient(135deg, #DDDBD4, #BAB4A8);
+  }
+  .store-tile-name {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 8px;
+    color: #14141a;
+    letter-spacing: -0.005em;
+  }
+  .store-tile-price {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    color: rgba(20, 20, 26, 0.65);
+  }
+
+  /* Compact checklist pills */
+  .deploy-compact {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    padding-top: 10px;
+    border-top: 1px solid var(--hairline);
+  }
+  .deploy-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 8px;
+    background: var(--void);
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+  }
+  .deploy-pill.live { border-color: rgba(0, 212, 255, 0.2); }
+  .deploy-pill.scheduled { border-color: rgba(255, 184, 0, 0.18); }
+  .deploy-pill-check { display: flex; }
+  .deploy-pill-label {
+    flex: 1;
+    font-family: var(--font-sans);
+    font-size: 10px;
+    color: var(--chalk);
+    font-weight: 500;
+  }
+  .deploy-pill-status {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    font-weight: 600;
     letter-spacing: 0.08em;
   }
 

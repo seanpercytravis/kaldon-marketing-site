@@ -2,30 +2,35 @@
 // ProblemSection.astro. the $10,000 problem, monochrome grid treatment.
 // Replaces the rainbow 6-color grid with single-hue typographic cards.
 
+// Premium-tier pricing. These are the plans a serious seller actually needs.
+// Jungle Scout Brand Owner ($129/mo) + Helium 10 Diamond ($279-299/mo) = $399+
+// Jasper Business + Copy.ai Team for real volume.
+// Canva Teams + Adobe CC + Midjourney Mega for professional visual output.
+// Shopify Advanced ($399/mo) + premium theme + apps ($100-400/mo).
 const tools = [
-  { name: 'Jungle Scout / Helium 10', role: 'Product research', cost: '$79–99/mo' },
-  { name: 'Canva Pro / Midjourney', role: 'Brand + content design', cost: '$20–50/mo' },
-  { name: 'Jasper / Copy.ai', role: 'AI content writing', cost: '$49–59/mo' },
-  { name: 'Later / Hootsuite', role: 'Social scheduling', cost: '$25–49/mo' },
-  { name: 'Shopify + theme + apps', role: 'Store + website dev', cost: '$79–250/mo' },
-  { name: 'Meta / TikTok / Google Ads', role: 'Ad management', cost: 'Your time' },
+  { name: 'Jungle Scout Brand Owner + Helium 10 Diamond', role: 'Premium product research', cost: '$149–399/mo' },
+  { name: 'ChatGPT Pro + Claude Max + Gemini Ultra', role: 'AI content generation', cost: '$60–200/mo' },
+  { name: 'Jasper Business + Copy.ai Team', role: 'AI copywriting at scale', cost: '$149–349/mo' },
+  { name: 'Canva Teams + Adobe CC + Midjourney Mega', role: 'Visual + brand design', cost: '$100–300/mo' },
+  { name: 'Later Agency + Hootsuite Business', role: 'Social scheduling + analytics', cost: '$99–249/mo' },
+  { name: 'Shopify Advanced + premium theme + apps', role: 'Store + website dev', cost: '$499–799/mo' },
 ];
 const services = [
-  { name: 'Freelance product photography', role: 'Listing + site imagery', cost: '$200–500 / shoot' },
-  { name: 'Marketplace listing agency', role: 'Amazon + Walmart SEO', cost: '$500 / listing' },
-  { name: 'Copywriter / brand strategist', role: 'Brand story + post copy', cost: '$500–2,000 / project' },
+  { name: 'Pro product + lifestyle photography', role: 'Studio + on-location shoots', cost: '$800–2,500 / shoot' },
+  { name: 'Amazon + Walmart listing agency', role: 'Premium SEO + A+ content', cost: '$800–2,000 / listing' },
+  { name: 'Brand identity + copy studio', role: 'Naming, story, positioning', cost: '$2,500–8,000 / project' },
 ];
 ---
 
 <section class="section-spacing" style="background: var(--void);">
   <div class="container-custom">
     <header class="max-w-prose mx-auto text-center mb-12 md:mb-16">
-      <span class="kicker">The $10,000 Problem</span>
+      <span class="kicker">The $50,000 Problem</span>
       <h2 class="font-display font-semibold text-chalk" style="font-weight: 600; font-size: clamp(32px, 4.5vw, 48px); line-height: 1.1; letter-spacing: -0.02em;">
-        Creating a new product shouldn't cost $10,000 before you ship one unit.
+        A premium DIY stack costs $15,000 to $50,000 a year. Before you ship one unit.
       </h2>
       <p class="mt-4 text-body-lg" style="color: var(--ghost); line-height: 1.5;">
-        Finding unmet demand, validating a UVP, sourcing a supplier, building a brand, designing a website, writing listings, shooting photos, creating social content, and launching ads means nine tools, six subscriptions, three freelance shoots per launch, and workflows that don't talk to each other.
+        Real sellers don't use the free tiers. Finding unmet demand takes Jungle Scout Brand Owner plus Helium 10 Diamond. AI content takes ChatGPT Pro, Claude Max, Jasper Business, Copy.ai Team. Visual content takes Canva Teams, Adobe CC, Midjourney Mega. Social takes Later Agency, Hootsuite Business. Store takes Shopify Advanced plus apps. And none of it talks to each other.
       </p>
     </header>
 
@@ -79,12 +84,12 @@ const services = [
 
     <div class="mt-16 md:mt-20 grid md:grid-cols-[1fr_auto_1fr] gap-8 md:gap-12 items-center max-w-4xl mx-auto">
       <div class="text-center md:text-right">
-        <span class="font-mono" style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ghost); font-weight: 500; display: block; margin-bottom: 12px;">DIY tool stack</span>
+        <span class="font-mono" style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ghost); font-weight: 500; display: block; margin-bottom: 12px;">DIY premium stack</span>
         <p class="font-mono" style="font-weight: 400; font-size: clamp(40px, 6vw, 64px); color: var(--text-secondary); letter-spacing: -0.04em; line-height: 0.95; text-decoration: line-through; text-decoration-color: rgba(139,139,163,0.35); text-decoration-thickness: 1.5px;">
-          $252–507<span style="font-size: 0.5em; letter-spacing: 0; text-decoration: none; color: var(--ghost);">/mo</span>
+          $1,056–2,296<span style="font-size: 0.5em; letter-spacing: 0; text-decoration: none; color: var(--ghost);">/mo</span>
         </p>
         <p class="font-mono" style="margin-top: 10px; font-size: 12px; color: var(--ghost); letter-spacing: 0.02em;">
-          + $1,200–3,000 per launch in services
+          + $4,100–12,500 per launch in services
         </p>
       </div>
       <div class="font-mono text-center" style="font-size: 14px; color: var(--ghost); letter-spacing: 0.04em;">
@@ -100,9 +105,17 @@ const services = [
         </p>
       </div>
     </div>
-    <p class="mt-8 text-center text-body" style="color: var(--ghost);">
-      Nine tools, six subscriptions, and every freelance service, replaced by one platform.
-    </p>
+
+    <!-- Savings anchor: headline number that drives the story home -->
+    <div class="savings-callout">
+      <span class="font-mono" style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); font-weight: 500; display: block; margin-bottom: 8px;">Year-one savings</span>
+      <p class="font-display" style="font-weight: 600; font-size: clamp(36px, 5vw, 56px); color: var(--chalk); letter-spacing: -0.03em; line-height: 1;">
+        $15,000 to $50,000+ saved.
+      </p>
+      <p class="mt-3 text-body" style="color: var(--ghost);">
+        Six premium subscriptions and every freelance service, replaced by one platform at <span style="color: var(--chalk); font-weight: 500;">$149 / mo</span>.
+      </p>
+    </div>
 
     <style>
       .stack-group-label {
@@ -121,6 +134,18 @@ const services = [
       }
       .stack-group-label:first-of-type {
         margin-top: 0;
+      }
+      .savings-callout {
+        margin-top: 40px;
+        padding: 32px 24px;
+        max-width: 720px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        background: var(--deep-space);
+        border: 1px solid rgba(255, 184, 0, 0.25);
+        border-radius: 12px;
+        box-shadow: 0 0 0 1px rgba(255, 184, 0, 0.05) inset, 0 20px 40px rgba(0, 0, 0, 0.3);
       }
     </style>
   </div>

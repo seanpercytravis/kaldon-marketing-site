@@ -421,6 +421,34 @@
     background: rgba(255, 255, 255, 0.06);
   }
 
+  /* Nav dropdown: keyboard- and mouse-accessible. Dropdown opens on
+     hover (pointer users), on click/Enter/Space (keyboard and touch),
+     and on focus-within (when the trigger is tabbed to). Escape closes
+     the menu and returns focus to the trigger. Arrow keys cycle items. */
+  .nav-dropdown {
+    position: relative;
+  }
+  .nav-dropdown-chevron {
+    transition: transform 160ms var(--ease-out-quad);
+  }
+  .nav-dropdown-panel {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition: opacity 150ms var(--ease-out-quad), visibility 150ms linear, transform 150ms var(--ease-out-quad);
+  }
+  .nav-dropdown:hover > .nav-dropdown-panel,
+  .nav-dropdown:focus-within > .nav-dropdown-panel,
+  .nav-dropdown[data-open="true"] > .nav-dropdown-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .nav-dropdown:hover > .nav-dropdown-trigger .nav-dropdown-chevron,
+  .nav-dropdown[data-open="true"] > .nav-dropdown-trigger .nav-dropdown-chevron {
+    transform: rotate(180deg);
+  }
+
   /* Nav dropdown item. two-line treatment: title + sub-description.
      Gives the Compare / Use Cases menus Stripe-level navigation gravity
      without ballooning into a full mega-menu. */
@@ -430,8 +458,13 @@
     border-radius: 6px;
     transition: background 160ms var(--ease-out-quad);
   }
-  .nav-drop-item:hover {
+  .nav-drop-item:hover,
+  .nav-drop-item:focus-visible {
     background: rgba(255, 255, 255, 0.05);
+    outline: none;
+  }
+  .nav-drop-item:focus-visible {
+    box-shadow: 0 0 0 2px var(--signal);
   }
   .nav-drop-item .nav-drop-title {
     display: block;

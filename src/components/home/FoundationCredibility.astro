@@ -1,0 +1,115 @@
+---
+// FoundationCredibility.astro. Social-proof-by-track-record strip for a new
+// platform where traditional social proof (logos, reviews) is thin.
+// Kaldon is new software, but the 5-phase process behind it has been used
+// to launch 150+ brands. This strip makes that track record load-bearing:
+// the platform is new, the playbook is not.
+//
+// Placement: directly below ConnectedPlatforms on the home page, so a
+// visitor scrolling past the integration logos immediately sees the
+// credibility context for the claims that follow.
+---
+
+<section class="foundation-strip">
+  <div class="container-custom">
+    <div class="foundation-inner">
+      <!-- Track record stat -->
+      <div class="foundation-stat">
+        <span class="foundation-num">150+</span>
+        <div class="foundation-stat-meta">
+          <span class="foundation-stat-label">Brands launched</span>
+          <span class="foundation-stat-sub">using this 5-phase process</span>
+        </div>
+      </div>
+
+      <!-- Separator -->
+      <div class="foundation-sep" aria-hidden="true"></div>
+
+      <!-- Context copy -->
+      <div class="foundation-context">
+        <span class="kicker" style="color: var(--gold); margin-bottom: 8px; display: inline-block;">Process. Proven. Productized.</span>
+        <p class="foundation-body">
+          Kaldon is new software. The playbook isn't. The same 5-phase process has taken sellers from zero to 6-, 7-, and 8-figure annual revenues. Now it's an AI platform, at <span class="foundation-emph">1 / 100th the cost and 1 / 50th the time</span>.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .foundation-strip {
+    padding: 36px 0;
+    background: var(--void);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .foundation-inner {
+    display: grid;
+    grid-template-columns: auto 1px 1fr;
+    gap: 32px;
+    align-items: center;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  @media (max-width: 767px) {
+    .foundation-inner {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .foundation-sep { display: none; }
+  }
+
+  .foundation-stat {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .foundation-num {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(48px, 6vw, 68px);
+    line-height: 0.9;
+    letter-spacing: -0.035em;
+    color: var(--gold);
+  }
+  .foundation-stat-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .foundation-stat-label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--chalk);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .foundation-stat-sub {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    color: var(--ghost);
+    text-transform: uppercase;
+  }
+
+  .foundation-sep {
+    width: 1px;
+    height: 72px;
+    background: var(--hairline);
+  }
+
+  .foundation-context {
+    max-width: 540px;
+  }
+  .foundation-body {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ghost);
+    letter-spacing: -0.005em;
+    margin: 0;
+  }
+  .foundation-emph {
+    color: var(--chalk);
+    font-weight: 500;
+  }
+</style>

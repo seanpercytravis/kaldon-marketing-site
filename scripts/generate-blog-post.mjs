@@ -50,21 +50,170 @@ function listExistingSlugs() {
     .map((f) => f.replace(/\.md$/, ''));
 }
 
-function selectNextPost() {
+async function selectNextPost() {
   if (FORCE_SLUG) {
     const match = ALL_POSTS.find((p) => p.slug === FORCE_SLUG);
     if (!match) throw new Error(`No post in schedule with slug "${FORCE_SLUG}"`);
     return match;
   }
   const existing = new Set(listExistingSlugs());
-  // Walk the schedule in order (pillar first, then cluster weeks 1..16)
+  // Phase 1: walk the fixed topical map (pillar + 16 cluster posts). This
+  // establishes topical authority for the core unmet-demand narrative before
+  // the blog starts reacting to trending news.
   const ordered = [...ALL_POSTS].sort((a, b) => (a.publishWeek ?? 0) - (b.publishWeek ?? 0));
-  const next = ordered.find((p) => !existing.has(p.slug));
-  if (!next) {
-    console.log('All scheduled posts have been generated. Nothing to do.');
-    process.exit(0);
+  const nextScheduled = ordered.find((p) => !existing.has(p.slug));
+  if (nextScheduled) return nextScheduled;
+
+  // Phase 2 (forever): all scheduled posts are done. Generate a brand-new
+  // trend-driven post. The generator asks Perplexity what's currently
+  // under-covered in the eCommerce intelligence space, then uses Claude to
+  // refine it into a ClusterPost spec compatible with the rest of the
+  // pipeline (internal links to pillar + cross-links to 2-3 related posts).
+  console.log(`Fixed schedule exhausted (${existing.size} posts already live). Entering trend-driven mode.`);
+  return await generateTrendingTopic([...existing]);
+}
+
+// ─── Trend-driven topic generator (evergreen mode) ──────────────────────
+//
+// When the fixed topical map is exhausted, the weekly cron switches to this
+// mode: discover an under-covered angle that's trending right now in the
+// eCommerce intelligence space, and spec out a new cluster post for it.
+//
+// Guarantees the topic:
+//   1. Has search demand (current buyer questions, real discussion volume)
+//   2. Is NOT already covered by an existing post in the collection
+//   3. Reinforces Kaldon's positioning (unmet demand, not cloning)
+//   4. Has a unique slug that won't collide with prior posts
+
+async function generateTrendingTopic(existingSlugs) {
+  if (!process.env.ANTHROPIC_API_KEY) {
+    throw new Error('ANTHROPIC_API_KEY required for trend-driven topic generation.');
   }
-  return next;
+
+  // Step 1: Perplexity scan for what's currently trending + under-covered
+  let trendContext = '';
+  let trendCitations = [];
+  if (process.env.PERPLEXITY_API_KEY) {
+    const client = new OpenAI({
+      apiKey: process.env.PERPLEXITY_API_KEY,
+      baseURL: 'https://api.perplexity.ai',
+      timeout: 90_000,
+    });
+    const calls = [
+      {
+        name: 'trending_questions',
+        prompt: `What are the top questions eCommerce sellers, DTC brand operators, and Amazon FBA sellers are asking right now (last 14 days) that are NOT well-answered by existing blog content? Focus on: unmet demand discovery, product research tools, AI content creation for brands, listing optimization, supplier verification, brand building, Walmart/TikTok Shop expansion, ad economics, and emerging platform trends. For each: the question as real sellers phrase it, the platform where it's being asked (Reddit / X / TikTok / forums), and why existing articles miss the mark. Output 8-12 items.`,
+      },
+      {
+        name: 'emerging_topics',
+        prompt: `What are emerging topics, product launches, regulatory changes, or technology shifts in the eCommerce and DTC space that happened in the last 30 days and have NOT yet been extensively covered by content marketers? Include: new AI tools, platform policy changes (Amazon, Walmart, TikTok Shop, Meta, Shopify), supply chain shifts, tariff news, marketplace algorithm changes, creator economy developments, new ad formats. Output 8-12 items with source URLs and dates.`,
+      },
+    ];
+    try {
+      const results = await Promise.all(
+        calls.map(async (call) => {
+          const res = await client.chat.completions.create({
+            model: 'sonar-pro',
+            max_tokens: 4000,
+            temperature: 0.3,
+            search_recency_filter: 'month',
+            web_search_options: { search_context_size: 'high' },
+            messages: [
+              { role: 'system', content: 'You are a market intelligence agent. Return specific, sourced items with URLs and dates. Prioritize the last 30 days.' },
+              { role: 'user', content: call.prompt },
+            ],
+          });
+          return { name: call.name, text: res.choices?.[0]?.message?.content ?? '', citations: res.citations ?? [] };
+        })
+      );
+      trendContext = results
+        .filter((r) => r.text.trim().length > 0)
+        .map((r) => `--- ${r.name.toUpperCase()} ---\n${r.text}`)
+        .join('\n\n');
+      trendCitations = [...new Set(results.flatMap((r) => r.citations))].slice(0, 10);
+    } catch (err) {
+      console.warn(`Trend scan failed: ${err.message}. Falling back to Claude-only topic invention.`);
+    }
+  }
+
+  // Step 2: Claude picks the best under-covered topic and specs it out.
+  const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+  const existingList = existingSlugs.map((s) => `- ${s}`).join('\n');
+
+  const response = await client.messages.create({
+    model: 'claude-sonnet-4-5-20250929',
+    max_tokens: 2000,
+    messages: [{
+      role: 'user',
+      content: `You are the content strategist for Kaldon, an AI-powered eCommerce intelligence platform. Kaldon's positioning is: discover UNMET DEMAND (products the market is paying for but nobody is shipping yet) vs clone bestsellers. Core differentiator vs Jungle Scout, Helium 10, Shopify.
+
+EXISTING BLOG POSTS (do not duplicate angles from these):
+${existingList}
+
+${trendContext ? `CURRENT TRENDING QUESTIONS + EMERGING TOPICS IN ECOMMERCE (fresh from the last 30 days):\n\n${trendContext}\n\n` : ''}
+
+Pick ONE topic to write next. Criteria:
+1. Trending or evergreen-with-current-relevance (not stale)
+2. NOT duplicating an existing post angle
+3. Reinforces Kaldon's unmet-demand positioning naturally (without being forced)
+4. Has clear search intent from real sellers
+5. Word count target 1400-1800 (cluster range)
+
+Respond with ONLY this JSON (no markdown fencing):
+
+{
+  "title": "Full article title",
+  "slug": "url-safe-slug-no-collision",
+  "targetKeyword": "primary SEO keyword",
+  "searchIntent": "informational" | "commercial" | "transactional",
+  "wordCountTarget": 1500,
+  "angle": "The specific angle and hook in 1-2 sentences. What makes this article different from what's already out there.",
+  "contentType": "how_to" | "comparison" | "benefits" | "buying_guide" | "case_study" | "news_trends" | "myths" | "ingredient_deep_dive",
+  "whyNow": "Why this topic matters THIS week specifically. Reference 1-2 of the trending signals above if they apply.",
+  "crossLinksTo": ["slug1", "slug2", "slug3"]
+}
+
+"crossLinksTo" must be 3 slugs from the EXISTING POSTS list above (the ones most topically related to this new article). Do not invent slugs.`,
+    }],
+  });
+
+  const text = response.content
+    .filter((b) => b.type === 'text')
+    .map((b) => b.text)
+    .join('')
+    .replace(/```json|```/g, '')
+    .trim();
+
+  const topic = JSON.parse(text);
+
+  // Normalize to the shape the rest of the pipeline expects (ClusterPost-ish)
+  const normalized = {
+    title: topic.title,
+    slug: topic.slug.toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/--+/g, '-').replace(/^-|-$/g, ''),
+    targetKeyword: topic.targetKeyword,
+    searchIntent: topic.searchIntent ?? 'informational',
+    wordCountTarget: topic.wordCountTarget ?? 1500,
+    angle: topic.angle,
+    contentType: topic.contentType ?? 'how_to',
+    publishWeek: 999, // sentinel: "trend-driven, not part of fixed schedule"
+    whyNow: topic.whyNow,
+    _crossLinks: topic.crossLinksTo ?? [],
+    _topicCitations: trendCitations,
+  };
+
+  console.log(`Trend-driven topic selected: "${normalized.title}"`);
+  console.log(`  slug: ${normalized.slug}`);
+  console.log(`  why now: ${normalized.whyNow}`);
+  console.log(`  cross-links: ${normalized._crossLinks.join(', ')}`);
+
+  // Collision guard — if the model produced a slug that already exists, add a dated suffix
+  if (existingSlugs.includes(normalized.slug)) {
+    const dateSuffix = new Date().toISOString().slice(0, 10);
+    normalized.slug = `${normalized.slug}-${dateSuffix}`;
+    console.log(`  slug collision detected → suffixed: ${normalized.slug}`);
+  }
+
+  return normalized;
 }
 
 // ─── Trend refresh via Perplexity ────────────────────────────────────────
@@ -153,9 +302,14 @@ async function writeArticle(post, trendBlock, existingSlugs) {
   }
 
   const isPillar = post.slug === PILLAR.slug;
+  const isTrendDriven = post.publishWeek === 999;
+  // Trend-driven posts carry their own cross-link list (`_crossLinks`) picked
+  // by the topic generator. Scheduled posts use the static link map.
   const linkedSlugs = isPillar
     ? INTERNAL_LINK_MAP.pillarToCluster[PILLAR.slug] ?? []
-    : [PILLAR.slug, ...(INTERNAL_LINK_MAP.clusterToCluster[post.slug] ?? [])];
+    : isTrendDriven
+      ? [PILLAR.slug, ...(post._crossLinks ?? [])]
+      : [PILLAR.slug, ...(INTERNAL_LINK_MAP.clusterToCluster[post.slug] ?? [])];
 
   const prompt = `You are writing a blog article for Kaldon, an AI-powered eCommerce intelligence platform. This article must be:
 1. GEO-optimized — structured so AI search engines can extract and cite it
@@ -308,8 +462,8 @@ function categoryFromContentType(ct) {
 // ─── Main ────────────────────────────────────────────────────────────────
 
 async function main() {
-  const post = selectNextPost();
-  console.log(`Next post in schedule: "${post.title}" (slug: ${post.slug})`);
+  const post = await selectNextPost();
+  console.log(`Next post: "${post.title}" (slug: ${post.slug}${post.publishWeek === 999 ? ', TREND-DRIVEN' : post.publishWeek !== undefined ? `, week ${post.publishWeek}` : ''})`);
 
   const existingSlugs = listExistingSlugs();
   console.log(`${existingSlugs.length} posts already published in content collection.`);
@@ -321,8 +475,13 @@ async function main() {
     console.log('Trend refresh returned empty. Article will be evergreen.');
   }
 
+  // Trend-driven topics already carry topic-discovery citations; merge them
+  // with the article's trend-refresh citations so the full research trail
+  // appears in the final frontmatter.
+  const allCitations = [...new Set([...(post._topicCitations ?? []), ...citations])].slice(0, 15);
+
   const article = await writeArticle(post, trendBlock, existingSlugs);
-  const md = buildMarkdown(post, article, citations);
+  const md = buildMarkdown(post, article, allCitations);
 
   if (DRY_RUN) {
     console.log('\n--- DRY RUN OUTPUT ---\n');

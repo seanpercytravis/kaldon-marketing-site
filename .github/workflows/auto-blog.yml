@@ -1,10 +1,13 @@
-name: Weekly Blog Post
+name: Auto Blog Post (Mon + Thu)
 
 on:
-  # Every Monday at 09:00 America/Los_Angeles == 16:00 UTC (PST) / 17:00 UTC (PDT).
-  # Pick 16:00 UTC year-round; keeps the post dropping at the start of the work week.
+  # Twice per week, Monday + Thursday at 16:00 UTC (09:00 PT / 12:00 ET).
+  # SEO sweet spot: enough freshness to signal an active site without
+  # diluting topical authority. Evergreen after the fixed topical map is
+  # exhausted. The generator switches to trend-driven mode and never runs
+  # out of topics.
   schedule:
-    - cron: '0 16 * * 1'
+    - cron: '0 16 * * 1,4'
   # Manual trigger with optional slug override for force-generation
   workflow_dispatch:
     inputs:

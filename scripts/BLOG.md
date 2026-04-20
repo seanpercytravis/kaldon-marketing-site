@@ -2,7 +2,9 @@
 
 ## What this is
 
-A weekly auto-publisher for the Kaldon marketing blog. It pulls current market trends from Perplexity, writes a GEO-optimized article with Claude Sonnet, and commits a markdown file to `src/content/blog/` that Astro renders at `/blog/{slug}`.
+A **twice-weekly evergreen auto-publisher** (Mondays + Thursdays) for the Kaldon marketing blog. It pulls current market trends from Perplexity, writes a GEO-optimized article with Claude Sonnet, and commits a markdown file to `src/content/blog/` that Astro renders at `/blog/{slug}`.
+
+**Never runs out of topics:** phase 1 works through a fixed 17-post topical map (1 pillar + 16 clusters) to establish authority. Phase 2 (forever after) switches to trend-driven mode where Perplexity surfaces under-covered angles in the eCommerce space and Claude specs out a fresh post.
 
 ## Architecture
 
@@ -12,7 +14,7 @@ scripts/generate-blog-post.mjs    → the generator (trend refresh + article wri
 src/content.config.ts             → Astro content collection schema
 src/content/blog/*.md             → generated posts (auto-committed)
 src/pages/blog/[slug].astro       → dynamic route for generated posts
-.github/workflows/weekly-blog.yml → weekly cron (Mondays 16:00 UTC)
+.github/workflows/auto-blog.yml   → 2x/week cron (Mon + Thu 16:00 UTC)
 ```
 
 Hand-written posts at `src/pages/blog/*.astro` still take precedence (Astro's route resolution). The two coexist. Blog index at `/blog` lists both.
@@ -43,18 +45,31 @@ Required repo secrets:
 - `CLOUDFLARE_API_TOKEN` — deploys after successful commit (optional; otherwise post is committed to main and deployed on next manual deploy)
 
 The workflow runs:
-- **Scheduled**: every Monday at 16:00 UTC (09:00 PT / 12:00 ET)
+- **Scheduled**: every Monday AND Thursday at 16:00 UTC (09:00 PT / 12:00 ET)
 - **Manual**: via `workflow_dispatch` on the Actions tab, with optional `slug` and `dry_run` inputs
+- **Never expires**: once the fixed 17-post topical map is complete, every future run generates a fresh trend-driven post. The schedule runs forever.
 
 ## Order of operations per run
 
-1. Select the next un-published post in the schedule (pillar first, then clusters by `publishWeek`)
+**Phase 1 (scheduled mode, first 17 posts):**
+1. Select the next un-published post from `ALL_POSTS` by `publishWeek` order
 2. Pull current trends via 3 parallel Perplexity calls (trending angles, recent news, community signal)
 3. Generate the article with Claude Sonnet, weaving trend signals into the lede + one body section + optionally a FAQ answer
 4. Write `src/content/blog/{slug}.md` with frontmatter (title, tldr, category, tags, citations, lastUpdated, etc.)
 5. Run `pnpm run build` to verify the site still builds with the new post
 6. Commit the new `.md` file to main
 7. Deploy to Cloudflare Workers
+
+**Phase 2 (evergreen mode, after the fixed schedule is done):**
+1. Run 2 parallel Perplexity scans:
+   a. Trending questions real sellers are asking that existing articles don't answer (last 14 days)
+   b. Emerging topics: platform policy changes, new AI tools, ad format shifts, regulatory news (last 30 days)
+2. Claude picks the single highest-value under-covered angle and specs out a ClusterPost:
+   - Title, slug, target keyword, search intent, word count
+   - Angle + why-now rationale
+   - Cross-links to 3 most-related existing posts (pulled from the live content collection)
+3. Slug collision guard: if the generated slug already exists, suffix with date
+4. Proceed through steps 2-7 of phase 1 with the fresh topic spec
 
 ## Topical map
 
@@ -76,8 +91,9 @@ Each cluster has a fixed `targetKeyword`, `angle`, `searchIntent`, `wordCountTar
 
 ## Cost per post
 
-- Perplexity: 3 sonar-pro calls × ~2K tokens each = ~$0.06
-- Claude Sonnet 4.5: one 12-16K token generation = ~$0.20 to $0.35
-- Total: under $0.50 per article
+- Perplexity trend refresh: 3 sonar-pro calls × ~2K tokens each = ~$0.06
+- Claude Sonnet 4.5 article gen: one 12-16K token generation = ~$0.20 to $0.35
+- Evergreen mode only: 2 extra Perplexity scans + small Claude topic-spec call = ~$0.05
+- Total: ~$0.50 per scheduled article, ~$0.55 per evergreen article
 
-16 clusters + 1 pillar = 17 articles = ~$8 total for a full cycle of auto-published content.
+At 2× per week (104 posts / year): ~$55/year in API cost for an always-fresh blog.

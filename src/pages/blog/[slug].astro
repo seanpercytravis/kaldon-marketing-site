@@ -1,0 +1,55 @@
+---
+// Dynamic route for auto-generated blog posts (content collection).
+// Hand-written posts at /blog/[slug].astro take precedence by Astro's route
+// resolution order, so existing /blog/amazon-to-dtc-... etc continue to work.
+import { getCollection, getEntry, render } from 'astro:content';
+import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.data.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+// Format author and computed fields for BlogPostLayout props
+const lastUpdatedLabel = post.data.lastUpdated
+  ? new Date(post.data.lastUpdated).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+  : post.data.date;
+---
+
+<BlogPostLayout
+  title={post.data.title}
+  description={post.data.metaDescription}
+  excerpt={post.data.excerpt}
+  category={post.data.category}
+  date={post.data.date}
+  lastUpdated={lastUpdatedLabel}
+  readTime={post.data.readTime}
+  tldr={post.data.tldr}
+  tags={post.data.tags}
+  image={post.data.image}
+>
+  <Content />
+
+  {post.data.citations && post.data.citations.length > 0 && (
+    <section class="mt-12 pt-8" style="border-top: 1px solid var(--hairline);">
+      <h3 class="font-display font-semibold" style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ghost); font-weight: 500; margin-bottom: 16px;">
+        Sources &amp; citations
+      </h3>
+      <ul style="font-size: 13px; color: var(--ghost); line-height: 1.8;">
+        {post.data.citations.map((url: string) => (
+          <li>
+            <a href={url} target="_blank" rel="nofollow noopener" style="color: var(--ghost); word-break: break-all;">
+              {url}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+</BlogPostLayout>

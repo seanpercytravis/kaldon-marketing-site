@@ -8,11 +8,32 @@ interface Props {
   category: string;
   date: string;
   readTime: string;
-  heroImage: string;
-  heroAlt: string;
+  heroImage?: string;
+  heroAlt?: string;
+  /** Auto-generated posts pass these additional fields. Hand-written posts omit. */
+  excerpt?: string;
+  lastUpdated?: string;
+  tldr?: string;
+  tags?: string[];
+  image?: string; // alt alias used by content-collection frontmatter
 }
 
-const { title, description, category, date, readTime, heroImage, heroAlt } = Astro.props;
+const {
+  title,
+  description,
+  category,
+  date,
+  readTime,
+  heroImage,
+  heroAlt,
+  lastUpdated,
+  tldr,
+  tags = [],
+  image,
+} = Astro.props;
+
+const resolvedHero = heroImage ?? image ?? null;
+const resolvedHeroAlt = heroAlt ?? title;
 
 // All blog posts. source of truth for "Related posts" at the bottom.
 // Kept inline here since the blog is small; move to a content collection
@@ -67,15 +88,39 @@ const relatedPosts = [...sameCategory, ...otherPosts].slice(0, 2);
         </div>
       </div>
 
-      <!-- Hero Image -->
-      <div class="blog-hero mt-10">
-        <img src={heroImage} alt={heroAlt} width="1124" height="712" class="w-full h-auto" loading="eager" fetchpriority="high" decoding="async" />
-      </div>
+      <!-- Hero Image (optional; auto-generated posts may not have one) -->
+      {resolvedHero && (
+        <div class="blog-hero mt-10">
+          <img src={resolvedHero} alt={resolvedHeroAlt} width="1124" height="712" class="w-full h-auto" loading="eager" fetchpriority="high" decoding="async" />
+        </div>
+      )}
+
+      <!-- TLDR summary (auto-generated posts only) -->
+      {tldr && (
+        <div class="blog-tldr mt-10">
+          <span class="kicker" style="color: var(--gold); margin-bottom: 8px; display: inline-block;">TLDR</span>
+          <p style="font-family: var(--font-display); font-weight: 500; font-size: 17px; line-height: 1.5; color: var(--chalk); letter-spacing: -0.01em; margin: 0;">{tldr}</p>
+        </div>
+      )}
 
       <!-- Content -->
       <div class="blog-prose mt-10">
         <slot />
       </div>
+
+      {tags.length > 0 && (
+        <div class="blog-tags mt-8">
+          {tags.map((t: string) => (
+            <span class="blog-tag">{t}</span>
+          ))}
+        </div>
+      )}
+
+      {lastUpdated && (
+        <p class="font-mono mt-6" style="font-size: 11px; color: var(--ghost); letter-spacing: 0.04em;">
+          Last updated {lastUpdated}
+        </p>
+      )}
 
       <!-- CTA -->
       <div class="mt-16 rounded-card p-8 text-center" style="background: var(--deep-space); border: 1px solid var(--hairline);">
@@ -132,8 +177,11 @@ const relatedPosts = [...sameCategory, ...otherPosts].slice(0, 2);
       name: 'Kaldon',
       logo: { '@type': 'ImageObject', url: 'https://kaldon.io/images/logos/kaldon-logo-dark.svg' },
     },
-    datePublished: '2026-03-18',
-    image: heroImage.startsWith('http') ? heroImage : `https://kaldon.io${heroImage}`,
+    datePublished: lastUpdated ?? '2026-03-18',
+    dateModified: lastUpdated ?? '2026-03-18',
+    image: resolvedHero
+      ? (resolvedHero.startsWith('http') ? resolvedHero : `https://kaldon.io${resolvedHero}`)
+      : 'https://kaldon.io/images/og/blog.png',
     mainEntityOfPage: Astro.url.href,
   })} />
 </BaseLayout>
@@ -160,6 +208,33 @@ const relatedPosts = [...sameCategory, ...otherPosts].slice(0, 2);
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid var(--hairline);
+    background: var(--deep-space);
+  }
+
+  /* TLDR callout for auto-generated posts (GEO-first formatting) */
+  .blog-tldr {
+    padding: 24px 28px;
+    background: var(--deep-space);
+    border: 1px solid var(--hairline);
+    border-left: 2px solid var(--gold);
+    border-radius: 10px;
+  }
+
+  /* Tag chips at the end of auto-generated posts */
+  .blog-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .blog-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ghost);
+    padding: 4px 10px;
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
     background: var(--deep-space);
   }
 

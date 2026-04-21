@@ -153,6 +153,11 @@ const breadcrumbList = segments.length > 0
   <!-- Plausible Analytics -->
   <script defer data-domain="kaldon.io" src="https://plausible.io/js/script.js"></script>
 
+  <!-- Rewardful affiliate tracking. Fires on every page load so referral
+       attribution is captured before any CTA click that crosses to app.kaldon.io. -->
+  <script is:inline>(function(w,r){w._rwq=r;w[r]=w[r]||function(){(w[r].q=w[r].q||[]).push(arguments)}})(window,'rewardful');</script>
+  <script is:inline async src="https://r.wdfl.co/rw.js" data-rewardful="e619ee"></script>
+
   <!-- Structured Data -->
   {structuredData.map((data) => (
     <script type="application/ld+json" set:html={JSON.stringify(data)} />

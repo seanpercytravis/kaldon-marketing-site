@@ -1,5 +1,6 @@
 ---
 import Button from '../ui/Button.astro';
+import { appUrl } from '../../lib/urls';
 ---
 
 <section class="section-spacing-lg relative overflow-hidden" style="background: var(--void);">
@@ -21,7 +22,7 @@ import Button from '../ui/Button.astro';
         Turn billions of demand signals into a new product, a brand, a live store, and a growth engine. Replace <span style="color: var(--chalk); font-weight: 500;">$18,000 to $50,000+</span> in tools, consultants, and agencies with one intelligent platform. Your first two analyses are free.
       </p>
       <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-        <Button variant="primary" size="large" href="https://kaldon.io/signup" data-event="final_cta_click">
+        <Button variant="primary" size="large" href={appUrl('/signup', 'home_final_cta')} data-event="final_cta_click">
           Start Free, 2 Analyses Included
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"/>

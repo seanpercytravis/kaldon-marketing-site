@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/ui/PageHero.astro';
 import Button from '../components/ui/Button.astro';
 import LinkArrow from '../components/ui/LinkArrow.astro';
+import { appUrl } from '../lib/urls';
 
 // Pricing tiers. annual default, monthly toggle swaps display values
 const tiers = [
@@ -13,7 +14,7 @@ const tiers = [
     period: 'forever',
     sub: 'See what Kaldon can do',
     cta: 'Start Free',
-    href: 'https://kaldon.io/signup?plan=free',
+    href: appUrl('/signup', 'pricing_tier_free', { extra: { plan: 'free' } }),
     features: [
       '2 analyses total',
       'Standard analysis depth',
@@ -28,7 +29,7 @@ const tiers = [
     period: '/ mo',
     sub: 'For sellers getting serious',
     cta: 'Start Growth',
-    href: 'https://kaldon.io/signup?plan=growth',
+    href: appUrl('/signup', 'pricing_tier_growth', { extra: { plan: 'growth' } }),
     features: [
       '5 analyses / month',
       'AI Coaching',
@@ -45,7 +46,7 @@ const tiers = [
     period: '/ mo',
     sub: 'For sellers ready to scale',
     cta: 'Go Pro',
-    href: 'https://kaldon.io/signup?plan=pro',
+    href: appUrl('/signup', 'pricing_tier_pro', { extra: { plan: 'pro' } }),
     highlight: true,
     features: [
       '15 analyses / month',
@@ -63,7 +64,7 @@ const tiers = [
     period: '/ mo',
     sub: 'For power sellers and teams',
     cta: 'Start Scale',
-    href: 'https://kaldon.io/signup?plan=scale',
+    href: appUrl('/signup', 'pricing_tier_scale', { extra: { plan: 'scale' } }),
     features: [
       '100 analyses / month',
       'Everything in Pro',
@@ -512,7 +513,7 @@ function renderCell(val: string | boolean): string {
         Start free. 2 analyses. No credit card. See for yourself.
       </p>
       <div class="mt-8">
-        <Button variant="primary" size="large" href="https://kaldon.io/signup" data-event="pricing_final_cta">
+        <Button variant="primary" size="large" href={appUrl('/signup', 'pricing_final_cta')} data-event="pricing_final_cta">
           Start Free, 2 Analyses Included
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"/>

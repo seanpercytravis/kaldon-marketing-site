@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/ui/PageHero.astro';
 import Button from '../components/ui/Button.astro';
+import { appUrl } from '../lib/urls';
 import ModeBadges from '../components/ui/ModeBadges.astro';
 import DiscoverPane from '../components/visuals/phases/DiscoverPane.astro';
 import BuildPane from '../components/visuals/phases/BuildPane.astro';
@@ -257,7 +258,7 @@ const phases = [
         Your first 2 analyses are free. No credit card required.
       </p>
       <div class="mt-8">
-        <Button variant="primary" size="large" href="https://kaldon.io/signup" data-event="features_final_cta">
+        <Button variant="primary" size="large" href={appUrl('/signup', 'features_final_cta')} data-event="features_final_cta">
           Start Free, 2 Analyses Included
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"/>

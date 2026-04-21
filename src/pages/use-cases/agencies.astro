@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/ui/PageHero.astro';
 import Button from '../../components/ui/Button.astro';
 import UseCaseCrossLinks from '../../components/ui/UseCaseCrossLinks.astro';
+import { appUrl } from '../../lib/urls';
 
 const painPoints = [
   { title: 'Too much manual work per client', desc: 'Every client launch requires the same 40+ hours of work: product research, brand identity, content creation, store setup. You are the bottleneck. You cannot take on more clients without burning out or hiring more people.' },
@@ -42,7 +43,7 @@ const economics = [
     ]}
   >
     <div class="mt-8 flex justify-center">
-      <Button variant="primary" size="large" href="https://kaldon.io/signup" data-event="agencies_hero_cta">
+      <Button variant="primary" size="large" href={appUrl('/signup', 'use_cases_agencies_hero')} data-event="agencies_hero_cta">
         Start Free, 2 Analyses Included
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"/>
@@ -126,7 +127,7 @@ const economics = [
         Start free. See what agency-grade output at AI speed feels like.
       </p>
       <div class="mt-8">
-        <Button variant="primary" size="large" href="https://kaldon.io/signup" data-event="agencies_final_cta">
+        <Button variant="primary" size="large" href={appUrl('/signup', 'use_cases_agencies_final')} data-event="agencies_final_cta">
           Start Free, 2 Analyses Included
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"/>

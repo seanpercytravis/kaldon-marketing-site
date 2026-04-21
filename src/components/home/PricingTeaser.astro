@@ -2,6 +2,7 @@
 // PricingTeaser.astro. 5-tier teaser (Free / Growth / Pro / Scale / Enterprise)
 // Matches V3 spec prices: 0 / 149 / 299 / 499 / 1,499.
 // Pro gets the gradient-border treatment. Gold CTA on Pro, secondary elsewhere.
+import { appUrl } from '../../lib/urls';
 
 const tiers = [
   { name: 'Free',       slug: 'free',       price: '$0',     period: 'forever', sub: '2 analyses',            cta: 'Start Free' },
@@ -35,7 +36,9 @@ const tiers = [
           </p>
           <p class="tier-sub">{t.sub}</p>
           <a
-            href={t.name === 'Enterprise' ? 'mailto:beta@kaldon.io?subject=Enterprise%20plan%20inquiry' : `https://kaldon.io/signup?plan=${t.slug}`}
+            href={t.name === 'Enterprise'
+              ? 'mailto:beta@kaldon.io?subject=Enterprise%20plan%20inquiry'
+              : appUrl('/signup', 'home_pricing_teaser', { extra: { plan: t.slug } })}
             class={t.highlight ? 'btn-primary w-full justify-center' : 'btn-secondary w-full justify-center'}
             style="margin-top: 20px; height: 40px; font-size: 14px;"
           >

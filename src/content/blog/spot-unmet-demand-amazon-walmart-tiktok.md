@@ -70,7 +70,7 @@ A brand launched a 55-decibel blender in March 2026 with "office-quiet" in the t
 
 The gap wasn't invisible. It was visible in the delta between search intent and available products.
 
-For a step-by-step framework on validating product specs before you order inventory, see our guide on [validating your UVP before buying inventory](/blog/validate-product-uvp-before-buying-inventory).
+For a step-by-step framework on validating product specs before you order inventory, see our guide on validating your UVP before buying inventory.
 
 ## Method 3: Social-momentum vs available-supply mismatch
 
@@ -93,7 +93,7 @@ A brand launched a silicone ice roller in February 2026. It reached 1,200 review
 
 Adobe reported a 1,950% year-over-year surge in retail chat traffic on Cyber Monday 2024, signaling that buyers increasingly expect instant answers to product questions. When social momentum builds but supply lags, that gap creates a short window for early movers.
 
-Our [72-hour case study](/blog/market-gap-to-live-store-72-hours-case-study) shows how one brand went from gap identification to live Shopify store in under three days using this exact signal.
+Our 72-hour case study shows how one brand went from gap identification to live Shopify store in under three days using this exact signal.
 
 ## How to combine all three methods
 
@@ -145,7 +145,7 @@ Kaldon Growth costs $149/month and covers all three methods, plus content genera
 Once you identify unmet demand, move fast:
 
 1. **Source samples.** Contact 3-5 manufacturers on Alibaba with your exact spec. Request samples within 7 days.
-2. **Validate the UVP.** Use the framework in our [UVP validation guide](/blog/validate-product-uvp-before-buying-inventory) to test messaging before you order inventory.
+2. **Validate the UVP.** Use the framework in our UVP validation guide to test messaging before you order inventory.
 3. **Launch lean.** Order 200-500 units for your first run. Test on Amazon and TikTok Shop simultaneously.
 4. **Track the gap.** If competitors launch similar products within 60 days, your window is closing. Scale or pivot.
 

@@ -197,7 +197,7 @@ For everyone else—new sellers launching their first product, existing Amazon b
 
 In March 2026, analysis of 680 million citations showed AI search traffic converts at 14.2%, versus 2.8% for Google (a 5.1x advantage). The same analysis found only 22% of marketers track AI visibility, even though 73% of B2B buyers use ChatGPT or Perplexity for research.
 
-AI engines cite sources they trust: authoritative, factual, and structured for extraction. Kaldon's content pipeline generates [GEO-optimized copy](/blog/ai-product-research-myths-debunked) by default. Every listing, blog post, and product description includes:
+AI engines cite sources they trust: authoritative, factual, and structured for extraction. Kaldon's content pipeline generates GEO-optimized copy by default. Every listing, blog post, and product description includes:
 
 - **Direct answers in the first 200 words**: AI engines extract summaries from the opening. Kaldon front-loads the value.
 - **Structured data**: FAQ schema, product schema, and review schema make it easy for engines to parse and cite.
@@ -225,7 +225,7 @@ Here is the full annual cost comparison:
 
 If you skip freelance services and run a leaner DIY stack (Helium 10 + ChatGPT + Canva + Shopify Basic), you still spend $3,000 to $4,000 per year. Kaldon saves $1,200 to $2,200 annually and eliminates the handoff friction.
 
-For the full math and alternative stack scenarios, see [DIY eCommerce tool stack cost breakdown](/blog/diy-ecommerce-tool-stack-cost-breakdown).
+For the full math and alternative stack scenarios, see DIY eCommerce tool stack cost breakdown.
 
 ## What 150+ brands say about switching
 
@@ -255,7 +255,7 @@ For 80% of sellers, the answer is Kaldon. For the other 20%, Kaldon plus one spe
 
 - **Try Kaldon**: [Start a free trial](https://kaldon.io/pricing) and run Discover on your first product idea.
 - **Read the unmet demand playbook**: [Find a winning eCommerce product using unmet demand](/blog/find-winning-ecommerce-product-unmet-demand-playbook).
-- **See the cost math**: [DIY eCommerce tool stack cost breakdown](/blog/diy-ecommerce-tool-stack-cost-breakdown).
+- **See the cost math**: DIY eCommerce tool stack cost breakdown.
 - **Learn multi-channel discovery**: [How to spot unmet demand on Amazon, Walmart, and TikTok](/blog/spot-unmet-demand-amazon-walmart-tiktok).
 
 The tool stack era is over. The unified pipeline era started in 2026. Kaldon is the platform.

@@ -305,11 +305,23 @@ async function writeArticle(post, trendBlock, existingSlugs) {
   const isTrendDriven = post.publishWeek === 999;
   // Trend-driven posts carry their own cross-link list (`_crossLinks`) picked
   // by the topic generator. Scheduled posts use the static link map.
-  const linkedSlugs = isPillar
+  //
+  // CRITICAL: only link to posts that have ACTUALLY been published. The static
+  // map (INTERNAL_LINK_MAP) references the full 17-post schedule, but posts
+  // later in the schedule don't exist yet at generation time. Linking to them
+  // creates 404s. Filter against existingSlugs so the article only hrefs
+  // posts that are live.
+  const existingSet = new Set(existingSlugs);
+  const candidateLinks = isPillar
     ? INTERNAL_LINK_MAP.pillarToCluster[PILLAR.slug] ?? []
     : isTrendDriven
       ? [PILLAR.slug, ...(post._crossLinks ?? [])]
       : [PILLAR.slug, ...(INTERNAL_LINK_MAP.clusterToCluster[post.slug] ?? [])];
+  // PILLAR.slug is a special case: the pillar is the current post being
+  // generated for the first run, so it's "in flight" rather than existing.
+  // Cluster posts always include the pillar slug since the pillar exists by
+  // the time any cluster is generated.
+  const linkedSlugs = candidateLinks.filter((slug) => existingSet.has(slug));
 
   const prompt = `You are writing a blog article for Kaldon, an AI-powered eCommerce intelligence platform. This article must be:
 1. GEO-optimized — structured so AI search engines can extract and cite it

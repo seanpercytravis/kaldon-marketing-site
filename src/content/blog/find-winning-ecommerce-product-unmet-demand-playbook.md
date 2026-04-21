@@ -78,7 +78,7 @@ If top listings have 40+ unanswered questions or repeated questions about compat
 
 If a product sells for $28 on Amazon and $48 on Walmart, Walmart buyers either do not know the Amazon price or prefer Walmart's return policy and delivery. Launch on Walmart first. Lower competition, higher tolerance for premium pricing.
 
-[Compare Walmart vs Amazon for new sellers](/blog/walmart-vs-amazon-new-sellers-2026).
+Compare Walmart vs Amazon for new sellers.
 
 **8. Seasonal search trends with no seasonal products**
 
@@ -99,7 +99,7 @@ Use Brand24 ($79/mo) or Talkwalker to track phrases like "looking for a [product
 - **Influencer hype without search volume.** A product mentioned by one influencer but with no sustained search interest is not demand.
 - **Patent listings without enforcement.** Many Amazon "patented" products have no real IP protection. But if the patent is recent and enforced, avoid.
 
-[See our myth-busting guide on AI product research](/blog/ai-product-research-myths-debunked).
+See our myth-busting guide on AI product research.
 
 ## How to validate a UVP before you spend
 
@@ -127,7 +127,7 @@ Use PickFu ($50 poll) or post in a subreddit, Facebook group, or Discord server.
 
 Do not skip this. A $200 test saves a $12,000 inventory mistake.
 
-[Read the full UVP validation framework](/blog/validate-product-uvp-before-buying-inventory).
+Read the full UVP validation framework.
 
 ## Supplier verification and why capability beats quotes
 
@@ -157,7 +157,7 @@ Negotiate a small first order. Most factories require 500 to 1,000 MOQ, but you 
 
 Amazon's 3.5% fulfillment fee increase rolled out April 17, 2026, adding an average of $0.17 per unit for standard FBA. This makes low-MOQ testing even more critical. Do not over-inventory.
 
-[Use our supplier verification checklist](/blog/supplier-verification-checklist-china-usa).
+Use our supplier verification checklist.
 
 ## Brand, content, store, and ad setup as one connected workflow
 
@@ -189,7 +189,7 @@ AI generates ad creative, writes email sequences, and schedules social posts. Yo
 
 Total time from idea to live store: 72 hours. Total cost on Kaldon Growth plan: $149/mo.
 
-[See the full 72-hour case study](/blog/market-gap-to-live-store-72-hours-case-study).
+See the full 72-hour case study.
 
 ## The full economics: $18K-$50K DIY stack vs $149/mo consolidated platform
 
@@ -244,7 +244,7 @@ If you add agency support for ad creative, landing pages, or social management, 
 
 **Kaldon Growth:** $149/mo = $1,788/year. Covers research, content, visuals, social, store, and unlimited product launches.
 
-[See the full cost breakdown](/blog/diy-ecommerce-tool-stack-cost-breakdown).
+See the full cost breakdown.
 
 The ROI calculation is simple. If Kaldon saves you $16,000 per year in tools and services, you need to generate $16,000 in profit to break even. At 30% net margins, that is $53,333 in revenue. For most sellers, that is 3 to 6 months of sales on a single winning product.
 
@@ -278,7 +278,7 @@ The ROI calculation is simple. If Kaldon saves you $16,000 per year in tools and
 
 Most sellers wait too long to kill bad ideas. The opportunity cost of spending six months on a weak product is higher than the sunk cost of $1,200 in samples and test ads.
 
-[Read the Amazon brand economics guide](/blog/six-figure-amazon-brand-economics-2026) to understand margin targets and breakeven timelines.
+Read the Amazon brand economics guide to understand margin targets and breakeven timelines.
 
 ## FAQ
 
@@ -304,15 +304,15 @@ AI processes more data faster (thousands of listings, reviews, search trends in 
 
 ### How do I know if a supplier can actually make my product?
 
-Request a custom sample with your exact specs, not a stock sample. Verify their production floor via video call. Check certifications (ISO, BSCI, FDA). Order a small MOQ test (100 to 300 units) before committing to 5,000 units. [Use our supplier checklist](/blog/supplier-verification-checklist-china-usa).
+Request a custom sample with your exact specs, not a stock sample. Verify their production floor via video call. Check certifications (ISO, BSCI, FDA). Order a small MOQ test (100 to 300 units) before committing to 5,000 units. Use our supplier checklist.
 
 ### Should I start with Amazon, Walmart, or DTC?
 
-Start with Amazon if you need fast validation and traffic (500M+ visitors/month). Start with Walmart if competition is lower in your category and you can hold premium pricing. Start with DTC (Shopify) if your product requires education, has high AOV ($80+), or you want to own customer data. Most sellers launch Amazon first, then expand. [Compare platforms here](/blog/walmart-vs-amazon-new-sellers-2026).
+Start with Amazon if you need fast validation and traffic (500M+ visitors/month). Start with Walmart if competition is lower in your category and you can hold premium pricing. Start with DTC (Shopify) if your product requires education, has high AOV ($80+), or you want to own customer data. Most sellers launch Amazon first, then expand. Compare platforms here.
 
 ### What margins should I target for a new launch?
 
-Target 35% to 45% net margin before ad spend. After ads, aim for 25% to 35% net margin. If your total landed cost (product + shipping + Amazon fees) is more than 55% of retail price, your pricing or sourcing is wrong. [Read the full economics breakdown](/blog/six-figure-amazon-brand-economics-2026).
+Target 35% to 45% net margin before ad spend. After ads, aim for 25% to 35% net margin. If your total landed cost (product + shipping + Amazon fees) is more than 55% of retail price, your pricing or sourcing is wrong. Read the full economics breakdown.
 
 ## Frequently asked questions
 

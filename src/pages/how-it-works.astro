@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/ui/PageHero.astro';
 import Button from '../components/ui/Button.astro';
 import DiscoverPane from '../components/visuals/phases/DiscoverPane.astro';
+import { appUrl } from '../lib/urls';
 import BuildPane from '../components/visuals/phases/BuildPane.astro';
 import CreatePane from '../components/visuals/phases/CreatePane.astro';
 import LaunchPane from '../components/visuals/phases/LaunchPane.astro';
@@ -174,7 +175,7 @@ const phases = [
         Your first 2 analyses are free. No credit card required.
       </p>
       <div class="mt-8">
-        <Button variant="primary" size="large" href="https://kaldon.io/signup" data-event="how_it_works_cta">
+        <Button variant="primary" size="large" href={appUrl('/signup', 'how_it_works_cta')} data-event="how_it_works_cta">
           Start Your First Analysis
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"/>

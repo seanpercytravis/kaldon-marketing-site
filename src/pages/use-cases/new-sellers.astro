@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/ui/PageHero.astro';
 import Button from '../../components/ui/Button.astro';
 import UseCaseCrossLinks from '../../components/ui/UseCaseCrossLinks.astro';
+import { appUrl } from '../../lib/urls';
 
 const painPoints = [
   { title: 'Overwhelmed by tools', desc: 'You have subscriptions to Jungle Scout, Helium 10, Canva, Jasper, Shopify, and a dozen others. None of them talk to each other. You spend more time switching tabs than making progress.' },
@@ -40,7 +41,7 @@ const timeline = [
     ]}
   >
     <div class="mt-8 flex justify-center">
-      <Button variant="primary" size="large" href="https://kaldon.io/signup" data-event="new_sellers_hero_cta">
+      <Button variant="primary" size="large" href={appUrl('/signup', 'use_cases_new_sellers_hero')} data-event="new_sellers_hero_cta">
         Start Free, 2 Analyses Included
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"/>
@@ -132,7 +133,7 @@ const timeline = [
         Your first 2 analyses are free. No credit card. No experience needed.
       </p>
       <div class="mt-8">
-        <Button variant="primary" size="large" href="https://kaldon.io/signup" data-event="new_sellers_final_cta">
+        <Button variant="primary" size="large" href={appUrl('/signup', 'use_cases_new_sellers_final')} data-event="new_sellers_final_cta">
           Start Free, 2 Analyses Included
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"/>

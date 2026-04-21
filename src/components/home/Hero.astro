@@ -2,6 +2,7 @@
 import ProductPane from '../visuals/ProductPane.astro';
 import Button from '../ui/Button.astro';
 import LinkArrow from '../ui/LinkArrow.astro';
+import { appUrl } from '../../lib/urls';
 ---
 
 <section class="hero relative overflow-hidden">
@@ -33,7 +34,7 @@ import LinkArrow from '../ui/LinkArrow.astro';
           <Button
             variant="primary"
             size="large"
-            href="https://kaldon.io/signup"
+            href={appUrl('/signup', 'home_hero')}
             data-event="hero_cta_click"
           >
             Start Free, 2 Analyses Included

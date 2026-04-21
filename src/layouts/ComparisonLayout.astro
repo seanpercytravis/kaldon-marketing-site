@@ -2,6 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import PageHero from '../components/ui/PageHero.astro';
 import Button from '../components/ui/Button.astro';
+import { appUrl } from '../lib/urls';
 
 interface Props {
   title: string;
@@ -50,6 +51,12 @@ const {
 // Auto-extend with a SoftwareApplication schema specific to this comparison.
 // Search engines use this to surface Kaldon as an alternative in competitor
 // queries (e.g. "jungle scout alternative").
+// Campaign slug derived from /vs/{competitor} path, e.g. "vs_helium_10"
+const vsSlug = Astro.url.pathname.replace(/\/$/, '').split('/').pop() ?? 'vs';
+const compareCampaign = Astro.url.pathname.includes('/compare/')
+  ? `compare_${vsSlug.replace(/-/g, '_')}`
+  : `vs_${vsSlug.replace(/-/g, '_')}`;
+
 const softwareAppSchema = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
@@ -292,7 +299,7 @@ function renderStatus(val: string): string {
         Start free. 2 analyses. No credit card. See for yourself.
       </p>
       <div class="mt-8">
-        <Button variant="primary" size="large" href="https://kaldon.io/signup" data-event="compare_cta">
+        <Button variant="primary" size="large" href={appUrl('/signup', compareCampaign)} data-event="compare_cta">
           Start Free, 2 Analyses Included
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"/>

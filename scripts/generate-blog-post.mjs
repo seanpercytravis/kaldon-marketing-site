@@ -339,9 +339,11 @@ EXISTING BLOG POSTS TO LINK TO (use /blog/[slug]):
 ${linkedSlugs.map((s) => `- /blog/${s}`).join('\n')}
 
 PILLAR ARTICLE SLUG: /blog/${PILLAR.slug}
-KALDON HOME: ${KALDON_BRAND.storeDomain}
-KALDON PRICING: ${KALDON_BRAND.storeDomain}/pricing
-KALDON FEATURES: ${KALDON_BRAND.storeDomain}/features
+KALDON HOME (marketing): ${KALDON_BRAND.storeDomain}
+KALDON PRICING (marketing): ${KALDON_BRAND.storeDomain}/pricing
+KALDON FEATURES (marketing): ${KALDON_BRAND.storeDomain}/features
+KALDON SIGNUP (app domain, use this exact URL whenever linking to signup or starting a free trial):
+  https://app.kaldon.io/signup?utm_source=marketing_site&utm_medium=cta&utm_campaign=blog_${post.slug.replace(/-/g, '_')}
 
 Generate a JSON response (and ONLY valid JSON, no markdown fencing):
 

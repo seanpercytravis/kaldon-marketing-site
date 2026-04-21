@@ -1,10 +1,14 @@
 ---
 // Nav.astro. transparent at top, glass-blur on scroll (Linear pattern)
 // 64px height, Gold primary CTA, mono-label mobile menu
+import { appUrl } from '../../lib/urls';
 
 const currentPath = Astro.url.pathname;
 const isActive = (path: string) =>
   path === '/' ? currentPath === '/' : currentPath.startsWith(path);
+
+const navSignupUrl = appUrl('/signup', 'nav');
+const navLoginUrl = appUrl('/login', 'nav');
 ---
 
 <nav id="main-nav" class="fixed top-0 inset-x-0 z-50 transition-colors duration-100 ease-out" aria-label="Main navigation">
@@ -92,8 +96,8 @@ const isActive = (path: string) =>
 
       <!-- CTA + Mobile Toggle -->
       <div class="flex items-center gap-2 md:gap-3">
-        <a href="https://kaldon.io/login" class="btn-ghost hidden sm:inline-flex text-sm">Log In</a>
-        <a href="https://kaldon.io/signup" class="btn-primary" data-event="signup_cta_click" style="height: 36px; padding: 0 16px; font-size: 14px;">Start Free</a>
+        <a href={navLoginUrl} class="btn-ghost hidden sm:inline-flex text-sm">Log In</a>
+        <a href={navSignupUrl} class="btn-primary" data-event="signup_cta_click" style="height: 36px; padding: 0 16px; font-size: 14px;">Start Free</a>
         <button
           id="mobile-menu-toggle"
           class="md:hidden w-10 h-10 inline-flex items-center justify-center rounded-btn text-ghost hover:text-chalk hover:bg-white/5 transition-colors"
@@ -135,8 +139,8 @@ const isActive = (path: string) =>
       </div>
 
       <div class="pt-8 mt-6 border-t border-hairline space-y-3">
-        <a href="https://kaldon.io/login" class="block text-center py-3 text-base text-ghost hover:text-chalk transition-colors">Log In</a>
-        <a href="https://kaldon.io/signup" class="btn-primary btn-large w-full" data-event="mobile_signup_cta_click">Start Free</a>
+        <a href={navLoginUrl} class="block text-center py-3 text-base text-ghost hover:text-chalk transition-colors">Log In</a>
+        <a href={navSignupUrl} class="btn-primary btn-large w-full" data-event="mobile_signup_cta_click">Start Free</a>
       </div>
     </div>
   </div>

@@ -1,6 +1,7 @@
 ---
 // SavingsCalculator.astro. monochrome redesign of the interactive calculator.
 // Sliders use Signal Cyan (live-data allowed), output numbers in Gold.
+import { appUrl } from '../../lib/urls';
 ---
 
 <section class="section-spacing" style="background: var(--void);">
@@ -53,7 +54,7 @@
       </div>
 
       <div class="mt-8 flex justify-center">
-        <a href="https://kaldon.io/signup" class="btn-primary" data-event="calculator_cta_click">
+        <a href={appUrl('/signup', 'home_savings_calculator')} class="btn-primary" data-event="calculator_cta_click">
           Start Saving, 2 Free Analyses
         </a>
       </div>

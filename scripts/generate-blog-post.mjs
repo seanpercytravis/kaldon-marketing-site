@@ -323,7 +323,19 @@ async function writeArticle(post, trendBlock, existingSlugs) {
   // the time any cluster is generated.
   const linkedSlugs = candidateLinks.filter((slug) => existingSet.has(slug));
 
-  const prompt = `You are writing a blog article for Kaldon, an AI-powered eCommerce intelligence platform. This article must be:
+  // ─── Static system prompt (cached) ──────────────────────────────────────
+  // This block contains only content that does NOT change between calls:
+  // brand constants (imported from kaldon-blog-config.mjs), the GEO rules,
+  // and the JSON output spec. Anthropic prompt caching uses prefix matching,
+  // so any byte change here would invalidate the cache. All per-post data
+  // (title, keyword, slug, trend block, link list) goes in the user message.
+  //
+  // Cache TTL is 5 minutes by default. Mon/Thu cron runs are far apart so
+  // most cron-triggered runs will be cache MISSES (writes), but back-to-back
+  // manual runs and any --slug retries within 5 minutes will hit. Even a
+  // single cache write costs only 1.25x; reads cost 0.1x. Break-even at 2
+  // requests within the TTL window.
+  const systemPrompt = `You are writing a blog article for Kaldon, an AI-powered eCommerce intelligence platform. This article must be:
 1. GEO-optimized — structured so AI search engines can extract and cite it
 2. Written in the brand's voice
 3. Factual and authoritative — the kind of content AI engines trust
@@ -336,32 +348,18 @@ PRODUCT CATEGORY: ${KALDON_BRAND.productCategory}
 STORE URL: ${KALDON_BRAND.storeDomain}
 BRAND COLORS: Primary ${KALDON_BRAND.colorPrimary} (Signal Cyan), Secondary ${KALDON_BRAND.colorSecondary} (Gold), Accent ${KALDON_BRAND.colorAccent} (Chalk). Use these colors when describing visual elements and in the featuredImagePrompt.
 
-MARKET CONTEXT: ${KALDON_BRAND.marketContext}${trendBlock ? `\n\n${trendBlock}` : ''}
+MARKET CONTEXT: ${KALDON_BRAND.marketContext}
 
-ARTICLE TO WRITE:
-Title: ${post.title}
-Target Keyword: ${post.targetKeyword}
-Search Intent: ${post.searchIntent}
-Word Count Target: ${post.wordCountTarget}
-${isPillar
-    ? `Sections: ${post.sections.join(', ')}\nFAQ Questions (answer each): ${post.faqQuestions.join(', ')}`
-    : `Angle: ${post.angle}\nContent Type: ${post.contentType}`}
-
-EXISTING BLOG POSTS TO LINK TO (use /blog/[slug]):
-${linkedSlugs.map((s) => `- /blog/${s}`).join('\n')}
-
-PILLAR ARTICLE SLUG: /blog/${PILLAR.slug}
 KALDON HOME (marketing): ${KALDON_BRAND.storeDomain}
 KALDON PRICING (marketing): ${KALDON_BRAND.storeDomain}/pricing
 KALDON FEATURES (marketing): ${KALDON_BRAND.storeDomain}/features
-KALDON SIGNUP (app domain, use this exact URL whenever linking to signup or starting a free trial):
-  https://app.kaldon.io/signup?utm_source=marketing_site&utm_medium=cta&utm_campaign=blog_${post.slug.replace(/-/g, '_')}
+PILLAR ARTICLE SLUG: /blog/${PILLAR.slug}
 
-Generate a JSON response (and ONLY valid JSON, no markdown fencing):
+OUTPUT FORMAT — Generate a JSON response (and ONLY valid JSON, no markdown fencing):
 
 {
-  "title": "Exact article title (match the one above)",
-  "slug": "${post.slug}",
+  "title": "Exact article title (match the one specified in the user message)",
+  "slug": "Exact slug specified in the user message",
   "metaTitle": "SEO title under 60 chars including Kaldon where natural",
   "metaDescription": "Meta description under 160 chars. Benefit-led. Includes keyword.",
   "tldr": "2-3 sentence TLDR that directly answers the main question. This appears at the TOP of the article. AI engines extract this first. Be specific and factual.",
@@ -383,22 +381,61 @@ CRITICAL GEO RULES:
 1. TLDR FIRST: The first 200 words are what AI engines extract. Lead with the answer, not a buildup.
 2. DIRECT ANSWERS: Every section heading should be answerable. Open each section with the direct answer, then elaborate.
 3. FACTUAL TONE: Write as an authority, not a marketer. Cite specific data points where possible. No "amazing," "incredible," or other fluff.
-4. FAQ SECTION: ${isPillar ? 'Include 5-8 FAQ items' : 'Include 3-5 FAQ items'} as structured Q&A at the end. These map directly to FAQ schema.
-5. INTERNAL LINKS: Link to the pillar article at least once. Link to 2+ other cluster posts from the list above. Link to Kaldon home, pricing, or features naturally (not forced).
+4. FAQ SECTION: Pillar articles include 5-8 FAQ items, cluster articles include 3-5. The user message specifies which type. These map directly to FAQ schema.
+5. INTERNAL LINKS: Link to the pillar article at least once. Link to 2+ other cluster posts from the list provided in the user message. Link to Kaldon home, pricing, or features naturally (not forced).
 6. BRAND VOICE: Match Kaldon's voice: ${KALDON_BRAND.brandVoice}
 7. NO EM DASHES: Never use em dashes (U+2014). Prefer period, comma, colon, or parentheses.
 8. INCLUDE DATA: Where possible, include statistics, research references, or specific numerical claims that AI engines can extract.
-9. LAST UPDATED: The article should feel current. Reference "2026" or "recent" where appropriate, and if trend signals were provided above, weave the most useful ones into the lede.
+9. LAST UPDATED: The article should feel current. Reference "2026" or "recent" where appropriate, and if trend signals are provided in the user message, weave the most useful ones into the lede.
 10. READING LEVEL: 6th-grade reading level on surface, PhD-level thinking underneath. Short sentences. Strong verbs. No jargon without explanation.
 
 Respond ONLY with the JSON. No markdown wrapping.`;
+
+  // ─── Dynamic user message (NOT cached) ──────────────────────────────────
+  // Everything that varies per article: title, keyword, trend block, link
+  // list, signup UTM, pillar-vs-cluster branch.
+  const userMessage = `ARTICLE TO WRITE:
+Title: ${post.title}
+Slug: ${post.slug}
+Article Type: ${isPillar ? 'PILLAR (5-8 FAQ items)' : 'CLUSTER (3-5 FAQ items)'}
+Target Keyword: ${post.targetKeyword}
+Search Intent: ${post.searchIntent}
+Word Count Target: ${post.wordCountTarget}
+${isPillar
+    ? `Sections: ${post.sections.join(', ')}\nFAQ Questions (answer each): ${post.faqQuestions.join(', ')}`
+    : `Angle: ${post.angle}\nContent Type: ${post.contentType}`}
+
+EXISTING BLOG POSTS TO LINK TO (use /blog/[slug]):
+${linkedSlugs.map((s) => `- /blog/${s}`).join('\n')}
+
+KALDON SIGNUP (app domain, use this exact URL whenever linking to signup or starting a free trial):
+  https://app.kaldon.io/signup?utm_source=marketing_site&utm_medium=cta&utm_campaign=blog_${post.slug.replace(/-/g, '_')}
+${trendBlock ? `\n${trendBlock}\n` : ''}
+Generate the JSON response per the format and rules in the system prompt. The "slug" field in your output must be exactly: ${post.slug}`;
 
   console.log(`Generating article: "${post.title}" (${isPillar ? 'pillar' : `cluster week ${post.publishWeek}`})`);
   const response = await client.messages.create({
     model: 'claude-sonnet-4-5-20250929',
     max_tokens: isPillar ? 16000 : 8000,
-    messages: [{ role: 'user', content: prompt }],
+    system: [
+      {
+        type: 'text',
+        text: systemPrompt,
+        cache_control: { type: 'ephemeral' },
+      },
+    ],
+    messages: [{ role: 'user', content: userMessage }],
   });
+
+  // Cache observability — verify hits over time. cache_read_input_tokens > 0
+  // means the system prompt prefix was served from cache (~0.1x cost).
+  // cache_creation_input_tokens > 0 means we just paid the ~1.25x write
+  // premium that future calls within the TTL will benefit from.
+  const usage = response.usage ?? {};
+  console.log(
+    `Claude usage: input=${usage.input_tokens ?? 0} output=${usage.output_tokens ?? 0} ` +
+    `cache_write=${usage.cache_creation_input_tokens ?? 0} cache_read=${usage.cache_read_input_tokens ?? 0}`
+  );
 
   const text = response.content
     .filter((b) => b.type === 'text')

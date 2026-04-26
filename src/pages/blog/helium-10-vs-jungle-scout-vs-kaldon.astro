@@ -1,5 +1,31 @@
 ---
 import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: 'Helium 10 vs Jungle Scout vs Kaldon: Which Should You Use?',
+    description:
+      'A fair, detailed three-way comparison of the most popular product research platforms. We compare features, pricing, and what happens after research.',
+    datePublished: '2026-03-18',
+    dateModified: '2026-03-18',
+    author: { '@type': 'Person', name: 'Sean Travis', url: 'https://kaldon.io/about' },
+    publisher: {
+      '@type': 'Organization',
+      '@id': 'https://kaldon.io/#org',
+      name: 'Kaldon',
+      url: 'https://kaldon.io',
+      logo: { '@type': 'ImageObject', url: 'https://kaldon.io/images/logos/kaldon-logo-dark.svg' },
+    },
+    image: 'https://kaldon.io/images/screenshots/17-pricing.webp',
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://kaldon.io/blog/helium-10-vs-jungle-scout-vs-kaldon',
+    },
+    articleSection: 'Marketplace Tips',
+  },
+];
 ---
 
 <BlogPostLayout
@@ -10,6 +36,7 @@ import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
   readTime="10 min read"
   heroImage="/images/screenshots/17-pricing.webp"
   heroAlt="Kaldon pricing page showing five tiers from Free to Scale"
+  structuredData={structuredData}
 >
 
 <p>If you are researching products to sell online, you have probably encountered three names: Helium 10, Jungle Scout, and Kaldon. All three help you find profitable products. But they take very different approaches to what happens after you find one.</p>

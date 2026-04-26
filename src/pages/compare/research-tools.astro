@@ -57,11 +57,48 @@ function renderCell(val: string): string {
   }
   return `<span style="font-family: var(--font-mono); font-size: 12px; color: var(--gold);">${val}</span>`;
 }
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'Kaldon vs Traditional Research Tools: From Research to Revenue (2026)',
+    description:
+      'Research tools stop at data. Kaldon takes you from research to revenue. Compare Kaldon against Helium 10, Jungle Scout, SmartScout, Viral Launch, and AMZScout.',
+    about: {
+      '@type': 'Thing',
+      name: 'eCommerce Product Research Tools',
+      description:
+        'Software platforms used by online sellers to discover, validate, and analyze potential products to sell on Amazon, Walmart, and other marketplaces.',
+    },
+    author: {
+      '@type': 'Organization',
+      '@id': 'https://kaldon.io/#org',
+      name: 'Kaldon',
+      url: 'https://kaldon.io',
+    },
+    publisher: {
+      '@type': 'Organization',
+      '@id': 'https://kaldon.io/#org',
+      name: 'Kaldon',
+      url: 'https://kaldon.io',
+      logo: { '@type': 'ImageObject', url: 'https://kaldon.io/images/logos/kaldon-logo-dark.svg' },
+    },
+    datePublished: '2026-03-18',
+    dateModified: '2026-03-18',
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://kaldon.io/compare/research-tools',
+    },
+    image: 'https://kaldon.io/images/og/compare-research-tools.png',
+  },
+];
 ---
 
 <BaseLayout
   title="Kaldon vs Traditional Research Tools: From Research to Revenue (2026)"
   description="Research tools stop at data. Kaldon takes you from research to revenue. Compare Kaldon against Helium 10, Jungle Scout, SmartScout, Viral Launch, and AMZScout."
+  structuredData={structuredData}
 >
   <PageHero
     kicker="Category Comparison"

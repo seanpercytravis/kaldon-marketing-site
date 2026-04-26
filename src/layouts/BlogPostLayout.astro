@@ -17,6 +17,8 @@ interface Props {
   tldr?: string;
   tags?: string[];
   image?: string; // alt alias used by content-collection frontmatter
+  /** Per-post structured data (BlogPosting, etc.) forwarded to BaseLayout. */
+  structuredData?: object[];
 }
 
 const {
@@ -31,6 +33,7 @@ const {
   tldr,
   tags = [],
   image,
+  structuredData = [],
 } = Astro.props;
 
 const resolvedHero = heroImage ?? image ?? null;
@@ -58,7 +61,7 @@ const otherPosts = allPosts.filter((p) => p.category !== category && p.slug !== 
 const relatedPosts = [...sameCategory, ...otherPosts].slice(0, 2);
 ---
 
-<BaseLayout title={`${title} | Kaldon Blog`} description={description}>
+<BaseLayout title={`${title} | Kaldon Blog`} description={description} structuredData={structuredData}>
   <article class="pt-16 md:pt-24 pb-20" style="background: var(--void);">
     <div class="container-custom max-w-prose">
       <!-- Breadcrumb / meta -->
@@ -168,24 +171,6 @@ const relatedPosts = [...sameCategory, ...otherPosts].slice(0, 2);
     </div>
   </article>
 
-  <script type="application/ld+json" is:inline set:html={JSON.stringify({
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: title,
-    description,
-    author: { '@type': 'Person', name: 'Sean Travis' },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Kaldon',
-      logo: { '@type': 'ImageObject', url: 'https://kaldon.io/images/logos/kaldon-logo-dark.svg' },
-    },
-    datePublished: lastUpdated ?? '2026-03-18',
-    dateModified: lastUpdated ?? '2026-03-18',
-    image: resolvedHero
-      ? (resolvedHero.startsWith('http') ? resolvedHero : `https://kaldon.io${resolvedHero}`)
-      : 'https://kaldon.io/images/og/blog.png',
-    mainEntityOfPage: Astro.url.href,
-  })} />
 </BaseLayout>
 
 <style>

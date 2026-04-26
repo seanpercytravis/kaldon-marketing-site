@@ -1,5 +1,31 @@
 ---
 import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: 'Amazon to DTC: How to Build a Brand Beyond the Marketplace',
+    description:
+      'You are making sales on Amazon. Now what? How to reduce marketplace dependency and build a brand that customers seek out directly.',
+    datePublished: '2026-03-18',
+    dateModified: '2026-03-18',
+    author: { '@type': 'Person', name: 'Sean Travis', url: 'https://kaldon.io/about' },
+    publisher: {
+      '@type': 'Organization',
+      '@id': 'https://kaldon.io/#org',
+      name: 'Kaldon',
+      url: 'https://kaldon.io',
+      logo: { '@type': 'ImageObject', url: 'https://kaldon.io/images/logos/kaldon-logo-dark.svg' },
+    },
+    image: 'https://kaldon.io/images/screenshots/07-brand-detail.webp',
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://kaldon.io/blog/amazon-to-dtc-build-brand-beyond-marketplace',
+    },
+    articleSection: 'Brand Building',
+  },
+];
 ---
 
 <BlogPostLayout
@@ -10,6 +36,7 @@ import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
   readTime="10 min read"
   heroImage="/images/screenshots/07-brand-detail.webp"
   heroAlt="Kaldon Brand Vault showing a complete brand identity with logo, colors, and voice guidelines"
+  structuredData={structuredData}
 >
 
 <p>You are selling on Amazon. Maybe $5,000 a month. Maybe $50,000. The revenue is real, but so is the anxiety. Because deep down, you know the truth: you do not have a business. You have a listing on someone else's platform.</p>

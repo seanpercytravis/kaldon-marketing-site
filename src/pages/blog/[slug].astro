@@ -20,6 +20,50 @@ const { Content } = await render(post);
 const lastUpdatedLabel = post.data.lastUpdated
   ? new Date(post.data.lastUpdated).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
   : post.data.date;
+
+// Convert frontmatter date strings to ISO dates for schema.org
+// post.data.date is like "Apr 20, 2026"; lastUpdated is ISO already.
+const isoDatePublished = (() => {
+  const parsed = new Date(post.data.date);
+  return isNaN(parsed.getTime()) ? post.data.date : parsed.toISOString().slice(0, 10);
+})();
+const isoDateModified = post.data.lastUpdated ?? isoDatePublished;
+const heroImageUrl = post.data.image
+  ? (post.data.image.startsWith('http') ? post.data.image : `https://kaldon.io${post.data.image}`)
+  : 'https://kaldon.io/images/og/blog.png';
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.data.title,
+    description: post.data.metaDescription,
+    datePublished: isoDatePublished,
+    dateModified: isoDateModified,
+    author: {
+      '@type': 'Person',
+      name: 'Sean Travis',
+      url: 'https://kaldon.io/about',
+    },
+    publisher: {
+      '@type': 'Organization',
+      '@id': 'https://kaldon.io/#org',
+      name: 'Kaldon',
+      url: 'https://kaldon.io',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://kaldon.io/images/logos/kaldon-logo-dark.svg',
+      },
+    },
+    image: heroImageUrl,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': Astro.url.href,
+    },
+    keywords: post.data.tags?.join(', '),
+    articleSection: post.data.category,
+  },
+];
 ---
 
 <BlogPostLayout
@@ -33,6 +77,7 @@ const lastUpdatedLabel = post.data.lastUpdated
   tldr={post.data.tldr}
   tags={post.data.tags}
   image={post.data.image}
+  structuredData={structuredData}
 >
   <Content />
 

@@ -28,11 +28,44 @@ const results = [
   'Automated content and marketing across every channel',
   'Higher margins on DTC sales without marketplace fees',
 ];
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Kaldon for Existing eCommerce Brands',
+    serviceType: 'Multi-Channel eCommerce Intelligence',
+    description:
+      'Kaldon helps existing Amazon sellers vet their current catalog, discover adjacent unmet demand, and expand into Walmart, DTC, and social commerce with on-brand launch assets.',
+    url: 'https://kaldon.io/use-cases/existing-brands',
+    provider: {
+      '@type': 'Organization',
+      '@id': 'https://kaldon.io/#org',
+      name: 'Kaldon',
+      url: 'https://kaldon.io',
+      logo: 'https://kaldon.io/images/logos/kaldon-logo-dark.svg',
+    },
+    areaServed: 'Worldwide',
+    audience: {
+      '@type': 'Audience',
+      audienceType: 'Established eCommerce brands',
+      name: 'Amazon sellers and existing online brands expanding to multi-channel',
+    },
+    offers: {
+      '@type': 'Offer',
+      price: '119',
+      priceCurrency: 'USD',
+      description: 'Growth plan at $119/mo (annual) for sellers ready to expand multi-channel.',
+      availability: 'https://schema.org/InStock',
+    },
+  },
+];
 ---
 
 <BaseLayout
   title="Kaldon for Existing Brands · Expand Beyond Amazon"
   description="You already sell. Kaldon takes your existing brand multi-channel: Walmart, DTC, social, with intelligence, auto-generated content, and direct customer relationships."
+  structuredData={structuredData}
 >
   <PageHero
     kicker="For Existing Brands"

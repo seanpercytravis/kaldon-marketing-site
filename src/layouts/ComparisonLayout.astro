@@ -62,14 +62,23 @@ const softwareAppSchema = {
   '@type': 'SoftwareApplication',
   name: 'Kaldon',
   applicationCategory: 'BusinessApplication',
+  applicationSubCategory: 'eCommerce Intelligence',
   operatingSystem: 'Web',
+  url: 'https://kaldon.io',
   description: `Kaldon is an AI-powered eCommerce intelligence platform that replaces ${competitor} and the full creation stack. ${kaldonTagline}`,
   offers: {
-    '@type': 'AggregateOffer',
-    lowPrice: '0',
-    highPrice: '1499',
+    '@type': 'Offer',
+    price: '119',
     priceCurrency: 'USD',
-    offerCount: '5',
+    priceValidUntil: '2027-12-31',
+    availability: 'https://schema.org/InStock',
+  },
+  publisher: {
+    '@type': 'Organization',
+    '@id': 'https://kaldon.io/#org',
+    name: 'Kaldon',
+    url: 'https://kaldon.io',
+    logo: 'https://kaldon.io/images/logos/kaldon-logo-dark.svg',
   },
 };
 const allStructuredData = [softwareAppSchema, ...structuredData];

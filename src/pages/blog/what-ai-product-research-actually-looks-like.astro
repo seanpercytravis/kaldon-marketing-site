@@ -1,5 +1,31 @@
 ---
 import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: 'What AI Product Research Actually Looks Like (No Hype, Real Output)',
+    description:
+      'Forget the marketing buzzwords. We show you a real AI-powered product analysis report with commentary on every section. See exactly what you get.',
+    datePublished: '2026-03-18',
+    dateModified: '2026-03-18',
+    author: { '@type': 'Person', name: 'Sean Travis', url: 'https://kaldon.io/about' },
+    publisher: {
+      '@type': 'Organization',
+      '@id': 'https://kaldon.io/#org',
+      name: 'Kaldon',
+      url: 'https://kaldon.io',
+      logo: { '@type': 'ImageObject', url: 'https://kaldon.io/images/logos/kaldon-logo-dark.svg' },
+    },
+    image: 'https://kaldon.io/images/screenshots/03-analysis-action-plan.webp',
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://kaldon.io/blog/what-ai-product-research-actually-looks-like',
+    },
+    articleSection: 'Product Research',
+  },
+];
 ---
 
 <BlogPostLayout
@@ -10,6 +36,7 @@ import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
   readTime="9 min read"
   heroImage="/images/screenshots/03-analysis-action-plan.webp"
   heroAlt="Kaldon analysis report showing a detailed action plan with priority tiers"
+  structuredData={structuredData}
 >
 
 <p>Every product research tool claims to use AI now. Most of them mean "we added a chatbot" or "we use GPT to rewrite product descriptions." That is not AI product research. That is AI window dressing.</p>

@@ -1,5 +1,31 @@
 ---
 import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: 'The True Cost of Launching an eCommerce Product in 2026',
+    description:
+      'Six subscriptions. $205+ per month. 200+ hours of manual work. We break down exactly what it costs to launch a product the old way, and show you the alternative.',
+    datePublished: '2026-03-18',
+    dateModified: '2026-03-18',
+    author: { '@type': 'Person', name: 'Sean Travis', url: 'https://kaldon.io/about' },
+    publisher: {
+      '@type': 'Organization',
+      '@id': 'https://kaldon.io/#org',
+      name: 'Kaldon',
+      url: 'https://kaldon.io',
+      logo: { '@type': 'ImageObject', url: 'https://kaldon.io/images/logos/kaldon-logo-dark.svg' },
+    },
+    image: 'https://kaldon.io/images/screenshots/01-analysis-hero.webp',
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://kaldon.io/blog/true-cost-ecommerce-product-launch-2026',
+    },
+    articleSection: 'Product Research',
+  },
+];
 ---
 
 <BlogPostLayout
@@ -10,6 +36,7 @@ import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
   readTime="8 min read"
   heroImage="/images/screenshots/01-analysis-hero.webp"
   heroAlt="Kaldon AI analysis report showing product viability score and market data"
+  structuredData={structuredData}
 >
 
 <p>You have a product idea. Maybe you have been thinking about it for months. Maybe you stumbled on it last week. Either way, you are ready to turn it into a real business. So you start Googling. And that is where the sticker shock begins.</p>

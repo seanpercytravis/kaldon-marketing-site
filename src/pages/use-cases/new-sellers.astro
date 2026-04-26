@@ -24,11 +24,44 @@ const timeline = [
   { time: 'Hour 3', action: 'Create a month of social content across 5 platforms. Generate AI videos and a conversion-optimized landing page.' },
   { time: 'Hour 4', action: 'Deploy your store with checkout, automated emails, and chatbot. Auto-scheduled SEO blog content starts running.' },
 ];
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Kaldon for New eCommerce Sellers',
+    serviceType: 'eCommerce Intelligence Platform',
+    description:
+      "Kaldon's AI-powered 5-phase pipeline takes new eCommerce sellers from product idea to first sale, replacing 12+ separate tools and the typical $15,000 launch agency.",
+    url: 'https://kaldon.io/use-cases/new-sellers',
+    provider: {
+      '@type': 'Organization',
+      '@id': 'https://kaldon.io/#org',
+      name: 'Kaldon',
+      url: 'https://kaldon.io',
+      logo: 'https://kaldon.io/images/logos/kaldon-logo-dark.svg',
+    },
+    areaServed: 'Worldwide',
+    audience: {
+      '@type': 'Audience',
+      audienceType: 'New eCommerce sellers',
+      name: 'First-time and beginner online sellers',
+    },
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+      description: 'Free tier with 2 product analyses included; paid plans start at $119/mo (annual).',
+      availability: 'https://schema.org/InStock',
+    },
+  },
+];
 ---
 
 <BaseLayout
   title="Kaldon for New Sellers. From Product Idea to First Sale"
   description="You have a product idea but don't know where to start. Kaldon's AI-powered pipeline takes you from research to revenue with zero experience required."
+  structuredData={structuredData}
 >
   <PageHero
     kicker="For New Sellers"

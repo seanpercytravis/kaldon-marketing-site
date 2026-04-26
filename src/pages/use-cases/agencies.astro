@@ -26,11 +26,44 @@ const economics = [
   { label: 'Launches per month', value: '8–10', sub: 'With the Kaldon pipeline' },
   { label: 'Your time per launch', value: '4–6 hrs', sub: 'Down from 40+ hours' },
 ];
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Kaldon for eCommerce Agencies',
+    serviceType: 'Agency-Scale eCommerce Intelligence Platform',
+    description:
+      'Kaldon gives eCommerce agencies an AI-powered pipeline that compresses 40 hours of per-client work into hours, supporting 10+ client brands and consistent agency-quality deliverables.',
+    url: 'https://kaldon.io/use-cases/agencies',
+    provider: {
+      '@type': 'Organization',
+      '@id': 'https://kaldon.io/#org',
+      name: 'Kaldon',
+      url: 'https://kaldon.io',
+      logo: 'https://kaldon.io/images/logos/kaldon-logo-dark.svg',
+    },
+    areaServed: 'Worldwide',
+    audience: {
+      '@type': 'Audience',
+      audienceType: 'eCommerce agencies and consultants',
+      name: 'Agencies and teams running multiple client brands',
+    },
+    offers: {
+      '@type': 'Offer',
+      price: '1499',
+      priceCurrency: 'USD',
+      description: 'Enterprise plan at $1,499/mo for agencies running 10+ client brands.',
+      availability: 'https://schema.org/InStock',
+    },
+  },
+];
 ---
 
 <BaseLayout
   title="Kaldon for Agencies. Scale Your Agency with AI"
   description="Help sellers launch products without the 40-hour-per-client bottleneck. Kaldon gives agencies an AI-powered pipeline that produces agency-quality deliverables in minutes."
+  structuredData={structuredData}
 >
   <PageHero
     kicker="For Agencies"

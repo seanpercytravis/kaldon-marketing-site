@@ -30,6 +30,42 @@ const timeComparison = [
   { task: 'Total time to launch', diy: '8–20 weeks', kaldon: '1–2 days', total: true },
 ];
 
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'Kaldon vs Doing It Yourself: The $10,000 Problem Solved (2026)',
+    description:
+      'New eCommerce sellers spend $5,000–15,000 and 8–20 weeks before their first sale. Kaldon replaces consultants, designers, and agencies with one AI-powered platform.',
+    about: {
+      '@type': 'Thing',
+      name: 'DIY eCommerce Product Launch',
+      description:
+        'The traditional do-it-yourself approach to launching an eCommerce product, which involves stitching together research tools, freelance designers, content writers, store platforms, and ad agencies.',
+    },
+    author: {
+      '@type': 'Organization',
+      '@id': 'https://kaldon.io/#org',
+      name: 'Kaldon',
+      url: 'https://kaldon.io',
+    },
+    publisher: {
+      '@type': 'Organization',
+      '@id': 'https://kaldon.io/#org',
+      name: 'Kaldon',
+      url: 'https://kaldon.io',
+      logo: { '@type': 'ImageObject', url: 'https://kaldon.io/images/logos/kaldon-logo-dark.svg' },
+    },
+    datePublished: '2026-03-18',
+    dateModified: '2026-03-18',
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://kaldon.io/compare/doing-it-yourself',
+    },
+    image: 'https://kaldon.io/images/og/compare-doing-it-yourself.png',
+  },
+];
+
 const faqs = [
   { q: 'What is the "$10,000 Problem"?', a: 'Most eCommerce sellers spend $5,000–15,000 before making their first sale. Product research subscriptions, a freelance designer for branding, a Shopify store plus $200 / mo in apps, a content writer, a social media manager, an email marketing tool, an ad agency or consultant. We call it the "$10,000 Problem" because that\'s approximately what it costs to assemble the services and tools needed to launch a product brand. Kaldon collapses this into one subscription at $149 / mo.' },
   { q: 'Is DIY quality better than AI-generated content?', a: 'It depends on the provider. A top-tier agency will produce exceptional brand work, but most new sellers can\'t afford top-tier agencies. They end up with mediocre freelancers on Fiverr or templates they customize themselves. Kaldon\'s AI generates professional-quality brand identities, content, and store designs that are better than what most sellers produce on their own and comparable to mid-range agency work.' },
@@ -43,6 +79,7 @@ const faqs = [
 <BaseLayout
   title="Kaldon vs Doing It Yourself: The $10,000 Problem Solved (2026)"
   description="New eCommerce sellers spend $5,000–15,000 and 8–20 weeks before their first sale. Kaldon replaces consultants, designers, and agencies with one AI-powered platform."
+  structuredData={structuredData}
 >
   <PageHero
     kicker="Category Comparison"

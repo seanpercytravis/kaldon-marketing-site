@@ -51,11 +51,48 @@ function renderCell(val: string): string {
   if (val === 'no') return '<span style="color: var(--text-quaternary); font-size: 16px;" aria-hidden="true">. </span><span class="sr-only">Not included</span>';
   return `<span style="font-family: var(--font-mono); font-size: 12px; color: var(--gold);">${val}</span>`;
 }
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'Kaldon vs eCommerce Platforms: Intelligence Meets Commerce (2026)',
+    description:
+      'eCommerce platforms give you a store but no intelligence. Kaldon gives you both. Compare Kaldon against Shopify, BigCommerce, Wix, Squarespace, and ClickFunnels.',
+    about: {
+      '@type': 'Thing',
+      name: 'eCommerce Platforms',
+      description:
+        'Software platforms used by sellers to build and operate online stores, including Shopify, BigCommerce, Wix, Squarespace, and ClickFunnels.',
+    },
+    author: {
+      '@type': 'Organization',
+      '@id': 'https://kaldon.io/#org',
+      name: 'Kaldon',
+      url: 'https://kaldon.io',
+    },
+    publisher: {
+      '@type': 'Organization',
+      '@id': 'https://kaldon.io/#org',
+      name: 'Kaldon',
+      url: 'https://kaldon.io',
+      logo: { '@type': 'ImageObject', url: 'https://kaldon.io/images/logos/kaldon-logo-dark.svg' },
+    },
+    datePublished: '2026-03-18',
+    dateModified: '2026-03-18',
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://kaldon.io/compare/ecommerce-platforms',
+    },
+    image: 'https://kaldon.io/images/og/compare-ecommerce-platforms.png',
+  },
+];
 ---
 
 <BaseLayout
   title="Kaldon vs eCommerce Platforms: Intelligence Meets Commerce (2026)"
   description="eCommerce platforms give you a store but no intelligence. Kaldon gives you both. Compare Kaldon against Shopify, BigCommerce, Wix, Squarespace, and ClickFunnels."
+  structuredData={structuredData}
 >
   <PageHero
     kicker="Category Comparison"

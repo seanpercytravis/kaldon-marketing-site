@@ -1,5 +1,31 @@
 ---
 import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: 'How to Find a Winning Product to Sell Online (Complete 2026 Guide)',
+    description:
+      'A step-by-step guide to finding profitable products in 2026. From niche selection to validation, with actionable frameworks you can use today.',
+    datePublished: '2026-03-18',
+    dateModified: '2026-03-18',
+    author: { '@type': 'Person', name: 'Sean Travis', url: 'https://kaldon.io/about' },
+    publisher: {
+      '@type': 'Organization',
+      '@id': 'https://kaldon.io/#org',
+      name: 'Kaldon',
+      url: 'https://kaldon.io',
+      logo: { '@type': 'ImageObject', url: 'https://kaldon.io/images/logos/kaldon-logo-dark.svg' },
+    },
+    image: 'https://kaldon.io/images/screenshots/16-opportunity-feed.webp',
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://kaldon.io/blog/how-to-find-winning-product-sell-online-2026',
+    },
+    articleSection: 'Product Research',
+  },
+];
 ---
 
 <BlogPostLayout
@@ -10,6 +36,7 @@ import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
   readTime="12 min read"
   heroImage="/images/screenshots/16-opportunity-feed.webp"
   heroAlt="Kaldon opportunity feed showing product cards with viability scores"
+  structuredData={structuredData}
 >
 
 <p>Finding a winning product is the single most important decision in your eCommerce journey. Get it right, and everything downstream becomes easier: branding, content, marketing, sales. Get it wrong, and no amount of marketing spend will save you.</p>

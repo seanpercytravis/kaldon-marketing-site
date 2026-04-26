@@ -1,0 +1,47 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm build)",
+      "Bash(pnpm run build)",
+      "Bash(pnpm dev)",
+      "Bash(pnpm run dev)",
+      "Bash(pnpm install)",
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git branch:*)",
+      "Bash(git show:*)",
+      "Bash(git stash:*)",
+      "Bash(gh pr:*)",
+      "Bash(gh run:*)",
+      "Bash(gh workflow:*)",
+      "Bash(gh api:*)",
+      "Bash(gh repo view:*)",
+      "Bash(node scripts/generate-og.mjs)",
+      "Bash(node scripts/generate-favicons.mjs)",
+      "Bash(pnpm run generate:og)",
+      "Bash(pnpm run generate:favicons)",
+      "Bash(pnpm astro check)",
+      "Bash(curl -sI:*)",
+      "Bash(curl -s:*)",
+      "Bash(grep:*)",
+      "Bash(rg:*)",
+      "Bash(find:*)",
+      "Bash(wc:*)"
+    ]
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat /Users/seantravis/kaldon-marketing-site/.claude/skill-router-reminder.md"
+          }
+        ]
+      }
+    ]
+  }
+}

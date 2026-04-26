@@ -68,6 +68,12 @@ jobs:
 
       - name: Verify build still passes with new post
         if: github.event.inputs.dry_run != 'true'
+        env:
+          # Public envs must be present at build time so Astro bakes them
+          # into the static HTML. Same key + host are exposed to the
+          # wrangler deploy step further down.
+          PUBLIC_POSTHOG_KEY: ${{ secrets.PUBLIC_POSTHOG_KEY }}
+          PUBLIC_POSTHOG_HOST: ${{ secrets.PUBLIC_POSTHOG_HOST }}
         run: pnpm run build
 
       - name: Commit and push new post

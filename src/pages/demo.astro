@@ -5,39 +5,102 @@ import Button from '../components/ui/Button.astro';
 import { appUrl } from '../lib/urls';
 
 const arcadeDemos = [
-  { id: 'arcade-demo-1', title: 'Discover a winning product', desc: 'Click through a real product analysis. See the AI scoring, product mockups, action plan, and coaching flow.', screenshot: '/images/screenshots/01-analysis-hero.webp' },
-  { id: 'arcade-demo-2', title: 'Build your brand in minutes', desc: 'Watch how Kaldon generates a complete brand identity from analysis data. Logo, colors, voice, everything.', screenshot: '/images/screenshots/07-brand-detail.webp' },
-  { id: 'arcade-demo-3', title: 'The full pipeline', desc: 'Experience the complete journey from product idea to live store. Five phases, one platform, zero gaps.', screenshot: '/images/screenshots/15-journey-progress.webp' },
+  {
+    id: 'arcade-demo-1',
+    title: 'Discover a winning product',
+    annotation: 'What you see: opportunity score (8.7), source confidence breakdown, action plan, and supplier verification status.',
+    screenshot: '/images/screenshots/01-analysis-hero.webp',
+  },
+  {
+    id: 'arcade-demo-2',
+    title: 'Build your brand in minutes',
+    annotation: 'What you see: brand name, logo concept, color palette, voice guidelines, and the analysis data that shaped them.',
+    screenshot: '/images/screenshots/07-brand-detail.webp',
+  },
+  {
+    id: 'arcade-demo-3',
+    title: 'The full pipeline',
+    annotation: 'What you see: progress across all five phases, current step, completion percentage, and next-action prompts.',
+    screenshot: '/images/screenshots/15-journey-progress.webp',
+  },
 ];
 
-const loomVideos = [
-  { id: 'loom-video-1', title: 'The full pipeline in 90 seconds', screenshot: '/images/screenshots/15-journey-progress.webp' },
-  { id: 'loom-video-2', title: 'Inside an AI analysis report', screenshot: '/images/screenshots/01-analysis-hero.webp' },
-  { id: 'loom-video-3', title: 'Building a brand from scratch', screenshot: '/images/screenshots/06-brand-vault.webp' },
-  { id: 'loom-video-4', title: 'A month of content in minutes', screenshot: '/images/screenshots/10-content-calendar.webp' },
-  { id: 'loom-video-5', title: 'Deploying your store', screenshot: '/images/screenshots/14-store-deployment.webp' },
+const featureScreens = [
+  {
+    id: 'feature-screen-1',
+    title: 'Inside an analysis report',
+    caption: 'Opportunity score, demand signals, competitor density, and the action plan Kaldon ships with every report.',
+    screenshot: '/images/screenshots/01-analysis-hero.webp',
+  },
+  {
+    id: 'feature-screen-2',
+    title: 'Brand vault overview',
+    caption: 'Every brand Kaldon has built for you in one place. Status, last update, and one-click access to assets.',
+    screenshot: '/images/screenshots/06-brand-vault.webp',
+  },
+  {
+    id: 'feature-screen-3',
+    title: 'Brand identity detail',
+    caption: 'Logo, palette, typography, voice rules, and the analysis data that shaped the identity.',
+    screenshot: '/images/screenshots/07-brand-detail.webp',
+  },
+  {
+    id: 'feature-screen-4',
+    title: 'A month of content, planned',
+    caption: 'Calendar view of the content Kaldon produces. Channel, format, hook, and post-ready copy per slot.',
+    screenshot: '/images/screenshots/10-content-calendar.webp',
+  },
+  {
+    id: 'feature-screen-5',
+    title: 'Live store deployment',
+    caption: 'Storefront preview, deployment checklist, domain status, and the products already loaded for launch.',
+    screenshot: '/images/screenshots/14-store-deployment.webp',
+  },
+  {
+    id: 'feature-screen-6',
+    title: 'Full pipeline progress',
+    caption: 'Phase-by-phase progress across Discover, Build, Create, Launch, and Grow with current step highlighted.',
+    screenshot: '/images/screenshots/15-journey-progress.webp',
+  },
 ];
 ---
 
 <BaseLayout
-  title="See Kaldon in Action. Interactive Demos and Video Walkthroughs"
-  description="Click through real product analyses, brand creation, and the full pipeline. Watch video walkthroughs of every feature. No signup required."
+  title="See Kaldon in Action. Real Screenshots from Every Phase"
+  description="Annotated screenshots from a real Discover analysis, the brand identity Kaldon generated, the content calendar it produced, and the live store it deployed. Live walkthroughs coming soon."
 >
   <PageHero
-    kicker="Demo"
-    headline="Watch Kaldon create a new product, end to end."
-    subhead="Click through a real unmet-demand analysis, the brand identity it generates, the content calendar it produces, and the store it deploys. Five phases, one pipeline. No signup required."
+    kicker="Real Screenshots"
+    headline="See exactly what Kaldon produces."
+    subhead="Annotated screenshots from a real Discover analysis, the brand identity Kaldon generated from it, the content calendar it produced, and the live store it deployed. Five phases, one pipeline. Live walkthroughs coming soon."
   />
 
-  <!-- Interactive demos -->
+  <!-- Coming soon notice -->
+  <section style="background: var(--void); padding-block: clamp(40px, 6vw, 64px);">
+    <div class="container-custom max-w-3xl">
+      <div class="coming-soon-card">
+        <span class="kicker">Coming soon</span>
+        <p class="coming-soon-copy">
+          Live click-through demo and 90-second video walkthrough are in production. Expected later this quarter. Want to be notified the moment they go live?
+        </p>
+        <div class="mt-5">
+          <Button variant="secondary" href={appUrl('/signup', 'demo_notify_cta')} data-event="demo_notify_cta">
+            Get notified
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Annotated screenshots -->
   <section class="section-spacing" style="background: var(--void);">
     <div class="container-custom max-w-5xl">
       <header class="text-center mb-10">
-        <span class="kicker">Interactive demos</span>
+        <span class="kicker">Annotated screenshots</span>
         <h2 class="font-display font-semibold" style="font-weight: 600; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.15; letter-spacing: -0.015em; color: var(--chalk);">
-          Click through the real product.
+          Real outputs from each phase.
         </h2>
-        <p class="mt-4 text-body-lg" style="color: var(--ghost);">No signup needed.</p>
+        <p class="mt-4 text-body-lg" style="color: var(--ghost);">Live click-through demos and video walkthroughs are in production.</p>
       </header>
 
       <div class="flex flex-wrap justify-center gap-2 mb-10">
@@ -53,49 +116,41 @@ const loomVideos = [
 
       {arcadeDemos.map((demo, i) => (
         <div id={demo.id} class={`demo-panel ${i > 0 ? 'hidden' : ''}`} data-panel={i}>
-          <button class="demo-frame">
+          <figure class="demo-frame">
             <img src={demo.screenshot} alt={demo.title} width="1124" height="712" class="demo-img" loading="lazy" decoding="async" />
-            <div class="demo-overlay">
-              <span class="kicker" style="color: var(--gold);">Interactive Demo</span>
+            <figcaption class="demo-overlay">
+              <span class="kicker">Annotation</span>
               <p class="demo-title">{demo.title}</p>
-              <p class="demo-desc">{demo.desc}</p>
-              <div class="demo-play">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--chalk);">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-            </div>
-          </button>
+              <p class="demo-desc">{demo.annotation}</p>
+            </figcaption>
+          </figure>
         </div>
       ))}
     </div>
   </section>
 
-  <!-- Video walkthroughs -->
+  <!-- Feature deep-dives -->
   <section class="section-spacing" style="background: var(--void);">
     <div class="container-custom max-w-5xl">
       <header class="text-center mb-10">
-        <span class="kicker">Video walkthroughs</span>
+        <span class="kicker">Feature deep-dives</span>
         <h2 class="font-display font-semibold" style="font-weight: 600; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.15; letter-spacing: -0.015em; color: var(--chalk);">
-          Watch every feature in detail.
+          Every feature, in detail.
         </h2>
-        <p class="mt-4 text-body-lg" style="color: var(--ghost);">5 focused walkthroughs. See exactly what Kaldon does.</p>
+        <p class="mt-4 text-body-lg" style="color: var(--ghost);">Six annotated screens. See exactly what Kaldon ships.</p>
       </header>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {loomVideos.map((video) => (
-          <button id={video.id} class="video-card">
-            <div class="video-thumb">
-              <img src={video.screenshot} alt={video.title} width="1124" height="712" loading="lazy" decoding="async" />
-              <div class="video-play">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--chalk); margin-left: 2px;">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {featureScreens.map((screen) => (
+          <figure id={screen.id} class="feature-card">
+            <div class="feature-thumb">
+              <img src={screen.screenshot} alt={screen.title} width="1124" height="712" loading="lazy" decoding="async" />
             </div>
-            <h3 class="video-title">{video.title}</h3>
-          </button>
+            <figcaption>
+              <h3 class="feature-title">{screen.title}</h3>
+              <p class="feature-caption">{screen.caption}</p>
+            </figcaption>
+          </figure>
         ))}
       </div>
     </div>
@@ -149,39 +204,40 @@ const loomVideos = [
   .demo-tab.active { background: var(--gold); color: var(--void); border-color: transparent; font-weight: 500; }
 
   .demo-frame {
-    position: relative; display: block; width: 100%; aspect-ratio: 16 / 10;
+    position: relative; display: block; width: 100%; aspect-ratio: 16 / 10; margin: 0;
     background: var(--deep-space); border: 1px solid var(--hairline); border-radius: 12px;
-    overflow: hidden; cursor: pointer; transition: border-color 160ms var(--ease-out-quad);
+    overflow: hidden;
   }
-  .demo-frame:hover { border-color: var(--hairline-active); }
   .demo-img {
     position: absolute; inset: 0; width: 100%; height: 100%;
-    object-fit: cover; object-position: top; opacity: 0.35;
-    transition: opacity 200ms var(--ease-out-quad);
+    object-fit: cover; object-position: top; opacity: 0.45;
   }
-  .demo-frame:hover .demo-img { opacity: 0.5; }
   .demo-overlay {
     position: absolute; inset: 0; display: flex; flex-direction: column;
     align-items: center; justify-content: center; padding: 32px; gap: 12px;
-    background: linear-gradient(to bottom, rgba(10,10,15,0.3), rgba(10,10,15,0.8));
+    background: linear-gradient(to bottom, rgba(10,10,15,0.35), rgba(10,10,15,0.85));
+    margin: 0;
   }
   .demo-title { font-family: var(--font-display); font-weight: 600; font-size: 20px; color: var(--chalk); letter-spacing: -0.015em; }
-  .demo-desc { text-align: center; max-width: 420px; font-size: 14px; line-height: 1.5; color: var(--ghost); }
-  .demo-play { width: 52px; height: 52px; border-radius: 50%; background: var(--void); border: 1px solid var(--hairline-active); display: flex; align-items: center; justify-content: center; margin-top: 8px; }
+  .demo-desc { text-align: center; max-width: 480px; font-size: 14px; line-height: 1.5; color: var(--ghost); }
 
-  .video-card {
-    display: block; text-align: left; background: transparent; border: none; padding: 0; cursor: pointer;
+  .coming-soon-card {
+    border: 1px solid var(--hairline); border-radius: 12px;
+    background: var(--deep-space); padding: 28px 32px; text-align: center;
   }
-  .video-thumb {
-    position: relative; aspect-ratio: 16 / 9;
+  .coming-soon-copy {
+    margin-top: 10px; font-size: 15px; line-height: 1.55; color: var(--ghost); max-width: 520px; margin-left: auto; margin-right: auto;
+  }
+
+  .feature-card {
+    display: block; margin: 0;
+  }
+  .feature-thumb {
+    position: relative; aspect-ratio: 16 / 10;
     background: var(--deep-space); border: 1px solid var(--hairline); border-radius: 12px;
-    overflow: hidden; margin-bottom: 12px;
-    transition: border-color 160ms var(--ease-out-quad);
+    overflow: hidden; margin-bottom: 14px;
   }
-  .video-card:hover .video-thumb { border-color: var(--hairline-active); }
-  .video-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 0.25; }
-  .video-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
-  .video-play svg { background: var(--void); border: 1px solid var(--hairline-active); border-radius: 50%; padding: 12px; box-sizing: content-box; }
-  .video-title { font-family: var(--font-display); font-weight: 600; font-size: 14px; color: var(--chalk); letter-spacing: -0.01em; transition: color 160ms var(--ease-out-quad); }
-  .video-card:hover .video-title { color: var(--gold); }
+  .feature-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 0.85; }
+  .feature-title { font-family: var(--font-display); font-weight: 600; font-size: 15px; color: var(--chalk); letter-spacing: -0.01em; margin-bottom: 6px; }
+  .feature-caption { font-size: 13px; line-height: 1.55; color: var(--ghost); }
 </style>

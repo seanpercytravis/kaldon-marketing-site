@@ -4,6 +4,8 @@ import PageHero from '../components/ui/PageHero.astro';
 import Button from '../components/ui/Button.astro';
 import LinkArrow from '../components/ui/LinkArrow.astro';
 import { appUrl } from '../lib/urls';
+import ProblemSection from '../components/home/ProblemSection.astro';
+import SavingsCalculator from '../components/home/SavingsCalculator.astro';
 
 // Pricing tiers. annual default, monthly toggle swaps display values
 const tiers = [
@@ -246,6 +248,8 @@ function renderCell(val: string | boolean): string {
       All plans include 2 free analyses. No credit card required to start.
     </p>
   </PageHero>
+
+  <ProblemSection />
 
   <!-- Billing toggle. defaults to monthly so the prices people see on
        first load match what they'll be charged month-to-month. -->
@@ -497,6 +501,8 @@ function renderCell(val: string | boolean): string {
       </div>
     </div>
   </section>
+
+  <SavingsCalculator />
 
   <!-- Final CTA -->
   <section class="section-spacing-lg relative overflow-hidden" style="background: var(--void);">

@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/ui/PageHero.astro';
 import Button from '../../components/ui/Button.astro';
 import { appUrl } from '../../lib/urls';
+import ProblemSection from '../../components/home/ProblemSection.astro';
 
 // Prices reflect the PREMIUM / equivalent-capability tier. not the
 // starter entry fee. Kaldon is a premium platform; comparing to entry
@@ -110,6 +111,8 @@ const structuredData = [
       { label: 'Marketplaces', numeral: 'All', sub: 'Amazon, Walmart, TikTok, Etsy, Pinterest, WooCommerce, DTC, and more', accent: 'signal' },
     ]}
   />
+
+  <ProblemSection />
 
   <!-- Gap callout -->
   <section class="pb-12 md:pb-16" style="background: var(--void);">

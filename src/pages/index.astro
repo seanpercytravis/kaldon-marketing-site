@@ -1,18 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/home/Hero.astro';
+import WhoItsForBeginner from '../components/home/WhoItsForBeginner.astro';
 import ConnectedPlatforms from '../components/home/ConnectedPlatforms.astro';
-import FoundationCredibility from '../components/home/FoundationCredibility.astro';
-import ProblemSection from '../components/home/ProblemSection.astro';
 import PipelineScroll from '../components/home/PipelineScroll.astro';
-import ModeBadges from '../components/ui/ModeBadges.astro';
-import MarketGapWeek from '../components/home/MarketGapWeek.astro';
 import IntelligenceDepth from '../components/home/IntelligenceDepth.astro';
+import MarketGapWeek from '../components/home/MarketGapWeek.astro';
 import WhoItsFor from '../components/home/WhoItsFor.astro';
 import PricingTeaser from '../components/home/PricingTeaser.astro';
-import SavingsCalculator from '../components/home/SavingsCalculator.astro';
 import FinalCTA from '../components/home/FinalCTA.astro';
-import Testimonials from '../components/home/Testimonials.astro';
 
 const structuredData = [
   {
@@ -58,16 +54,12 @@ const structuredData = [
   structuredData={structuredData}
 >
   <Hero />
+  <WhoItsForBeginner />
   <ConnectedPlatforms />
-  <FoundationCredibility />
-  <ProblemSection />
   <PipelineScroll />
-  <ModeBadges headline="Three ways to use Kaldon. One creation pipeline." />
   <IntelligenceDepth />
   <MarketGapWeek />
-  <Testimonials />
   <WhoItsFor />
   <PricingTeaser />
-  <SavingsCalculator />
   <FinalCTA />
 </BaseLayout>

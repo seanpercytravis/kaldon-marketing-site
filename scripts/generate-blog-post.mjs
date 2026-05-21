@@ -416,7 +416,12 @@ Generate the JSON response per the format and rules in the system prompt. The "s
   console.log(`Generating article: "${post.title}" (${isPillar ? 'pillar' : `cluster week ${post.publishWeek}`})`);
   const response = await client.messages.create({
     model: 'claude-sonnet-4-5-20250929',
-    max_tokens: isPillar ? 16000 : 8000,
+    // 2026-05-21: bumped non-pillar from 8000 -> 16000. The "DIY eCommerce
+    // tool stack" article hit the 8000-token cap mid-JSON ("Unterminated
+    // string in JSON at position 28830") and crashed the generator. Sonnet
+    // 4.5 supports up to 64k output; 16000 gives ~2x headroom over a typical
+    // 2000-3000 word cluster post including the structured-JSON overhead.
+    max_tokens: 16000,
     system: [
       {
         type: 'text',

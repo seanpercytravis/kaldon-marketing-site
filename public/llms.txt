@@ -15,10 +15,10 @@ Kaldon provides a 5-phase pipeline for eCommerce sellers:
 ## Pricing
 
 - **Free**: 2 analyses, no credit card required
-- **Growth**: $119/mo (annual) — 5 analyses/mo, Brand Vault, Content Calendar
-- **Pro**: $239/mo (annual) — 15 analyses/mo, Video Studio, Landing Pages
-- **Scale**: $399/mo (annual) — 50 analyses/mo, Store Deployment, full pipeline
-- **Enterprise**: Custom pricing
+- **Growth**: $149/mo ($119/mo billed annually): 5 analyses/mo, Brand Vault, Content Calendar
+- **Pro**: $299/mo ($239/mo billed annually): 15 analyses/mo, Video Studio, Landing Pages
+- **Scale**: $499/mo ($399/mo billed annually): 100 analyses/mo, Store Deployment, full pipeline
+- **Enterprise**: $1,499/mo: 300 analyses/mo, dedicated account manager, custom onboarding
 - **Single Analysis**: $39.99 one-time purchase
 
 ## Links

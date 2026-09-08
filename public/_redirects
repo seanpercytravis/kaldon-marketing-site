@@ -7,6 +7,10 @@
 # who-its-for; swap to a real customers page after the first paying customers.
 /customers /who-its-for 301
 
+# Crawlers that guess the conventional sitemap path get the real index
+# (Astro's sitemap integration emits sitemap-index.xml, not sitemap.xml).
+/sitemap.xml /sitemap-index.xml 301
+
 # Legacy comparison page redirects (removed individual tool pages from nav)
 /vs/canva /compare/research-tools 301
 /vs/jasper /compare/research-tools 301

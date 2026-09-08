@@ -2,6 +2,11 @@
 # Note: www-to-apex redirect is handled by Cloudflare Redirect Rules
 /home / 301
 
+# /customers 404'd for auditors and prospects who type it (HeyCatch site audit,
+# fixed 2026-09-07). No customer stories exist yet, so the honest destination is
+# who-its-for; swap to a real customers page after the first paying customers.
+/customers /who-its-for 301
+
 # Legacy comparison page redirects (removed individual tool pages from nav)
 /vs/canva /compare/research-tools 301
 /vs/jasper /compare/research-tools 301

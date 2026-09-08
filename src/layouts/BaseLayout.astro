@@ -190,6 +190,20 @@ const breadcrumbList = segments.length > 0
   <script is:inline>(function(w,r){w._rwq=r;w[r]=w[r]||function(){(w[r].q=w[r].q||[]).push(arguments)}})(window,'rewardful');</script>
   <script is:inline async src="https://r.wdfl.co/rw.js" data-rewardful="e619ee"></script>
 
+  <!-- HeyCatch: powers the on-domain short links used for social bio attribution -->
+  <script>
+    import { analytics } from '@heycatch/sdk';
+
+    analytics.init({
+      projectKey: 'hck_pk_FmvhFZfZx1kYPZf5t4rng1MubFSe6L3R',
+      install: {
+        framework: 'astro',
+        frameworkVersion: '6',
+        agent: 'claude-code',
+      },
+    });
+  </script>
+
   <!-- Structured Data -->
   {structuredData.map((data) => (
     <script type="application/ld+json" set:html={JSON.stringify(data)} />

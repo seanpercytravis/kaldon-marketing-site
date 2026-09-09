@@ -1,0 +1,86 @@
+name: Preview Deploy (claude/* branches)
+
+on:
+  push:
+    branches:
+      - 'claude/**'
+  workflow_dispatch:
+    inputs:
+      branch_name:
+        description: 'Branch name to preview (without claude/ prefix)'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  preview-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Compute preview worker name
+        id: preview
+        run: |
+          # Strip claude/ prefix and sanitize: lowercase alphanumeric + hyphens only.
+          # Cloudflare worker names allow [a-z0-9-] and must be < 63 chars.
+          # Prefix "kaldon-marketing-preview-" is 25 chars; cap branch slug at 36
+          # so the total max is 61 with safety margin under the 63 limit.
+          BRANCH="${GITHUB_REF#refs/heads/claude/}"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            BRANCH="${{ github.event.inputs.branch_name }}"
+          fi
+          SAFE_BRANCH=$(echo "$BRANCH" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/--*/-/g' | sed 's/^-//' | sed 's/-$//' | cut -c1-36)
+          PREVIEW_NAME="kaldon-marketing-preview-${SAFE_BRANCH}"
+          echo "preview_name=${PREVIEW_NAME}" >> "$GITHUB_OUTPUT"
+          echo "branch=${BRANCH}" >> "$GITHUB_OUTPUT"
+          echo "Preview worker name: ${PREVIEW_NAME}"
+
+      - name: Build site
+        env:
+          PUBLIC_POSTHOG_KEY: ${{ secrets.PUBLIC_POSTHOG_KEY }}
+          PUBLIC_POSTHOG_HOST: ${{ secrets.PUBLIC_POSTHOG_HOST }}
+          PUBLIC_PREVIEW_BANNER: 'true'
+          PUBLIC_PREVIEW_BRANCH: ${{ steps.preview.outputs.branch }}
+        run: pnpm run build
+
+      - name: Deploy preview to Cloudflare Workers
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "CLOUDFLARE_API_TOKEN missing. Set it in repo secrets to enable preview deploys."
+            exit 1
+          fi
+          pnpm exec wrangler deploy --name "${{ steps.preview.outputs.preview_name }}"
+
+      - name: Surface preview URL
+        run: |
+          PREVIEW_URL="https://${{ steps.preview.outputs.preview_name }}.${{ secrets.CLOUDFLARE_WORKERS_SUBDOMAIN }}.workers.dev"
+          echo "## Preview deployed" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Branch: \`${{ steps.preview.outputs.branch }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "Worker: \`${{ steps.preview.outputs.preview_name }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "URL: ${PREVIEW_URL}" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "If CLOUDFLARE_WORKERS_SUBDOMAIN secret is unset, the URL above will be malformed. Set it to your account subdomain (the part before .workers.dev)." >> "$GITHUB_STEP_SUMMARY"

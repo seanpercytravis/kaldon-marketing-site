@@ -144,3 +144,31 @@ If a skill is listed for a trigger and you do NOT invoke it, you must explicitly
 - **04-16 design brief:** `docs/audit/2026-04-16-design-brief.md` (V3 brand spec source)
 - **04-16 quality audit:** `docs/audit/2026-04-16-world-class-quality-audit.md` (anti-generic-AI checklist + structural fixes)
 - **Auto-blog system:** `scripts/BLOG.md`
+
+## Session economy + cache policy (STANDING, Sean 2026-08-04, every project)
+
+Set after the 2026-08-03/04 incident: a 27 hour interactive Fable session, a second day long
+session that spawned ~763 opus worker sessions over two client-site worktrees, and the shadow
+observer sessions compounding on top drained both the API balance and the Max plan in under
+two days. These rules bind every interactive Claude Code session in this repo.
+
+1. Context lives in FILES, not in long sessions. At ~70% context, write session state
+   (SESSION_STATE.md or the project memory dir) and hand off to a fresh session with a
+   kickoff message. End the session when the task ends. Never leave an idle interactive
+   session open past its task; an aged session re-reads its whole history on every touch.
+2. One frontier session at a time. Fable is reserved for the single hardest active thread
+   and is opt-in per session (/model claude-fable-5). The machine-wide default model is
+   Sonnet (set 2026-08-04 in ~/.claude/settings.json). Routine ops questions, lookups, and
+   side threads stay on Sonnet. Never open parallel frontier sessions on the same question.
+3. Fan-out never defaults to a frontier model. Any spawned work (subagents, headless
+   claude -p workers, worktree spawns) pins an explicit model, Sonnet tier or below for bulk
+   generation, and caps concurrency. Unbounded frontier fan-out is exactly the incident shape.
+4. Cache TTL policy, not per call: lanes with sporadic cadence (interactive sessions, cron
+   jobs spaced over 5 minutes, conversational webhooks) use the 1 hour cache TTL; only
+   continuous tight loops keep the 5 minute default. Plan sessions get this machine-wide via
+   cacheConfig.ttl 3600 in ~/.claude/settings.json (set 2026-08-04). API callers set
+   cache_control {"type": "ephemeral", "ttl": "1h"} on the stable system prefix. The math on
+   a 370K prefix touched 4x in an hour with idle gaps: 1h TTL costs 851K prefix equivalents
+   (one 2x write + three 0.1x reads) vs 1.85M on the 5 minute default (four 1.25x rewrites).
+5. Long running monitoring belongs to scheduled agents or crons with small prompts, never an
+   open interactive session.

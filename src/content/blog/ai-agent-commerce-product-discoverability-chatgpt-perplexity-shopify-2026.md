@@ -97,6 +97,7 @@ An effective `/agents.md` file includes:
 Example:
 
 
+```markdown
 # NovaSound Audio
 
 NovaSound sells noise-canceling headphones and wireless earbuds for remote workers, travelers, and audiophiles.
@@ -115,6 +116,7 @@ We ship to the US, Canada, UK, and EU. Standard shipping is 5-7 business days. E
 ## FAQ
 **Do you offer a warranty?** Yes, all products include a 1-year manufacturer warranty.
 **Do you ship internationally?** Yes, we ship to the US, Canada, UK, and EU.
+```
 
 
 On **Amazon**, agents read your **Product Q&A** and **Store Page** content. Keep Q&A answers accurate and current. On **Walmart**, agents read your **About This Item** section and any FAQ content in your brand store.
